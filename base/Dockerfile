@@ -24,6 +24,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-
 RUN apt-get install -y --force-yes clearwater-snmpd
 RUN /etc/init.d/clearwater-auto-config-docker restart
 RUN /etc/init.d/clearwater-infrastructure restart
+
 COPY clearwater-infrastructure.supervisord.conf /etc/supervisor/conf.d/clearwater-infrastructure.conf
 COPY clearwater-group.supervisord.conf /etc/supervisor/conf.d/clearwater-group.conf
 COPY snmpd.supervisord.conf /etc/supervisor/conf.d/snmpd.conf
@@ -36,6 +37,13 @@ RUN sed -i 's/SCTP_streams.*/No_SCTP;/' /usr/share/clearwater/bin/generic_create
 COPY liveness.sh /usr/share/kubernetes/
 
 # Some containers have socket factories that need to be started.  Supervisord config is common to all containers that need it
-# so copy the relevant supervisord config into the base container and we'll move it to /etc/supervisor/conf.d so that it actually gets 
+# so copy the relevant supervisord config into the base container and we'll move it to /etc/supervisor/conf.d so that it actually gets
 # invoked in the containers that need it.
 COPY socket-factory.supervisord.conf /etc/clearwater/socket-factory.supervisord.conf
+
+#Additional programs to work ease with the containers.
+RUN apt-get update && apt-get install -y --force-yes nano
+
+#Add lines to test with sipp
+RUN echo '' >> /etc/clearwater/shared_config
+RUN echo 'reg_max_expires=1800' >> /etc/clearwater/shared_config

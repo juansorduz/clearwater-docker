@@ -1,0 +1,20 @@
+#!/bin/bash
+docker restart etcd
+docker restart astaire
+docker restart cassandra
+docker restart chronos
+docker restart homestead
+docker restart homestead-prov
+docker restart homer
+docker restart ralf
+docker restart sprout
+docker restart bono
+docker restart ellis
+docker restart sipptest
+#docker restart chronos_2
+#docker restart chronos_3
+#docker restart astaire_2
+#docker restart sprout_2
+#docker restart sprout_3
+#docker restart sprout_4
+#docker restart sprout_5
