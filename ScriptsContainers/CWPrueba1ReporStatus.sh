@@ -21,7 +21,7 @@ tshark -i any -w $testfolder/wireshark/packets.pcap -q &
 sleep 1
 
 #Execute test script on background
-. ~/clearwater-docker/ScriptsContainers/CWPrueba1.sh $users $duration -q &
+. ~/clearwater-docker/ScriptsContainers/CWPrueba1.sh $users $duration &
 
 #saves initial time
 echo "Initial time: $(date +"%T")" >> $testfolder/Tiempos.csv
