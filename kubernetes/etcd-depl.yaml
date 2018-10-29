@@ -22,12 +22,12 @@ spec:
         - http://$(MY_POD_IP):2380
         - --listen-peer-urls
         - http://0.0.0.0:2380
-        # By default use a single pod cluster 
+        # By default use a single pod cluster
         - --initial-cluster
         - $(MY_POD_NAME)=http://$(MY_POD_IP):2380
         # Alternatively multi-pod clusters can be supported Using central discvovery.  Run e.g.
         #   curl https://discovery.etcd.io/new?size=3 | sed s/https/http/
-        # to get a discovery URL for a 3 pod cluster, substitute the returned value below, and 
+        # to get a discovery URL for a 3 pod cluster, substitute the returned value below, and
         # set replicas: 3 above.
         #- --discovery
         #- <URL returned by command above>
@@ -48,13 +48,6 @@ spec:
         - containerPort: 2379
         - containerPort: 2380
         - containerPort: 4001
-        livenessProbe:
-          tcpSocket:
-            port: 4001
-          initialDelaySeconds: 300
-        readinessProbe:
-          tcpSocket:
-            port: 4001
       imagePullSecrets:
       - name: ~
       restartPolicy: Always

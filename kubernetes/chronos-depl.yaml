@@ -27,14 +27,6 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        livenessProbe:
-          tcpSocket:
-            port: 7253
-          periodSeconds: 10
-          failureThreshold: 9
-        readinessProbe:
-          tcpSocket:
-            port: 7253
         volumeMounts:
         - name: chronoslogs
           mountPath: /var/log/chronos

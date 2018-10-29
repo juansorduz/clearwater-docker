@@ -28,13 +28,6 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        livenessProbe:
-          exec:
-            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "8888"]
-          initialDelaySeconds: 60
-        readinessProbe:
-          exec:
-            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "8888"]
         volumeMounts:
         - name: homesteadlogs
           mountPath: /var/log/homestead
