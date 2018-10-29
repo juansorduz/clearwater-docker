@@ -13,7 +13,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 120
       containers:
-      - image: "gabrielorozco20/clearwater-chronos:lastest"
+      - image: "gabrielorozco20/clearwater-chronos:latest"
         imagePullPolicy: Always
         name: chronos
         ports:

@@ -10,7 +10,7 @@ spec:
         service: cassandra
     spec:
       containers:
-      - image: "gabrielorozco20/clearwater-cassandra:lastest"
+      - image: "gabrielorozco20/clearwater-cassandra:latest"
         imagePullPolicy: Always
         name: cassandra
         ports:

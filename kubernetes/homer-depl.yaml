@@ -10,7 +10,7 @@ spec:
         service: homer
     spec:
       containers:
-      - image: "gabrielorozco20/clearwater-homer:lastest"
+      - image: "gabrielorozco20/clearwater-homer:latest"
         imagePullPolicy: Always
         name: homer
         ports:
