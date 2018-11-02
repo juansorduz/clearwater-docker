@@ -42,7 +42,9 @@ COPY liveness.sh /usr/share/kubernetes/
 COPY socket-factory.supervisord.conf /etc/clearwater/socket-factory.supervisord.conf
 
 #Additional programs to work ease with the containers.
-RUN apt-get update && apt-get install -y --force-yes nano
+RUN apt-get update && apt-get install -y --force-yes nano && apt-get install -y --force-yes tshark
+#Additional configuration tshark
+RUN chmod +x /usr/bin/dumpcap && dpkg-reconfigure wireshark-common && adduser $USER wireshark
 
 #Add lines to test with sipp
 RUN echo '' >> /etc/clearwater/shared_config
