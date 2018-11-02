@@ -17,26 +17,26 @@ ralfpod=$(kubectl get pods | grep ralf | cut -d ' ' -f1)
 sipptestpod=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 sproutpod=$(kubectl get pods | grep sprout | cut -d ' ' -f1)
 
-mkdir -p ~/ClearwaterTestResults/Kubernetes/$users$duration/logs
-testfolder=~/ClearwaterTestResults/Kubernetes/$users$duration/logs
+mkdir -p ~/ClearwaterTestResults/Kubernetes/$users$duration/describe
+testfolder=~/ClearwaterTestResults/Kubernetes/$users$duration/describe
 
 if [ "$users" = "0" ]
 then
     echo "Using default values"
 fi
 
-echo "Collecting logs"
+echo "Collecting description"
 
-kubectl logs  $astairepod -c astaire> $testfolder/astaire.sh
-kubectl logs  $bonopod -c bono > $testfolder/bono.sh
-kubectl logs  $cassandrapod -c cassandra > $testfolder/cassandra.sh
-kubectl logs  $chronospod -c chronos > $testfolder/chronos.sh
-kubectl logs  $ellispod -c ellis > $testfolder/ellis.sh
-kubectl logs  $homerpod -c homer > $testfolder/homer.sh
-kubectl logs  $homestead -c homestead > $testfolder/homestead.sh
-kubectl logs  $homesteadprovpod -c homestead-prov > $testfolder/homesteadprov.sh
-kubectl logs  $ralfpod -c ralf > $testfolder/ralf.sh
-kubectl logs  $sipptestpod -c sipptest > $testfolder/sipptest.sh
-kubectl logs  $sproutpod -c sprout > $testfolder/sprout.sh
+kubectl describe pods $astairepod > $testfolder/astaire.sh
+kubectl describe pods $bonopod > $testfolder/bono.sh
+kubectl describe pods $cassandrapod > $testfolder/cassandra.sh
+kubectl describe pods $chronospod > $testfolder/chronos.sh
+kubectl describe pods $ellispod > $testfolder/ellis.sh
+kubectl describe pods $homerpod > $testfolder/homer.sh
+kubectl describe pods $homestead > $testfolder/homestead.sh
+kubectl describe pods $homesteadprovpod > $testfolder/homesteadprov.sh
+kubectl describe pods $ralfpod > $testfolder/ralf.sh
+kubectl describe pods $sipptestpod > $testfolder/sipptest.sh
+kubectl describe pods $sproutpod > $testfolder/sprout.sh
 
-echo "Finish Collection logs"
+echo "Finish collection descripption"
