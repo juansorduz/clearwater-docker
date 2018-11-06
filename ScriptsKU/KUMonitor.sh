@@ -20,7 +20,7 @@ sproutpod=$(kubectl get pods | grep sprout | cut -d ' ' -f1)
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Kubernetes/$users$duration
 testfolder=~/ClearwaterTestResults/Kubernetes/$users$duration
-
+aproxTime=$duration+30
 if [ "$users" = "0" ]
 then
     echo "Using default values"
@@ -39,7 +39,7 @@ echo "Initial time: $(date +"%T")" >> $testfolder/Tiempos.csv
 #calculate aproximate time
 CONTADOR=0
 TimeSeg=30
-TimeContainer=$((30*$aproxTime))
+TimeContainer=$((600*$aproxTime))
 echo Approximate Time $aproxTime
 echo Time seg $TimeSeg
 echo Time container $TimeContainer
