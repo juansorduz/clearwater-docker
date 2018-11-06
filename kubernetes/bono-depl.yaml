@@ -34,6 +34,20 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        livenessProbe:
+          exec:
+            command: ["nc", "-z", "-w", "5", "127.0.0.1", "5060"]
+          initialDelaySeconds: 30
+        readinessProbe:
+          tcpSocket:
+            port: 5060
+        livenessProbe:
+          exec:
+            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "3478 5060 5062"]
+          initialDelaySeconds: 30
+        readinessProbe:
+          exec:
+            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "3478 5060 5062"]
         volumeMounts:
         - name: bonologs
           mountPath: /var/log/bono

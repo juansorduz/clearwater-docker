@@ -48,6 +48,13 @@ spec:
         - containerPort: 2379
         - containerPort: 2380
         - containerPort: 4001
+        livenessProbe:
+          tcpSocket:
+            port: 4001
+          initialDelaySeconds: 300
+        readinessProbe:
+          tcpSocket:
+            port: 4001
       imagePullSecrets:
       - name: ~
       restartPolicy: Always

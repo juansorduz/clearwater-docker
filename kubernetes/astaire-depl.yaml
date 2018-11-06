@@ -26,6 +26,14 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        livenessProbe:
+          tcpSocket:
+            port: 11311
+          periodSeconds: 10
+          failureThreshold: 9
+        readinessProbe:
+          tcpSocket:
+            port: 11311
         volumeMounts:
         - name: astairelogs
           mountPath: /var/log/astaire

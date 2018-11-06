@@ -1,7 +1,7 @@
 # Liveness checker; tests whether this instance is live
 set -e
 PORTS=${1:-none}
-ADDRESS=${MY_POD_IP:-127.0.0.1}
+ADDRESS=${MY_POD_IP:-0.0.0.0}
 TIMEOUT=${2:-5}
 
 if [ "$PORTS" = "none" ]
