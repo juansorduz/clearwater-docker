@@ -1,0 +1,14 @@
+*.debhelper
+*.debhelper.log
+*.substvars
+/changelog
+/files
+/homestead-dbg/
+/homestead-libs/
+/homestead-libs-dbg/
+/homestead-node/
+/homestead-node-dbg/
+/homestead-cx-node/
+/homestead-cx-node-dbg/
+/homestead/
+/homestead-cassandra/
