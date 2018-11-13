@@ -13,9 +13,13 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | echo $passwordVM | sud
 echo $passwordVM | sudo -S add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 #Installing docker CE
 echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
+echo $passwordVM | sudo groupadd docker
 echo $passwordVM | sudo -S apt-get install -y docker-ce
-echo $passwordVM | sudo groupadd docker 
-echo $passwordVM | sudo -S usermod -aG docker $USER
+echo $passwordVM | sudo gr#echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
+#echo $passwordVM | sudo -S apt-get install -y docker-engine
+#Adding User
+#echo $passwordVM | sudo -S usermod -a -G docker $USER
+##########################################################################################
 #Installing docker method 2 uncomment
 #curl -fsSL get.docker.com -o get-docker.sh
 #echo $passwordVM | sudo -S chmod +x get-docker.sh
