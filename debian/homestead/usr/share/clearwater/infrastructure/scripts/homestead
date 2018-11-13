@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# @file homestead
+#
+# Copyright (C) Metaswitch Networks 2016
+# If license terms are provided to you in a COPYING file in the root directory
+# of the source code repository by which you are accessing this code, then
+# the license outlined in that COPYING file applies to your use.
+# Otherwise no rights are granted except for those provided to you by
+# Metaswitch Networks in a separate written agreement.
+
+hss_port=3868
+hs_secure_listen_port=5658
+acl_required=false
+check_destination_host=true
+homestead_diameter_watchdog_timer=6
+. /etc/clearwater/config
+
+# If we don't have a hs_listen_port set, fall back to hss_port (for
+# backwards compatibility)
+if [[ -z "$hs_listen_port" ]]
+then
+    hs_listen_port=$hss_port
+fi
+
+# Allow a specific FQDN for Homestead to be set (in case this is an
+# all-in-one node running both ralf and homestead Diameter stacks).
+# Otherwise, fall back to the public hostname.
+
+identity=$hs_diameteridentity
+
+if [ -n "$hs_hostname" ] && [ -n "$public_hostname" ];
+then
+  if [[ -z "$identity" ]];
+  then
+    identity=$public_hostname
+  fi
+
+  # Strip any characters not valid in an FQDN out of hs_hostname (for
+  # example, it might be an IPv6 address)
+  realm=$(echo $hs_hostname | sed -e 's/:[^:]*$//g' | sed -e 's/^\[//g' | sed -e 's/\]$//g')
+  /usr/share/clearwater/bin/generic_create_diameterconf homestead $identity $realm $hs_listen_port $hs_secure_listen_port $acl_required $check_destination_host $homestead_diameter_watchdog_timer
+fi

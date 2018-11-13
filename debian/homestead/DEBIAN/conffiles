@@ -1,0 +1,4 @@
+/etc/cron.hourly/homestead-log-cleanup
+/etc/logrotate.d/homestead
+/etc/security/limits.conf.homestead
+/etc/init.d/homestead

@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# @file homestead.monit
+#
+# Copyright (C) Metaswitch Networks 2017
+# If license terms are provided to you in a COPYING file in the root directory
+# of the source code repository by which you are accessing this code, then
+# the license outlined in that COPYING file applies to your use.
+# Otherwise no rights are granted except for those provided to you by
+# Metaswitch Networks in a separate written agreement.
+
+# Set up the monit configuration for homestead with the right IP addresses and ports
+cat > /etc/monit/conf.d/homestead.monit <<EOF
+# Check the Homestead process.
+
+# Monitor the service's PID file and memory use.
+check process homestead_process with pidfile /var/run/homestead/homestead.pid
+  group homestead
+
+  # The start, stop and restart commands are linked to alarms
+  start program = "/bin/bash -c '/usr/share/clearwater/infrastructure/monit_stability/homestead-stability reset; /usr/share/clearwater/bin/issue-alarm monit 1500.3; /etc/init.d/homestead start'"
+  stop program = "/bin/bash -c '/usr/share/clearwater/bin/issue-alarm monit 1500.3; /etc/init.d/homestead stop'"
+  restart program = "/bin/bash -c '/usr/share/clearwater/infrastructure/monit_stability/homestead-stability reset; /usr/share/clearwater/bin/issue-alarm monit 1500.3; /etc/init.d/homestead restart'"
+
+  # Check the service's resource usage, and abort the process if it's too high. This will
+  # generate a core file and trigger diagnostics collection.
+  if memory > 40% then exec "/bin/bash -c '/usr/share/clearwater/infrastructure/monit_stability/homestead-stability aborted; /usr/share/clearwater/bin/issue-alarm monit 1500.3; /etc/init.d/homestead abort'"
+
+# Clear any alarms if the process has been running long enough.
+check program homestead_uptime with path /usr/share/clearwater/infrastructure/monit_uptime/check-homestead-uptime
+  group homestead
+  depends on homestead_process
+  every 3 cycles
+  if status != 0 then alert
+
+# Check the HTTP interface. This depends on the Homestead process (and so won't run
+# unless the Homestead process is running)
+check program poll_homestead with path "/usr/share/clearwater/bin/poll_homestead.sh"
+  group homestead
+  depends on homestead_process
+
+  # Aborting generates a core file and triggers diagnostic collection.
+  if status != 0 for 2 cycles then exec "/bin/bash -c '/usr/share/clearwater/infrastructure/monit_stability/homestead-stability aborted; /usr/share/clearwater/bin/issue-alarm monit 1500.3; /etc/init.d/homestead abort'"
+
+
+# Check the Diameter interface. This depends on the Homestead process (and so won't run
+# unless the Homestead process is running)
+check program check_cx_health with path "/usr/share/clearwater/bin/check_cx_health"
+  group homestead
+  depends on homestead_process, snmpd_process
+
+  # Aborting generates a core file and triggers diagnostic collection.  However, we don't want to
+  # do this so frequently that it flushes old diags out if the underlying problem is that
+  # the HSS has been switched off.  Only do a core generating stoppage once per day.
+  #
+  # Use a specific exit code to ensure that we only restart homestead if we have
+  # positively determined that all requests are failing.
+  #
+  # (Check for 2 cycles to get round monit's limitation of effectively checking exit codes one cycle
+  # late.  If you don't wait for at least 2 consecutive cycles, you can end up with monit erroneously
+  # killing homestead twice)
+  if status = 3 for 2 cycles then exec "/bin/bash -c '/usr/share/clearwater/infrastructure/monit_stability/homestead-stability aborted; /usr/share/clearwater/bin/issue-alarm monit 1500.3; /usr/share/clearwater/bin/stop_or_abort homestead cx_health 86400'"
+
+EOF
+chmod 0644 /etc/monit/conf.d/homestead.monit
+
+# Force monit to reload its configuration
+reload clearwater-monit || true

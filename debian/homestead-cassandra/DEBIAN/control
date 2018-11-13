@@ -1,0 +1,11 @@
+Package: homestead-cassandra
+Source: homestead
+Version: 1.0-181110.092618
+Architecture: amd64
+Maintainer: Project Clearwater Maintainers <maintainers@projectclearwater.org>
+Installed-Size: 70
+Depends: clearwater-cassandra, clearwater-infrastructure
+Section: network
+Priority: optional
+Homepage: http://projectclearwater.org/
+Description: Commissions a Cassandra node so that it can be used as a backend for the homestead package

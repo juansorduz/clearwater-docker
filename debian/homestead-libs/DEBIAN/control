@@ -1,0 +1,11 @@
+Package: homestead-libs
+Source: homestead
+Version: 1.0-181110.092618
+Architecture: amd64
+Maintainer: Project Clearwater Maintainers <maintainers@projectclearwater.org>
+Installed-Size: 5500
+Depends: libsctp1, libevent-2.0-5, libevent-pthreads-2.0-5
+Section: network
+Priority: optional
+Homepage: http://projectclearwater.org/
+Description: Libraries for homestead

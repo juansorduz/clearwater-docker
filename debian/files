@@ -1,0 +1,9 @@
+homestead-libs_1.0-181110.092618_amd64.deb network optional
+homestead-libs-dbg_1.0-181110.092618_amd64.deb debug extra
+homestead-node_1.0-181110.092618_amd64.deb network optional
+homestead-node-dbg_1.0-181110.092618_amd64.deb debug extra
+homestead-cx-node_1.0-181110.092618_amd64.deb network optional
+homestead-cx-node-dbg_1.0-181110.092618_amd64.deb debug extra
+homestead_1.0-181110.092618_amd64.deb network optional
+homestead-dbg_1.0-181110.092618_amd64.deb debug extra
+homestead-cassandra_1.0-181110.092618_amd64.deb network optional

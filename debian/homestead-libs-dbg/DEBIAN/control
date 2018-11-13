@@ -1,0 +1,12 @@
+Package: homestead-libs-dbg
+Source: homestead
+Version: 1.0-181110.092618
+Architecture: amd64
+Maintainer: Project Clearwater Maintainers <maintainers@projectclearwater.org>
+Installed-Size: 10162
+Depends: homestead-libs (= 1.0-181110.092618)
+Recommends: gdb, libevent-dbg
+Section: debug
+Priority: extra
+Homepage: http://projectclearwater.org/
+Description: Debugging symbols for homestead-libs

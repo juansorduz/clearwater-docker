@@ -1,0 +1,16 @@
+171d8ced3eb08c48ace69ec9cff09a09  usr/share/clearwater/bin/check_cx_health
+4b974d7b2f7bef3392ea32323b10ce18  usr/share/clearwater/bin/check_cx_health.py
+7cb9198c39eb2e3319b4ab2d3a3f4d21  usr/share/clearwater/bin/homestead
+e4bded68f589781abdbd6496dd35b0e0  usr/share/clearwater/bin/poll_homestead.sh
+29c0dc41a095b911618a0b8fdbd9a1d6  usr/share/clearwater/clearwater-diags-monitor/scripts/homestead_diags
+75759c9a19de613694c0045a1f451442  usr/share/clearwater/infrastructure/alarms/homestead_alarms.json
+49815b576b43b5ad10a8812ff3c72b75  usr/share/clearwater/infrastructure/monit_stability/homestead-stability
+0a864f3b12ecd126b164b4d632e2698e  usr/share/clearwater/infrastructure/monit_uptime/check-homestead-uptime
+1cf557023fba4b5562459bb6592b6e44  usr/share/clearwater/infrastructure/scripts/create-homestead-nginx-config
+a50a1c067bcad0b1f647556553652725  usr/share/clearwater/infrastructure/scripts/homestead
+1a7faa6339f81f4b280cb9499ad5131a  usr/share/clearwater/infrastructure/scripts/homestead.monit
+dbed87f2d4acae645ccd4bf2f7f1bdbe  usr/share/clearwater/infrastructure/scripts/reload/sas_json/homestead_reload
+28bbb140bf2c80848d132d013f2f9748  usr/share/clearwater/infrastructure/scripts/restart/homestead_restart
+a4a1c3b5b27c9dfba9b79cca4eb5385a  usr/share/clearwater/node_type.d/20_homestead
+f8f0a465ea9d70a96103c836d180a834  usr/share/doc/homestead/changelog.Debian.gz
+d5afbb62cc96a641573e64ed2a66a3ce  usr/share/doc/homestead/copyright

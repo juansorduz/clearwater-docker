@@ -1,0 +1,13 @@
+homestead (1.0-181110.092618) unstable; urgency=low
+  * build from https://github.com/juansorduz/homestead/tree/e55be064b22c7ee9c0c4de6cec07ff57ae8cc349
+    Use Git to access the source code for this build as follows:
+      $ git config --global url."https://github.com/".insteadOf git@github.com:
+      $ git clone --recursive git@github.com:juansorduz/homestead.git
+      Cloning into 'homestead'...
+        ...
+      $ cd homestead
+      $ git checkout -q e55be064b22c7ee9c0c4de6cec07ff57ae8cc349
+      $ git submodule update --init
+        ...
+      $
+ -- Project Clearwater Maintainers <maintainers@projectclearwater.org>  Sat, 10 Nov 2018 09:28:03 -0500

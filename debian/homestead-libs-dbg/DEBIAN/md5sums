@@ -1,0 +1,13 @@
+208e8db25a36298e79384faa96df8123  usr/lib/debug/usr/share/clearwater/homestead/lib/libcares.so.2.2.0
+3ed063aa48e7cd15cb343b39aae0192b  usr/lib/debug/usr/share/clearwater/homestead/lib/libcassandra.so
+20c07d973e263cc5668543c2c0907976  usr/lib/debug/usr/share/clearwater/homestead/lib/libfdcore.so.1.2.0
+ea5a53333dafd667342e06c5dea43d49  usr/lib/debug/usr/share/clearwater/homestead/lib/libfdproto.so.1.2.0
+1190fa511c7ab403d4b9df866532558a  usr/lib/debug/usr/share/clearwater/homestead/lib/libhashkit.so.2.0.0
+6cc596fc2ff5327b9b882b977329c26f  usr/lib/debug/usr/share/clearwater/homestead/lib/libmemcached.so.11.0.0
+139e47d75d630726e366ae116ec156c3  usr/lib/debug/usr/share/clearwater/homestead/lib/libmemcachedprotocol.so.0.0.0
+cb0f92dae83956e01d97ca2cc4e69c23  usr/lib/debug/usr/share/clearwater/homestead/lib/libmemcachedutil.so.2.0.0
+db99f75f0962de6af836e05a7534ae2e  usr/lib/debug/usr/share/clearwater/homestead/lib/libthrift-0.9.3.so
+bb37ac4116afaedf73b23a19f6d3b4f7  usr/lib/debug/usr/share/clearwater/homestead/lib/libthriftnb-0.9.3.so
+f583d41d686e2ed640d01db399a44283  usr/lib/debug/usr/share/clearwater/homestead/lib/libthriftz-0.9.3.so
+f8f0a465ea9d70a96103c836d180a834  usr/share/doc/homestead-libs-dbg/changelog.Debian.gz
+d5afbb62cc96a641573e64ed2a66a3ce  usr/share/doc/homestead-libs-dbg/copyright

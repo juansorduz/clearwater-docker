@@ -1,0 +1,11 @@
+Package: homestead
+Version: 1.0-181110.092618
+Architecture: amd64
+Maintainer: Project Clearwater Maintainers <maintainers@projectclearwater.org>
+Installed-Size: 1742
+Depends: clearwater-infrastructure, clearwater-tcp-scalability, clearwater-log-cleanup, homestead-libs, libboost-regex1.54.0, libboost-thread1.54.0, libzmq3, libcurl3-gnutls, gnutls-bin, clearwater-socket-factory, libboost-filesystem1.54.0, libsnmp30 (>= 5.7.3~dfsg-clearwater1), clearwater-monit, clearwater-nginx, clearwater-snmpd, libcurl3, python-netsnmp
+Suggests: homestead-dbg, clearwater-logging, clearwater-snmp-alarm-agent
+Section: network
+Priority: optional
+Homepage: http://projectclearwater.org/
+Description: Homestead, the HSS Cache/Gateway

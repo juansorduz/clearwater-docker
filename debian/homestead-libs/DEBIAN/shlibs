@@ -1,0 +1,10 @@
+libmemcachedprotocol 0 homestead-libs
+libthriftz 0.9.3 homestead-libs
+libmemcachedutil 2 homestead-libs
+libcares 2 homestead-libs
+libthriftnb 0.9.3 homestead-libs
+libmemcached 11 homestead-libs
+libfdproto 6 homestead-libs
+libhashkit 2 homestead-libs
+libthrift 0.9.3 homestead-libs
+libfdcore 6 homestead-libs

@@ -1,0 +1,12 @@
+Package: homestead-dbg
+Source: homestead
+Version: 1.0-181110.092618
+Architecture: amd64
+Maintainer: Project Clearwater Maintainers <maintainers@projectclearwater.org>
+Installed-Size: 26757
+Depends: homestead (= 1.0-181110.092618)
+Recommends: gdb, homestead-libs-dbg
+Section: debug
+Priority: extra
+Homepage: http://projectclearwater.org/
+Description: Debugging symbols for homestead, the HSS Cache/Gateway

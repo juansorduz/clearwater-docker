@@ -1,0 +1,28 @@
+#!/bin/bash
+# Copyright (C) Metaswitch Networks 2016
+# If license terms are provided to you in a COPYING file in the root directory
+# of the source code repository by which you are accessing this code, then
+# the license outlined in that COPYING file applies to your use.
+# Otherwise no rights are granted except for those provided to you by
+# Metaswitch Networks in a separate written agreement.
+
+# We must not `set -e` here because we check the return codes of commands
+# explicitly
+set -u
+
+. /etc/clearwater/config
+
+/usr/share/clearwater/bin/check_cx_health.py "${hss_server_error_tolerance:-20}"
+rc=$?
+
+# If the homestead process is not stable, we ignore a non-zero return code and
+# return zero.
+if [ $rc != 0 ]; then
+  /usr/share/clearwater/infrastructure/monit_stability/homestead-stability check
+  if [ $? != 0 ]; then
+    echo "return code $rc ignored" >&2
+    rc=0
+  fi
+fi
+
+exit $rc
