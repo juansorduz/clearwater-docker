@@ -6,15 +6,20 @@ echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
 ##########################################################################################
 #Installing docker
 #Installing prerequisites
-echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+echo $passwordVM | sudo -S apt-get install -y --no-install-recommends apt-transport-https curl software-properties-common
+echo $passwordVM | sudo -S apt-get install -y --no-install-recommends linux-image-extra-$(uname -r) linux-image-extra-virtual
 #Adding key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | echo $passwordVM | sudo -S apt-key add -
+curl -fsSL 'https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e' | echo $passwordVM | sudo -S apt-key add -
 #Adding repository
-echo $passwordVM | sudo -S add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+echo $passwordVM | sudo -S add-apt-repository \
+   "deb https://packages.docker.com/1.12/apt/repo/ \
+   ubuntu-$(lsb_release -cs) \
+   main"
 #Installing docker CE
 echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
-echo $passwordVM | sudo -S apt-get install -y docker-ce
-echo $passwordVM | sudo -S usermod -aG docker $USER
+echo $passwordVM | sudo -S apt-get install -y docker-engine
+#Adding User
+echo $passwordVM | sudo -S usermod -a -G docker $USER
 #Installing docker method 2 uncomment
 #curl -fsSL get.docker.com -o get-docker.sh
 #echo $passwordVM | sudo -S chmod +x get-docker.sh
