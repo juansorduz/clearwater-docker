@@ -45,6 +45,10 @@ echo $passwordVM | sudo -S apt-get install -y libxml2-dev libxslt-dev
 echo $passwordVM | sudo -S apt-get install -y python-zmq
 echo $passwordVM | sudo -S apt-get install -y cassandra=2.1.15 openjdk-7-jdk
 ##########################################################################################
+#Configurate github
+#git config --global user.email "email1@unicauca.edu.co"
+#git config --global user.name "usuario1"
+##########################################################################################
 #Copy Source code
 mkdir -p ~/SourceCode
 cd ~/SourceCode
