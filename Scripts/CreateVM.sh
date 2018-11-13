@@ -14,6 +14,7 @@ echo $passwordVM | sudo -S add-apt-repository "deb [arch=amd64] https://download
 #Installing docker CE
 echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
 echo $passwordVM | sudo -S apt-get install -y docker-ce
+echo $passwordVM | sudo groupadd docker 
 echo $passwordVM | sudo -S usermod -aG docker $USER
 #Installing docker method 2 uncomment
 #curl -fsSL get.docker.com -o get-docker.sh
