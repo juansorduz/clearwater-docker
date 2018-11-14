@@ -6,25 +6,26 @@ echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
 ##########################################################################################
 #Installing docker
 #Installing prerequisites
-echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+#echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 #Adding key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | echo $passwordVM | sudo -S apt-key add -
+#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | echo $passwordVM | sudo -S apt-key add -
 #Adding repository
-echo $passwordVM | sudo -S add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+#echo $passwordVM | sudo -S add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 #Installing docker CE
-echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
-echo $passwordVM | sudo groupadd docker
-echo $passwordVM | sudo -S apt-get install -y docker-ce
-echo $passwordVM | sudo gr#echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
+#echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
+#echo $passwordVM | sudo groupadd docker
+#echo $passwordVM | sudo -S apt-get install -y docker-ce
+#echo $passwordVM | sudo gr#echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
 #echo $passwordVM | sudo -S apt-get install -y docker-engine
 #Adding User
 #echo $passwordVM | sudo -S usermod -a -G docker $USER
 ##########################################################################################
 #Installing docker method 2 uncomment
-#curl -fsSL get.docker.com -o get-docker.sh
-#echo $passwordVM | sudo -S chmod +x get-docker.sh
-#./get-docker.sh
-#echo $passwordVM | sudo -Susermod -aG docker $USER
+curl -fsSL get.docker.com -o get-docker.sh
+echo $passwordVM | sudo -S chmod +x get-docker.sh
+./get-docker.sh
+echo $passwordVM | sudo -S groupadd docker
+echo $passwordVM | sudo -S usermod -aG docker $USER
 ##########################################################################################
 #Installing prerequisites for clearwater code
 echo $passwordVM | sudo -S DEBIAN_FRONTEND=noninteractive apt-get -y update
