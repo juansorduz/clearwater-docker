@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: scscf
+spec:
+  ports:
+  - name: "5054"
+    port: 5054
+  selector:
+    service: scscf
+  clusterIP: None

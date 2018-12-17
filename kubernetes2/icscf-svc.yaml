@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: icscf
+spec:
+  ports:
+  - name: "5052"
+    port: 5052
+  selector:
+    service: icscf
+  clusterIP: None
