@@ -7,19 +7,19 @@ astairepod=$(kubectl get pods | grep astaire | cut -d ' ' -f1)
 bonopod=$(kubectl get pods | grep bono | cut -d ' ' -f1)
 cassandrapod=$(kubectl get pods | grep cassandra | cut -d ' ' -f1)
 chronospod=$(kubectl get pods | grep chronos | cut -d ' ' -f1)
-ellispod=$(kubectl get pods | grep ellis | cut -d ' ' -f1)
+#ellispod=$(kubectl get pods | grep ellis | cut -d ' ' -f1)
 homerpod=$(kubectl get pods | grep homer | cut -d ' ' -f1)
 homesteadpod3=$(kubectl get pods | grep homestead- | cut -d ' ' -f1)
 homesteadpod2=($homesteadpod3)
 homestead=${homesteadpod2[0]}
-homesteadprovpod=$(kubectl get pods | grep homestead-prov | cut -d ' ' -f1)
+#homesteadprovpod=$(kubectl get pods | grep homestead-prov | cut -d ' ' -f1)
 ralfpod=$(kubectl get pods | grep ralf | cut -d ' ' -f1)
 sipptestpod=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
-sproutpod=$(kubectl get pods | grep sprout | cut -d ' ' -f1)
-
+icscfpod=$(kubectl get pods | grep sprout | cut -d ' ' -f1)
+scscfpod=$(kubectl get pods | grep sprout | cut -d ' ' -f1)
 #Create tests folder if not exits
-mkdir -p ~/ClearwaterTestResults/Kubernetes/$users$duration
-testfolder=~/ClearwaterTestResults/Kubernetes/$users$duration
+mkdir -p ~/ClearwaterTestResults/Kubernetes2/$users$duration
+testfolder=~/ClearwaterTestResults/Kubernetes2/$users$duration
 aproxTime=$duration+30
 if [ "$users" = "0" ]
 then
@@ -32,7 +32,7 @@ fi
 #wait a second for tshark started
 #sleep 1
 
-. ~/clearwater-docker/ScriptsKU/KUTestSippStart.sh $users $duration &
+. ~/clearwater-docker/ScriptsKU/KUTestSippStart2.sh $users $duration &
 
 echo "Initial time: $(date +"%T")" >> $testfolder/Tiempos.csv
 
@@ -57,7 +57,7 @@ while [ $CONTADOR -lt $TimeContainer ]; do
 
 #Regarding containers and their instances distribute the logs in eachone.
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
- for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest; do
+ for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf scscf icscf sipptest; do
 
  cat $testfolder/data.csv | grep $i >> $testfolder/$i.csv;
 #

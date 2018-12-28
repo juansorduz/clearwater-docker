@@ -11,17 +11,17 @@ read aproxTime
 #echo numero de users: $users, duration: $duration
 
 #Create tests folder if not exits
-mkdir -p ~/ClearwaterTestResults/Containers/$users$duration
-testfolder=~/ClearwaterTestResults/Containers/$users$duration
+mkdir -p ~/ClearwaterTestResults/Containers3/$users$duration
+testfolder=~/ClearwaterTestResults/Containers3/$users$duration
 
 #before start the test, capture packets if are needy
 mkdir -p $testfolder/wireshark
-tshark -i any -w $testfolder/wireshark/packets.pcap -q &
+#tshark -i any -w $testfolder/wireshark/packets.pcap -q &
 #wait a second for tshark started
 sleep 1
 
 #Execute test script on background
-. ~/clearwater-docker/ScriptsContainers/CWPrueba1.sh $users $duration &
+. ~/clearwater-docker/ScriptsContainers/CWPrueba3.sh $users $duration &
 
 #saves initial time
 echo "Initial time: $(date +"%T")" >> $testfolder/Tiempos.csv
@@ -46,11 +46,29 @@ while [ $CONTADOR -lt $TimeContainer ]; do
 
 #Regarding containers and their instances distribute the logs in eachone.
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
- for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest; do
-
- cat $testfolder/contenedores.csv | grep $i >> $testfolder/$i.csv;
-#
+ #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout scscf.sprout sipptest; do
+ for i in astaire cassandra chronos bono homer homestead ralf sprout s_p_r_o_u_t_3 sipptest; do
+   # if [ "$i" -eq 'sprout' ]; then
+   #   cat $testfolder/contenedores.csv | grep $i >> $testfolder/icscf_sprout.csv;
+   # elif [ "$i" -eq 'scscf.sprout' ]; then
+   #   cat $testfolder/contenedores.csv | grep $i >> $testfolder/scscf_sprout.csv;
+   # else
+   #   cat $testfolder/contenedores.csv | grep $i >> $testfolder/$i.csv;
+   # fi
+   # case "$1" in
+   #   sprout)
+   #   cat $testfolder/contenedores.csv | grep $i >> $testfolder/icscf_sprout.csv;
+   #   ;;
+   #
+   #   scscf.sprout)
+   #   cat $testfolder/contenedores.csv | grep $i >> $testfolder/scscf_sprout.csv;
+   #   ;;
+   #
+   #   *)
+    cat $testfolder/contenedores.csv | grep $i >> $testfolder/$i.csv;
+   #   ;;
+   # esac
  done
 
 #when the script finish, kill tshark process to stop packet capture
- pkill tshark
+ #pkill tshark
