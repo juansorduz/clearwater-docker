@@ -12,8 +12,8 @@ kubectl exec $sipptestpod chmod +x /usr/share/clearwater/bin/run_stress2
 
 echo "Creating test folder"
 #Create storage test folder if not exists and storage the test logs
-mkdir -p ~/ClearwaterTestResults/Kubernetes/$users$duration
-testfolder=~/ClearwaterTestResults/Kubernetes/$users$duration
+mkdir -p ~/ClearwaterTestResults/Kubernetes2/$users$duration
+testfolder=~/ClearwaterTestResults/Kubernetes2/$users$duration
 
 echo "Start test"
-kubectl exec $sipptestpod /usr/share/clearwater/bin/run_stress2 default.svc.cluster.local $users $duration > $testfolder/logsTestContainer.txt
+kubectl exec $sipptestpod /usr/share/clearwater/bin/run_stress2 default.svc.cluster.local $users $duration | tee $testfolder/logsTestContainer.txt
