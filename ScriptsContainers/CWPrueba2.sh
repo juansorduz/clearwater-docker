@@ -4,6 +4,7 @@ duration="$2"
 #show number of user and duration
 echo number of users: $users, duration: $duration
 
+echo stateTest=1 > $testfolder/Variables.txt
 #Copy test script inside the container and gives permissions
 docker cp ~/clearwater-docker/Scripts/run_stress2 sipptest:/usr/share/clearwater/bin
 docker exec sipptest chmod +x /usr/share/clearwater/bin/run_stress2
@@ -12,5 +13,6 @@ docker exec sipptest chmod +x /usr/share/clearwater/bin/run_stress2
 mkdir -p ~/ClearwaterTestResults/Containers/$users$duration
 docker exec sipptest /usr/share/clearwater/bin/run_stress2 example.com $users $duration | tee ~/ClearwaterTestResults/Containers2/$users$duration/logsTestContainer.txt
 
-
+echo Finalizo prueba subscript
+echo stateTest=2 > $testfolder/Variables.txt
 #$RunTest=500

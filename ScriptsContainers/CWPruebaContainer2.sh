@@ -8,11 +8,14 @@ echo tests duration?
 read duration
 echo approximate Time?
 read aproxTime
-#echo numero de users: $users, duration: $duration
 
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Containers2/$users$duration
 testfolder=~/ClearwaterTestResults/Containers2/$users$duration
+
+#Creating file if does not exist
+touch $testfolder/Variables.txt
+echo stateTest=0 > $testfolder/Variables.txt
 
 #before start the test, capture packets if are needy
 mkdir -p $testfolder/wireshark
@@ -36,12 +39,19 @@ echo Time container $TimeContainer
 
 #Monitoring more or less the test time, every measure take two or three seconds, regarding the test time calculate the seconds needy to Monitoring
 #the traffic before and after the test
-while [ $CONTADOR -lt $TimeContainer ]; do
+source $testfolder/Variables.txt
+#while [ $CONTADOR -lt $TimeContainer ]; do
+while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
      echo $now
      echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
      docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) >> $testfolder/contenedores.csv
      let CONTADOR=CONTADOR+1
+     source $testfolder/Variables.txt
+     if [ "$stateTest" -eq '2' ]
+     then
+        echo Finalizo prueba scriptPrincipal
+     fi
  done
 
 #Regarding containers and their instances distribute the logs in eachone.
