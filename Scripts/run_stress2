@@ -58,7 +58,7 @@ class SIPpstats(csv.excel):
 SIPP_BIN = "/usr/share/clearwater/bin/sipp_coreonly"
 SCRIPTS_DIR = "/usr/share/clearwater/sip-stress/"
 
-BHCA = 100
+BHCA = 120
 
 # Call attempts are split 50/50 between originating calls and terminating
 # calls, so divide by 2 to figure out how many calls we need to make. (Calls we

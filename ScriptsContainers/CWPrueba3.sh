@@ -12,5 +12,6 @@ docker exec sipptest chmod +x /usr/share/clearwater/bin/run_stress2
 mkdir -p ~/ClearwaterTestResults/Containers/$users$duration
 docker exec sipptest /usr/share/clearwater/bin/run_stress2 example.com $users $duration | tee ~/ClearwaterTestResults/Containers3/$users$duration/logsTestContainer.txt
 
-
+echo Finalizo prueba subscript
+echo stateTest=2 > $testfolder/Variables.txt
 #$RunTest=500
