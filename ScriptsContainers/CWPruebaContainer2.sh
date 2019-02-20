@@ -2,12 +2,16 @@
 #CONTADOR=0
 
 #Requests the users, duration and approximate time
-echo Numer of users?
-read users
-echo tests duration?
-read duration
+#echo Numer of users?
+#read users
+#echo tests duration?
+#read duration
+users="$1"
+duration="$2"
 #echo approximate Time?
 #read aproxTime
+
+echo "CPM $users Duration $duration"
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
@@ -40,7 +44,7 @@ source $testfolder/Variables.txt
 #while [ $CONTADOR -lt $TimeContainer ]; do
 while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
-     echo $now
+     #echo $now
      echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
      docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) >> $testfolder/contenedores.csv
      #let CONTADOR=CONTADOR+1
@@ -51,11 +55,13 @@ while [ "$stateTest" -eq '1' ]; do
         echo Finalizo prueba scriptPrincipal
      fi
  done
-
+sed -i 's/homestead-prov/hprov/g' $testfolder/contenedores.csv
+sed -i 's/icscf.sprout/URSprout/g' $testfolder/contenedores.csv
+sed -i 's/scscf.sprout/MSCSprout/g' $testfolder/contenedores.csv
 #Regarding containers and their instances distribute the logs in eachone.
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf icscf.sprout scscf.sprout sipptest; do
- for i in astaire cassandra chronos bono homer homestead ralf icscf.sprout scscf.sprout sipptest; do
+ for i in astaire cassandra chronos bono homer homestead ralf URSprout MSCSprout sipptest; do
     cat $testfolder/contenedores.csv | grep $i >> $testfolder/$i.csv;
  done
 let NumTest=NumTest+1

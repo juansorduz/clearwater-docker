@@ -16,8 +16,8 @@ while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
 #Create tests folder if not exits
-mkdir -p ~/ClearwaterTestResults/Containers2/$users$duration
-testfolder=~/ClearwaterTestResults/Containers2/$users$duration
+mkdir -p ~/ClearwaterTestResults/Containers1/$users$duration
+testfolder=~/ClearwaterTestResults/Containers1/$users$duration
 
 #Creating file if does not exist
 touch $testfolder/Variables.txt
