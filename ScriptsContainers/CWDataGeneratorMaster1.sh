@@ -1,4 +1,5 @@
 #!/bin/bash
+. ~/clearwater-docker/ScriptsCW/CWImagesCreate.sh
 . ~/clearwater-docker/ScriptsCW/CWCreate1.sh
 . ~/clearwater-docker/ScriptsContainers/CWPruebaContainer1.sh 200 1
 . ~/clearwater-docker/ScriptsContainers/CWPruebaContainer1.sh 500 1

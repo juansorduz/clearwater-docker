@@ -23,7 +23,6 @@ while [ $NumTest -lt $NumberTest ]; do
     PromCPU=0
     PromRAM=0
     NumData=0
-    [ -e $testfolder/PromediosCPU$i$CPM ] && rm $testfolder/PromediosCPU$i$CPM
     while IFS=" " read -r datetime cpu ram remainder
     do
       cpu=${cpu::-1}
@@ -49,7 +48,7 @@ echo "#CPM Sprout VarSprout Homestead VarHomestead Cassandra VarCassandra" > $te
 
 for CPM in 200 500 1000 2000 5000; do
 testfolder=~/ClearwaterTestResults/Containers1/$CPM$Duration
-DatosCPUURSprout=$(<$testfolder/Promediossprout$CPM)
+DatosCPUURSprout=$(<$testfolder/PromediosCPUsprout$CPM)
 #DatosCPUMSCSprout=$(<$testfolder/Promediossprout$CPM)
 DatosCPUHomestead=$(<$testfolder/PromediosCPUhomestead$CPM)
 DatosCPUCassandra=$(<$testfolder/PromediosCPUcassandra$CPM)

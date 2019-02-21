@@ -1,23 +1,23 @@
 #!/bin/bash
 #users="$1"
 #duration="$2"
-#testfolder=~/ClearwaterTestResults/Containers2/$users$duration
+#testfolder=~/ClearwaterTestResults/Kubernetes2/$users$duration
 
 #Logic to obtain average of each component
 #NumTest=1
 #NumberTest=33
 Duration=1
-testMainfolder=~/ClearwaterTestResults/Containers2
+testMainfolder=~/ClearwaterTestResults/Kubernetes2
 for CPM in 200 500 1000 2000 5000; do
-testfolder=~/ClearwaterTestResults/Containers2/$CPM$Duration
+testfolder=~/ClearwaterTestResults/Kubernetes2/$CPM$Duration
 NumTest=1
 NumberTest=33
 for i in cassandra homestead URSprout MSCSprout; do
   [ -e $testfolder/PromediosCPU$i$CPM ] && rm $testfolder/PromediosCPU$i$CPM
 done
 while [ $NumTest -lt $NumberTest ]; do
-  for i in cassandra homestead URSprout MSCSprout; do
-    tail -n +2 "$testfolder/$CPM$Duration$NumTest/$i.csv" > "$testfolder/$CPM$Duration$NumTest/$i"
+  for i in cassandra_cassandra homestead_homestead icscf_icscf scscf_scscf; do
+    tail -n +3 "$testfolder/$CPM$Duration$NumTest/$i.csv" > "$testfolder/$CPM$Duration$NumTest/$i"
     SumCPU=0
     SumRAM=0
     PromCPU=0
@@ -47,9 +47,9 @@ echo $NumberTest
 echo "#CPM RUSprout VarRUSprout MSCSprout VarMSCSprout Homestead VarHomestead Cassandra VarCassandra" > $testMainfolder/FinalResultCPU
 
 for CPM in 200 500 1000 2000 5000; do
-testfolder=~/ClearwaterTestResults/Containers2/$CPM$Duration
-DatosCPUURSprout=$(<$testfolder/PromediosCPUURSprout$CPM)
-DatosCPUMSCSprout=$(<$testfolder/PromediosCPUMSCSprout$CPM)
+testfolder=~/ClearwaterTestResults/Kubernetes2/$CPM$Duration
+DatosCPUURSprout=$(<$testfolder/PromediosCPUicscf$CPM)
+DatosCPUMSCSprout=$(<$testfolder/PromediosCPUscscf$CPM)
 DatosCPUHomestead=$(<$testfolder/PromediosCPUhomestead$CPM)
 DatosCPUCassandra=$(<$testfolder/PromediosCPUcassandra$CPM)
 

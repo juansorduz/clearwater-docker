@@ -2,12 +2,16 @@
 #CONTADOR=0
 
 #Requests the users, duration and approximate time
-echo Numer of users?
-read users
-echo tests duration?
-read duration
+#echo Numer of users?
+#read users
+#echo tests duration?
+#read duration
+users="$1"
+duration="$2"
 #echo approximate Time?
 #read aproxTime
+
+echo "CPM $users Duration $duration"
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
@@ -16,8 +20,9 @@ while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
 #Create tests folder if not exits
-mkdir -p ~/ClearwaterTestResults/Containers1/$users$duration
-testfolder=~/ClearwaterTestResults/Containers1/$users$duration
+mkdir -p ~/ClearwaterTestResults/Containers1/$users$duration/$users$duration$NumTest
+testfolder=~/ClearwaterTestResults/Containers1/$users$duration/$users$duration$NumTest
+export testfolder
 
 #Creating file if does not exist
 touch $testfolder/Variables.txt

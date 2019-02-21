@@ -1,0 +1,2 @@
+[reset] WARNING: changes made to this host by 'kubeadm init' or 'kubeadm join' will be reverted.
+[reset] are you sure you want to proceed? [y/N]: 

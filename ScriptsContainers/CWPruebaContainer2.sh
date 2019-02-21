@@ -22,6 +22,7 @@ export NumTest
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Containers2/$users$duration/$users$duration$NumTest
 testfolder=~/ClearwaterTestResults/Containers2/$users$duration/$users$duration$NumTest
+export testfolder
 
 #Creating file if does not exist
 touch $testfolder/Variables.txt

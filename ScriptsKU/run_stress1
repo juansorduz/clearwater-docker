@@ -58,7 +58,7 @@ class SIPpstats(csv.excel):
 SIPP_BIN = "/usr/share/clearwater/bin/sipp_coreonly"
 SCRIPTS_DIR = "/usr/share/clearwater/sip-stress/"
 
-BHCA = 100
+BHCA = 120
 
 # Call attempts are split 50/50 between originating calls and terminating
 # calls, so divide by 2 to figure out how many calls we need to make. (Calls we
@@ -103,8 +103,8 @@ parser.add_argument('--listen-port', help='P-CSCF port to include in path header
 #ArgumentParser(prog='run_stress', usage=None, description='Run stress.', version=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
 
 args = parser.parse_args()
-print("[INFO]:define args")
-print(args)
+#print("[INFO]:define args")
+#print(args)
 #Namespace(aka=False, base_number=2010000000, call_length=5, ccf='0.0.0.0', domain='example.com', duration=2, icscf_target=None, ignore_initial_reg_failures=False, initial_reg_rate=80, ipv6=False, listen_port='5082', log_prefix='504', messages=False, multiplier=1, scscf_target=None, single=False, sipp_output=False, subscriber_count=100, target_call_success_rate=100.0, target_latency=None, target_reg_success_rate=100.0, wildcards=False, with_errors=False, with_redirection=False)
 
 LOG_PREFIX = "/var/log/clearwater-sip-stress/{}_".format(args.log_prefix)
@@ -192,26 +192,26 @@ callees = range(SUB_START + 1, SUB_END, 2)
 
 # Convert the duration into seconds for a SIPp timeout, and add a safety factor
 sipp_timeout = "{}s".format((args.duration * 60) + 120)
-print("[INFO]:sipp timeout")
-print(sipp_timeout)
+#print("[INFO]:sipp timeout")
+#print(sipp_timeout)
 #240s
 #Se determina el timeout con duration de args que es la constante duration=2
 
 initial_reg_duration = args.subscriber_count/args.initial_reg_rate
 initial_reg_timeout = "{}s".format(initial_reg_duration + 120)
-print("[INFO]:initial reg duration")
-print(initial_reg_duration)
+#print("[INFO]:initial reg duration")
+#print(initial_reg_duration)
 #1
 #De la variable args se observa que subscriber_count=100 y initial_reg_rate=80
-print("[INFO]:initial reg timeout")
-print(initial_reg_timeout)
+#print("[INFO]:initial reg timeout")
+#print(initial_reg_timeout)
 #121s
 
 # Randomly shuffle the order of registers and calls to reduce the risk of any cache issues
 shuffle(registers)
 shuffle(callers)
 shuffle(callees)
-print("[INFO]:Se realiza un cambio al azar de los registros, llamadas y callees")
+#print("[INFO]:Se realiza un cambio al azar de los registros, llamadas y callees")
 
 # Generate the CSV input files - one for REGISTER messages with one user per
 # line, one for INVITE flows with a caller/callee pair on each line
@@ -315,8 +315,8 @@ if args.ipv6:
     common_args += ["-i", ipv6_addr]
 
 common_originating_args = common_args + ["-key", "home_domain", args.domain]
-print("[INFO]: common originatin args")
-print(common_originating_args)
+#print("[INFO]: common originatin args")
+#print(common_originating_args)
 #['-default_behaviors', 'all,-bye', '-max_reconnect', '2000', '-reconnect_close', 'false', '-reconnect_sleep', '100', '-nostdin', '-recv_timeout', '20s', '-watchdog_reset', '1m', '-watchdog_minor_maxtriggers', '300', '-t', 'tn', '-max_socket', '1000', '-key', 'home_domain', 'example.com']
 
 if args.aka:
@@ -343,8 +343,8 @@ initial_reg_cmd = [SIPP_BIN,
                    "-r", str(args.initial_reg_rate),
                    "-m", str(args.subscriber_count)] + common_originating_args + [args.icscf_target]
 
-print("[INFO]: initial reg cmd")
-print(initial_reg_cmd)
+#print("[INFO]: initial reg cmd")
+#print(initial_reg_cmd)
 #['/usr/share/clearwater/bin/sipp_coreonly', '-sf', '/usr/share/clearwater/sip-stress/digest_register.xml', '-inf', '/tmp/sipp_registerTDMCO2', '-trace_err', '-error_file', '/var/log/clearwater-sip-stress/504_initial_reg_errors.log', '-timeout', '121s', '-key', 'pcscf_port', '5082', '-r', '80', '-m', '100', '-default_behaviors', 'all,-bye', '-max_reconnect', '2000', '-reconnect_close', 'false', '-reconnect_sleep', '100', '-nostdin', '-recv_timeout', '20s', '-watchdog_reset', '1m', '-watchdog_minor_maxtriggers', '300', '-t', 'tn', '-max_socket', '1000', '-key', 'home_domain', 'example.com', 'sprout:5052']
 #Parece que se tiene un conjunto de scripts y argumentos
 
@@ -358,8 +358,8 @@ re_reg_cmd = [SIPP_BIN,
               "-r", str(RPS),
               "-m", str(REG_MAX)] + common_originating_args + [args.icscf_target]
 
-print("[INFO]: re reg cmd")
-print(re_reg_cmd)
+#print("[INFO]: re reg cmd")
+#print(re_reg_cmd)
 
 if args.messages:
     caller_file = "message_sender.xml"
@@ -386,8 +386,8 @@ caller_cmd = [SIPP_BIN,
               "-r", str(CPS),
               "-d", str(args.call_length * 1000),
               "-m", str(CALL_MAX)] + common_originating_args + [args.scscf_target]
-print("[INFO]: caller cmd")
-print(caller_cmd)
+#print("[INFO]: caller cmd")
+#print(caller_cmd)
 #['/usr/share/clearwater/bin/sipp_coreonly', '-sf', '/usr/share/clearwater/sip-stress/caller.xml', '-inf', '/tmp/sipp_calls87xM5e', '-trace_err', '-error_file', '/var/log/clearwater-sip-stress/504_caller_errors.log', '-trace_stat', '-stf', '/var/log/clearwater-sip-stress/504_caller_stats.log', '-timeout', '240s', '-key', 'ccf_ip', '0.0.0.0', '-r', '0.0180555555556', '-d', '5000', '-m', '2', '-default_behaviors', 'all,-bye', '-max_reconnect', '2000', '-reconnect_close', 'false', '-reconnect_sleep', '100', '-nostdin', '-recv_timeout', '20s', '-watchdog_reset', '1m', '-watchdog_minor_maxtriggers', '300', '-t', 'tn', '-max_socket', '1000', '-key', 'home_domain', 'example.com', 'sprout:5054']
 
 if args.with_redirection:
@@ -399,8 +399,8 @@ callee_cmd = [SIPP_BIN,
               "-timeout", sipp_timeout,
               "-p", args.listen_port,
               "-m", str(CALL_MAX) * 3] + common_args
-print("[INFO]: calee cmd")
-print(callee_cmd)
+#print("[INFO]: calee cmd")
+#print(callee_cmd)
 #['/usr/share/clearwater/bin/sipp_coreonly', '-sf', '/usr/share/clearwater/sip-stress/callee.xml', '-trace_err', '-error_file', '/var/log/clearwater-sip-stress/504_callee_errors.log', '-timeout', '240s', '-p', '5082', '-m', '222', '-default_behaviors', 'all,-bye', '-max_reconnect', '2000', '-reconnect_close', 'false', '-reconnect_sleep', '100', '-nostdin', '-recv_timeout', '20s', '-watchdog_reset', '1m', '-watchdog_minor_maxtriggers', '300', '-t', 'tn', '-max_socket', '1000']
 
 # Do initial registrations as quickly as possible for test setup - this is an
