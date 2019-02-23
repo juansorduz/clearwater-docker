@@ -48,10 +48,10 @@ echo "#CPM Sprout VarSprout Homestead VarHomestead Cassandra VarCassandra" > $te
 
 for CPM in 200 500 1000 2000 5000; do
 testfolder=~/ClearwaterTestResults/Kubernetes1/$CPM$Duration
-DatosCPUURSprout=$(<$testfolder/PromediosCPUsprout$CPM)
+DatosCPUURSprout=$(<$testfolder/PromediosCPUsprout_sprout$CPM)
 #DatosCPUMSCSprout=$(<$testfolder/Promediossprout$CPM)
-DatosCPUHomestead=$(<$testfolder/PromediosCPUhomestead$CPM)
-DatosCPUCassandra=$(<$testfolder/PromediosCPUcassandra$CPM)
+DatosCPUHomestead=$(<$testfolder/PromediosCPUhomestead_homestead$CPM)
+DatosCPUCassandra=$(<$testfolder/PromediosCPUcassandra_cassandra$CPM)
 
 AverageCPUURSprout=0
 VarCPUURSprout=0

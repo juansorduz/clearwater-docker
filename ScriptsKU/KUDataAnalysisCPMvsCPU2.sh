@@ -48,10 +48,10 @@ echo "#CPM RUSprout VarRUSprout MSCSprout VarMSCSprout Homestead VarHomestead Ca
 
 for CPM in 200 500 1000 2000 5000; do
 testfolder=~/ClearwaterTestResults/Kubernetes2/$CPM$Duration
-DatosCPUURSprout=$(<$testfolder/PromediosCPUicscf$CPM)
-DatosCPUMSCSprout=$(<$testfolder/PromediosCPUscscf$CPM)
-DatosCPUHomestead=$(<$testfolder/PromediosCPUhomestead$CPM)
-DatosCPUCassandra=$(<$testfolder/PromediosCPUcassandra$CPM)
+DatosCPUURSprout=$(<$testfolder/PromediosCPUicscf_icscf$CPM)
+DatosCPUMSCSprout=$(<$testfolder/PromediosCPUscscf_scscf$CPM)
+DatosCPUHomestead=$(<$testfolder/PromediosCPUhomestead_homestead$CPM)
+DatosCPUCassandra=$(<$testfolder/PromediosCPUcassandra_cassandra$CPM)
 
 AverageCPUURSprout=0
 VarCPUURSprout=0

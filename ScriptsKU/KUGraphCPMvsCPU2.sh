@@ -13,7 +13,8 @@ set grid ytics
 set key outside below
 set terminal pdf
 set output "DespliegueKU2CPMvsCPU.pdf"
-plot "/home/gabriel/ClearwaterTestResults/Kubernetes2/FinalResultCPU" using 2:3:xtic(1) title "Sprout" fill pattern 5 lc 8, \
-            '' using 4:5 title "Homestead" fill pattern 2 lc 8, \
-            '' using 6:7 title "Cassandra" fill pattern 5 lc 8
+plot "/home/gabriel/ClearwaterTestResults/Kubernetes2/FinalResultCPU" using 2:3:xtic(1) title "Sprouticscf" fill pattern 5 lc 8, \
+            '' using 4:5 title "Sproutscscf" fill pattern 2 lc 8, \
+            '' using 6:7 title "Homestead" fill pattern 2 lc 8, \
+            '' using 8:9 title "Cassandra" fill pattern 5 lc 8
 EOF
