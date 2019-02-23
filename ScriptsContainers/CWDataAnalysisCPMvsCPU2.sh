@@ -33,9 +33,15 @@ while [ $NumTest -lt $NumberTest ]; do
       let NumData=NumData+1
     done < "$testfolder/$CPM$Duration$NumTest/$i"
     #echo  $NumData
-    PromCPU=$(echo "scale=3; $SumCPU/$NumData" | bc -l)
+
     #romRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
-    echo $PromCPU >> $testfolder/PromediosCPU$i$CPM
+    if [ $NumData = '0' ];
+    then
+      echo CPM $CPM Prueba $NumTest con falla, no se considerara en los promedios generales.
+    else
+        PromCPU=$(echo "scale=3; $SumCPU/$NumData" | bc -l)
+        echo $PromCPU >> $testfolder/PromediosCPU$i$CPM
+    fi
     #echo $PromRAM >> $testfolder/PromediosRAM$i$CPM
   done
 let NumTest=NumTest+1
@@ -62,37 +68,38 @@ VarCPUHomestead=0
 AverageCPUCassandra=0
 VarCPUCassandra=0
 
-DiferenceVar=0
-
+NumProms=0
+echo [CPM] $CPM
 #for i in ${DatosCPUURSprout[@]}; do ( AverageSprout=`echo $AverageSprout + $i | bc` ); done
+
+NumProms=$(wc -l < $testfolder/PromediosCPUURSprout$CPM)
 for i in ${DatosCPUURSprout[@]}; do  AverageCPUURSprout=$(echo "$AverageCPUURSprout + $i" | bc -l) ; done
-AverageCPUURSprout=$(echo "scale=3;$AverageCPUURSprout/$NumberTest" | bc -l)
+AverageCPUURSprout=$(echo "scale=3;$AverageCPUURSprout/$NumProms" | bc -l)
 for i in ${DatosCPUURSprout[@]}; do DiferenceVar=$(echo "$i - $AverageCPUURSprout" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarCPUURSprout=$(echo "$VarCPUURSprout + $DiferenceVar" | bc -l) ; done
-VarCPUURSprout=$(echo "scale=3;$VarCPUURSprout/$NumberTest" | bc -l)
+VarCPUURSprout=$(echo "scale=3;$VarCPUURSprout/$NumProms" | bc -l)
 
+NumProms=$(wc -l < $testfolder/PromediosCPUMSCSprout$CPM)
 for i in ${DatosCPUMSCSprout[@]}; do  AverageCPUMSCSprout=$(echo "$AverageCPUMSCSprout + $i" | bc -l) ; done
-AverageCPUMSCSprout=$(echo "scale=3;$AverageCPUMSCSprout/$NumberTest" | bc -l)
+AverageCPUMSCSprout=$(echo "scale=3;$AverageCPUMSCSprout/$NumProms" | bc -l)
 for i in ${DatosCPUMSCSprout[@]}; do DiferenceVar=$(echo "$i - $AverageCPUMSCSprout" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarCPUMSCSprout=$(echo "$VarCPUMSCSprout + $DiferenceVar" | bc -l) ; done
-VarCPUMSCSprout=$(echo "scale=3;$VarCPUMSCSprout/$NumberTest" | bc -l)
+VarCPUMSCSprout=$(echo "scale=3;$VarCPUMSCSprout/$NumProms" | bc -l)
 
+NumProms=$(wc -l < $testfolder/PromediosCPUhomestead$CPM)
 for i in ${DatosCPUHomestead[@]}; do  AverageCPUHomestead=$(echo "$AverageCPUHomestead + $i" | bc -l) ; done
-AverageCPUHomestead=$(echo "scale=3;$AverageCPUHomestead/$NumberTest" | bc -l)
+AverageCPUHomestead=$(echo "scale=3;$AverageCPUHomestead/$NumProms" | bc -l)
 for i in ${DatosCPUHomestead[@]}; do DiferenceVar=$(echo "$i - $AverageCPUHomestead" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarCPUHomestead=$(echo "$VarCPUHomestead + $DiferenceVar" | bc -l) ; done
-VarCPUHomestead=$(echo "scale=3;$VarCPUHomestead/$NumberTest" | bc -l)
+VarCPUHomestead=$(echo "scale=3;$VarCPUHomestead/$NumProms" | bc -l)
 
+NumProms=$(wc -l < $testfolder/PromediosCPUcassandra$CPM)
 for i in ${DatosCPUCassandra[@]}; do  AverageCPUCassandra=$(echo "$AverageCPUCassandra + $i" | bc -l) ; done
-AverageCPUCassandra=$(echo "scale=3;$AverageCPUCassandra/$NumberTest" | bc -l)
+AverageCPUCassandra=$(echo "scale=3;$AverageCPUCassandra/$NumProms" | bc -l)
 for i in ${DatosCPUCassandra[@]}; do DiferenceVar=$(echo "$i - $AverageCPUCassandra" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarCPUCassandra=$(echo "$VarCPUCassandra + $DiferenceVar" | bc -l) ; done
-VarCPUCassandra=$(echo "scale=3;$VarCPUCassandra/$NumberTest" | bc -l)
+VarCPUCassandra=$(echo "scale=3;$VarCPUCassandra/$NumProms" | bc -l)
 
-echo AverageURSprout: $AverageCPUURSprout
-echo VareURSprout: $VarCPUURSprout
-echo AverageMSCSprout: $AverageCPUMSCSprout
-echo VarMSCSprout: $VarCPUMSCSprout
-echo AverageMSCHomestead: $AverageCPUHomestead
-echo VarHomestead: $VarCPUHomestead
-echo AverageMSCCassandra: $AverageCPUCassandra
-echo VarCassandra: $VarCPUCassandra
+echo AverageURSprout: $AverageCPUURSprout VareURSprout: $VarCPUURSprout NumProms: $NumProms
+echo AverageMSCSprout: $AverageCPUMSCSprout VarMSCSprout: $VarCPUMSCSprout NumProms: $NumProms
+echo AverageMSCHomestead: $AverageCPUHomestead VarHomestead: $VarCPUHomestead NumProms: $NumProms
+echo AverageMSCCassandra: $AverageCPUCassandra VarCassandra: $VarCPUCassandra NumProms: $NumProms
 
 echo "$CPM $AverageCPUURSprout $VarCPUURSprout $AverageCPUMSCSprout $VarCPUMSCSprout $AverageCPUHomestead $VarCPUHomestead $AverageCPUCassandra $VarCPUCassandra" >> $testMainfolder/FinalResultCPU
 

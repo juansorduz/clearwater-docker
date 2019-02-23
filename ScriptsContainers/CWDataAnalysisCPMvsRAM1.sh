@@ -33,9 +33,15 @@ while [ $NumTest -lt $NumberTest ]; do
       let NumData=NumData+1
     done < "$testfolder/$CPM$Duration$NumTest/$i"
     #echo  $NumData
-    PromRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
+
     #romRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
-    echo $PromRAM >> $testfolder/PromediosRAM$i$CPM
+    if [ $NumData = '0' ];
+    then
+      echo CPM $CPM Prueba $NumTest con falla, no se considerara en los promedios generales.
+    else
+        PromRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
+        echo $PromRAM >> $testfolder/PromediosRAM$i$CPM
+    fi
     #echo $PromRAM >> $testfolder/PromediosRAM$i$CPM
   done
 let NumTest=NumTest+1
@@ -63,27 +69,30 @@ AverageRAMCassandra=0
 VarRAMCassandra=0
 
 DiferenceVar=0
-
+NumProms=0
+echo [CPM] $CPM
 #for i in ${DatosRAMURSprout[@]}; do ( AverageSprout=`echo $AverageSprout + $i | bc` ); done
+NumProms=$(wc -l < $testfolder/PromediosRAMsprout$CPM)
 for i in ${DatosRAMURSprout[@]}; do  AverageRAMURSprout=$(echo "$AverageRAMURSprout + $i" | bc -l) ; done
-AverageRAMURSprout=$(echo "scale=3;$AverageRAMURSprout/$NumberTest" | bc -l)
+AverageRAMURSprout=$(echo "scale=3;$AverageRAMURSprout/$NumProms" | bc -l)
 for i in ${DatosRAMURSprout[@]}; do DiferenceVar=$(echo "$i - $AverageRAMURSprout" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarRAMURSprout=$(echo "$VarRAMURSprout + $DiferenceVar" | bc -l) ; done
-VarRAMURSprout=$(echo "scale=3;$VarRAMURSprout/$NumberTest" | bc -l)
+VarRAMURSprout=$(echo "scale=3;$VarRAMURSprout/$NumProms" | bc -l)
 
 #for i in ${DatosRAMMSCSprout[@]}; do  AverageRAMMSCSprout=$(echo "$AverageRAMMSCSprout + $i" | bc -l) ; done
 #AverageRAMMSCSprout=$(echo "scale=3;$AverageRAMMSCSprout/$NumberTest" | bc -l)
 #for i in ${DatosRAMMSCSprout[@]}; do DiferenceVar=$(echo "$i - $AverageRAMMSCSprout" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarRAMMSCSprout=$(echo "$VarRAMMSCSprout + $DiferenceVar" | bc -l) ; done
 #VarRAMMSCSprout=$(echo "scale=3;$VarRAMMSCSprout/$NumberTest" | bc -l)
-
+NumProms=$(wc -l < $testfolder/PromediosRAMhomestead$CPM)
 for i in ${DatosRAMHomestead[@]}; do  AverageRAMHomestead=$(echo "$AverageRAMHomestead + $i" | bc -l) ; done
-AverageRAMHomestead=$(echo "scale=3;$AverageRAMHomestead/$NumberTest" | bc -l)
+AverageRAMHomestead=$(echo "scale=3;$AverageRAMHomestead/$NumProms" | bc -l)
 for i in ${DatosRAMHomestead[@]}; do DiferenceVar=$(echo "$i - $AverageRAMHomestead" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarRAMHomestead=$(echo "$VarRAMHomestead + $DiferenceVar" | bc -l) ; done
-VarRAMHomestead=$(echo "scale=3;$VarRAMHomestead/$NumberTest" | bc -l)
+VarRAMHomestead=$(echo "scale=3;$VarRAMHomestead/$NumProms" | bc -l)
 
+NumProms=$(wc -l < $testfolder/PromediosRAMcassandra$CPM)
 for i in ${DatosRAMCassandra[@]}; do  AverageRAMCassandra=$(echo "$AverageRAMCassandra + $i" | bc -l) ; done
-AverageRAMCassandra=$(echo "scale=3;$AverageRAMCassandra/$NumberTest" | bc -l)
+AverageRAMCassandra=$(echo "scale=3;$AverageRAMCassandra/$NumProms" | bc -l)
 for i in ${DatosRAMCassandra[@]}; do DiferenceVar=$(echo "$i - $AverageRAMCassandra" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarRAMCassandra=$(echo "$VarRAMCassandra + $DiferenceVar" | bc -l) ; done
-VarRAMCassandra=$(echo "scale=3;$VarRAMCassandra/$NumberTest" | bc -l)
+VarRAMCassandra=$(echo "scale=3;$VarRAMCassandra/$NumProms" | bc -l)
 
 echo $AverageRAMURSprout
 echo $VarRAMURSprout

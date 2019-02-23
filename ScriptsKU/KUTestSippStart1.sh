@@ -16,7 +16,7 @@ mkdir -p ~/ClearwaterTestResults/Kubernetes1/$users$duration/$users$duration$Num
 #testfolder=~/ClearwaterTestResults/Kubernetes1/$users$duration
 
 echo "Start test"
-kubectl exec $sipptestpod /usr/share/clearwater/bin/run_stress1 default.svc.cluster.local $users $duration | tee $testfolder/logsTestContainer.txt
+kubectl exec $sipptestpod /usr/share/clearwater/bin/run_stress1 default.svc.cluster.local $users $duration > $testfolder/logsTestContainer.txt
 
 echo Finalizo prueba subscript
 echo stateTest=2 > $testfolder/Variables.txt
