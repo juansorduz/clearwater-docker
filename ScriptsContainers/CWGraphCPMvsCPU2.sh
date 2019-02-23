@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/gabriel/ClearwaterTestResults/Containers2/
+cd ~/ClearwaterTestResults/Containers2/
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
 red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
@@ -13,7 +13,10 @@ set grid ytics
 set key outside below
 set terminal pdf
 set output "Despliegue2CPMvsCPU.pdf"
-plot "/home/gabriel/ClearwaterTestResults/Containers2/FinalResultCPU" using 2:3:xtic(1) title "Sprout_ICSCF" fill pattern 5 lc 8, \
+set xlabel "CPM"
+set ylabel "CPU"
+set title "CPM vs CPU Deployment Contenedores 2"
+plot "~/ClearwaterTestResults/Containers2/FinalResultCPU" using 2:3:xtic(1) title "Sprout_ICSCF" fill pattern 5 lc 8, \
             '' using 4:5 title "Sprout_SCSCF" fill pattern 2 lc 8, \
             '' using 6:7 title "Homestead" fill pattern 5 lc 8, \
             '' using 8:9 title "Cassandra" fill pattern 4 lc 8

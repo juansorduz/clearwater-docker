@@ -13,6 +13,9 @@ set grid ytics
 set key outside below
 set terminal pdf
 set output "DespliegueKU2CPMvsCPU.pdf"
+set xlabel "CPM"
+set ylabel "CPU"
+set title "CPM vs CPU Deployment Kubernetes 1"
 plot "~/ClearwaterTestResults/Kubernetes2/FinalResultCPU" using 2:3:xtic(1) title "URSprout" fill pattern 5 lc 8, \
             '' using 4:5 title "MSCSprout" fill pattern 2 lc 8, \
             '' using 6:7 title "Homestead" fill pattern 2 lc 8, \
