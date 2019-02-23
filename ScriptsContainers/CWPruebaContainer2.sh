@@ -45,7 +45,7 @@ source $testfolder/Variables.txt
 #while [ $CONTADOR -lt $TimeContainer ]; do
 while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
-     #echo $now
+     echo $now
      echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
      docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) >> $testfolder/contenedores.csv
      #let CONTADOR=CONTADOR+1
