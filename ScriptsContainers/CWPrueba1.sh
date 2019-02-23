@@ -12,7 +12,7 @@ docker exec sipptest chmod +x /usr/share/clearwater/bin/run_stress
 
 #Create storage test folder if not exists and storage the test logs
 mkdir -p ~/ClearwaterTestResults/Containers1/$users$duration/$users$duration$NumTest
-docker exec sipptest /usr/share/clearwater/bin/run_stress example.com $users $duration > ~/ClearwaterTestResults/Containers1/$users$duration/$users$duration$NumTestss/logsTestContainer.txt
+docker exec sipptest /usr/share/clearwater/bin/run_stress example.com $users $duration > ~/ClearwaterTestResults/Containers1/$users$duration/$users$duration$NumTests/logsTestContainer.txt
 
 echo Finalizo prueba subscript
 echo stateTest=2 > $testfolder/Variables.txt
