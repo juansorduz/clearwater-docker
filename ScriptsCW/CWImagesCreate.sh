@@ -5,4 +5,5 @@ cd ~/clearwater-docker
 #docker rm $(docker ps -aq)
 #docker rmi $(docker images -aq)
 #docker network rm $(docker network ls)
-for i in base astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest sprout-full; do docker build -t clearwater/$i $i ; done
+#for i in base astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest sprout-full; do docker build -t clearwater/$i $i ; done
+for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest sprout-full; do docker build -t clearwater/$i $i ; done
