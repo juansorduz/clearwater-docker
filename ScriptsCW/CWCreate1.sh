@@ -23,4 +23,4 @@ docker run -d --net=clearwater_nw --name sipptest -p 22 -p 5082:5082 clearwater/
 #docker run -d --net=clearwater_nw --name live-test -p 22 -p 808:808 clearwater/live-test
 #docker run -d --net=clearwater_nw --name memento -p 22 clearwater/memento
 sleep 60
-docker exec cassandra /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 10000
+docker exec cassandra /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 11000
