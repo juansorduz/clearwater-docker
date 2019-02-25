@@ -31,4 +31,3 @@ echo [INFO]: Table homer.simservs
 /usr/bin/cqlsh <<- EOF
     SELECT * FROM homer.simservs ;
 EOF
-EOF

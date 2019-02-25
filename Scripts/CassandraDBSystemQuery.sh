@@ -19,9 +19,9 @@ echo [INFO]: Table system.local
 /usr/bin/cqlsh <<- EOF
     SELECT * FROM system.local;
 EOF
-echo [INFO]: Table system.range_xrefers
+echo [INFO]: Table system.range_xfers
 /usr/bin/cqlsh <<- EOF
-    SELECT * FROM system.range_xrefers;
+    SELECT * FROM system.range_xfers;
 EOF
 echo [INFO]: Table system.sstable_activity
 /usr/bin/cqlsh <<- EOF
@@ -43,9 +43,9 @@ echo [INFO]: Table system.peer_events
 /usr/bin/cqlsh <<- EOF
     SELECT * FROM system.peer_events;
 EOF
-echo [INFO]: Table system.copaction_history
+echo [INFO]: Table system.compaction_history
 /usr/bin/cqlsh <<- EOF
-    SELECT * FROM system.copaction_history;
+    SELECT * FROM system.compaction_history;
 EOF
 echo [INFO]: Table system.schema_columns
 /usr/bin/cqlsh <<- EOF
@@ -55,9 +55,9 @@ echo [INFO]: Table system.schema_usertypes
 /usr/bin/cqlsh <<- EOF
     SELECT * FROM system.schema_usertypes;
 EOF
-echo [INFO]: Table system.compaction_in_progress
+echo [INFO]: Table system.compactions_in_progress
 /usr/bin/cqlsh <<- EOF
-    SELECT * FROM system.compaction_in_progress;
+    SELECT * FROM system.compactions_in_progress;
 EOF
 echo [INFO]: Table system."IndexInfo"
 /usr/bin/cqlsh <<- EOF
