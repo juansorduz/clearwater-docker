@@ -46,7 +46,9 @@ RUN apt-get update && apt-get install -y --force-yes nano && apt-get install -y 
 #Additional configuration tshark
 RUN chmod +x /usr/bin/dumpcap && dpkg-reconfigure wireshark-common && adduser $USER wireshark
 
-#Add lines to test with sipp
-RUN echo '' >> /etc/clearwater/shared_config
-RUN echo 'scscf_uri="sip:scscf.sprout:5054;transport=tcp"' >> /etc/clearwater/shared_config
-RUN echo 'icscf_uri="sip:icscf.sprout:5052;transport=tcp"' >> /etc/clearwater/shared_config
+#Add lines to clearwater-auto-config to deployment configurations
+
+COPY clearwater-auto-config-docker /etc/init.d/clearwater-auto-config-docker
+
+RUN sed -i "s/sip:$sprout_hostname:5052;transport=tcp/sip:icscf.$sprout_hostname:5052;transport=tcp/g" /etc/init.d/clearwater-auto-config-docker
+RUN sed -i "s/bgcf_uri/#bgcf_uri/g" /etc/init.d/clearwater-auto-config-docker
