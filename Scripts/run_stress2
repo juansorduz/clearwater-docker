@@ -121,10 +121,10 @@ CALLER_STATS  = LOG_PREFIX + "caller_stats.log"
 
 
 if args.icscf_target is None:
-    args.icscf_target = "icscf.sprout:5052".format(args.domain)
+    args.icscf_target = "ursprout:5052".format(args.domain)
 
 if args.scscf_target is None:
-    args.scscf_target = "scscf.sprout:5054".format(args.domain)
+    args.scscf_target = "mscsprout:5054".format(args.domain)
 
 # Calculate calls/registers per second based on the input
 RPS = RE_REG_PER_HOUR * args.subscriber_count * args.multiplier / 3600
