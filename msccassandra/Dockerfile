@@ -1,4 +1,4 @@
-FROM clearwater/base
+FROM clearwater/base2
 MAINTAINER maintainers@projectclearwater.org
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes homestead-cassandra homestead-prov-cassandra homer-cassandra
@@ -10,5 +10,9 @@ RUN sed -i "s/rpc_address: ::0/rpc_address: 0.0.0.0/" /usr/share/clearwater/cass
 COPY start_cassandra.sh /usr/bin/start_cassandra.sh
 COPY cassandra.supervisord.conf /etc/supervisor/conf.d/cassandra.conf
 COPY clearwater-group.supervisord.conf /etc/supervisor/conf.d/clearwater-group.conf
+
+COPY clearwater-auto-config-docker /etc/init.d/clearwater-auto-config-docker
+RUN chmod -R 777 /etc/init.d/clearwater-auto-config-docker
+RUN /etc/init.d/clearwater-auto-config-docker start
 
 EXPOSE 9160 7001 7001 9042
