@@ -1,22 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: homestead
+  name: urhomestead
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: homestead
+      service: urhomestead
   template:
     metadata:
       labels:
-        service: homestead
+        service: urhomestead
         snmp: enabled
     spec:
       containers:
-      - image: "juansorduz/clearwater-homestead:latest"
+      - image: "juansorduz/clearwater-urhomestead:latest"
         imagePullPolicy: Always
-        name: homestead
+        name: urhomestead
         ports:
         - containerPort: 22
         - containerPort: 8888

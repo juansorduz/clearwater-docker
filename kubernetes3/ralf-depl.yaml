@@ -14,7 +14,7 @@ spec:
         snmp: enabled
     spec:
       containers:
-      - image: "juansorduz/clearwater-ralf:latest"
+      - image: "juansorduz/clearwater-ralf2:latest"
         imagePullPolicy: Always
         name: ralf
         ports:

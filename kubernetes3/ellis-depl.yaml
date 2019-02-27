@@ -10,7 +10,7 @@ spec:
         service: ellis
     spec:
       containers:
-      - image: "juansorduz/clearwater-ellis:latest"
+      - image: "gabrielorozco20/clearwater-ellis2:latest"
         imagePullPolicy: Always
         name: ellis
         ports:

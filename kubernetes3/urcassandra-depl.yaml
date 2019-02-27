@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: cassandra
+  name: urcassandra
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        service: cassandra
+        service: urcassandra
     spec:
       containers:
-      - image: "gabrielorozco20/clearwater-cassandra:latest"
+      - image: "gabrielorozco20/clearwater-urcassandra:latest"
         imagePullPolicy: Always
-        name: cassandra
+        name: urcassandra
         ports:
         - containerPort: 22
         - containerPort: 7001
