@@ -1,4 +1,4 @@
-FROM clearwater/base
+FROM clearwater/base2
 MAINTAINER maintainers@projectclearwater.org
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes homestead-prov clearwater-prov-tools

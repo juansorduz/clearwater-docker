@@ -49,6 +49,3 @@ RUN chmod +x /usr/bin/dumpcap && dpkg-reconfigure wireshark-common && adduser $U
 #Add lines to clearwater-auto-config to deployment configurations
 
 COPY clearwater-auto-config-docker /etc/init.d/clearwater-auto-config-docker
-
-RUN sed -i "s/sip:$sprout_hostname:5052;transport=tcp/sip:icscf.$sprout_hostname:5052;transport=tcp/g" /etc/init.d/clearwater-auto-config-docker
-RUN sed -i "s/bgcf_uri/#bgcf_uri/g" /etc/init.d/clearwater-auto-config-docker

@@ -11,4 +11,6 @@ COPY start_cassandra.sh /usr/bin/start_cassandra.sh
 COPY cassandra.supervisord.conf /etc/supervisor/conf.d/cassandra.conf
 COPY clearwater-group.supervisord.conf /etc/supervisor/conf.d/clearwater-group.conf
 
+COPY clearwater-auto-config-docker /etc/init.d/clearwater-auto-config-docker
+
 EXPOSE 9160 7001 7001 9042

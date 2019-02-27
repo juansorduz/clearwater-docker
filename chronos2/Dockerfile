@@ -1,7 +1,7 @@
-FROM clearwater/base
+FROM clearwater/base2
 MAINTAINER maintainers@projectclearwater.org
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes chronos 
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes chronos
 
 COPY snmpd.supervisord.conf /etc/supervisor/conf.d/snmpd.conf
 COPY chronos.supervisord.conf /etc/supervisor/conf.d/chronos.conf
