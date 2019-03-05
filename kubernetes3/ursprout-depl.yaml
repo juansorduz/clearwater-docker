@@ -16,6 +16,9 @@ spec:
       containers:
       - image: "gabrielorozco20/clearwater-ursprout:latest"
         imagePullPolicy: Always
+        resources:
+          request:
+            cpu: "0.5"
         name: ursprout
         ports:
         - containerPort: 22
