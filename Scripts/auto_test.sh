@@ -1,0 +1,12 @@
+#!/bin/bash
+filecsv=${1:-0}
+#docker cp ~/PruebaBono/CSVs/x$file sipptest:/usr/share/clearwater/sip-stress/users.csv.1
+sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+if [ "$filecsv" -eq '1' ]
+  then
+    kubectl cp ~/clearwater/Scripts/users.csv $sipptest:/usr/share/clearwater/sip-stress/users.csv.1
+fi
+#kubectl cp ~/PruebaBono/CSVs/xaa $sipptest:/usr/share/clearwater/sip-stress/users.csv.1
+kubectl cp ~/clearwater/Scripts/sip-stress $sipptest:/usr/share/clearwater/bin/sip-stress
+kubectl cp ~/clearwater/Scripts/sip-stress.xml $sipptest:/usr/share/clearwater/sip-stress/sip-stress.xml
+kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
