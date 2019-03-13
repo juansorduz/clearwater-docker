@@ -15,5 +15,5 @@ cd clearwater-docker
 kubectl create configmap env-vars --from-literal=ZONE=default.svc.cluster.local
 kubectl apply -f kubernetes3
 sleep 300
-urcassandrapod=$(kubectl get pods | grep cassandra | cut -d ' ' -f1)
+urcassandrapod=$(kubectl get pods | grep urcassandra | cut -d ' ' -f1)
 kubectl exec $urcassandrapod /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 11000
