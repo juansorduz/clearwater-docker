@@ -28,13 +28,11 @@ spec:
             fieldRef:
               fieldPath: status.podIP
         livenessProbe:
-          tcpSocket:
-            port: 7253
-          periodSeconds: 10
-          failureThreshold: 9
+          exec:
+            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "7253"]
         readinessProbe:
-          tcpSocket:
-            port: 7253
+          exec:
+            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "7253"]
         volumeMounts:
         - name: chronoslogs
           mountPath: /var/log/chronos

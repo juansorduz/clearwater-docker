@@ -1,5 +1,8 @@
 #!/bin/bash
-filecsv=${1:-0}
+IPBonoAPI=${1:-0}
+PortBonoAPI=${2:-0}
+filecsv=${3:-0}
+
 #docker cp ~/PruebaBono/CSVs/x$file sipptest:/usr/share/clearwater/sip-stress/users.csv.1
 sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 if [ "$filecsv" -eq '1' ]
