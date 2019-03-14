@@ -15,6 +15,7 @@ RUN cp /etc/clearwater/socket-factory.supervisord.conf /etc/supervisor/conf.d/
 
 COPY clearwater-auto-config-docker /etc/init.d/clearwater-auto-config-docker
 RUN chmod -R 777 /etc/init.d/clearwater-auto-config-docker
+
 RUN /etc/init.d/clearwater-auto-config-docker start
 
 EXPOSE 5052

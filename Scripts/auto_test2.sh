@@ -11,6 +11,6 @@ if [ "$filecsv" -eq '1' ]
     docker cp ~/clearwater-docker/Scripts/users.csv $sipptest:/usr/share/clearwater/sip-stress/users.csv.1
 fi
 #kubectl cp ~/PruebaBono/CSVs/xaa $sipptest:/usr/share/clearwater/sip-stress/users.csv.1
-docker cp ~/clearwater-docker/Scripts/sip-stress $sipptest:/usr/share/clearwater/bin/sip-stress
-docker cp ~/clearwater-docker/Scripts/sip-stress.xml $sipptest:/usr/share/clearwater/sip-stress/sip-stress.xml
+docker cp ~/clearwater-docker/Scripts/sip-stress2 $sipptest:/usr/share/clearwater/bin/sip-stress
+docker cp ~/clearwater-docker/Scripts/sip-stress2.xml $sipptest:/usr/share/clearwater/sip-stress/sip-stress.xml
 docker exec $sipptest ./usr/share/clearwater/bin/sip-stress

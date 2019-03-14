@@ -95,7 +95,7 @@ do_auto_config()
 
     sprout_hostname=mscsprout$zone_suffix
     sprout_registration_store=astaire$zone_suffix
-    chronos_hostname=mscchronos$zone_suffix
+    chronos_hostname=chronos$zone_suffix
     cassandra_hostname=msccassandra$zone_suffix
     homestead_impu_store=astaire$zone_suffix
     hs_hostname=mschomestead$zone_suffix:8888

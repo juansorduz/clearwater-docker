@@ -19,7 +19,7 @@ docker run -d --net=clearwater_nw --network-alias=icscf.sprout --name icscf.spro
 #docker run -d --net=clearwater_nw  --network-alias=icscf.sprout --network-alias=scscf.sprout --name sprout -p 22 clearwater/sprout
 docker run -d --net=clearwater_nw --name bono --env-file .env -p 22 -p 3478:3478 -p 3478:3478/udp -p 5060:5060 -p 5060:5060/udp -p 5062:5062 clearwater/bono
 docker run -d --net=clearwater_nw --name ellis -p 22 -p 80:80 clearwater/ellis
-docker run -d --net=clearwater_nw --name sipptest -p 22 -p 5082:5082 clearwater/sipptest
+docker run -d --net=clearwater_nw --name sipptest -p 22 -p 5082:5082 clearwater/sipptest2
 #docker run -d --net=clearwater_nw --name live-test -p 22 -p 808:808 clearwater/live-test
 sleep 60
-docker exec cassandra /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 11000
+docker exec cassandra /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 1100

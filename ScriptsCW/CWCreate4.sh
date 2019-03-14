@@ -11,8 +11,8 @@ docker run -d --net=clearwater_nw --name astaire -p 22 clearwater/astaire2
 #docker run -d --net=clearwater_nw --name cassandra -p 22 --sysctl net.ipv6.conf.lo.disable_ipv6=0 clearwater/cassandra
 docker run -d --net=clearwater_nw --name urcassandra -p 22 --sysctl net.ipv6.conf.lo.disable_ipv6=0 clearwater/urcassandra
 docker run -d --net=clearwater_nw --name msccassandra -p 22 --sysctl net.ipv6.conf.lo.disable_ipv6=0 clearwater/msccassandra
-docker run -d --net=clearwater_nw --name chronos -p 22 clearwater/urchronos
-docker run -d --net=clearwater_nw --name chronos -p 22 clearwater/mscchronos
+docker run -d --net=clearwater_nw --name chronos -p 22 clearwater/chronos2
+#docker run -d --net=clearwater_nw --name mscchronos -p 22 clearwater/mscchronos
 #docker run -d --net=clearwater_nw --name homestead -p 22 clearwater/homestead
 docker run -d --net=clearwater_nw --name urhomestead -p 22 clearwater/urhomestead
 docker run -d --net=clearwater_nw --name mschomestead -p 22 clearwater/mschomestead
@@ -26,7 +26,8 @@ docker run -d --net=clearwater_nw --name ursprout -p 22 clearwater/ursprout
 #docker run -d --net=clearwater_nw  --network-alias=icscf.sprout --network-alias=scscf.sprout --name sprout -p 22 clearwater/sprout
 docker run -d --net=clearwater_nw --name bono --env-file .env -p 22 -p 3478:3478 -p 3478:3478/udp -p 5060:5060 -p 5060:5060/udp -p 5062:5062 clearwater/bono2
 docker run -d --net=clearwater_nw --name ellis -p 22 -p 80:80 clearwater/ellis2
-docker run -d --net=clearwater_nw --name sipptest -p 22 -p 5082:5082 clearwater/sipptest
+docker run -d --net=clearwater_nw --name sipptest -p 22 -p 5082:5082 clearwater/sipptest2
 #docker run -d --net=clearwater_nw --name live-test -p 22 -p 808:808 clearwater/live-test
 sleep 120
 docker exec urcassandra /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 500
+docker exec sipptest /usr/share/clearwater/infrastructure/scripts/sip-stress
