@@ -26,13 +26,7 @@ spec:
         - name: MY_POD_IP
           valueFrom:
             fieldRef:
-              fieldPath: status.podIP
-        livenessProbe:
-          exec:
-            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "7253"]
-        readinessProbe:
-          exec:
-            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "7253"]
+              fieldPath: status.podIP        
         volumeMounts:
         - name: chronoslogs
           mountPath: /var/log/chronos
