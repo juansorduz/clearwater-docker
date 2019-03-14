@@ -18,7 +18,7 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            cpu: "0.5"
+            cpu: "0.1"
         name: ursprout
         ports:
         - containerPort: 22
@@ -42,6 +42,9 @@ spec:
         - name: sproutlogs
           mountPath: /var/log/sprout
       - image: busybox
+        resources:
+          requests:
+            cpu: "0.1"
         name: tailer
         command: [ "tail", "-F", "/var/log/sprout/sprout_current.txt" ]
         volumeMounts:

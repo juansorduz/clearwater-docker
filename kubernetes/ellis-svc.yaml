@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: ellis
 spec:
-  clusterIP: None
+  type: NodePort
   ports:
-  - name: "http"
+  - nodePort: 31234
     port: 80
   selector:
     service: ellis
