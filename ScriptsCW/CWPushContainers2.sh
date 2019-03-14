@@ -15,7 +15,7 @@ fi
 if [ "$option" -eq '2' ]
 then
 nameRepository2=juansorduz
-for i in astaire2 ralf2 chronos2 homestead-prov2 msccassandra urhomestead mscsprout
+for i in astaire2 ralf2 urchronos mscchronos homestead-prov2 msccassandra urhomestead mscsprout
 do
     docker tag clearwater/$i:latest $nameRepository2/clearwater-$i:latest
     docker push $nameRepository2/clearwater-$i:latest
