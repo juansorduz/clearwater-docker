@@ -2,20 +2,20 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    service: chronos
-  name: chronos
+    service: mscchronos
+  name: mscchronos
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        service: chronos
+        service: mscchronos
     spec:
       terminationGracePeriodSeconds: 120
       containers:
-      - image: "juansorduz/clearwater-chronos2:latest"
+      - image: "juansorduz/clearwater-mscchronos:latest"
         imagePullPolicy: Always
-        name: chronos
+        name: mscchronos
         ports:
         - containerPort: 22
         - containerPort: 7253
