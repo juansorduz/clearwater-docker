@@ -2,20 +2,20 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    service: urchronos
-  name: urchronos
+    service: chronos
+  name: chronos
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        service: urchronos
+        service: chronos
     spec:
       terminationGracePeriodSeconds: 120
       containers:
-      - image: "juansorduz/clearwater-urchronos:latest"
+      - image: "juansorduz/clearwater-chronos2:latest"
         imagePullPolicy: Always
-        name: urchronos
+        name: chronos
         ports:
         - containerPort: 22
         - containerPort: 7253
@@ -27,6 +27,14 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        livenessProbe:
+          tcpSocket:
+            port: 7253
+          periodSeconds: 10
+          failureThreshold: 9
+        readinessProbe:
+          tcpSocket:
+            port: 7253
         volumeMounts:
         - name: chronoslogs
           mountPath: /var/log/chronos
