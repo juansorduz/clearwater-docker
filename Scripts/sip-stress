@@ -66,7 +66,7 @@ echo [FLAG] num_users: $num_users
 
   echo [FLAG] comando sipp mejorado: /usr/share/clearwater/bin/sipp -i $local_ip -sf /var/log/clearwater-sipp/sip-stress.xml bono:5060 -t tn -s $home_domain -inf /usr/share/clearwater/sip-stress/users.csv.$index -users $num_users -m $num_users -default_behaviors all,-bye -max_socket 65000 -trace_stat -trace_rtt -trace_counts -trace_err -max_reconnect -1 -reconnect_sleep 0 -reconnect_close 0 -send_timeout 4000 -recv_timeout 12000 -nostdin
 
-  /usr/share/clearwater/bin/sipp -i $local_ip -sf /var/log/clearwater-sipp/sip-stress.xml 192.168.190.153:31112 -t tn -s $home_domain -inf /usr/share/clearwater/sip-stress/users.csv.$index -users $num_users -m $num_users -default_behaviors all,-bye -max_socket 65000 -trace_stat -trace_rtt -trace_counts -trace_err -max_reconnect -1 -reconnect_sleep 0 -reconnect_close 0 -send_timeout 4000 -recv_timeout 12000 -nostdin
+  /usr/share/clearwater/bin/sipp -i $local_ip -sf /var/log/clearwater-sipp/sip-stress.xml 192.168.190.20:31112 -t tn -s $home_domain -inf /usr/share/clearwater/sip-stress/users.csv.$index -users $num_users -m $num_users -default_behaviors all,-bye -max_socket 65000 -trace_stat -trace_rtt -trace_counts -trace_err -max_reconnect -1 -reconnect_sleep 0 -reconnect_close 0 -send_timeout 4000 -recv_timeout 12000 -nostdin
 
   #logger -p daemon.error -t sip-stress sipp instance $index terminated - waiting
 
