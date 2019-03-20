@@ -1,0 +1,7 @@
+services:
+...
+  kube-controller:
+    extra_args: 
+      horizontal-pod-autoscaler-downscale-delay: "5m0s"
+      horizontal-pod-autoscaler-upscale-delay: "1m0s"
+      horizontal-pod-autoscaler-sync-period: "30s"
