@@ -10,8 +10,8 @@ max_pause="$(($time2 - $time_call))"
 echo usuarios: $usrs
 echo tiempo: $time
 echo cps: $cps
-echo cps: $max_pause
-
+echo max_pause: $max_pause
+echo ip: $ip
 
 sed -i '51s@.*@<pause distribution="uniform" min="0" max="num" />@' ~/clearwater-docker/Scripts/sip-stress.xml
 sed -i "51s@num@$max_pause@" ~/clearwater-docker/Scripts/sip-stress.xml
