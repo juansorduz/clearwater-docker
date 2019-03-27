@@ -161,7 +161,7 @@
     <action>
       <add assign_to="call_repeat" value="1" />
 
-      <sample assign_to="pre_call_delay" distribution="uniform" min="0" max="2700" />
+      <assign assign_to="pre_call_delay"  value="100" />
       <assign assign_to="post_call_delay" variable="call_delay" />
       <subtract assign_to="post_call_delay" variable="pre_call_delay" />
     </action>
