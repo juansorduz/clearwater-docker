@@ -1,23 +1,27 @@
 #!/bin/bash
 #CONTADOR=0
 
-#Requests the users, duration and approximate time
-echo Numer of users?
-read users
-echo tests duration?
-read duration
+cps=${1:-10}
+duration=${2:-120}
+
+#Requests the cps, duration and approximate time
+#echo Numer of CPS?
+#read cps
+#echo tests duration?
+#read duration
+
 #echo approximate Time?
 #read aproxTime
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
-NumberTest=33
+NumberTest=2
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
 #Create tests folder if not exits
-mkdir -p ~/ClearwaterTestResults/Containers2/$users$duration
-testfolder=~/ClearwaterTestResults/Containers2/$users$duration
+mkdir -p ~/ClearwaterTestResults/Containers3/$cps$duration
+testfolder=~/ClearwaterTestResults/Containers3/$cps$duration
 
 #Creating file if does not exist
 touch $testfolder/Variables.txt
@@ -30,11 +34,11 @@ echo stateTest=1 > $testfolder/Variables.txt
 sleep 1
 
 #Execute test script on background
-. ~/clearwater-docker/ScriptsContainers/CWPrueba3.sh $users $duration &
+. ~/clearwater-docker/Scripts/tester_containers.sh $cps $duration &
 
 #saves initial time
-echo "Initial time: $(date +"%T")" >> $testfolder/Tiempos.csv
-
+echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
+docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/contenedores.csv
 #This script monitor CPU and m3mory until Subscript finish and chang3 variable into file
 source $testfolder/Variables.txt
 #while [ $CONTADOR -lt $TimeContainer ]; do
@@ -55,8 +59,8 @@ while [ "$stateTest" -eq '1' ]; do
 #Regarding containers and their instances distribute the logs in eachone.
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout scscf.sprout sipptest; do
- for i in astaire cassandra chronos bono homer homestead ralf sprout s_p_r_o_u_t_3 sipptest; do
-    cat $testfolder/contenedores.csv | grep $i >> $testfolder/$i.csv;
+ for i in astaire urcassandra msccassandra chronos bono homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
+    cat $testfolder/contenedores.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1
  done

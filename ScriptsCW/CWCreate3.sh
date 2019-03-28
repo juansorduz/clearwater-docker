@@ -29,5 +29,5 @@ docker run -d --net=clearwater_nw --name ellis -p 22 -p 80:80 clearwater/ellis2
 docker run -d --net=clearwater_nw --name sipptest -p 22 -p 5082:5082 clearwater/sipptest2
 #docker run -d --net=clearwater_nw --name live-test -p 22 -p 808:808 clearwater/live-test
 sleep 120
-docker exec urcassandra /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 500
+docker exec urcassandra /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 30000
 docker exec sipptest /usr/share/clearwater/infrastructure/scripts/sip-stress
