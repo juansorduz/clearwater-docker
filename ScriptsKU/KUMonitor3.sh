@@ -63,7 +63,7 @@ while [ "$stateTest" -eq '1' ]; do
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout scscf.sprout sipptest; do
  for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
-    cat $testfolder/contenedores.csv | grep $i > $testfolder/$i.csv;
+    cat $testfolder/data.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1
  done
