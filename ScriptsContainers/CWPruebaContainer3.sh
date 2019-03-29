@@ -22,6 +22,7 @@ export NumTest
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Containers3/$cps$duration
 testfolder=~/ClearwaterTestResults/Containers3/$cps$duration
+export testfolder
 
 #Creating file if does not exist
 touch $testfolder/Variables.txt
@@ -59,7 +60,7 @@ while [ "$stateTest" -eq '1' ]; do
 #Regarding containers and their instances distribute the logs in eachone.
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout scscf.sprout sipptest; do
- for i in astaire urcassandra msccassandra chronos bono homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
+ for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
     cat $testfolder/contenedores.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1

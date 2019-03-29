@@ -7,11 +7,8 @@ cp ~/clearwater-docker/Scripts/sip-stress-template.xml ~/clearwater-docker/Scrip
 time2=$(($time * 1000))
 usrs=$(($cps * $time))
 max_pause="$(($time2 - $time_call))"
-echo usuarios: $usrs
-echo tiempo: $time
-echo cps: $cps
-echo max_pause: $max_pause
-echo ip: $ip
+echo cps: $cps, usuarios: $usrs, tiempo: $time, max_pause: $max_pause
+
 
 sed -i '51s@.*@<pause distribution="uniform" min="0" max="num" />@' ~/clearwater-docker/Scripts/sip-stress.xml
 sed -i "51s@num@$max_pause@" ~/clearwater-docker/Scripts/sip-stress.xml
@@ -22,3 +19,6 @@ sed -i "45s@code@$usrs@" ~/clearwater-docker/Scripts/sip-stress
 #192.168.190.20
 sed -i "69s@192.168.190.20@$ip@" ~/clearwater-docker/Scripts/sip-stress
 . ~/clearwater-docker/Scripts/auto_test.sh
+
+echo Finalizo prueba subscript
+echo stateTest=2 > $testfolder/Variables.txt
