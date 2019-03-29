@@ -3,13 +3,11 @@ kind: Service
 metadata:
   name: bono
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 192.168.190.153
+  clusterIP: None
   ports:
   - name: "3478"
     port: 3478
   - name: "5060"
-    nodePort: 31112
     port: 5060
   - name: "5062"
     port: 5062

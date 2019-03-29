@@ -30,8 +30,6 @@ spec:
         - configMapRef:
               name: env-vars
         env:
-        - name: PUBLIC_IP
-          value: 192.168.190.153
         - name: MY_POD_IP
           valueFrom:
             fieldRef:
