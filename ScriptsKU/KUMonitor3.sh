@@ -40,7 +40,8 @@ sleep 1
 
 #saves initial time
 echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
-docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/data.csv
+#docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/data.csv
+kubectl top pods > $testfolder/data.csv
 #This script monitor CPU and m3mory until Subscript finish and chang3 variable into file
 source $testfolder/Variables.txt
 #while [ $CONTADOR -lt $TimeContainer ]; do
@@ -48,7 +49,7 @@ while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
      echo $now
      echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
-     docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) >> $testfolder/data.csv
+     kubectl top pods > $testfolder/data.csv
      #let CONTADOR=CONTADOR+1
      #Ch3ch if variable chang3 from subscipt
      source $testfolder/Variables.txt
