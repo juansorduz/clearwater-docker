@@ -51,6 +51,7 @@ echo [FLAG] num_users: $num_users
 
   echo [FLAG] index: $index
   # Copy the script file, then move it - moves within a partition are atomic.
+  rm /var/log/clearwater-sipp/*
   cp /usr/share/clearwater/sip-stress/sip-stress.xml /var/log/clearwater-sipp/sip-stress.xml.$index
   mv /var/log/clearwater-sipp/sip-stress.xml.$index /var/log/clearwater-sipp/sip-stress.xml
 
