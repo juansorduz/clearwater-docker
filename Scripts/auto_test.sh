@@ -20,6 +20,8 @@ kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/sip-stress.xml
 kubectl exec $sipptest chmod +x /usr/share/clearwater/bin/sip-stress
 kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/sip-stress.xml
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
+#Deleting old Scripts
+kubectl exec $sipptest rm /var/log/clearwater-sipp/*
 echo Copy scripts inside sipp
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration
