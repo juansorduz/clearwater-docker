@@ -18,4 +18,5 @@ kubectl cp ~/clearwater-docker/Scripts/sip-stress.xml $sipptest:/usr/share/clear
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
 echo Copy scripts inside sipp
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
-kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress >> ~/ClearwaterTestResults/Kubernetes3/$cps$time/logsSIPpTest.txt
+touch $testfolder/logsSIPpTest.txt
+kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress >> $testfolder/logsSIPpTest.txt
