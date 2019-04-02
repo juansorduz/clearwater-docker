@@ -4,8 +4,8 @@
 # which instance of SIPP to run (and which bono to target).
 
 # Increase our connection limit.
-ulimit -Hn 100000
-ulimit -Sn 100000
+#ulimit -Hn 100000
+#ulimit -Sn 100000
 
 # Read in config.
 . /etc/clearwater/config
