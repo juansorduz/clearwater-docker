@@ -46,19 +46,20 @@ kubectl top pods > $testfolder/data.csv
 source $testfolder/Variables.txt
 #variables to control number of samples per tests
 NumberOfSample=0
-NumberOfRateCaptureSample=10
+NumberOfRateCaptureSample=80
 #while [ $CONTADOR -lt $TimeContainer ]; do
 while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
      #echo $now
      if [ $NumberOfRateCaptureSample -lt $NumberOfSample ]
      then
-       echo $NumberOfSample
+       #echo $NumberOfSample
+       echo $now
        echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
        kubectl top pods >> $testfolder/data.csv
        NumberOfSample=0
-       echo $NumberOfSample
-       
+       #echo $NumberOfSample
+
      fi
 
      #let CONTADOR=CONTADOR+1
