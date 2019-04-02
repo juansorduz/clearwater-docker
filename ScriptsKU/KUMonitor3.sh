@@ -20,7 +20,7 @@ NumberTest=2
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
-echo cps: $cps, usuarios: $usrs, tiempo: $time, max_pause: $max_pause
+echo cps: $cps, duration: $duration, ip: $ip
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration
 testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
