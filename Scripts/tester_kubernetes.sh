@@ -7,6 +7,7 @@ cp ~/clearwater-docker/Scripts/sip-stress-template.xml ~/clearwater-docker/Scrip
 time2=$(($time * 1000))
 usrs=$(($cps * $time))
 max_pause="$(($time2 - $time_call))"
+echo cps: $cps, duration: $duration, ip: $ip
 echo cps: $cps, usuarios: $usrs, tiempo: $time, max_pause: $max_pause
 
 
