@@ -23,7 +23,7 @@ sed -i "70s@192.168.190.20@$ip@" ~/clearwater-docker/Scripts/sip-stress
 echo Running tester_kubernetes script
 touch $testfolder/logsSIPpTest.txt
 
-. ~/clearwater-docker/Scripts/auto_test.sh $cps $time
+. ~/clearwater-docker/Scripts/auto_test.sh $cps $time  > $testfolder/logsSIPpTest.txt
 
 kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
 echo Finalizo prueba subscript

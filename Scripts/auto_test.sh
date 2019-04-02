@@ -27,4 +27,4 @@ echo Copy scripts inside sipp
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
 #mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 #testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
-kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest.txt
+kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
