@@ -28,3 +28,4 @@ mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration
 testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
 touch $testfolder/logsSIPpTest.txt
 kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest.txt
+kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
