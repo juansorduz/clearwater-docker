@@ -15,6 +15,10 @@ fi
 #kubectl cp ~/PruebaBono/CSVs/xaa $sipptest:/usr/share/clearwater/sip-stress/users.csv.1
 kubectl cp ~/clearwater-docker/Scripts/sip-stress $sipptest:/usr/share/clearwater/bin/sip-stress
 kubectl cp ~/clearwater-docker/Scripts/sip-stress.xml $sipptest:/usr/share/clearwater/sip-stress/sip-stress.xml
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/bin/sip-stress
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/sip-stress.xml
+kubectl exec $sipptest chmod +x /usr/share/clearwater/bin/sip-stress
+kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/sip-stress.xml
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
 echo Copy scripts inside sipp
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
