@@ -15,4 +15,4 @@ fi
 kubectl cp ~/clearwater-docker/Scripts/sip-stress $sipptest:/usr/share/clearwater/bin/sip-stress
 kubectl cp ~/clearwater-docker/Scripts/sip-stress.xml $sipptest:/usr/share/clearwater/sip-stress/sip-stress.xml
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
-kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > ~/ClearwaterTestResults/Containers3/$cps$time/logsSIPpTest.txt
+kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > ~/ClearwaterTestResults/Kubernetes3/$cps$time/logsSIPpTest.txt
