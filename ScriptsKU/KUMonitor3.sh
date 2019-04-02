@@ -44,14 +44,23 @@ echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
 kubectl top pods > $testfolder/data.csv
 #This script monitor CPU and m3mory until Subscript finish and chang3 variable into file
 source $testfolder/Variables.txt
+#variables to control number of samples per tests
+NumberOfSample=0
+NumberOfRateCaptureSample=10
 #while [ $CONTADOR -lt $TimeContainer ]; do
 while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
-     echo $now
-     echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
-     kubectl top pods >> $testfolder/data.csv
+     #echo $now
+     if [ $NumberOfRateCaptureSample -lt $NumberOfSample ]
+     then
+       echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
+       kubectl top pods >> $testfolder/data.csv
+       NumberOfSample=0
+     fi
+
      #let CONTADOR=CONTADOR+1
      #Ch3ch if variable chang3 from subscipt
+     let NumberOfSample=NumberOfSample+1
      source $testfolder/Variables.txt
      if [ "$stateTest" -eq '2' ]
      then
