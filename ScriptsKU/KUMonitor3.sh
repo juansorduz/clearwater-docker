@@ -22,8 +22,8 @@ export NumTest
 
 echo cps: $cps, duration: $duration, ip: $ip
 #Create tests folder if not exits
-mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration
-testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
+mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
+testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 export testfolder
 
 #Creating file if does not exist

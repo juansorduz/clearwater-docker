@@ -21,7 +21,8 @@ sed -i "45s@code@$usrs@" ~/clearwater-docker/Scripts/sip-stress
 sed -i "70s@192.168.190.20@$ip@" ~/clearwater-docker/Scripts/sip-stress
 echo Running tester_kubernetes script
 
-. ~/clearwater-docker/Scripts/auto_test.sh $cps $time
+. ~/clearwater-docker/Scripts/auto_test.sh $cps $time $NumTest
 
+kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
 echo Finalizo prueba subscript
 echo stateTest=2 > $testfolder/Variables.txt

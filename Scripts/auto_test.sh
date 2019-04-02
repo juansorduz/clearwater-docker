@@ -1,9 +1,10 @@
 #!/bin/bash
 cps=${1:-10}
 duration=${2:-10}
-IPBonoAPI=${3:-0}
-PortBonoAPI=${4:-0}
-filecsv=${5:-0}
+NumTest=${3:-1}
+IPBonoAPI=${4:-0}
+PortBonoAPI=${5:-0}
+filecsv=${6:-0}
 
 echo Running auto_test script
 #docker cp ~/PruebaBono/CSVs/x$file sipptest:/usr/share/clearwater/sip-stress/users.csv.1
@@ -24,8 +25,7 @@ kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/sip-stress.xml
 #kubectl exec $sipptest sh -c 'rm /var/log/clearwater-sipp/*'
 echo Copy scripts inside sipp
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
-mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration
-testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
+mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
+testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 touch $testfolder/logsSIPpTest.txt
 kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest.txt
-kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
