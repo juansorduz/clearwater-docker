@@ -19,9 +19,11 @@ sed -i '45s@.*@num_users=code@' ~/clearwater-docker/Scripts/sip-stress
 sed -i "45s@code@$usrs@" ~/clearwater-docker/Scripts/sip-stress
 #192.168.190.20
 sed -i "70s@192.168.190.20@$ip@" ~/clearwater-docker/Scripts/sip-stress
-echo Running tester_kubernetes script
 
-. ~/clearwater-docker/Scripts/auto_test.sh $cps $time $NumTest
+echo Running tester_kubernetes script
+touch $testfolder/logsSIPpTest.txt
+
+. ~/clearwater-docker/Scripts/auto_test.sh $cps $time
 
 kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
 echo Finalizo prueba subscript
