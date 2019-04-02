@@ -58,6 +58,7 @@ while [ "$stateTest" -eq '1' ]; do
        kubectl top pods >> $testfolder/data.csv
        NumberOfSample=0
        echo $NumberOfSample
+       
      fi
 
      #let CONTADOR=CONTADOR+1
