@@ -1,6 +1,6 @@
 #!/bin/bash
 cps=${1:-10}
-time=${2:-10}
+duration=${2:-10}
 IPBonoAPI=${3:-0}
 PortBonoAPI=${4:-0}
 filecsv=${5:-0}
@@ -18,5 +18,7 @@ kubectl cp ~/clearwater-docker/Scripts/sip-stress.xml $sipptest:/usr/share/clear
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
 echo Copy scripts inside sipp
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress
+mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration
+testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
 touch $testfolder/logsSIPpTest.txt
 kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress >> $testfolder/logsSIPpTest.txt
