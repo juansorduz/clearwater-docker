@@ -18,7 +18,7 @@ cp ~/clearwater-docker/Scripts/sip-stress-ku-template ~/clearwater-docker/Script
 sed -i '45s@.*@num_users=code@' ~/clearwater-docker/Scripts/sip-stress
 sed -i "45s@code@$usrs@" ~/clearwater-docker/Scripts/sip-stress
 #192.168.190.20
-sed -i "69s@192.168.190.20@$ip@" ~/clearwater-docker/Scripts/sip-stress
+sed -i "70s@192.168.190.20@$ip@" ~/clearwater-docker/Scripts/sip-stress
 echo Running tester_kubernetes script
 
 . ~/clearwater-docker/Scripts/auto_test.sh $cps $time
