@@ -49,7 +49,7 @@ while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
      echo $now
      echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
-     kubectl top pods > $testfolder/data.csv
+     kubectl top pods >> $testfolder/data.csv
      #let CONTADOR=CONTADOR+1
      #Ch3ch if variable chang3 from subscipt
      source $testfolder/Variables.txt

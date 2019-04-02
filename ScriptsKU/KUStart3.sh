@@ -2,7 +2,7 @@
 usuarios=${1:-1000}
 cd
 cd metrics-server/
-kubectl create -f deploy/1.8+/
+kubectl apply -f deploy/1.8+/
 cd
 cd clearwater-docker
 kubectl create configmap env-vars --from-literal=ZONE=default.svc.cluster.local
