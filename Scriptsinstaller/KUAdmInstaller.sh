@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 ####DOCKER####
 password="$1"
 cd ~/
