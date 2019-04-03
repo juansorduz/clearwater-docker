@@ -3,11 +3,12 @@
 
 ####DOCKER####
 password="$1"
+usuario="$2"
 cd ~/
 curl -fsSL get.docker.com -o get-docker.sh  \
 && echo $password | sudo -S chmod +x get-docker.sh \
 && ./get-docker.sh \
-&& echo $password | sudo -S usermod -aG docker ubuntu \
+&& echo $password | sudo -S usermod -aG docker $usuario \
 && echo $password | sudo -S apt-get update \
 && echo $password | sudo -S apt-get install -y apt-transport-https curl \
 && curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
