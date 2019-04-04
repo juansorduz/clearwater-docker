@@ -1,6 +1,7 @@
 #!/bin/bash
 cps=${1:-10}
 duration=${2:-120}
+NumberTest=${3:-2}
 
 #Logic to obtain average of each component
 #NumTest=1
@@ -13,20 +14,22 @@ testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
 for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
    [ -e $testfolder/PromediosCPU$i$cps ] && rm $testfolder/PromediosCPU$i$cps
    [ -e $testfolder/PromediosRAM$i$cps ] && rm $testfolder/PromediosRAM$i$cps
-   [ -e $testfolder/PromediosLatency$i$cps ] && rm $testfolder/PromediosLatency$i$cps
+   [ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
 done
 
 #exit 0
 
 NumTest=1
-NumberTest=2
+#NumberTest=2
 while [ $NumTest -lt $NumberTest ]; do
   #Calculating CPU and RAM
+  echo Prueba numero $NumTest
   for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
     [ -e $testfolder/$NumTest/$i ] && rm $testfolder/$NumTest/$i
-    tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i.txt"
+    tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i"
+    #tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i.txt"
     #head -n +20 "$testfolder/$NumTest/$i.txt" > "$testfolder/$NumTest/$i"
     SumCPU=0
     SumRAM=0
@@ -66,9 +69,10 @@ while [ $NumTest -lt $NumberTest ]; do
   PromLatency=0
   NumDataLatency=0
   #echo $latencyfile
+  #echo NumTest $NumTest PromLatency $PromLatency
   while IFS=";" read -r date responsetime timername remainder
   do
-    echo $responsetime
+    #echo $responsetime
     SumLatency=`echo $SumLatency + $responsetime | bc`
     let NumDataLatency=NumDataLatency+1
   done < "$testfolder/$NumTest/latencydata.csv"
@@ -79,6 +83,7 @@ while [ $NumTest -lt $NumberTest ]; do
   else
       PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
       echo $PromLatency >> $testfolder/PromediosLatency$cps
+      #echo NumTest $NumTest PromLatency $PromLatency
   fi
 
   let NumTest=NumTest+1

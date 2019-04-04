@@ -14,4 +14,4 @@ rm -r ~/ClearwaterTestResults/Kubernetes3
 . ~/clearwater-docker/ScriptsKU/KUMonitor3.sh 70 150 $ip $NumberTest
 . ~/clearwater-docker/ScriptsKU/KUMonitor3.sh 80 150 $ip $NumberTest
 . ~/clearwater-docker/ScriptsKU/KUMonitor3.sh 90 150 $ip $NumberTest
-. ~/clearwater-docker/ScriptsKU/KUMonitor3.sh 90 150 $ip $NumberTest
+. ~/clearwater-docker/ScriptsKU/KUMonitor3.sh 100 150 $ip $NumberTest
