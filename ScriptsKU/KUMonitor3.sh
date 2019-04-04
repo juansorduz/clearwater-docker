@@ -4,6 +4,7 @@
 cps=${1:-10}
 duration=${2:-120}
 ip=${3:-127.0.0.1}
+NumberTest=${4:-2}
 
 #Requests the cps, duration and approximate time
 #echo Numer of CPS?
@@ -16,7 +17,7 @@ ip=${3:-127.0.0.1}
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
-NumberTest=2
+#NumberTest=33
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
