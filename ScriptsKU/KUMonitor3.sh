@@ -56,7 +56,7 @@ while [ "$stateTest" -eq '1' ]; do
      if [ $NumberOfRateCaptureSample -lt $NumberOfSample ]
      then
        #echo $NumberOfSample
-       echo $now
+       #echo $now
        echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
        kubectl top pods >> $testfolder/data.csv
        NumberOfSample=0
