@@ -25,7 +25,7 @@ NumTest=1
 #NumberTest=2
 while [ $NumTest -lt $NumberTest ]; do
   #Calculating CPU and RAM
-  echo Prueba numero $NumTest
+  echo Prueba numero $NumTest, cps $cps
   for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
