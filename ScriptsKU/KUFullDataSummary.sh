@@ -3,7 +3,7 @@
 #ip=${1:-127.0.0.1}
 NumberTest=${1:-2}
 
-rm -r ~/ClearwaterTestResults/Kubernetes3
+#rm -r ~/ClearwaterTestResults/Kubernetes3
 
 . ~/clearwater-docker/ScriptsKU/KUDataFullSummary.sh 10 150 $NumberTest
 . ~/clearwater-docker/ScriptsKU/KUDataFullSummary.sh 20 150 $NumberTest
