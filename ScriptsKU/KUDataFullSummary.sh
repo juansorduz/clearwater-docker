@@ -10,7 +10,7 @@ DelayBeforeACK=${5:-15}
 #NumberTest=33
 Duration=1
 testMainfolder=~/ClearwaterTestResults_02/Kubernetes3
-testfolder=~/ClearwaterTestResults_02/Kubernetes3/$cps$duration
+testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
 
 #Deleting old files
 for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
@@ -111,7 +111,7 @@ while [ $NumTest -lt $NumberTest ]; do
   SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
   SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
   echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
-  
+
   let NumTest=NumTest+1
 done
 
