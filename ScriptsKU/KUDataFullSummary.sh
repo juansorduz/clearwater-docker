@@ -9,14 +9,15 @@ DelayBeforeACK=${5:-15}
 #NumTest=1
 #NumberTest=33
 Duration=1
-testMainfolder=~/ClearwaterTestResults/Kubernetes3
-testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
+testMainfolder=~/ClearwaterTestResults_02/Kubernetes3
+testfolder=~/ClearwaterTestResults_02/Kubernetes3/$cps$duration
 
 #Deleting old files
 for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
    [ -e $testfolder/PromediosCPU$i$cps ] && rm $testfolder/PromediosCPU$i$cps
    [ -e $testfolder/PromediosRAM$i$cps ] && rm $testfolder/PromediosRAM$i$cps
    [ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
+   [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
 done
 
 #exit 0
@@ -26,6 +27,9 @@ NumTest=1
 while [ $NumTest -lt $NumberTest ]; do
   #Calculating CPU and RAM
   echo Prueba numero $NumTest, cps $cps
+  #############################################################################
+  #CPU AND RAM
+  #############################################################################
   for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
@@ -63,7 +67,9 @@ while [ $NumTest -lt $NumberTest ]; do
     #echo $PromRAM >> $testfolder/PromediosRAM$i$cps
   done
 
-  #Calculating latency
+  #############################################################################
+  #LATENCY
+  #############################################################################
   cd $testfolder/$NumTest
   latencyfile=$(ls | grep rtt)
   tail -n +20 "$latencyfile" > "$testfolder/$NumTest/latencydata.csv"
@@ -89,6 +95,24 @@ while [ $NumTest -lt $NumberTest ]; do
       echo $PromLatency >> $testfolder/PromediosLatency$cps
       #echo NumTest $NumTest PromLatency $PromLatency
   fi
+  #############################################################################
+  #SUCCESFULL CALL RATE
+  #############################################################################
+  CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+  SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+  FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+  Scale=100
+  CallGenerate=${CallGenerate::-1}
+  SuccesfullCall=${SuccesfullCall::-1}
+  FailedCall=${FailedCall::-1}
+  echo $CallGenerate
+  echo $SuccesfullCall
+  echo $FailedCall
+  SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
+  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)  
+  echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
+
+
 
   let NumTest=NumTest+1
 done
