@@ -21,7 +21,7 @@ NumTest=1
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
-echo NumTest:$NumTest, cps: $cps, duration: $duration, ip: $ip
+echo timee $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, ip: $ip
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
