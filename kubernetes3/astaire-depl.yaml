@@ -54,4 +54,4 @@ spec:
       - name: ~
       restartPolicy: Always
       nodeSelector:
-        sippnode: false
+        Tnode: notsipp

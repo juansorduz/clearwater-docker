@@ -28,4 +28,4 @@ spec:
       - name: ~
       restartPolicy: Always
       nodeSelector:
-        sippnode: true
+        Tnode: sipp
