@@ -109,11 +109,9 @@ while [ $NumTest -lt $NumberTest ]; do
   echo $SuccesfullCall
   echo $FailedCall
   SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
-  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)  
+  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
   echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
-
-
-
+  
   let NumTest=NumTest+1
 done
 
