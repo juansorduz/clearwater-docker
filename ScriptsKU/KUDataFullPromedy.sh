@@ -15,6 +15,7 @@ testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
 #Deleting old files
 if [ $cps = '10' ];
 then
+  echo Deleting old scripts
   [ -e $testfolder/SUMMARYCPU ] && rm $testfolder/SUMMARYCPU
   [ -e $testfolder/SUMMARYRAM ] && rm $testfolder/SUMMARYRAM
   [ -e $testfolder/SUMMARYLATENCY ] && rm $testfolder/SUMMARYLATENCY
@@ -32,6 +33,7 @@ NumProms=0
 #############################################################################
 #CPU
 #############################################################################
+echo Calculating CPU
 DatosCPUastaire=$(<$testfolder/PromediosCPUastaire$cps)
 DatosCPUurcassandra=$(<$testfolder/PromediosCPUurcassandra$cps)
 DatosCPUmsccassandra=$(<$testfolder/PromediosCPUmsccassandra$cps)
@@ -165,6 +167,7 @@ echo "$cps $AverageCPUastaire $VarCPUastaire $AverageCPUurcassandra $VarCPUurcas
 #############################################################################
 #RAM
 #############################################################################
+Calculatin RAM
 DatosRAMastaire=$(<$testfolder/PromediosRAMastaire$cps)
 DatosRAMurcassandra=$(<$testfolder/PromediosRAMurcassandra$cps)
 DatosRAMmsccassandra=$(<$testfolder/PromediosRAMmsccassandra$cps)
@@ -300,6 +303,7 @@ echo "$cps $AverageRAMastaire $VarRAMastaire $AverageRAMurcassandra $VarRAMurcas
 #############################################################################
 #LATENCY
 #############################################################################
+echo Calculatin Latency
 DatosLatency=$(<$testfolder/PromediosLatency$cps)
 AverageLatency=0
 VarLatency=0
@@ -314,6 +318,7 @@ echo "$cps $AveraLatency $VarLatency" >> $testMainfolder/SUMMARYLATENCY
 #############################################################################
 #SUCCESFULL CALL RATE
 #############################################################################
+echo Calculatin SCR
 NumProms=$(wc -l < $testfolder/PromediosSCPS$cps)
 for i in ${DatosSCPS[@]}; do  AverageSCPS=$(echo "$AverageSCPS + $i" | bc -l) ; done
 AverageSCPS=$(echo "scale=3;$AverageSCPS/$NumProms" | bc -l)
