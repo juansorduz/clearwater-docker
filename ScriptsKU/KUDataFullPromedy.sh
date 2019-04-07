@@ -328,4 +328,4 @@ for i in ${DatosSCPS[@]}; do  AverageSCPS=$(echo "$AverageSCPS + $i" | bc -l) ; 
 AverageSCPS=$(echo "scale=3;$AverageSCPS/$NumProms" | bc -l)
 for i in ${DatosSCPS[@]}; do DiferenceVar=$(echo "$i - $AverageSCPS" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarSCPS=$(echo "$VarSCPS + $DiferenceVar" | bc -l) ; done
 VarSCPS=$(echo "scale=3;$VarSCPS/$NumProms" | bc -l)
-echo "$cps $AveraSCPS $VarSCPS" >> $testMainfolder/SUMMARYSCR
+echo "$cps $AverageSCPS $VarSCPS" >> $testMainfolder/SUMMARYSCR
