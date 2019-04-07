@@ -17,10 +17,10 @@ echo CPS: $cps Duration: $duration
 if [ $cps = '10' ];
 then
   echo Deleting old scripts
-  [ -e $testfolder/SUMMARYCPU ] && rm $testMainfolder/SUMMARYCPU
-  [ -e $testfolder/SUMMARYRAM ] && rm $testMainfolder/SUMMARYRAM
-  [ -e $testfolder/SUMMARYLATENCY ] && rm $testMainfolder/SUMMARYLATENCY
-  [ -e $testfolder/SUMMARYSCR ] && rm $testMainfolder/SUMMARYSCR
+  [ -e $testMainfolder/SUMMARYCPU ] && rm $testMainfolder/SUMMARYCPU
+  [ -e $testMainfolder/SUMMARYRAM ] && rm $testMainfolder/SUMMARYRAM
+  [ -e $testMainfolder/SUMMARYLATENCY ] && rm $testMainfolder/SUMMARYLATENCY
+  [ -e $testMainfolder/SUMMARYSCR ] && rm $testMainfolder/SUMMARYSCR
   echo "#cps CPUastaire Varastaire CPUurcassandra Varurcassandra CPUmsccassandra Varmsccassandra CPUchronos Varchronos CPUbono Varbono CPUellis Varellis CPUhomesteadprov Varhomesteadprov CPUhomer Varhomer CPUurhomestead Varurhomestead CPUmschomestead Varmschomestead CPUralf Varralf CPUursprout Varursprout CPUmscsprout Varmscsprout CPUsipptest Varsipptest" >> $testMainfolder/SUMMARYCPU
   echo "#cps RAMastaire Varastaire RAMurcassandra Varurcassandra RAMmsccassandra Varmsccassandra RAMchronos Varchronos RAMbono Varbono RAMellis Varellis RAMhomesteadprov Varhomesteadprov RAMhomer Varhomer RAMurhomestead Varurhomestead RAMmschomestead Varmschomestead RAMralf Varralf RAMursprout Varursprout RAMmscsprout Varmscsprout RAMsipptest Varsipptest" >> $testMainfolder/SUMMARYRAM
   echo "#cps Latency VarLatency" >> $testMainfolder/SUMMARYLATENCY
