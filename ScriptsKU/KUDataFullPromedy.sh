@@ -167,7 +167,7 @@ echo "$cps $AverageCPUastaire $VarCPUastaire $AverageCPUurcassandra $VarCPUurcas
 #############################################################################
 #RAM
 #############################################################################
-Calculatin RAM
+echo Calculating RAM
 DatosRAMastaire=$(<$testfolder/PromediosRAMastaire$cps)
 DatosRAMurcassandra=$(<$testfolder/PromediosRAMurcassandra$cps)
 DatosRAMmsccassandra=$(<$testfolder/PromediosRAMmsccassandra$cps)
@@ -319,6 +319,9 @@ echo "$cps $AveraLatency $VarLatency" >> $testMainfolder/SUMMARYLATENCY
 #SUCCESFULL CALL RATE
 #############################################################################
 echo Calculatin SCR
+DatosSCPS=$(<$testfolder/PromediosSCPS$cps)
+AverageSCPS=0
+VarSCPS=0
 NumProms=$(wc -l < $testfolder/PromediosSCPS$cps)
 for i in ${DatosSCPS[@]}; do  AverageSCPS=$(echo "$AverageSCPS + $i" | bc -l) ; done
 AverageSCPS=$(echo "scale=3;$AverageSCPS/$NumProms" | bc -l)
