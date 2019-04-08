@@ -9,16 +9,18 @@ DelayBeforeACK=${5:-15}
 #NumTest=1
 #NumberTest=33
 Duration=1
-testMainfolder=~/ClearwaterTestResults/Kubernetes3
-testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
+#testMainfolder=~/ClearwaterTestResults/Kubernetes3
+#testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration
+testMainfolder=~/Kubernetes3
+testfolder=~/Kubernetes3/$cps$duration
 
 #Deleting old files
-for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
-   [ -e $testfolder/PromediosCPU$i$cps ] && rm $testfolder/PromediosCPU$i$cps
-   [ -e $testfolder/PromediosRAM$i$cps ] && rm $testfolder/PromediosRAM$i$cps
-   [ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
-   [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
-done
+# for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
+#    [ -e $testfolder/PromediosCPU$i$cps ] && rm $testfolder/PromediosCPU$i$cps
+#    [ -e $testfolder/PromediosRAM$i$cps ] && rm $testfolder/PromediosRAM$i$cps
+#    [ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
+#    [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
+# done
 
 #exit 0
 
@@ -30,7 +32,8 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   #CPU AND RAM
   #############################################################################
-  for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
+  #for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
+  for i in astaire ; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
     [ -e $testfolder/$NumTest/$i ] && rm $testfolder/$NumTest/$i
@@ -49,6 +52,7 @@ while [ $NumTest -lt $NumberTest ]; do
       #echo  $datetime $cpu $ram
       SumCPU=`echo $SumCPU + $cpu | bc`
       SumRAM=`echo $SumRAM + $ram | bc`
+      echo cpu $cpu ram $ram
       #echo $SumCPU
       let NumData=NumData+1
     done < "$testfolder/$NumTest/$i"
@@ -67,50 +71,50 @@ while [ $NumTest -lt $NumberTest ]; do
     #echo $PromRAM >> $testfolder/PromediosRAM$i$cps
   done
 
-  #############################################################################
-  #LATENCY
-  #############################################################################
-  cd $testfolder/$NumTest
-  latencyfile=$(ls | grep rtt)
-  tail -n +20 "$latencyfile" > "$testfolder/$NumTest/latencydata.csv"
-  SumLatency=0
-  PromLatency=0
-  NumDataLatency=0
-  #echo $latencyfile
-  #echo NumTest $NumTest PromLatency $PromLatency
-  while IFS=";" read -r date responsetime timername remainder
-  do
-    #echo $responsetime
-    SumLatency=`echo $SumLatency + $responsetime | bc`
-    let NumDataLatency=NumDataLatency+1
-  done < "$testfolder/$NumTest/latencydata.csv"
-
-  if [ $NumDataLatency = '0' ];
-  then
-    echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales de latencia.
-  else
-      PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
-      PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
-      PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
-      echo $PromLatency >> $testfolder/PromediosLatency$cps
-      #echo NumTest $NumTest PromLatency $PromLatency
-  fi
-  #############################################################################
-  #SUCCESFULL CALL RATE
-  #############################################################################
-  CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
-  SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
-  FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
-  Scale=100
-  CallGenerate=${CallGenerate::-1}
-  SuccesfullCall=${SuccesfullCall::-1}
-  FailedCall=${FailedCall::-1}
-  echo $CallGenerate
-  echo $SuccesfullCall
-  echo $FailedCall
-  SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
-  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
-  echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
+  # #############################################################################
+  # #LATENCY
+  # #############################################################################
+  # cd $testfolder/$NumTest
+  # latencyfile=$(ls | grep rtt)
+  # tail -n +20 "$latencyfile" > "$testfolder/$NumTest/latencydata.csv"
+  # SumLatency=0
+  # PromLatency=0
+  # NumDataLatency=0
+  # #echo $latencyfile
+  # #echo NumTest $NumTest PromLatency $PromLatency
+  # while IFS=";" read -r date responsetime timername remainder
+  # do
+  #   #echo $responsetime
+  #   SumLatency=`echo $SumLatency + $responsetime | bc`
+  #   let NumDataLatency=NumDataLatency+1
+  # done < "$testfolder/$NumTest/latencydata.csv"
+  #
+  # if [ $NumDataLatency = '0' ];
+  # then
+  #   echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales de latencia.
+  # else
+  #     PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
+  #     PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
+  #     PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
+  #     #echo $PromLatency >> $testfolder/PromediosLatency$cps
+  #     #echo NumTest $NumTest PromLatency $PromLatency
+  # fi
+  # #############################################################################
+  # #SUCCESFULL CALL RATE
+  # #############################################################################
+  # CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+  # SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+  # FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+  # Scale=100
+  # CallGenerate=${CallGenerate::-1}
+  # SuccesfullCall=${SuccesfullCall::-1}
+  # FailedCall=${FailedCall::-1}
+  # echo $CallGenerate
+  # echo $SuccesfullCall
+  # echo $FailedCall
+  # SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
+  # SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
+  # #echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
 
   let NumTest=NumTest+1
 done
