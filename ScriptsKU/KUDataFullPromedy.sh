@@ -313,7 +313,7 @@ for i in ${DatosLatency[@]}; do  AverageLatency=$(echo "$AverageLatency + $i" | 
 AverageLatency=$(echo "scale=3;$AverageLatency/$NumProms" | bc -l)
 for i in ${DatosLatency[@]}; do DiferenceVar=$(echo "$i - $AverageLatency" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarLatency=$(echo "$VarLatency + $DiferenceVar" | bc -l) ; done
 VarLatency=$(echo "scale=3;$VarLatency/$NumProms" | bc -l)
-echo "$cps $AveraLatency $VarLatency" >> $testMainfolder/SUMMARYLATENCY
+echo "$cps $AverageLatency $VarLatency" >> $testMainfolder/SUMMARYLATENCY
 
 
 #############################################################################

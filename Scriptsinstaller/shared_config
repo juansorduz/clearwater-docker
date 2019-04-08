@@ -1,0 +1,30 @@
+#####################################################################
+# No Shared Config has been provided
+# Replace this file with the Shared Configuration for your deployment
+#####################################################################
+# Deployment definitions
+home_domain=rtn.edu.co
+sprout_hostname=sprout.rtn.edu.co
+sprout_registration_store=vellum.rtn.edu.co
+hs_hostname=hs.rtn.edu.co:8888
+hs_provisioning_hostname=hs.rtn.edu.co:8889
+homestead_impu_store=vellum.rtn.edu.co
+ralf_hostname=ralf.rtn.edu.co:10888
+ralf_session_store=vellum.rtn.edu.co
+xdms_hostname=homer.rtn.edu.co:7888
+chronos_hostname=vellum.rtn.edu.co
+cassandra_hostname=vellum.rtn.edu.co
+
+# Email server configuration
+smtp_smarthost=ieee.org
+smtp_username=gabo@ieee.org
+smtp_password=123456
+email_recovery_sender=gabo1@ieee.org
+
+# Keys
+signup_key=secret
+turn_workaround=secret
+ellis_api_key=secret
+ellis_cookie_key=secret
+
+reg_max_expires=1800
