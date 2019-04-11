@@ -121,6 +121,7 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 
      source $testfolder/Variables.txt
+     echo $stateTest
      if [ "$stateTest" -eq '2' ]
      then
        sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
