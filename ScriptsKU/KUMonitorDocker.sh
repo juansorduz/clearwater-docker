@@ -11,19 +11,19 @@ NumberTest=${5:-2}
 #Seding monitor files to local VMs
 source ~/clearwater-docker/Scripts/AddressVM
 echo Copying files to local VMs
-echo password: $password AdressVM1: $AddressVM1
+echo AdressVM1: $AddressVM1
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
-echo password: $password AdressVM2: $AddressVM2
+echo AdressVM2: $AddressVM2
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
-echo password: $password AdressVM3: $AddressVM3
+echo AdressVM3: $AddressVM3
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
-echo password: $password AdressVM4: $AddressVM4
+echo AdressVM4: $AddressVM4
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker4@$AddressVM4:~/
-echo password: $password AdressVM5: $AddressVM5
+echo AdressVM5: $AddressVM5
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker5@$AddressVM5:~/
-echo password: $password AdressVM6: $AddressVM6
+echo AdressVM6: $AddressVM6
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker6@$AddressVM6:~/
-echo password: $password AdressVM7: $AddressVM7
+echo AdressVM7: $AddressVM7
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker7@$AddressVM7:~/
 
 
@@ -35,8 +35,8 @@ export NumTest
 
 echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, ip: $ip
 #Create tests folder if not exits
-mkdir -p $testfolder
-testfolder=$testfolder
+mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
+testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 export testfolder
 
 #Creating control file if does not exist
@@ -51,7 +51,7 @@ sleep 1
 ################################################################################
 #Read VM ips
 echo Creating repository in local VMs
-#echo password: $password AdressVM1: $AddressVM1
+#echo AdressVM1: $AddressVM1
 sshpass -p $password ssh -t worker1@$AddressVM1 "mkdir -p $testfolder"
 sshpass -p $password ssh -t worker2@$AddressVM2 "mkdir -p $testfolder"
 sshpass -p $password ssh -t worker3@$AddressVM3 "mkdir -p $testfolder"
