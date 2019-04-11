@@ -72,10 +72,6 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.tx
 sleep 2
 
 #exit 0
-################################################################################
-#Execute test script on background
-################################################################################
-. ~/clearwater-docker/Scripts/tester_kubernetes.sh $cps $duration $ip & 2> /dev/null
 
 ################################################################################
 #Execute monitor VM scripts on background
@@ -94,6 +90,11 @@ sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "
 sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
+
+################################################################################
+#Execute test script on background
+################################################################################
+. ~/clearwater-docker/Scripts/tester_kubernetes.sh $cps $duration $ip & 2> /dev/null
 
 ################################################################################
 #Start Loop to control VMs
