@@ -59,6 +59,7 @@ sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "mkd
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker7@$AddressVM7 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sleep 2
 
 echo Copying control file in local VMs
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
