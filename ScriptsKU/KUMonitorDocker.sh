@@ -12,6 +12,12 @@ NumberTest=${5:-2}
 source ~/clearwater-docker/Scripts/AddressVM
 echo Copying files to local VMs
 echo password: $password AdressVM1: $AddressVM1
+echo password: $password AdressVM2: $AddressVM2
+echo password: $password AdressVM3: $AddressVM3
+echo password: $password AdressVM4: $AddressVM4
+echo password: $password AdressVM5: $AddressVM5
+echo password: $password AdressVM6: $AddressVM6
+echo password: $password AdressVM7: $AddressVM7
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
@@ -29,8 +35,8 @@ export NumTest
 
 echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, ip: $ip
 #Create tests folder if not exits
-mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
-testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
+mkdir -p $testfolder
+testfolder=$testfolder
 export testfolder
 
 #Creating control file if does not exist
@@ -46,13 +52,13 @@ sleep 1
 #Read VM ips
 echo Creating repository in local VMs
 #echo password: $password AdressVM1: $AddressVM1
-sshpass -p $password ssh -t worker1@$AddressVM1 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker2@$AddressVM2 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker3@$AddressVM3 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker4@$AddressVM4 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker7@$AddressVM7 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t worker1@$AddressVM1 "mkdir -p $testfolder"
+sshpass -p $password ssh -t worker2@$AddressVM2 "mkdir -p $testfolder"
+sshpass -p $password ssh -t worker3@$AddressVM3 "mkdir -p $testfolder"
+sshpass -p $password ssh -t worker4@$AddressVM4 "mkdir -p $testfolder"
+sshpass -p $password ssh -t worker5@$AddressVM5 "mkdir -p $testfolder"
+sshpass -p $password ssh -t worker6@$AddressVM6 "mkdir -p $testfolder"
+sshpass -p $password ssh -t worker7@$AddressVM7 "mkdir -p $testfolder"
 
 echo Copying control file in local VMs
 sshpass -p $password scp -r $testfolder/Variables.txt worker1@$AddressVM1:$testfolder/Variables.txt
