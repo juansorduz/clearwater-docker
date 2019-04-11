@@ -69,6 +69,8 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.tx
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 
+sleep 2
+
 #exit 0
 ################################################################################
 #Execute test script on background
@@ -86,7 +88,7 @@ sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 
-
+sleep 2
 ################################################################################
 #Start Loop to control VMs
 ################################################################################
@@ -110,7 +112,7 @@ while [ "$stateTest" -eq '1' ]; do
  done
 
 #exit 0
-
+sleep 2
 ################################################################################
 #Recover stats files of each VM
 ################################################################################
@@ -123,6 +125,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/Cl
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM7LocalVMdata.csv
 echo Finalizo recoleccion de archivos de monitorizacion
 
+sleep 2
 cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
 
 #exit 0
