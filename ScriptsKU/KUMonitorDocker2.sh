@@ -44,7 +44,7 @@ export testfolder
 touch $testfolder/Variables.txt
 #echo stateTest=1\ncps=$cps\nduration=$duration\nNumTest=NumTest  > $testfolder/Variables.txt
 echo -e "stateTest=1"  > $testfolder/Variables.txt
-echo -e "cps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/DataTest.txt
+echo -e "stateMonitor=2\ncps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/DataTest.txt
 
 #exit 0
 

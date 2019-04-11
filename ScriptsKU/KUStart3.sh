@@ -24,6 +24,22 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scri
 echo AdressVM7: $AddressVM7
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker7@$AddressVM7:~/
 
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor2.sh worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor2.sh worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor2.sh worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor2.sh worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor2.sh worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor2.sh worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor2.sh worker7@$AddressVM7:~/
+
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker7@$AddressVM7:~/
+
 cd
 cd metrics-server/
 kubectl apply -f deploy/1.8+/
