@@ -8,6 +8,8 @@ testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 
 echo EJECUTANDO SCRIPT VM $USER time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration
 
+sleep 6
+
 #Creating control file if does not exist
 # [ -e $testfolder/Variables.txt ] && rm $testfolder/Variables.txt
 # touch $testfolder/Variables.txt
@@ -16,8 +18,6 @@ echo EJECUTANDO SCRIPT VM $USER time $(date +"%T") NumTest:$NumTest, cps: $cps, 
 #Start time and metrics recollector script
 echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
 docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/contenedores.csv
-
-sleep 1
 
 source $testfolder/Variables.txt
 
