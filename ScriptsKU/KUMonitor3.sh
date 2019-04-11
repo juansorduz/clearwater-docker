@@ -6,14 +6,6 @@ duration=${2:-120}
 ip=${3:-127.0.0.1}
 NumberTest=${4:-2}
 
-#Requests the cps, duration and approximate time
-#echo Numer of CPS?
-#read cps
-#echo tests duration?
-#read duration
-
-#echo approximate Time?
-#read aproxTime
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
@@ -82,7 +74,7 @@ while [ "$stateTest" -eq '1' ]; do
  done
  let NumTest=NumTest+1
  echo Sleeping zZzZzZ
- sleep 30 
+ sleep 30
  done
 #when the script finish, kill tshark process to stop packet capture
  #pkill tshark
