@@ -8,7 +8,7 @@ testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 
 echo EJECUTANDO SCRIPT VM $USER time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration
 
-sleep 6
+sleep 10
 
 rm -f $testfolder/Tiempos.csv
 rm -f $testfolder/contenedores.csv
