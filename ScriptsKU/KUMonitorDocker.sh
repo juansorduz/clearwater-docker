@@ -78,7 +78,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.tx
 ################################################################################
 #Execute monitor VM scripts on background
 ################################################################################
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 #sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "head ~/LocalDockerMonitor.sh"
 
 # sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
