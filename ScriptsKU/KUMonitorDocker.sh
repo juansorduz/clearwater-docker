@@ -132,7 +132,7 @@ cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout scscf.sprout sipptest; do
  #for i in astaire urcassandra msccassandra chronos bono ellis homestead-prov homer urhomestead mschomestead ralf ursprout mscsprout sipptest; do
  for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
-    cat $testfolder/data.csv | grep $i > $testfolder/$i.csv;
+    cat $testfolder/AllVMData.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1
  echo Sleeping zZzZzZ
