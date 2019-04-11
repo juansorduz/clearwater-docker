@@ -11,6 +11,7 @@ NumberTest=${5:-2}
 #Seding monitor files to local VMs
 source ~/clearwater-docker/Scripts/AddressVM
 echo Copying files to local VMs
+echo password: $password AdressVM1: $AddressVM1
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
 sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
