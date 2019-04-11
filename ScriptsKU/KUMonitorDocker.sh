@@ -32,8 +32,8 @@ sleep 1
 ################################################################################
 #Read VM ips
 source ~/clearwater-docker/Scripts/AddressVM
-echo password: $password AdressVM1: $AddressVM1 
-sshpass -p $password ssh -t worker1@$AddressVM1 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
+echo password: $password AdressVM1: $AddressVM1
+sshpass -p $password ssh -t worker1@$AddressVM1 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
 
 
 exit 0
