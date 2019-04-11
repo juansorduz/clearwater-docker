@@ -52,22 +52,22 @@ sleep 1
 #Read VM ips
 echo Creating repository in local VMs
 #echo AdressVM1: $AddressVM1
-sshpass -p $password ssh -t worker1@$AddressVM1 "mkdir -p $testfolder"
-sshpass -p $password ssh -t worker2@$AddressVM2 "mkdir -p $testfolder"
-sshpass -p $password ssh -t worker3@$AddressVM3 "mkdir -p $testfolder"
-sshpass -p $password ssh -t worker4@$AddressVM4 "mkdir -p $testfolder"
-sshpass -p $password ssh -t worker5@$AddressVM5 "mkdir -p $testfolder"
-sshpass -p $password ssh -t worker6@$AddressVM6 "mkdir -p $testfolder"
-sshpass -p $password ssh -t worker7@$AddressVM7 "mkdir -p $testfolder"
+sshpass -p $password ssh -t worker1@$AddressVM1 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t worker2@$AddressVM2 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t worker3@$AddressVM3 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t worker4@$AddressVM4 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t worker7@$AddressVM7 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
 
 echo Copying control file in local VMs
-sshpass -p $password scp -r $testfolder/Variables.txt worker1@$AddressVM1:$testfolder/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker2@$AddressVM2:$testfolder/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker3@$AddressVM3:$testfolder/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker4@$AddressVM4:$testfolder/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker5@$AddressVM5:$testfolder/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker6@$AddressVM6:$testfolder/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker7@$AddressVM7:$testfolder/Variables.txt
+sshpass -p $password scp -r $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 
 exit 0
 ################################################################################
