@@ -80,9 +80,9 @@ sleep 2
 ################################################################################
 #Execute monitor VM scripts on background
 ################################################################################
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
+sshpass -p $password ssh -f -t worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
+sshpass -p $password ssh -f -t worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
