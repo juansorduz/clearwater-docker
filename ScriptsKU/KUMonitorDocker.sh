@@ -11,13 +11,13 @@ NumberTest=${5:-2}
 #Seding monitor files to local VMs
 source ~/clearwater-docker/Scripts/AddressVM
 echo Copying files to local VMs
-sshpass -p "password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
-sshpass -p "password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
-sshpass -p "password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
-sshpass -p "password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker4@$AddressVM4:~/
-sshpass -p "password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker5@$AddressVM5:~/
-sshpass -p "password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker6@$AddressVM6:~/
-sshpass -p "password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker7@$AddressVM7:~/
+sshpass -p "$password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
+sshpass -p "$password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
+sshpass -p "$password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
+sshpass -p "$password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker4@$AddressVM4:~/
+sshpass -p "$password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker5@$AddressVM5:~/
+sshpass -p "$password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker6@$AddressVM6:~/
+sshpass -p "$password" scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker7@$AddressVM7:~/
 
 
 #Principal Script to mak3 32 t3sts
@@ -54,13 +54,13 @@ sshpass -p $password ssh -t worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResult
 sshpass -p $password ssh -t worker7@$AddressVM7 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
 
 echo Copying control file in local VMs
-sshpass -p "password" scp -r $testfolder/Variables.txt worker1@$AddressVM1:$testfolder/Variables.txt
-sshpass -p "password" scp -r $testfolder/Variables.txt worker2@$AddressVM2:$testfolder/Variables.txt
-sshpass -p "password" scp -r $testfolder/Variables.txt worker3@$AddressVM3:$testfolder/Variables.txt
-sshpass -p "password" scp -r $testfolder/Variables.txt worker4@$AddressVM4:$testfolder/Variables.txt
-sshpass -p "password" scp -r $testfolder/Variables.txt worker5@$AddressVM5:$testfolder/Variables.txt
-sshpass -p "password" scp -r $testfolder/Variables.txt worker6@$AddressVM6:$testfolder/Variables.txt
-sshpass -p "password" scp -r $testfolder/Variables.txt worker7@$AddressVM7:$testfolder/Variables.txt
+sshpass -p "$password" scp -r $testfolder/Variables.txt worker1@$AddressVM1:$testfolder/Variables.txt
+sshpass -p "$password" scp -r $testfolder/Variables.txt worker2@$AddressVM2:$testfolder/Variables.txt
+sshpass -p "$password" scp -r $testfolder/Variables.txt worker3@$AddressVM3:$testfolder/Variables.txt
+sshpass -p "$password" scp -r $testfolder/Variables.txt worker4@$AddressVM4:$testfolder/Variables.txt
+sshpass -p "$password" scp -r $testfolder/Variables.txt worker5@$AddressVM5:$testfolder/Variables.txt
+sshpass -p "$password" scp -r $testfolder/Variables.txt worker6@$AddressVM6:$testfolder/Variables.txt
+sshpass -p "$password" scp -r $testfolder/Variables.txt worker7@$AddressVM7:$testfolder/Variables.txt
 
 exit 0
 ################################################################################
