@@ -81,7 +81,6 @@ sleep 2
 #Execute monitor VM scripts on background
 ################################################################################
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-#ssh root@192.168.1.1 'bash -s' < script.sh
 sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
@@ -153,7 +152,7 @@ cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
  done
  let NumTest=NumTest+1
  echo Sleeping zZzZzZ
- sleep 30
+ #sleep 30
  done
 #when the script finish, kill tshark process to stop packet capture
  #pkill tshark
