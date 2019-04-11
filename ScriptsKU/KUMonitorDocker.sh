@@ -81,19 +81,19 @@ sleep 2
 #Execute monitor VM scripts on background
 ################################################################################
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 0.5
+sleep 1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 0.5
+sleep 1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 0.5
+sleep 1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 0.5
+sleep 1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 0.5
+sleep 1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 0.5
+sleep 1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 0.5
+sleep 1
 
 ################################################################################
 #Start Loop to control VMs
@@ -122,7 +122,14 @@ sleep 2
 ################################################################################
 #Recover stats files of each VM
 ################################################################################
-rm $testfolder/*LocalVMdata.csv
+rm $testfolder/VM1LocalVMdata.csv
+rm $testfolder/VM2LocalVMdata.csv
+rm $testfolder/VM3LocalVMdata.csv
+rm $testfolder/VM4LocalVMdata.csv
+rm $testfolder/VM5LocalVMdata.csv
+rm $testfolder/VM6LocalVMdata.csv
+rm $testfolder/VM7LocalVMdata.csv
+
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalVMdata.csv
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalVMdata.csv
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM3LocalVMdata.csv
