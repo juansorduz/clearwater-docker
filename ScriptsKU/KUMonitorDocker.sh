@@ -81,19 +81,19 @@ sleep 2
 #Execute monitor VM scripts on background
 ################################################################################
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 1
+sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 1
+sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 1
+sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 1
+sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 1
+sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 1
+sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sleep 1
+sleep 0.1
 
 ################################################################################
 #Start Loop to control VMs
@@ -139,7 +139,6 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/Cl
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM7LocalVMdata.csv
 echo Finalizo recoleccion de archivos de monitorizacion
 
-sleep 2
 cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
 
 #exit 0

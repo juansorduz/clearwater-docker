@@ -6,7 +6,7 @@ NumTest=${3:-1}
 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 
-echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration
+echo EJECUTANDO SCRIPT VM $USER time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration
 
 #Creating control file if does not exist
 # [ -e $testfolder/Variables.txt ] && rm $testfolder/Variables.txt
