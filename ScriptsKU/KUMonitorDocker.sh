@@ -4,7 +4,8 @@
 cps=${1:-10}
 duration=${2:-120}
 ip=${3:-127.0.0.1}
-NumberTest=${4:-2}
+password=${4:-secret}
+NumberTest=${5:-2}
 
 
 #Principal Script to mak3 32 t3sts
@@ -13,25 +14,34 @@ NumTest=1
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
-echo timee $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, ip: $ip
+echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, ip: $ip
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 testfolder=~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 export testfolder
 
-#Creating file if does not exist
+#Creating control file if does not exist
+[ -e $testfolder/Variables.txt ] && rm $testfolder/Variables.txt
 touch $testfolder/Variables.txt
 echo stateTest=1 > $testfolder/Variables.txt
 
-#before start the test, capture packets if are needy
-#mkdir -p $testfolder/wireshark
-#tshark -i any -w $testfolder/wireshark/packets.pcap -q &
-#wait a second for tshark started
 sleep 1
 
+################################################################################
+#Send files for local monitor
+################################################################################
+#Read VM ips
+source ~/clearwater-docker/Scripts/AddressVM
+sshpass -p $password ssh -t worker1@$AddressVM1 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
+
+################################################################################
 #Execute test script on background
+################################################################################
 . ~/clearwater-docker/Scripts/tester_kubernetes.sh $cps $duration $ip &
 
+
+
+exit 0
 #saves initial time
 echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
 #docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/data.csv
