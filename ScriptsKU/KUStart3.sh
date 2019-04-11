@@ -8,6 +8,22 @@ kubectl label nodes worker5 Tnode=notsipp
 kubectl label nodes worker6 Tnode=notsipp
 kubectl label nodes worker7 Tnode=sipp
 
+echo Copying files to local VMs
+echo AdressVM1: $AddressVM1
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
+echo AdressVM2: $AddressVM2
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
+echo AdressVM3: $AddressVM3
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
+echo AdressVM4: $AddressVM4
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker4@$AddressVM4:~/
+echo AdressVM5: $AddressVM5
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker5@$AddressVM5:~/
+echo AdressVM6: $AddressVM6
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker6@$AddressVM6:~/
+echo AdressVM7: $AddressVM7
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker7@$AddressVM7:~/
+
 cd
 cd metrics-server/
 kubectl apply -f deploy/1.8+/

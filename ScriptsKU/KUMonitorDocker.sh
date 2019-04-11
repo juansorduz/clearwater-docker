@@ -10,7 +10,7 @@ NumberTest=${5:-2}
 
 #Seding monitor files to local VMs
 source ~/clearwater-docker/Scripts/AddressVM
-echo Copying files to local VMs
+#echo Copying files to local VMs
 # echo AdressVM1: $AddressVM1
 # sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
 # echo AdressVM2: $AddressVM2
