@@ -114,15 +114,18 @@ while [ "$stateTest" -eq '1' ]; do
 ################################################################################
 #Recover stats files of each VM
 ################################################################################
-sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/dataVM1.csv
-sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/dataVM2.csv
-sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/dataVM3.csv
-sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/dataVM4.csv
-sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/dataVM5.csv
-sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/dataVM6.csv
-sshpass -p $password scp -r -o StrictHostKeyChecking=no worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/dataVM7.csv
+sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalVMdata.csv
+sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalVMdata.csv
+sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM3LocalVMdata.csv
+sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM4LocalVMdata.csv
+sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM5LocalVMdata.csv
+sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM6LocalVMdata.csv
+sshpass -p $password scp -r -o StrictHostKeyChecking=no worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM7LocalVMdata.csv
 echo Finalizo recoleccion de archivos de monitorizacion
 
+cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
+
+exit 0
 
 #Regarding containers and their instances distribute the logs in eachone.
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
