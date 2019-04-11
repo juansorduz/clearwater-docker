@@ -34,6 +34,8 @@ sleep 1
 source ~/clearwater-docker/Scripts/AddressVM
 sshpass -p $password ssh -t worker1@$AddressVM1 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest
 
+
+exit 0
 ################################################################################
 #Execute test script on background
 ################################################################################
@@ -41,7 +43,7 @@ sshpass -p $password ssh -t worker1@$AddressVM1 mkdir -p ~/ClearwaterTestResults
 
 
 
-exit 0
+
 #saves initial time
 echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
 #docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/data.csv
