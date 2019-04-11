@@ -72,6 +72,16 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.tx
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 
+echo Copying file with test information
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker7@$AddressVM7:~/
+
+
 sleep 2
 
 #exit 0
