@@ -29,4 +29,4 @@ kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
 #sleep 30
 
 echo Finalizo prueba subscript
-echo -e "stateTest=2\ncps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/Variables.txt
+echo -e "stateTest=2"  > $testfolder/Variables.txt

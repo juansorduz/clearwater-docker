@@ -43,7 +43,8 @@ export testfolder
 [ -e $testfolder/Variables.txt ] && rm $testfolder/Variables.txt
 touch $testfolder/Variables.txt
 #echo stateTest=1\ncps=$cps\nduration=$duration\nNumTest=NumTest  > $testfolder/Variables.txt
-echo -e "stateTest=1\ncps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/Variables.txt
+echo -e "stateTest=1"  > $testfolder/Variables.txt
+echo -e "cps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/DataTest.txt
 
 #exit 0
 
@@ -162,7 +163,7 @@ cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
     cat $testfolder/AllVMData.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1
- echo NumTest
+ #echo $NumTest
  echo Sleeping zZzZzZ
  #sleep 30
  done
