@@ -122,13 +122,13 @@ sleep 2
 ################################################################################
 #Recover stats files of each VM
 ################################################################################
-rm $testfolder/VM1LocalVMdata.csv
-rm $testfolder/VM2LocalVMdata.csv
-rm $testfolder/VM3LocalVMdata.csv
-rm $testfolder/VM4LocalVMdata.csv
-rm $testfolder/VM5LocalVMdata.csv
-rm $testfolder/VM6LocalVMdata.csv
-rm $testfolder/VM7LocalVMdata.csv
+[ -e $testfolder/Variables.txt ] && rm $testfolder/VM1LocalVMdata.csv
+[ -e $testfolder/Variables.txt ] && rm $testfolder/VM2LocalVMdata.csv
+[ -e $testfolder/Variables.txt ] && rm $testfolder/VM3LocalVMdata.csv
+[ -e $testfolder/Variables.txt ] && rm $testfolder/VM4LocalVMdata.csv
+[ -e $testfolder/Variables.txt ] && rm $testfolder/VM5LocalVMdata.csv
+[ -e $testfolder/Variables.txt ] && rm $testfolder/VM6LocalVMdata.csv
+[ -e $testfolder/Variables.txt ] && rm $testfolder/VM7LocalVMdata.csv
 
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalVMdata.csv
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalVMdata.csv
