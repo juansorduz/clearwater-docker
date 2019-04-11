@@ -96,7 +96,7 @@ sleep 2
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 # sleep 0.1
 
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 'bash -s' < ~/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
 #ssh root@192.168.1.1 'bash -s' < script.sh
 sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 'bash -s' < ~/LocalDockerMonitor.sh $cps $duration $NumTest
