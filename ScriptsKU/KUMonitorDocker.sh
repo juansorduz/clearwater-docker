@@ -80,7 +80,8 @@ sleep 2
 ################################################################################
 #Execute monitor VM scripts on background
 ################################################################################
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 'bash -s' < ~/LocalDockerMonitor.sh $cps $duration $NumTest
+#ssh root@192.168.1.1 'bash -s' < script.sh
 sleep 0.1
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
