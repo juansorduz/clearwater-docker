@@ -86,6 +86,18 @@ sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 "
 sleep 5
 
 ################################################################################
+#Deleting old files
+################################################################################
+
+rm -f $testfolder/VM1LocalVMdata.csv
+rm -f $testfolder/VM2LocalVMdata.csv
+rm -f $testfolder/VM3LocalVMdata.csv
+rm -f $testfolder/VM4LocalVMdata.csv
+rm -f $testfolder/VM5LocalVMdata.csv
+rm -f $testfolder/VM6LocalVMdata.csv
+rm -f $testfolder/VM7LocalVMdata.csv
+
+################################################################################
 #Execute test script on background
 ################################################################################
 . ~/clearwater-docker/Scripts/tester_kubernetes.sh $cps $duration $ip & 2> /dev/null
@@ -117,13 +129,6 @@ sleep 2
 ################################################################################
 #Recover stats files of each VM
 ################################################################################
-rm -f $testfolder/VM1LocalVMdata.csv
-rm -f $testfolder/VM2LocalVMdata.csv
-rm -f $testfolder/VM3LocalVMdata.csv
-rm -f $testfolder/VM4LocalVMdata.csv
-rm -f $testfolder/VM5LocalVMdata.csv
-rm -f $testfolder/VM6LocalVMdata.csv
-rm -f $testfolder/VM7LocalVMdata.csv
 
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalVMdata.csv
 sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalVMdata.csv

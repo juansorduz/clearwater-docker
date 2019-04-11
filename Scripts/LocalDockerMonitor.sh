@@ -10,10 +10,8 @@ echo EJECUTANDO SCRIPT VM $USER time $(date +"%T") NumTest:$NumTest, cps: $cps, 
 
 sleep 6
 
-#Creating control file if does not exist
-# [ -e $testfolder/Variables.txt ] && rm $testfolder/Variables.txt
-# touch $testfolder/Variables.txt
-# echo stateTest=1 > $testfolder/Variables.txt
+rm -f $testfolder/Tiempos.csv
+rm -f $testfolder/contenedores.csv
 
 #Start time and metrics recollector script
 echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
