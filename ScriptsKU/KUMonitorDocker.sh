@@ -12,19 +12,19 @@ NumberTest=${5:-2}
 source ~/clearwater-docker/Scripts/AddressVM
 echo Copying files to local VMs
 echo AdressVM1: $AddressVM1
-sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker1@$AddressVM1:~/
 echo AdressVM2: $AddressVM2
-sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker2@$AddressVM2:~/
 echo AdressVM3: $AddressVM3
-sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker3@$AddressVM3:~/
 echo AdressVM4: $AddressVM4
-sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker4@$AddressVM4:~/
 echo AdressVM5: $AddressVM5
-sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker5@$AddressVM5:~/
 echo AdressVM6: $AddressVM6
-sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker6@$AddressVM6:~/
 echo AdressVM7: $AddressVM7
-sshpass -p $password scp -r ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker7@$AddressVM7:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/LocalDockerMonitor.sh worker7@$AddressVM7:~/
 
 
 #Principal Script to mak3 32 t3sts
@@ -52,22 +52,22 @@ sleep 1
 #Read VM ips
 echo Creating repository in local VMs
 #echo AdressVM1: $AddressVM1
-sshpass -p $password ssh -t worker1@$AddressVM1 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker2@$AddressVM2 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker3@$AddressVM3 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker4@$AddressVM4 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
-sshpass -p $password ssh -t worker7@$AddressVM7 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker7@$AddressVM7 "mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest"
 
 echo Copying control file in local VMs
-sshpass -p $password scp -r $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 
 exit 0
 ################################################################################
