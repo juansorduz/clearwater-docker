@@ -69,7 +69,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.tx
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 
-exit 0
+#exit 0
 ################################################################################
 #Execute test script on background
 ################################################################################
@@ -77,41 +77,25 @@ exit 0
 
 
 
-
-#saves initial time
-echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
-#docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/data.csv
-kubectl top pods > $testfolder/data.csv
-#This script monitor CPU and m3mory until Subscript finish and chang3 variable into file
 source $testfolder/Variables.txt
-#variables to control number of samples per tests
-NumberOfSample=0
-NumberOfRateCaptureSample=100
-#while [ $CONTADOR -lt $TimeContainer ]; do
+
 while [ "$stateTest" -eq '1' ]; do
-     now=$(date +"%T")
-     #echo $now
-     if [ $NumberOfRateCaptureSample -lt $NumberOfSample ]
-     then
-       #echo $NumberOfSample
-       #echo $now
-       echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
-       kubectl top pods >> $testfolder/data.csv
-       NumberOfSample=0
-       #echo $NumberOfSample
 
-     fi
-
-     #let CONTADOR=CONTADOR+1
-     #Ch3ch if variable chang3 from subscipt
-     let NumberOfSample=NumberOfSample+1
      source $testfolder/Variables.txt
      if [ "$stateTest" -eq '2' ]
      then
-        echo Finalizo prueba scriptPrincipal
+       sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+       sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+       sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+       sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+       sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+       sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+       sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
+       echo Finalizo prueba scriptPrincipal
      fi
  done
 
+exit 0
 #Regarding containers and their instances distribute the logs in eachone.
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout sipptest chronos_2 chronos_3; do
  #for i in astaire cassandra chronos bono ellis homer homestead homestead-prov ralf sprout scscf.sprout sipptest; do
