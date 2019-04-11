@@ -85,28 +85,6 @@ sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 
-# sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 << EOF
-# . ~/LocalDockerMonitor.sh $cps $duration $NumTest &
-# EOF
-# sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker2@$AddressVM2 << EOF
-# . ~/LocalDockerMonitor.sh $cps $duration $NumTest &
-# EOF
-# sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker3@$AddressVM3 << EOF
-# . ~/LocalDockerMonitor.sh $cps $duration $NumTest &
-# EOF
-# sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker4@$AddressVM4 << EOF
-# . ~/LocalDockerMonitor.sh $cps $duration $NumTest &
-# EOF
-# sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker5@$AddressVM5 << EOF
-# . ~/LocalDockerMonitor.sh $cps $duration $NumTest &
-# EOF
-# sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker6@$AddressVM6 << EOF
-# . ~/LocalDockerMonitor.sh $cps $duration $NumTest &
-# EOF
-# sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker7@$AddressVM7 << EOF
-# . ~/LocalDockerMonitor.sh $cps $duration $NumTest &
-# EOF
-
 ################################################################################
 #Deleting old files
 ################################################################################
