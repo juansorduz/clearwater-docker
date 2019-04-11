@@ -80,36 +80,20 @@ sleep 2
 ################################################################################
 #Execute monitor VM scripts on background
 ################################################################################
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 'bash -s' < ~/LocalDockerMonitor.sh $cps $duration $NumTest
-# #ssh root@192.168.1.1 'bash -s' < script.sh
-# sleep 0.1
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-# sleep 0.1
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-# sleep 0.1
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-# sleep 0.1
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-# sleep 0.1
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-# sleep 0.1
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-# sleep 0.1
-
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 #ssh root@192.168.1.1 'bash -s' < script.sh
 sleep 0.1
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 'bash -s' < ~/clearwater-docker/Scripts/LocalDockerMonitor.sh $cps $duration $NumTest
+sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 sleep 0.1
 
 ################################################################################
