@@ -121,7 +121,7 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 
      source $testfolder/Variables.txt
-     echo $stateTest
+     #echo $stateTest
      if [ "$stateTest" -eq '2' ]
      then
        sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
@@ -162,6 +162,7 @@ cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
     cat $testfolder/AllVMData.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1
+ echo NumTest
  echo Sleeping zZzZzZ
  #sleep 30
  done
