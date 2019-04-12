@@ -1,6 +1,7 @@
 #!/bin/bash
-
-while true
+Num=1
+NumMax=100
+while [ $Num -lt $NumMax ];
 do
   source ~/DataTest.txt
 
