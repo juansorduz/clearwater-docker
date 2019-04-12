@@ -40,6 +40,14 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scri
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker6@$AddressVM6:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/ControlLocalDockerMonitor2.sh worker7@$AddressVM7:~/
 
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/DataTest.txt worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/DataTest.txt worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/DataTest.txt worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/DataTest.txt worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/DataTest.txt worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/DataTest.txt worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scripts/DataTest.txt worker7@$AddressVM7:~/
+
 cd
 cd metrics-server/
 kubectl apply -f deploy/1.8+/
