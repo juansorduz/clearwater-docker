@@ -98,7 +98,7 @@ sleep 2
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
