@@ -1,0 +1,4 @@
+stateMonitor=1
+cps=1
+duration=6
+NumTest=1
