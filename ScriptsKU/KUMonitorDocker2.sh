@@ -81,7 +81,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker6@$AddressVM6:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker7@$AddressVM7:~/
 
-exit 0
+#exit 0
 
 sleep 2
 
