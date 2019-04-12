@@ -1,7 +1,8 @@
 #!/bin/bash
+Option=1
 Num=1
 NumMax=100
-while [ $Num -lt $NumMax ];
+while [ "$Option" -eq '1' ];
 do
   source ~/DataTest.txt
 
