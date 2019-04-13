@@ -23,8 +23,8 @@ while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
      #echo $now
      echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
-     top -b -n 1 | awk 'NR>7 { sum += $9; } END { print sum; }' > $testfolder/VMCPU.csv
-     top -b -n 1 | awk 'NR>7 { sum += $10; } END { print sum; }' > $testfolder/VMRAM.csv
+     top -b -n 1 | awk 'NR>7 { sum += $9; } END { print sum; }' >> $testfolder/VMCPU.csv
+     top -b -n 1 | awk 'NR>7 { sum += $10; } END { print sum; }' >> $testfolder/VMRAM.csv
 
      source $testfolder/Variables.txt
      if [ "$stateTest" -eq '2' ]
