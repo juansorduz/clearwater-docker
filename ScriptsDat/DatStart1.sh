@@ -21,23 +21,23 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scri
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/DataTest.txt worker7@$AddressVM7:~/
 
 echo Copying Control monitor files
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor2.sh worker1@$AddressVM1:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor2.sh worker2@$AddressVM2:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor2.sh worker3@$AddressVM3:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor2.sh worker4@$AddressVM4:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor2.sh worker5@$AddressVM5:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor2.sh worker6@$AddressVM6:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor2.sh worker7@$AddressVM7:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor.sh worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor.sh worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor.sh worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor.sh worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor.sh worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor.sh worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/ControlLocalDockerMonitor.sh worker7@$AddressVM7:~/
 
 echo Copying Type1 monitor file
 
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor.sh worker1@$AddressVM1:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor.sh worker2@$AddressVM2:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor.sh worker3@$AddressVM3:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor.sh worker4@$AddressVM4:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor.sh worker5@$AddressVM5:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor.sh worker6@$AddressVM6:~/
-sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor.sh worker7@$AddressVM7:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor1.sh worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor1.sh worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor1.sh worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor1.sh worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor1.sh worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor1.sh worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor1.sh worker7@$AddressVM7:~/
 
 echo Copying Type2 monitor file
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat/LocalFiles/LocalDockerMonitor2.sh worker1@$AddressVM1:~/
