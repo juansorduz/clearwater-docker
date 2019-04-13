@@ -1,6 +1,6 @@
 #!/bin/bash
 password=${1:-secret}
-option=${1:-1}
+option=${2:-1}
 source ~/clearwater-docker/ScriptsDat/LocalFiles/AddressVM
 
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "rm -f ~/ControlLocalDockerMonitor2.sh ; rm -f ~/LocalDockerMonitor.sh ; rm -f ~/LocalDockerMonitor2.sh; rm -f ~/LocalDockerMonitor3.sh; rm -f ~/DataTest.txt; rm -f -r ~/ClearwaterTestResults"
