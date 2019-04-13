@@ -196,12 +196,7 @@ then
   sshpass -p $password scp -r -o StrictHostKeyChecking=no worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes4/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM7LocalVMRAMdata.csv
   cat $testfolder/*LocalVMRAMdata.csv > $testfolder/AllVMRAMData.csv
   sleep 2
-  echo Classifying VM data
-  sleep 2
-  for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
-     cat $testfolder/AllVMCPUData.csv | grep $i > $testfolder/VMCPU$i.csv;
-     cat $testfolder/AllVMRAMData.csv | grep $i > $testfolder/VMRAM$i.csv;
-  done
+  echo Classifying VM data  
 fi
 
 #Execute docker and VM monitor script
@@ -236,8 +231,6 @@ then
   echo Classifying dockers and VM data
   for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
      cat $testfolder/AllDockerData.csv | grep $i > $testfolder/Docker$i.csv;
-     cat $testfolder/AllVMCPUData.csv | grep $i > $testfolder/VMCPU$i.csv;
-     cat $testfolder/AllVMRAMData.csv | grep $i > $testfolder/VMRAM$i.csv;
   done
 fi
 
