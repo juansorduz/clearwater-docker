@@ -5,7 +5,7 @@ sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 kubectl cp $directory/sip-stress-registry-latency.xml $sipptest:/usr/share/clearwater/sip-stress/
 kubectl cp $directory/sip-stress-call-latency.xml $sipptest:/usr/share/clearwater/sip-stress/
 kubectl cp $directory/sip-stress-bye-latency.xml $sipptest:/usr/share/clearwater/sip-stress/
-kubectl cp $directory/user_test_latency.csv $sipptest:/usr/share/clearwater/sip-stress/
+kubectl cp $directory/users_test_latency.csv $sipptest:/usr/share/clearwater/sip-stress/
 kubectl cp $directory/Agent_Latency.sh $sipptest:/usr/share/clearwater/sip-stress/
 START=$(date +%s.%N)
 kubectl exec $sipptest /usr/share/clearwater/sip-stress/Agent_Latency.sh registry
