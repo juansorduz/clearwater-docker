@@ -74,7 +74,7 @@ while [ "$stateTest" -eq '1' ]; do
  done
  let NumTest=NumTest+1
  echo Sleeping zZzZzZ
- sleep 30
+ #sleep 30
  done
 #when the script finish, kill tshark process to stop packet capture
  #pkill tshark
