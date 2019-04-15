@@ -9,17 +9,17 @@ kubectl cp $directory/users_test_latency.csv $sipptest:/usr/share/clearwater/sip
 kubectl cp $directory/Agent_Latency.sh $sipptest:/usr/share/clearwater/sip-stress/
 echo REGISTRY
 START=$(date +%s.%N)
-kubectl exec $sipptest /usr/share/clearwater/sip-stress/Agent_Latency.sh
+kubectl exec $sipptest ./usr/share/clearwater/sip-stress/Agent_Latency.sh registry
 END=$(date +%s.%N)
 REGISTRY=$(echo "$END - $START" | bc)
 echo Call
 START=$(date +%s.%N)
-kubectl exec $sipptest /usr/share/clearwater/sip-stress/Agent_Latency.sh
+kubectl exec $sipptest ./usr/share/clearwater/sip-stress/Agent_Latency.sh call
 END=$(date +%s.%N)
 CALL_LENGHT=$(echo "$END - $START" | bc)
 echo bye
 START=$(date +%s.%N)
-kubectl exec $sipptest /usr/share/clearwater/sip-stress/Agent_Latency.sh 
+kubectl exec $sipptest ./usr/share/clearwater/sip-stress/Agent_Latency.sh bye
 END=$(date +%s.%N)
 BYE_LENGHT=$(echo "$END - $START" | bc)
 
