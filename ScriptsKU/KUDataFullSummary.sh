@@ -5,6 +5,8 @@ NumberTest=${3:-2}
 DelayCallAnswer=${4:-60}
 DelayBeforeACK=${5:-15}
 
+DelayCallAnswer=0
+DelayBeforeACK=0
 #Logic to obtain average of each component
 #NumTest=1
 #NumberTest=33
