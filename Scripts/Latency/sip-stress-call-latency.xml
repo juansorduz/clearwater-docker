@@ -49,6 +49,13 @@
   <!-- CHANGES. This controls how long it is until all calls have been attempted. Set
        this to twice the reg_pause value -->
 
+       <action>
+         <ereg regexp="rport=([^;]*);.*received=([^;]*);" search_in="hdr" header="Via:" assign_to="dummy,nat_port,nat_ip_addr" />
+         <add assign_to="reg_repeat" value="1" />
+       </action>
+     </recv>
+     <Reference variables="dummy" />
+
   <pause variable="call_delay" />
 
   <send>
