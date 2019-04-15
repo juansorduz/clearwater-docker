@@ -7,8 +7,9 @@ cp ~/clearwater-docker/Scripts/sip-stress-template.xml ~/clearwater-docker/Scrip
 time2=$(($time * 1000))
 usrs=$(($cps * $time))
 max_pause="$(($time2 - $time_call))"
-echo cps: $cps, duration: $duration, ip: $ip
-echo cps: $cps, usuarios: $usrs, tiempo: $time, max_pause: $max_pause
+sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+
+echo [SCTIPT GENERADOR TRAFICO] cps: $cps, usuarios: $usrs, tiempo: $time, max_pause: $max_pause
 
 
 sed -i '51s@.*@<pause distribution="uniform" min="0" max="num" />@' ~/clearwater-docker/Scripts/sip-stress.xml
@@ -20,13 +21,20 @@ sed -i "45s@code@$usrs@" ~/clearwater-docker/Scripts/sip-stress
 #192.168.190.20
 sed -i "70s@192.168.190.20@$ip@" ~/clearwater-docker/Scripts/sip-stress
 
-echo Running tester_kubernetes script
-touch $testfolder/logsSIPpTest.txt
 
-. ~/clearwater-docker/Scripts/auto_test.sh $cps $time  > $testfolder/logsSIPpTest.txt
+kubectl cp ~/clearwater-docker/Scripts/sip-stress $sipptest:/usr/share/clearwater/bin/sip-stress
+kubectl cp ~/clearwater-docker/Scripts/sip-stress.xml $sipptest:/usr/share/clearwater/sip-stress/sip-stress.xml
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/bin/sip-stress
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/sip-stress.xml
+kubectl exec $sipptest chmod +x /usr/share/clearwater/bin/sip-stress
+kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/sip-stress.xml
+
+
+touch $testfolder/logsSIPpTest.txt
+kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest.txt
 
 kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
 #sleep 30
 
-echo Finalizo prueba subscript
+echo Finalizo script generador de trafico
 echo stateTest=2 > $testfolder/Variables.txt

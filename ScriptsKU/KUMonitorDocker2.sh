@@ -42,9 +42,11 @@ export testfolder
 #Creating control file if does not exist
 [ -e $testfolder/Variables.txt ] && rm $testfolder/Variables.txt
 touch $testfolder/Variables.txt
-echo stateTest=1 > $testfolder/Variables.txt
+#echo stateTest=1\ncps=$cps\nduration=$duration\nNumTest=NumTest  > $testfolder/Variables.txt
+echo -e "stateTest=1"  > $testfolder/Variables.txt
+echo -e "stateMonitor=2\ncps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/DataTest.txt
 
-
+#exit 0
 
 ################################################################################
 #Send control file for local monitor
@@ -70,6 +72,17 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.tx
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
 
+echo Copying file with test information
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker1@$AddressVM1:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker2@$AddressVM2:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker3@$AddressVM3:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker4@$AddressVM4:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker5@$AddressVM5:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker6@$AddressVM6:~/
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/DataTest.txt worker7@$AddressVM7:~/
+
+#exit 0
+
 sleep 2
 
 #exit 0
@@ -85,13 +98,13 @@ sleep 2
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker7@$AddressVM7 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 
 
 ################################################################################
@@ -109,7 +122,7 @@ rm -f $testfolder/VM7LocalVMdata.csv
 ################################################################################
 #Execute test script on background
 ################################################################################
-. ~/clearwater-docker/Scripts/tester_kubernetes.sh $cps $duration $ip & 2> /dev/null
+. ~/clearwater-docker/Scripts/tester_kubernetes2.sh $cps $duration $ip &
 
 ################################################################################
 #Start Loop to control VMs
@@ -120,6 +133,7 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 
      source $testfolder/Variables.txt
+     #echo $stateTest
      if [ "$stateTest" -eq '2' ]
      then
        sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest/Variables.txt
@@ -160,6 +174,7 @@ cat $testfolder/*LocalVMdata.csv > $testfolder/AllVMData.csv
     cat $testfolder/AllVMData.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1
+ #echo $NumTest
  echo Sleeping zZzZzZ
  #sleep 30
  done
