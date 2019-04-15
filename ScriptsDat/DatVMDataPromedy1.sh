@@ -31,7 +31,7 @@ NumProms=0
 #############################################################################
 echo Calculating CPU
 DatosCPUVM1=$(<$testfolder/SummaryVM1LocalVMCPUdata$cps)
-DatosCPUVM2=$(<$testfolder/SummaryVM2LocalVMCPUdata2$cps)
+DatosCPUVM2=$(<$testfolder/SummaryVM2LocalVMCPUdata$cps)
 DatosCPUVM3=$(<$testfolder/SummaryVM3LocalVMCPUdata$cps)
 DatosCPUVM4=$(<$testfolder/SummaryVM4LocalVMCPUdata$cps)
 DatosCPUVM5=$(<$testfolder/SummaryVM5LocalVMCPUdata$cps)
@@ -119,7 +119,7 @@ echo "$cps $AverageCPUVM1 $VarCPUVM1 $AverageCPUVM2 $VarCPUVM2 $AverageCPUVM3 $V
 #############################################################################
 echo Calculating RAM
 DatosRAMVM1=$(<$testfolder/SummaryVM1LocalVMRAMdata$cps)
-DatosRAMVM2=$(<$testfolder/SummaryVM2LocalVMRAMdata2$cps)
+DatosRAMVM2=$(<$testfolder/SummaryVM2LocalVMRAMdata$cps)
 DatosRAMVM3=$(<$testfolder/SummaryVM3LocalVMRAMdata$cps)
 DatosRAMVM4=$(<$testfolder/SummaryVM4LocalVMRAMdata$cps)
 DatosRAMVM5=$(<$testfolder/SummaryVM5LocalVMRAMdata$cps)
