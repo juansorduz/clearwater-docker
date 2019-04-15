@@ -32,6 +32,8 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   #CPU AND RAM
   #############################################################################
+  TOTALCPU=0
+  TOTALRAM=0
   for i in VM1LocalVMCPUdata VM2LocalVMCPUdata VM3LocalVMCPUdata VM4LocalVMCPUdata VM5LocalVMCPUdata VM6LocalVMCPUdata VM7LocalVMCPUdata; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
@@ -41,14 +43,12 @@ while [ $NumTest -lt $NumberTest ]; do
     #head -n +20 "$testfolder/$NumTest/$i.txt" > "$testfolder/$NumTest/$i"
     SumCPU=0
     PromCPU=0
-    TOTALCPU=0
     NumData=0
     while IFS=" " read -r CPU remainder
     do
-      CPU=$(echo ${CPU%.*})
-      #echo $CPU
+      CPU=${cpu::-1}
       #echo  $datetime $cpu $ram
-      SumCPU=`echo $SumCPU + $CPU | bc`
+      SumCPU=`echo $SumCPU + $cpu | bc`
       #echo $SumCPU
       let NumData=NumData+1
     done < "$testfolder/$NumTest/$i"
@@ -75,11 +75,9 @@ while [ $NumTest -lt $NumberTest ]; do
     SumRAM=0
     PromRAM=0
     NumData=0
-    TOTALRAM=0
     while IFS=" " read -r RAM remainder
     do
-      RAM=$(echo ${RAM%.*})
-      #echo $RAM
+      RAM=${RAM::-1}
       #echo  $datetime $RAM $ram
       SumRAM=`echo $SumRAM + $RAM | bc`
       #echo $SumRAM
@@ -97,7 +95,6 @@ while [ $NumTest -lt $NumberTest ]; do
     fi
   done
   echo $TOTALRAM >> $testfolder/SummaryVMTOTALLocalVMRAMdata$cps
-  echo Total CPU=$TOTALCPU Total RAM=$TOTALRAM
 
   let NumTest=NumTest+1
 done
