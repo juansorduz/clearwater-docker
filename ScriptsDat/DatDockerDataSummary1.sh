@@ -32,9 +32,9 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
     #echo $testfolder
-    [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
-    [ -e $testfolder/$NumTest/$i ] && rm $testfolder/$NumTest/$i
-    tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i"
+    [ -e $testfolder/$NumTest/Docker$i.txt ] && rm $testfolder/$NumTest/Docker$i.txt
+    [ -e $testfolder/$NumTest/Docker$i ] && rm $testfolder/$NumTest/Docker$i
+    tail -n +20 "$testfolder/$NumTest/Docker$i.csv" > "$testfolder/$NumTest/Docker$i"
     #tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i.txt"
     #head -n +20 "$testfolder/$NumTest/$i.txt" > "$testfolder/$NumTest/$i"
     SumCPU=0
@@ -51,7 +51,7 @@ while [ $NumTest -lt $NumberTest ]; do
       SumRAM=`echo $SumRAM + $ram | bc`
       #echo $SumCPU
       let NumData=NumData+1
-    done < "$testfolder/$NumTest/$i"
+    done < "$testfolder/$NumTest/Docker$i"
     #echo  $NumData
 
     #romRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)

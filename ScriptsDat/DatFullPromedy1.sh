@@ -40,6 +40,6 @@ NumberTest=${1:-2}
 . ~/clearwater-docker/ScriptsDat/DatDockerDataPromedy1.sh  90 150 $NumberTest
 . ~/clearwater-docker/ScriptsDat/DatVMDataPromedy1.sh  90 150 $NumberTest
 
-. ~/clearwater-docker/ScriptsDat/DatGeneralDataPromedy1.sh  100 150 $NumberTest
-. ~/clearwater-docker/ScriptsDat/DatDockerDataPromedy1.sh  100 150 $NumberTest
-. ~/clearwater-docker/ScriptsDat/DatVMDataPromedy1.sh  100 150 $NumberTest
+#. ~/clearwater-docker/ScriptsDat/DatGeneralDataPromedy1.sh  100 150 $NumberTest
+#. ~/clearwater-docker/ScriptsDat/DatDockerDataPromedy1.sh  100 150 $NumberTest
+#. ~/clearwater-docker/ScriptsDat/DatVMDataPromedy1.sh  100 150 $NumberTest
