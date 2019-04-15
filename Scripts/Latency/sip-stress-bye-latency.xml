@@ -89,7 +89,7 @@
   <recv response="200">
   </recv>
 
-  <pause variable="post_call_delay" />
+
 <!--
 
  <pause variable="call_answer" />
