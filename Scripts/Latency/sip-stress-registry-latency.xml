@@ -97,7 +97,10 @@
   </send>
 
   <recv response="200">
-    
+    <action>
+      <ereg regexp="rport=([^;]*);.*received=([^;]*);" search_in="hdr" header="Via:" assign_to="dummy" />
+      <add assign_to="reg_repeat" value="1" />
+    </action>
   </recv>
   <Reference variables="dummy" />
 
