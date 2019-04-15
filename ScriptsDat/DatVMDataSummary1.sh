@@ -45,9 +45,9 @@ while [ $NumTest -lt $NumberTest ]; do
     NumData=0
     while IFS=" " read -r CPU remainder
     do
-      CPU=echo ${CPU%.*}
+      CPU=$(echo ${CPU%.*})
       #echo  $datetime $cpu $ram
-      SumCPU=`echo $SumCPU + $cpu | bc`
+      SumCPU=`echo $SumCPU + $CPU | bc`
       #echo $SumCPU
       let NumData=NumData+1
     done < "$testfolder/$NumTest/$i"
