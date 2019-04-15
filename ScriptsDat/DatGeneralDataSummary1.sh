@@ -49,6 +49,7 @@ while [ $NumTest -lt $NumberTest ]; do
       PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
       PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
       echo $PromLatency >> $testfolder/PromediosLatency$cps
+      echo Latency = $PromLatency
       #echo NumTest $NumTest PromLatency $PromLatency
   fi
   #############################################################################
@@ -61,12 +62,10 @@ while [ $NumTest -lt $NumberTest ]; do
   CallGenerate=${CallGenerate::-1}
   SuccesfullCall=${SuccesfullCall::-1}
   FailedCall=${FailedCall::-1}
-  echo $CallGenerate
-  echo $SuccesfullCall
-  echo $FailedCall
   SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
   SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
   echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
+  echo Call Generate:$CallGenerate SuccesfullCall:$SuccesfullCall FailedCall $FailedCall SCR:$SuccesfullCallRate
 
   let NumTest=NumTest+1
 done

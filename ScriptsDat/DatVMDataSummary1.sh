@@ -97,6 +97,7 @@ while [ $NumTest -lt $NumberTest ]; do
     fi
   done
   echo $TOTALRAM >> $testfolder/SummaryVMTOTALLocalVMRAMdata$cps
+  echo Total CPU=$TOTALCPU Total RAM=$TOTALRAM
 
   let NumTest=NumTest+1
 done
