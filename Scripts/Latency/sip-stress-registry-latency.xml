@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<!-- This program is free software; you can redistribute it and/or      -->
+<!-- modify it under the terms of the GNU General Public License as     -->
+<!-- published by the Free Software Foundation; either version 2 of the -->
+<!-- License, or (at your option) any later version.                    -->
+<!--                                                                    -->
+<!-- This program is distributed in the hope that it will be useful,    -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of     -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      -->
+<!-- GNU General Public License for more details.                       -->
+<!--                                                                    -->
+<!-- You should have received a copy of the GNU General Public License  -->
+<!-- along with this program; if not, write to the                      -->
+<!-- Free Software Foundation, Inc.,                                    -->
+<!-- 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA             -->
+<!--                                                                    -->
+
+<scenario name="Call Load Test2">
+
+  <User variables="my_dn,peer_dn" />
+  <nop hide="true">
+    <action>
+      <!-- Get my and peer's DN -->
+      <assignstr assign_to="my_dn" value="[field0]" />
+      <!-- field1 is my_auth, but we can't store it in a variable -->
+      <assignstr assign_to="peer_dn" value="[field2]" />
+      <!-- field3 is peer_auth, but we can't store it in a variable -->
+      <assign assign_to="reg_repeat" value="0"/>
+       <!-- <assign assign_to="call_repeat" value="0"/>
+       Change these values to tweak the traffic profile. There have to be
+           more registers than calls in the profile:
+             - reg_pause   : How long you want to wait between registers - for
+                             registers every 5 minutes set this to 300000
+             - call_length : How long a call should be
+             - lay  : What time period to spread out when calls start.
+                             This is the reg_pause time minus the call_length
+                             and call_answer time.
+           You'll also potentially want to change some other values - these
+           are commented inline by CHANGES. -->
+      <!--<assign assign_to="reg_pause" value="600"/>
+      <assign assign_to="call_delay" value="2700"/>
+      <assign assign_to="call_length" value="240"/>
+      <assign assign_to="call_answer" value="60"/> -->
+    </action>
+  </nop>
+
+  <!-- CHANGES. This controls how long it is until all calls have been attempted. Set
+       this to twice the reg_pause value -->
+  <pause distribution="uniform" min="0" max="6000" />
+
+  <send>
+    <![CDATA[
+
+      REGISTER sip:[service];transport=[transport] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]-[$my_dn]-[$reg_repeat];rport
+      Max-Forwards: 70
+      Contact: <sip:[$my_dn]@[local_ip]:[local_port];transport=[transport]>
+      To: <sip:[$my_dn]@[service];transport=[transport]>
+      From: <sip:[$my_dn]@[service]>;transport=[transport];tag=[pid]SIPpTag00[call_number]
+      Call-ID: [$my_dn]///[call_id]
+      CSeq: [cseq] REGISTER
+      User-Agent: Accession 4.0.0.0
+      Expires: 600
+      Allow: INVITE, ACK, BYE, CANCEL, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv response="401" auth="true">
+    <action>
+      <add assign_to="reg_repeat" value="1" />
+    </action>
+  </recv>
+
+  <send>
+    <![CDATA[
+
+      REGISTER sip:[service];transport=[transport] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]-[$my_dn]-[$reg_repeat];rport
+      Max-Forwards: 70
+      Contact: <sip:[$my_dn]@[local_ip]:[local_port];transport=[transport]>
+      From: <sip:[$my_dn]@[service]>;tag=[pid]SIPpTag00[call_number]
+      To: <sip:[$my_dn]@[service];transport=[transport]>
+      From: <sip:[$my_dn]@[service]>;transport=[transport];tag=[pid]SIPpTag00[call_number]
+      Call-ID: [$my_dn]///[call_id]
+      CSeq: [cseq] REGISTER
+      User-Agent: Accession 4.0.0.0
+      Expires: 600
+      Allow: INVITE, ACK, BYE, CANCEL, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+      [field1]
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv response="200">
+    <action>
+      <ereg regexp="rport=([^;]*);.*received=([^;]*);" search_in="hdr" header="Via:" assign_to="dummy,nat_port,nat_ip_addr" />
+      <add assign_to="reg_repeat" value="1" />
+    </action>
+  </recv>
+  <Reference variables="dummy" />
+
+  <send>
+    <![CDATA[
+
+      REGISTER sip:[service];transport=[transport] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]-[$peer_dn]-[$reg_repeat];rport
+      Max-Forwards: 70
+      Contact: <sip:[$peer_dn]@[local_ip]:[local_port];transport=[transport]>
+      To: <sip:[$peer_dn]@[service];transport=[transport]>
+      From: <sip:[$peer_dn]@[service]>;transport=[transport];tag=[pid]SIPpTag00[call_number]
+      Call-ID: [$peer_dn]///[call_id]
+      CSeq: [cseq] REGISTER
+      User-Agent: Accession 4.0.0.0
+      Expires: 600
+      Allow: INVITE, ACK, BYE, CANCEL, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv response="401" auth="true">
+    <action>
+      <add assign_to="reg_repeat" value="1" />
+    </action>
+  </recv>
+
+  <send>
+    <![CDATA[
+
+      REGISTER sip:[service];transport=[transport] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]-[$peer_dn]-[$reg_repeat];rport
+      Max-Forwards: 70
+      Contact: <sip:[$peer_dn]@[local_ip]:[local_port];transport=[transport]>
+      From: <sip:[$peer_dn]@[service]>;tag=[pid]SIPpTag00[call_number]
+      To: <sip:[$peer_dn]@[service];transport=[transport]>
+      From: <sip:[$peer_dn]@[service]>;transport=[transport];tag=[pid]SIPpTag00[call_number]
+      Call-ID: [$peer_dn]///[call_id]
+      CSeq: [cseq] REGISTER
+      User-Agent: Accession 4.0.0.0
+      Expires: 600
+      Allow: INVITE, ACK, BYE, CANCEL, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+      [field3]
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv response="200">
+
+
+
+
+  <!-- definition of the response time repartition table (unit is ms)   -->
+  <ResponseTimeRepartition value="500, 1000, 2000, 3000, 4000, 7000, 10000"/>
+
+  <!-- definition of the call length repartition table (unit is ms)     -->
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>
