@@ -46,7 +46,7 @@ while [ $NumTest -lt $NumberTest ]; do
     while IFS=" " read -r CPU remainder
     do
       CPU=$(echo ${CPU%.*})
-      echo $CPU
+      #echo $CPU
       #echo  $datetime $cpu $ram
       SumCPU=`echo $SumCPU + $CPU | bc`
       #echo $SumCPU
@@ -79,7 +79,7 @@ while [ $NumTest -lt $NumberTest ]; do
     while IFS=" " read -r RAM remainder
     do
       RAM=$(echo ${RAM%.*})
-      echo $RAM
+      #echo $RAM
       #echo  $datetime $RAM $ram
       SumRAM=`echo $SumRAM + $RAM | bc`
       #echo $SumRAM
