@@ -40,9 +40,9 @@
            You'll also potentially want to change some other values - these
            are commented inline by CHANGES. -->
       <!--<assign assign_to="reg_pause" value="600"/> -->
-      <assign assign_to="call_delay" value="2700"/>
-      <assign assign_to="call_length" value="240"/>
-      <assign assign_to="call_answer" value="60"/>
+      <assign assign_to="call_delay" value="27"/>
+      <assign assign_to="call_length" value="24"/>
+      <assign assign_to="call_answer" value="6"/>
     </action>
   </nop>
 
@@ -161,7 +161,7 @@
     <action>
       <add assign_to="call_repeat" value="1" />
 
-      <sample assign_to="pre_call_delay" distribution="uniform" min="0" max="2700" />
+      <sample assign_to="pre_call_delay" distribution="uniform" min="0" max="27" />
       <assign assign_to="post_call_delay" variable="call_delay" />
       <subtract assign_to="post_call_delay" variable="pre_call_delay" />
     </action>
