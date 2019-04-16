@@ -11,7 +11,7 @@ kubectl cp $directory/sip-stress-complete-latency.xml $sipptest:/usr/share/clear
 kubectl cp $directory/users_test_latency.csv $sipptest:/usr/share/clearwater/sip-stress/
 kubectl cp $directory/sip-stress-latency $sipptest:/usr/share/clearwater/sip-stress/
 
-for i in `seq 20`; do
+for i in `seq 60`; do
 echo REGISTRY
 START=$(date +%s.%N)
 kubectl exec -ti $sipptest ./usr/share/clearwater/sip-stress/sip-stress-latency
