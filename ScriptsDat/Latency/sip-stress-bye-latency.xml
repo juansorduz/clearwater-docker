@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<!-- This program is free software; you can redistribute it and/or      -->
+<!-- modify it under the terms of the GNU General Public License as     -->
+<!-- published by the Free Software Foundation; either version 2 of the -->
+<!-- License, or (at your option) any later version.                    -->
+<!--                                                                    -->
+<!-- This program is distributed in the hope that it will be useful,    -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of     -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      -->
+<!-- GNU General Public License for more details.                       -->
+<!--                                                                    -->
+<!-- You should have received a copy of the GNU General Public License  -->
+<!-- along with this program; if not, write to the                      -->
+<!-- Free Software Foundation, Inc.,                                    -->
+<!-- 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA             -->
+<!--                                                                    -->
+
+<scenario name="Call Load Test2">
+
+  <User variables="my_dn,peer_dn,call_repeat" />
+  <nop hide="true">
+    <action>
+      <!-- Get my and peer's DN -->
+      <assignstr assign_to="my_dn" value="[field0]" />
+      <!-- field1 is my_auth, but we can't store it in a variable -->
+      <assignstr assign_to="peer_dn" value="[field2]" />
+      <!-- field3 is peer_auth, but we can't store it in a variable -->
+      <!-- <assign assign_to="reg_repeat" value="0"/>
+      <assign assign_to="call_repeat" value="0"/>
+      Change these values to tweak the traffic profile. There have to be
+           more registers than calls in the profile:
+             - reg_pause   : How long you want to wait between registers - for
+                             registers every 5 minutes set this to 300000
+             - call_length : How long a call should be
+             - call_delay  : What time period to spread out when calls start.
+                             This is the reg_pause time minus the call_length
+                             and call_answer time.
+           You'll also potentially want to change some other values - these
+           are commented inline by CHANGES. -->
+      <!--<assign assign_to="reg_pause" value="600"/>
+      <assign assign_to="call_delay" value="2700"/>
+      <assign assign_to="call_length" value="240"/>
+      <assign assign_to="call_answer" value="60"/> -->
+    </action>
+  </nop>
+
+  <!-- CHANGES. This controls how long it is until all calls have been attempted. Set
+       this to twice the reg_pause value -->
+
+  <send>
+    <![CDATA[
+
+      BYE sip:[$peer_dn]@[$nat_ip_addr]:[$nat_port];transport=[transport];ob SIP/2.0
+      Via: SIP/2.0/[transport] [$nat_ip_addr]:[$nat_port];rport;branch=z9hG4bK-[$my_dn]-[call_number]-[$call_repeat]-3
+      [routes]
+      From: <sip:[$my_dn]@[service]>;tag=[pid]SIPpTag00[call_number]1234
+      To: <sip:[$peer_dn]@[service]>;tag=[pid]SIPpTag00[call_number]4321
+      Call-ID: [$my_dn]-[$call_repeat]///[call_id]
+      CSeq: [cseq] BYE
+      Contact: <sip:[$my_dn]@[$nat_ip_addr][$nat_port];transport=[transport];ob>;+sip.ice
+      Max-Forwards: 70
+      Subject: Performance Test
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv request="BYE">
+  </recv>
+
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_Record-Route:]
+      From: sip:[$peer_dn]@[service];tag=[pid]SIPpTag00[call_number]1234
+      To: sip:[$my_dn]@[service];tag=[pid]SIPpTag00[call_number]4321
+      Call-ID: [$my_dn]-[$call_repeat]///[call_id]
+      [last_CSeq:]
+      Contact: <sip:[$peer_dn]@[$nat_ip_addr][$nat_port];transport=[transport];ob>;+sip.ice
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv response="200">
+  </recv>
+
+
+<!--
+
+ <pause variable="call_answer" />
+ <pause variable="call_length" />
+ <pause variable="post_call_delay" />
+-->
+
+  <!-- definition of the response time repartition table (unit is ms)   -->
+  <ResponseTimeRepartition value="500, 1000, 2000, 3000, 4000, 7000, 10000"/>
+
+  <!-- definition of the call length repartition table (unit is ms)     -->
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>

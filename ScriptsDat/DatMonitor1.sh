@@ -126,7 +126,12 @@ rm -f $testfolder/VM7LocalVMdata.csv
 ################################################################################
 #Execute test script on background
 ################################################################################
-. ~/clearwater-docker/ScriptsDat/LocalFiles/Dattester_kubernetes.sh $cps $duration $ip &
+. ~/clearwater-docker/ScriptsDat/TrafficGenerator/tester_kubernetes.sh $cps $duration $ip &
+
+################################################################################
+#Execute latency script on background
+################################################################################
+. ~/clearwater-docker/ScriptsDat/Latency/Tester_Latency.sh $ip &
 
 ################################################################################
 #Start Loop to control VMs
@@ -196,7 +201,7 @@ then
   sshpass -p $password scp -r -o StrictHostKeyChecking=no worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes4/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM7LocalVMRAMdata.csv
   cat $testfolder/*LocalVMRAMdata.csv > $testfolder/AllVMRAMData.csv
   sleep 2
-  echo Classifying VM data  
+  echo Classifying VM data
 fi
 
 #Execute docker and VM monitor script
