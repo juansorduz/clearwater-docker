@@ -11,7 +11,7 @@ sed -i "70s@192.168.190.20@$ip@" $directory/sip-stress-latency
 echo Sending csv file for single test $directory/users_test_latency.csv.1
 kubectl cp $directory/users_test_latency.csv.1 $sipptest:/usr/share/clearwater/sip-stress/
 echo Sending single latency script
-kubectl cp $directory/sip-stress-latency $sipptest:/usr/share/clearwater/bin
+kubectl cp $directory/sip-stress-latency $sipptest:/usr/share/clearwater/bin/
 
 kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/users_test_latency.csv.1
 kubectl exec $sipptest chmod 777 /usr/share/clearwater/bin/sip-stress-latency
