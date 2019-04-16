@@ -1,5 +1,5 @@
 #!/bin/bash
-ip=${3:-127.0.0.1}
+ip=${1:-127.0.0.1}
 directory=~/clearwater-docker/Scripts/Latency
 sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 #kubectl cp $directory/sip-stress-registry-latency.xml $sipptest:/usr/share/clearwater/sip-stress/
