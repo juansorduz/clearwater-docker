@@ -131,7 +131,7 @@ rm -f $testfolder/VM7LocalVMdata.csv
 ################################################################################
 #Execute latency script on background
 ################################################################################
-. ~/clearwater-docker/ScriptsDat/Latency/Tester_Latency.sh $ip &
+#. ~/clearwater-docker/ScriptsDat/Latency/Tester_Latency.sh $ip &
 
 ################################################################################
 #Start Loop to control VMs
