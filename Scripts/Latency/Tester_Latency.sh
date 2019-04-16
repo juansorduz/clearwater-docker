@@ -16,4 +16,4 @@ START=$(date +%s.%N)
 kubectl exec -ti $sipptest ./usr/share/clearwater/sip-stress/sip-stress-latency
 END=$(date +%s.%N)
 LATENCY=$(echo "$END - $START" | bc)
-echo latencia: $Latency
+echo latencia: $LATENCY 
