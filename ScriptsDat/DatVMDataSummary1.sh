@@ -60,7 +60,11 @@ while [ $NumTest -lt $NumberTest ]; do
     else
         PromCPU=$(echo "scale=3; $SumCPU/$NumData" | bc -l)
         echo $PromCPU >> $testfolder/Summary$i$cps
-        TOTALCPU=`echo $TOTALCPU + $PromCPU | bc`
+        if [ $i != 'VM7LocalVMCPUdata' ];
+        then
+            TOTALCPU=`echo $TOTALCPU + $PromCPU | bc`
+        fi
+
     fi
   done
   echo $TOTALCPU >> $testfolder/SummaryVMTOTALLocalVMCPUdata$cps
@@ -91,7 +95,10 @@ while [ $NumTest -lt $NumberTest ]; do
     else
         PromRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
         echo $PromRAM >> $testfolder/Summary$i$cps
-        TOTALRAM=`echo $TOTALRAM + $PromRAM | bc`
+        if [ $i != 'VM7LocalVMRAMdata' ];
+        then
+            TOTALRAM=`echo $TOTALRAM + $PromRAM | bc`
+        fi
     fi
   done
   echo $TOTALRAM >> $testfolder/SummaryVMTOTALLocalVMRAMdata$cps

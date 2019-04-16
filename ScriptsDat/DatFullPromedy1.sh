@@ -5,7 +5,7 @@ NumberTest=${1:-2}
 #rm -r ~/ClearwaterTestResults
 
 . ~/clearwater-docker/ScriptsDat/DatGeneralDataPromedy1.sh  10 150 $NumberTest
-# ~/clearwater-docker/ScriptsDat/DatDockerDataPromedy1.sh  10 150 $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatDockerDataPromedy1.sh  10 150 $NumberTest
 . ~/clearwater-docker/ScriptsDat/DatVMDataPromedy1.sh  10 150 $NumberTest
 
 . ~/clearwater-docker/ScriptsDat/DatGeneralDataPromedy1.sh  20 150 $NumberTest

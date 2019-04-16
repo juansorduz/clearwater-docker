@@ -242,7 +242,7 @@ fi
 #exit 0
  let NumTest=NumTest+1
  #echo $NumTest
- echo Sleeping zZzZzZ
+ echo cooling system for new test
  sleep 30
  done
 #when the script finish, kill tshark process to stop packet capture
