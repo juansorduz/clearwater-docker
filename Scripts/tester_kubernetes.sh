@@ -3,7 +3,7 @@ cps=${1:-10}
 time=${2:-10}
 ip=${3:-127.0.0.1}
 time_call=${4:-3000}
-cp ~/clearwater-docker/Scripts/sip-stress-template2.xml ~/clearwater-docker/Scripts/sip-stress.xml
+cp ~/clearwater-docker/Scripts/sip-stress-template.xml ~/clearwater-docker/Scripts/sip-stress.xml
 time2=$(($time * 1000))
 usrs=$(($cps * $time))
 max_pause="$(($time2 - $time_call))"
