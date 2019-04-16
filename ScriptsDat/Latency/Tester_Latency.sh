@@ -8,7 +8,9 @@ sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 cp $directory/sip-stress-latency-template $directory/sip-stress-latency
 sed -i "70s@192.168.190.20@$ip@" $directory/sip-stress-latency
 #kubectl cp $directory/sip-stress-complete-latency.xml $sipptest:/usr/share/clearwater/sip-stress/
+echo Sending csv file for single test
 kubectl cp $directory/users_test_latency.csv.1 $sipptest:/usr/share/clearwater/sip-stress/
+echo Sending single latency script
 kubectl cp $directory/sip-stress-latency $sipptest:/usr/share/clearwater/sip-stress/
 
 [ -e $testfolder/SingleLatencyTest.csv ] && rm $testfolder/SingleLatencyTest.csv
@@ -21,6 +23,7 @@ while [ "$stateTest" -eq '1' ]; do
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
   echo $LATENCY >> $testfolder/SingleLatencyTest.csv
+  source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
   then
     echo Finalizo prueba Latencia
