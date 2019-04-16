@@ -13,6 +13,11 @@ kubectl cp $directory/users_test_latency.csv.1 $sipptest:/usr/share/clearwater/s
 echo Sending single latency script
 kubectl cp $directory/sip-stress-latency $sipptest:/usr/share/clearwater/sip-stress/
 
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/users_test_latency.csv.1
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/sip-stress-latency
+kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/users_test_latency.csv.1
+kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/sip-stress-latency
+
 [ -e $testfolder/SingleLatencyTest.csv ] && rm $testfolder/SingleLatencyTest.csv
 touch $testfolder/SingleLatencyTest.csv
 source $testfolder/Variables.txt
