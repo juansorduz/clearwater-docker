@@ -29,7 +29,7 @@ while [ "$stateTest" -eq '1' ]; do
   #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency > /dev/null
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
-  echo $ERRORVARIABLE
+  #echo $ERRORVARIABLE
   echo $LATENCY >> $testfolder/SingleLatencyTest.csv
   source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
