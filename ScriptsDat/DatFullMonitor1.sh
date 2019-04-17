@@ -16,31 +16,31 @@ sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "rm 
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "rm -r ~/ClearwaterTestResults/Kubernetes4"
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker7@$AddressVM7 "rm -r ~/ClearwaterTestResults/Kubernetes4"
 
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  10 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  10 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  20 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  20 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  30 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  30 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  40 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  40 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  50 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  50 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  60 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  60 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  70 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  70 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  80 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  80 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  90 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  90 120 $ip $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  100 150 $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  100 120 $ip $password $option $NumberTest
