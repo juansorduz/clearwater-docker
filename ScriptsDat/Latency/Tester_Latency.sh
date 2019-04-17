@@ -34,10 +34,10 @@ while [ "$stateTest" -eq '1' ]; do
   #echo $ERROR_LENGTH
   if [ "$ERROR_LENGTH" -lt '150' ]
   then
-    echo Valor positivo
+    #echo Valor positivo
     echo $LATENCY >> $testfolder/SingleLatencyTest.csv
   else
-    echo Valor negativoo
+    #echo Valor negativoo
   fi
   source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
