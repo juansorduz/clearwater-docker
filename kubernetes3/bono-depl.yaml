@@ -63,5 +63,5 @@ spec:
       imagePullSecrets:
       - name: ~
       restartPolicy: Always
-            nodeSelector:
+      nodeSelector:
         Tnode: notsipp
