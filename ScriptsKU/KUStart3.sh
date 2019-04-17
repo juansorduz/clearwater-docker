@@ -1,13 +1,13 @@
 #!/bin/bash
 usuarios=${1:-1000}
-kubectl label nodes worker1 Tnode=notsipp
-kubectl label nodes worker2 Tnode=notsipp
-kubectl label nodes worker3 Tnode=notsipp
-kubectl label nodes worker4 Tnode=notsipp
-kubectl label nodes worker5 Tnode=notsipp
-kubectl label nodes worker6 Tnode=notsipp
-kubectl label nodes worker7 Tnode=sipp
-
+#kubectl label nodes worker1 Tnode=notsipp
+#kubectl label nodes worker2 Tnode=notsipp
+#kubectl label nodes worker3 Tnode=notsipp
+#kubectl label nodes worker4 Tnode=notsipp
+#kubectl label nodes worker5 Tnode=notsipp
+#kubectl label nodes worker6 Tnode=notsipp
+kubectl label nodes kubeadm3 Tnode=sipp
+kubectl label nodes kubeadm2 Tnode=sipp
 cd
 cd metrics-server/
 kubectl apply -f deploy/1.8+/
