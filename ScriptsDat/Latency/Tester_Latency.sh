@@ -31,8 +31,14 @@ while [ "$stateTest" -eq '1' ]; do
   LATENCY=$(echo "$END - $START" | bc)
   #echo $ERRORVARIABLE
   ERROR_LENGTH=${#ERRORVARIABLE}
-  echo $ERROR_LENGTH
-  echo $LATENCY >> $testfolder/SingleLatencyTest.csv
+  #echo $ERROR_LENGTH
+  if [ "$ERROR_LENGTH" -lt '150' ]
+  then
+    echo Valor positivo
+    echo $LATENCY >> $testfolder/SingleLatencyTest.csv
+  else
+    echo Valor negativo
+  fi
   source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
   then
