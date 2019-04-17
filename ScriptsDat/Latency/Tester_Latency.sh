@@ -37,7 +37,7 @@ while [ "$stateTest" -eq '1' ]; do
     echo Valor positivo
     echo $LATENCY >> $testfolder/SingleLatencyTest.csv
   else
-    echo Valor negativo
+    echo Valor negativoo
   fi
   source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
