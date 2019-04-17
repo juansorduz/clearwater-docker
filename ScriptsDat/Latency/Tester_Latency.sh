@@ -30,8 +30,8 @@ while [ "$stateTest" -eq '1' ]; do
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
   #echo $ERRORVARIABLE
-  wc -c $ERRORVARIABLE
-
+  ERROR_LENGTH=${#ERRORVARIABLE}
+  echo $ERROR_LENGTH
   echo $LATENCY >> $testfolder/SingleLatencyTest.csv
   source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
