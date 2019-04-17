@@ -25,7 +25,8 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
-  kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency > /dev/null
+  MYVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency 2>&1 > /dev/null)"
+  #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency > /dev/null
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
   echo $LATENCY >> $testfolder/SingleLatencyTest.csv
