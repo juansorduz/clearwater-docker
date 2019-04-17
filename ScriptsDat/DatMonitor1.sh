@@ -126,7 +126,12 @@ rm -f $testfolder/VM7LocalVMdata.csv
 ################################################################################
 #Execute test script on background
 ################################################################################
-. ~/clearwater-docker/ScriptsDat/LocalFiles/Dattester_kubernetes.sh $cps $duration $ip &
+. ~/clearwater-docker/ScriptsDat/TrafficGenerator/tester_kubernetes.sh $cps $duration $ip &
+
+################################################################################
+#Execute latency script on background
+################################################################################
+. ~/clearwater-docker/ScriptsDat/Latency/Tester_Latency.sh $ip &
 
 ################################################################################
 #Start Loop to control VMs
@@ -196,7 +201,7 @@ then
   sshpass -p $password scp -r -o StrictHostKeyChecking=no worker7@$AddressVM7:~/ClearwaterTestResults/Kubernetes4/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM7LocalVMRAMdata.csv
   cat $testfolder/*LocalVMRAMdata.csv > $testfolder/AllVMRAMData.csv
   sleep 2
-  echo Classifying VM data  
+  echo Classifying VM data
 fi
 
 #Execute docker and VM monitor script
@@ -229,7 +234,7 @@ then
   cat $testfolder/*LocalVMRAMdata.csv > $testfolder/AllVMRAMData.csv
   sleep 2
   echo Classifying dockers and VM data
-  for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
+  for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono ellis_ellis homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
      cat $testfolder/AllDockerData.csv | grep $i > $testfolder/Docker$i.csv;
   done
 fi
@@ -237,8 +242,8 @@ fi
 #exit 0
  let NumTest=NumTest+1
  #echo $NumTest
- echo Sleeping zZzZzZ
- sleep 30
+ echo cooling system for new test
+ #sleep 30
  done
 #when the script finish, kill tshark process to stop packet capture
  #pkill tshark

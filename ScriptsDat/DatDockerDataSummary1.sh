@@ -13,7 +13,7 @@ testMainfolder=~/ClearwaterTestResults/Kubernetes4
 testfolder=~/ClearwaterTestResults/Kubernetes4/$cps$duration
 
 #Deleting old files
-for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
+for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono ellis_ellis homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
    [ -e $testfolder/PromediosCPUDocker$i$cps ] && rm $testfolder/PromediosCPUDocker$i$cps
    [ -e $testfolder/PromediosRAMDocker$i$cps ] && rm $testfolder/PromediosRAMDocker$i$cps
    #[ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
@@ -30,7 +30,7 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   #CPU AND RAM
   #############################################################################
-  for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
+  for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono ellis_ellis homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/Docker$i.txt ] && rm $testfolder/$NumTest/Docker$i.txt
     [ -e $testfolder/$NumTest/Docker$i ] && rm $testfolder/$NumTest/Docker$i

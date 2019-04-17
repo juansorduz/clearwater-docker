@@ -14,6 +14,7 @@ testfolder=~/ClearwaterTestResults/Kubernetes4/$cps$duration
 
 #Deleting old files
 [ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
+[ -e $testfolder/PromediosSingleLatency$cps ] && rm $testfolder/PromediosSingleLatency$cps
 [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
 
 #exit 0
@@ -46,12 +47,35 @@ while [ $NumTest -lt $NumberTest ]; do
     echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales de latencia.
   else
       PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
-      PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
-      PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
+      #PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
+      #PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
       echo $PromLatency >> $testfolder/PromediosLatency$cps
       echo Latency = $PromLatency
       #echo NumTest $NumTest PromLatency $PromLatency
   fi
+  # #############################################################################
+  # #SINGLE LATENCY
+  # #############################################################################
+  # SumSingleLatency=0
+  # PromSingleLatency=0
+  # NumData=0
+  # while IFS=" " read -r SingleLatency remainder
+  # do
+  #   #CPU=${echo $CPU | bc}
+  #   #echo  $datetime $cpu $ram
+  #   SumSingleLatency=`echo $SumSingleLatency + $SingleLatency | bc`
+  #   #echo $SumCPU
+  #   let NumData=NumData+1
+  # done < "$testfolder/$NumTest/SingleLatencyTest.csv"
+  # #echo  $NumData
+  #
+  # if [ $NumData = '0' ];
+  # then
+  #   echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales.
+  # else
+  #     PromSingleLatency=$(echo "scale=3; $SumSingleLatency/$NumData" | bc -l)
+  #     echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
+  # fi
   #############################################################################
   #SUCCESFULL CALL RATE
   #############################################################################
