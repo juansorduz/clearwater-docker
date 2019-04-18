@@ -16,9 +16,6 @@ spec:
       containers:
       - image: "juansorduz/clearwater-mscsprout:latest"
         imagePullPolicy: Always
-        resources:
-          requests:
-            cpu: "0.1"
         name: mscsprout
         ports:
         - containerPort: 22
@@ -42,9 +39,6 @@ spec:
         - name: sproutlogs
           mountPath: /var/log/sprout
       - image: busybox
-        resources:
-          requests:
-            cpu: "0.1"
         name: tailer
         command: [ "tail", "-F", "/var/log/sprout/sprout_current.txt" ]
         volumeMounts:
@@ -57,4 +51,4 @@ spec:
       - name: ~
       restartPolicy: Always
       nodeSelector:
-        Tnode: notsipp      
+        Tnode: notsipp
