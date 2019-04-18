@@ -56,26 +56,27 @@ while [ $NumTest -lt $NumberTest ]; do
   # #############################################################################
   # #SINGLE LATENCY
   # #############################################################################
-  # SumSingleLatency=0
-  # PromSingleLatency=0
-  # NumData=0
-  # while IFS=" " read -r SingleLatency remainder
-  # do
-  #   #CPU=${echo $CPU | bc}
-  #   #echo  $datetime $cpu $ram
-  #   SumSingleLatency=`echo $SumSingleLatency + $SingleLatency | bc`
-  #   #echo $SumCPU
-  #   let NumData=NumData+1
-  # done < "$testfolder/$NumTest/SingleLatencyTest.csv"
-  # #echo  $NumData
-  #
-  # if [ $NumData = '0' ];
-  # then
-  #   echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales.
-  # else
-  #     PromSingleLatency=$(echo "scale=3; $SumSingleLatency/$NumData" | bc -l)
-  #     echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
-  # fi
+  SumSingleLatency=0
+  PromSingleLatency=0
+  NumData=0
+  while IFS=" " read -r SingleLatency remainder
+  do
+    #CPU=${echo $CPU | bc}
+    #echo  $datetime $cpu $ram
+    SumSingleLatency=`echo $SumSingleLatency + $SingleLatency | bc`
+    #echo $SumCPU
+    let NumData=NumData+1
+  done < "$testfolder/$NumTest/SingleLatencyTest.csv"
+  #echo  $NumData
+
+  if [ $NumData = '0' ];
+  then
+    echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales.
+  else
+      PromSingleLatency=$(echo "scale=3; $SumSingleLatency/$NumData" | bc -l)
+      echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
+      echo SingleLatency $PromSingleLatency
+  fi
   #############################################################################
   #SUCCESFULL CALL RATE
   #############################################################################

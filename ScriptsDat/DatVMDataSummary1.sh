@@ -12,6 +12,7 @@ Duration=1
 testMainfolder=~/ClearwaterTestResults/Kubernetes4
 testfolder=~/ClearwaterTestResults/Kubernetes4/$cps$duration
 
+echo Docker cps $cps duration $duration
 #Deleting old files
 for i in VM1LocalVMCPUdata VM2LocalVMCPUdata VM3LocalVMCPUdata VM4LocalVMCPUdata VM5LocalVMCPUdata VM6LocalVMCPUdata VM7LocalVMCPUdata; do
    [ -e $testfolder/Summary$i$cps ] && rm $testfolder/Summary$i$cps

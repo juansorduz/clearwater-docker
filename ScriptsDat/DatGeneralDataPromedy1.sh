@@ -30,7 +30,7 @@ NumProms=0
 #############################################################################
 #LATENCY
 #############################################################################
-echo Calculatin Latency
+echo Calculating Latency
 DatosLatency=$(<$testfolder/PromediosLatency$cps)
 AverageLatency=0
 VarLatency=0
@@ -41,6 +41,19 @@ for i in ${DatosLatency[@]}; do DiferenceVar=$(echo "$i - $AverageLatency" | bc 
 VarLatency=$(echo "scale=3;$VarLatency/$NumProms" | bc -l)
 echo "$cps $AverageLatency $VarLatency" >> $testMainfolder/SUMMARYLATENCY
 
+#############################################################################
+#SINGLELATENCY
+#############################################################################
+echo Calculating SingleLatency
+DatosSingleLatency=$(<$testfolder/PromediosSingleLatency$cps)
+AverageSingleLatency=0
+VarSingleLatency=0
+NumProms=$(wc -l < $testfolder/PromediosSingleLatency$cps)
+for i in ${DatosSingleLatency[@]}; do  AverageSingleLatency=$(echo "$AverageSingleLatency + $i" | bc -l) ; done
+AverageSingleLatency=$(echo "scale=3;$AverageSingleLatency/$NumProms" | bc -l)
+for i in ${DatosSingleLatency[@]}; do DiferenceVar=$(echo "$i - $AverageSingleLatency" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarSingleLatency=$(echo "$VarSingleLatency + $DiferenceVar" | bc -l) ; done
+VarSingleLatency=$(echo "scale=3;$VarSingleLatency/$NumProms" | bc -l)
+echo "$cps $AverageSingleLatency $VarSingleLatency" >> $testMainfolder/SUMMARYSINGLELATENCY
 
 #############################################################################
 #SUCCESFULL CALL RATE
