@@ -40,7 +40,7 @@ while [ "$stateTest" -eq '1' ]; do
   # #else
   #   #echo Valor negativoo
   # fi
-  #source $testfolder/Variables.txt
+  source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
   then
     echo Finalizo prueba Latencia
