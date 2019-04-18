@@ -11,8 +11,9 @@ password=${1:-0}
 # kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 # sleep 5
 # cd
+cd clearwater-docker
 kubectl create configmap env-vars --from-literal=ZONE=default.svc.cluster.local
-kubectl apply -f clearwater-docker/kubernetes
+kubectl apply -f kubernetes
 sleep 300
 cassandrapod=$(kubectl get pods | grep cassandra | cut -d ' ' -f1)
 kubectl exec $cassandrapod /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh 11000
