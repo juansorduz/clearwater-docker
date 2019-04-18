@@ -4,6 +4,7 @@ Duration=${1:-120}
 NumberTest=${2:-2}
 
 #rm -r ~/ClearwaterTestResults
+echo Duration $Duration NumberTest $NumberTest
 
 . ~/clearwater-docker/ScriptsDat/DatGeneralDataSummary1.sh  10 $Duration $NumberTest
 . ~/clearwater-docker/ScriptsDat/DatDockerDataSummary1.sh  10 $Duration $NumberTest
