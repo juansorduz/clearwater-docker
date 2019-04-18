@@ -8,10 +8,10 @@ kubectl label nodes worker5 Tnode=notsipp
 kubectl label nodes worker6 Tnode=notsipp
 kubectl label nodes worker7 Tnode=sipp
 
-cd
-cd metrics-server/
-kubectl apply -f deploy/1.8+/
-cd
+# cd
+# cd metrics-server/
+# kubectl apply -f deploy/1.8+/
+# cd
 cd clearwater-docker
 kubectl create configmap env-vars --from-literal=ZONE=default.svc.cluster.local
 kubectl apply -f kubernetes3
