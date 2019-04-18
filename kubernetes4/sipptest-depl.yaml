@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sipptest
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: sipptest
+    spec:
+      containers:
+      - image: "gabrielorozco20/clearwater-sipptest2:latest"
+        imagePullPolicy: Always
+        name: sipptest
+        ports:
+        - containerPort: 22
+        - containerPort: 5082
+        envFrom:
+        - configMapRef:
+              name: env-vars
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+      imagePullSecrets:
+      - name: ~
+      restartPolicy: Always

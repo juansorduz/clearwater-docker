@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: urcassandra
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: urcassandra
+    spec:
+      containers:
+      - image: "gabrielorozco20/clearwater-urcassandra:latest"
+        imagePullPolicy: Always
+        name: urcassandra
+        ports:
+        - containerPort: 22
+        - containerPort: 7001
+        - containerPort: 9042
+        - containerPort: 9160
+        envFrom:
+        - configMapRef:
+              name: env-vars
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        livenessProbe:
+          exec:
+            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "7000 9042 9160"]
+          # Cassandra can take a very, very long time to start up
+          initialDelaySeconds: 600
+        readinessProbe:
+          exec:
+            command: ["/bin/bash", "/usr/share/kubernetes/liveness.sh", "7000 9042 9160"]
+      imagePullSecrets:
+      - name: ~
+      restartPolicy: Always
