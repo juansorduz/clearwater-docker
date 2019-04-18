@@ -6,7 +6,7 @@
 # - node_idx - index of this node (--index parameter to chef)
 # - sipp_count - number of sipp instances per node
 # - password - SIP password to use for all DNs (insecure but OK for stress)
-base=2010000003
+base=2010000002
 count=49998
 node_idx=1
 sipp_count=1
