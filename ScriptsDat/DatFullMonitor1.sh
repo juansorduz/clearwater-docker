@@ -44,3 +44,13 @@ sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker7@$AddressVM7 "rm 
 #sleep 30
 #echo Sleeping zZzZzZ
 . ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  100 120 $ip $password $option $NumberTest
+
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  120 120 $ip $password $option $NumberTest
+
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  150 120 $ip $password $option $NumberTest
+
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  200 120 $ip $password $option $NumberTest
+
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  250 120 $ip $password $option $NumberTest
+
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  300 120 $ip $password $option $NumberTest
