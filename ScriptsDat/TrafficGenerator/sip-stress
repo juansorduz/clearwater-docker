@@ -42,7 +42,7 @@ echo [FLAG] stress_target2: $stress_target
 
 # Calculate the number of users.
 num_users=$(($(wc -l < /usr/share/clearwater/sip-stress/users.csv.$index) - 1))
-num_users=6000
+num_users=8400
 echo [FLAG] num_users: $num_users
 # Keep running sipp until we're killed.
 #while true
