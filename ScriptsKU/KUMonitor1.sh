@@ -1,12 +1,13 @@
 #!/bin/bash
 users=${1:-0}
 duration=${2:-0}
+NumberTest=${3:-2}
 
 echo "CPM $users Duration $duration"
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
-NumberTest=33
+#NumberTest=33
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
