@@ -4,7 +4,7 @@ cd ~/ClearwaterTestResults/Kubernetes4/Graphs
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
 red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
-set yrange [0:100]
+set yrange [0:200]
 set style data histogram
 set style histogram cluster errorbars gap 1
 set style fill solid
