@@ -12,6 +12,7 @@ Duration=1
 testMainfolder=~/ClearwaterTestResults/Kubernetes4
 testfolder=~/ClearwaterTestResults/Kubernetes4/$cps$duration
 
+echo Docker cps $cps duration $duration
 #Deleting old files
 for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono ellis_ellis homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
    [ -e $testfolder/PromediosCPUDocker$i$cps ] && rm $testfolder/PromediosCPUDocker$i$cps
