@@ -75,6 +75,7 @@ while [ $NumTest -lt $NumberTest ]; do
   else
       PromSingleLatency=$(echo "scale=3; $SumSingleLatency/$NumData" | bc -l)
       echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
+      echo SingleLatency $PromSingleLatency
   fi
   #############################################################################
   #SUCCESFULL CALL RATE
