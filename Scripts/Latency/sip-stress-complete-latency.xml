@@ -40,7 +40,7 @@
            You'll also potentially want to change some other values - these
            are commented inline by CHANGES. -->
       <!--<assign assign_to="reg_pause" value="600"/> -->
-      <assign assign_to="call_delay" value="27"/>
+      <assign assign_to="call_delay" value="27w"/>
       <assign assign_to="call_length" value="24"/>
       <assign assign_to="call_answer" value="6"/>
     </action>

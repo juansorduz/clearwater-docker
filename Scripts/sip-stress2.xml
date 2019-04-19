@@ -48,7 +48,7 @@
 
   <!-- CHANGES. This controls how long it is until all calls have been attempted. Set
        this to twice the reg_pause value -->
-<pause distribution="uniform" min="0" max="117000" />
+<pause distribution="uniform" min="0" max="17000" />
 
   <send>
     <![CDATA[
@@ -452,7 +452,7 @@
   </recv>
   <pause variable="call_length" />
 
-  <send start_rtd="call-teardown">
+  <send>
     <![CDATA[
 
       BYE sip:[$peer_dn]@[$nat_ip_addr]:[$nat_port];transport=[transport];ob SIP/2.0
@@ -489,7 +489,7 @@
     ]]>
   </send>
 
-  <recv response="200" rtd="call-teardown">
+  <recv response="200">
   </recv>
 
   <pause variable="post_call_delay" />
