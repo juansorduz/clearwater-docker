@@ -27,7 +27,7 @@ echo stateTest=1 > $testfolder/Variables.txt
 #mkdir -p $testfolder/wireshark
 #tshark -i any -w $testfolder/wireshark/packets.pcap -q &
 #wait a second for tshark started
-sleep 1
+# sleep 1
 
 
 #Execute test script on background
