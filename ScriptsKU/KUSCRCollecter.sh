@@ -12,7 +12,7 @@ sum=0
 while [ "$sum" -lt '10' ]; do
   echo hola
   sum=0
-  sum = source $testfolder/12030/1/Variables.txt
+  source $testfolder/12030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
   sum = source $testfolder/3030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
