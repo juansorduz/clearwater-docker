@@ -9,6 +9,7 @@ rm -r ~/ClearwaterTestResults/Kubernetes3/*
 ./ScriptsKU/KUMonitor_independent.sh 30 30 10.244.2.15 2 sipptest-8548ccd744-hnxhf &
 ./ScriptsKU/KUMonitor_independent.sh 40 30 10.244.6.7 2 sipptest-8548ccd744-r5vrt &
 sum=0
+sleep 5
 while [ "$sum" -lt '10' ]; do
   echo hola
   sum=0
