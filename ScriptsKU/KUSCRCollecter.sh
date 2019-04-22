@@ -11,15 +11,15 @@ rm -r ~/ClearwaterTestResults/Kubernetes3/*
 sum=0
 while [ "$sum" -lt '5' ]; do
   sum=0
-  sum = source $testfolder/120/1/Variables.txt
+  sum = source $testfolder/12030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/30/1/Variables.txt
+  sum = source $testfolder/3030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/40/1/Variables.txt
+  sum = source $testfolder/4030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/50/1/Variables.txt
+  sum = source $testfolder/5030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/60/1/Variables.txt
+  sum = source $testfolder/6030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
   echo sum=$sum
 done
