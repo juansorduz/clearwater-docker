@@ -26,7 +26,7 @@ while [ "$sum" -lt '10' ]; do
   sum=`echo $sum + $stateTest | bc`
   echo sum=$sum
 done
-for j in 12030 6030 5030 3030 4030 ; do
+for j in 11030 5030 4030 2030 3030 ; do
 CallGenerate=$(grep -F "OutGoing call created" $testfolder/$j/1/logsSIPpTest.txt | cut -d '|' -f3)
 SuccesfullCall=$(grep -F "Successful call" $testfolder/$j/1/logsSIPpTest.txt | cut -d '|' -f3)
 FailedCall=$(grep -F "Failed call" $testfolder/$j/1/logsSIPpTest.txt | cut -d '|' -f3)
