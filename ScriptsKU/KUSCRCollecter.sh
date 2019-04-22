@@ -14,15 +14,15 @@ mkdir ~/ClearwaterTestResults/250
 while [ "$sum" -lt '10' ]; do
   echo hola
   sum=0
-  source $testfolder/12030/1/Variables.txt
+  source $testfolder/11030/1/Variables.txt
+  sum=`echo $sum + $stateTest | bc`
+  source $testfolder/2030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
   source $testfolder/3030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
   source $testfolder/4030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
   source $testfolder/5030/1/Variables.txt
-  sum=`echo $sum + $stateTest | bc`
-  source $testfolder/6030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
   echo sum=$sum
 done
