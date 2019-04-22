@@ -74,8 +74,7 @@ while [ "$stateTest" -eq '1' ]; do
     cat $testfolder/data.csv | grep $i > $testfolder/$i.csv;
  done
  let NumTest=NumTest+1
- echo Sleeping zZzZzZ
- sleep 30
+
  done
 #when the script finish, kill tshark process to stop packet capture
  #pkill tshark
