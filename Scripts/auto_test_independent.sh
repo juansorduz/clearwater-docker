@@ -6,7 +6,7 @@ NumTest=${4:-1}
 IPBonoAPI=${5:-0}
 PortBonoAPI=${6:-0}
 filecsv=${7:-0}
-
+echo hola soy auto_test $cps 
 echo Running auto_test script
 #docker cp ~/PruebaBono/CSVs/x$file sipptest:/usr/share/clearwater/sip-stress/users.csv.1
 #sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)

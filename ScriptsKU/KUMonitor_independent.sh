@@ -12,7 +12,7 @@ NumTest=1
 #NumberTest=33
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
-
+echo hola soy KUMonitor $cps
 echo timee $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, ip: $ip
 #Create tests folder if not exits
 mkdir -p ~/ClearwaterTestResults/Kubernetes3/$cps$duration/$NumTest

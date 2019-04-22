@@ -11,7 +11,7 @@ max_pause="$(($time2 - $time_call))"
 echo cps: $cps, duration: $duration, ip: $ip
 echo cps: $cps, usuarios: $usrs, tiempo: $time, max_pause: $max_pause
 
-
+echo hola soy tester_kubernetes $cps 
 sed -i '51s@.*@<pause distribution="uniform" min="0" max="num" />@' ~/clearwater-docker/Scripts/sip-stress_$cps$time.xml
 sed -i "51s@num@$max_pause@" ~/clearwater-docker/Scripts/sip-stress_$cps$time.xml
 
