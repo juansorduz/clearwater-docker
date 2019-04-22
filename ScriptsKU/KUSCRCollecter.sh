@@ -15,13 +15,13 @@ while [ "$sum" -lt '10' ]; do
   sum=0
   source $testfolder/12030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/3030/1/Variables.txt
+  source $testfolder/3030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/4030/1/Variables.txt
+  source $testfolder/4030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/5030/1/Variables.txt
+  source $testfolder/5030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
-  sum = source $testfolder/6030/1/Variables.txt
+  source $testfolder/6030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
   echo sum=$sum
 done
