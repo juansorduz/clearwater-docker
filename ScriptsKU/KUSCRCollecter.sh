@@ -8,6 +8,7 @@ rm -r ~/ClearwaterTestResults/Kubernetes3/*
 ./ScriptsKU/KUMonitor_independent.sh 50 30 10.244.1.17 2 sipptest-8548ccd744-mmpqs &
 ./ScriptsKU/KUMonitor_independent.sh 30 30 10.244.2.15 2 sipptest-8548ccd744-hnxhf &
 ./ScriptsKU/KUMonitor_independent.sh 40 30 10.244.6.7 2 sipptest-8548ccd744-r5vrt &
+sleep 45
 for j in 12030 6030 5030 3030 4030 ; do
 CallGenerate=$(grep -F "OutGoing call created" $testfolder/$j/1/logsSIPpTest.txt | cut -d '|' -f3)
 SuccesfullCall=$(grep -F "Successful call" $testfolder/$j/1/logsSIPpTest.txt | cut -d '|' -f3)
@@ -21,6 +22,5 @@ SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
 mkdir $testfolder/$j
 echo $SuccesfullCallRate >> $testfolder/$j/PromediosSCPS$i
 echo Call Generate:$CallGenerate SuccesfullCall:$SuccesfullCall FailedCall $FailedCall SCR:$SuccesfullCallRate
-sleep 45
 done
 done
