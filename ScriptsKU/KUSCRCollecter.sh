@@ -9,7 +9,7 @@ rm -r ~/ClearwaterTestResults/Kubernetes3/*
 ./ScriptsKU/KUMonitor_independent.sh 30 30 10.244.2.15 2 sipptest-8548ccd744-hnxhf &
 ./ScriptsKU/KUMonitor_independent.sh 40 30 10.244.6.7 2 sipptest-8548ccd744-r5vrt &
 sum=0
-while [ "$sum" -lt '5' ]; do
+while [ "$sum" -lt '10' ]; do
   sum=0
   sum = source $testfolder/12030/1/Variables.txt
   sum=`echo $sum + $stateTest | bc`
