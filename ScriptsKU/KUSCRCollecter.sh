@@ -3,11 +3,11 @@ NumTest=1
 
 for i in `seq 15`; do
 rm -r ~/ClearwaterTestResults/Kubernetes3/*
-./ScriptsKU/KUMonitor_independent.sh 25 30 10.244.4.14 2 sipptest-8548ccd744-pzw72 &
-./ScriptsKU/KUMonitor_independent.sh 30 30 10.244.3.14 2 sipptest-8548ccd744-8ctdr &
-./ScriptsKU/KUMonitor_independent.sh 15 30 10.244.1.17 2 sipptest-8548ccd744-mmpqs &
-./ScriptsKU/KUMonitor_independent.sh 20 30 10.244.2.15 2 sipptest-8548ccd744-hnxhf &
-./ScriptsKU/KUMonitor_independent.sh 10 30 10.244.6.7 2 sipptest-8548ccd744-r5vrt &
+./ScriptsKU/KUMonitor_independent.sh 25 30 10.244.6.15 2 sipptest-8548ccd744-6njbp &
+./ScriptsKU/KUMonitor_independent.sh 30 30 10.244.4.29 2 sipptest-8548ccd744-d5zll &
+./ScriptsKU/KUMonitor_independent.sh 15 30 10.244.2.29 2 sipptest-8548ccd744-hz984 &
+./ScriptsKU/KUMonitor_independent.sh 20 30 10.244.5.8 2 sipptest-8548ccd744-j6l5k &
+./ScriptsKU/KUMonitor_independent.sh 10 30 10.244.3.30 2 sipptest-8548ccd744-m75v4 &
 sum=0
 sleep 5
 mkdir ~/ClearwaterTestResults/100
