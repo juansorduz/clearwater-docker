@@ -1,5 +1,7 @@
-testfolder=~/ClearwaterTestResults$/5bono2ur_mscsprout
-for i in 100 150 200 250 300; do 
-
-cat $testfolder/*/$i > $testfolder/sumary_$i.csv
+testfolder=~/ClearwaterTestResults/
+for k 
+for j in 100 150 200 250 300 ; ; do
+for i in `seq 14`; ; do
+cat $testfolder/$k/$j/*/PromediosSCPS$i > $testfolder/$j/sumary_prueba$i.csv
+done
 done
