@@ -10,7 +10,7 @@ spec:
         service: sipptest
     spec:
       containers:
-      - image: "juansorduz/clearwater-sipptest:latest"
+      - image: "gabrielorozco20/clearwater-sipptest2:latest"
         imagePullPolicy: Always
         name: sipptest
         ports:
