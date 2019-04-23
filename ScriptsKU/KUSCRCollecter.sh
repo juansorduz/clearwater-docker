@@ -37,7 +37,7 @@ FailedCall=${FailedCall::-1}
 SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
 SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
 mkdir ~/ClearwaterTestResults/250/$j
-echo $SuccesfullCallRate >> ~/ClearwaterTestResults/2500/$j/PromediosSCPS$i
+echo $SuccesfullCallRate >> ~/ClearwaterTestResults/250/$j/PromediosSCPS$i
 echo Call Generate:$CallGenerate SuccesfullCall:$SuccesfullCall FailedCall $FailedCall SCR:$SuccesfullCallRate
 done
 done
