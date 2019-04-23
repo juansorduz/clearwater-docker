@@ -8,7 +8,7 @@ for i in `seq 15`; do
 sum=$(paste -sd+ $testfolder/$k/$j/sumary_prueba$i.csv | bc)
 #my_val=$(echo "(2*${sqrt3}*${a})/2" | bc)
 #result=$("$sum * 0.2" | bc)
-result=$(echo $(( $sum * 0.2 )))
+result=$(($sum * 0.2))
 echo $result >> $testfolder/$k/$j/promedi.csv
 done
 done
