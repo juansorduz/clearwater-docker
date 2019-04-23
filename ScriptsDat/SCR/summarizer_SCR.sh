@@ -5,7 +5,7 @@ sum=0
 res=0
 for i in `seq 15`; do
 #cat $testfolder/$k/$j/*/PromediosSCPS$i > $testfolder/$k/$j/sumary_prueba$i.csv
-sum="paste -sd+ $testfolder/$k/$j/sumary_prueba$i.csv | bc"
+sum=$(bc <<< "paste -sd+ $testfolder/$k/$j/sumary_prueba$i.csv")
 result=$(($sum * 0.2))
 echo $result >> $testfolder/$k/$j/promedi.csv
 done
