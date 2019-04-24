@@ -35,7 +35,7 @@ export testfolder
 touch $testfolder/Variables.txt
 #echo stateTest=1\ncps=$cps\nduration=$duration\nNumTest=NumTest  > $testfolder/Variables.txt
 echo -e "stateTest=1"  > $testfolder/Variables.txt
-echo -e "stateMonitor=3\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > $testfolder/DataTest.txt
+#echo -e "stateMonitor=3\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > $testfolder/DataTest.txt
 
 if [ "$option" -eq '1' ]
 then
