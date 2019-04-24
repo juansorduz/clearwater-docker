@@ -1,13 +1,13 @@
 #!/bin/bash
 NumSipp=${1:-1}
 directory=~/clearwater-docker/ScriptsDat2/Latency
-SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+SipptestPods=$(kubectl get pods | grep sipptest | awk '{print $1}')
 sipptest=$(echo $SipptestPods | cut -d ' ' -f$NumSipp);
 
 #Optaining bono ip
 #NumBono can change, for this test we have pairs of sipp and bono
 NumBono=$NumSipp
-BonoIPs=$(kubectl get pods -o wide | grep bono | cut -d ' ' -f34)
+BonoIPs=$(kubectl get pods -o wide | grep bono | awk '{print $6}')
 ip=$(echo $BonoIPs | cut -d ' ' -f$NumBono);
 
 echo [SCTIPT GENERDOR RETARDO] sipppod=$sipptest ipBono=$ip
