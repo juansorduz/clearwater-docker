@@ -2,9 +2,10 @@
 cps=${1:-10}
 duration=${2:-10}
 NumTest=${3:-1}
+NumBonos=${4:-1}
 
-mkdir -p ~/ClearwaterTestResults/Kubernetes4/$cps$duration/$NumTest
-testfolder=~/ClearwaterTestResults/Kubernetes4/$cps$duration/$NumTest
+mkdir -p ~/ClearwaterTestResults/Kubernetes5/b$NumBonos/$cps$duration/$NumTest
+testfolder=~/ClearwaterTestResults/Kubernetes5/b$NumBonos/$cps$duration/$NumTest
 
 echo EJECUTANDO SCRIPT MONITOR VM $USER
 

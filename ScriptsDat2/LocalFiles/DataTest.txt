@@ -2,3 +2,4 @@ stateMonitor=0
 cps=1
 duration=6
 NumTest=1
+NumBonos=1

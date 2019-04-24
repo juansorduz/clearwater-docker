@@ -34,21 +34,21 @@ echo -e "stateTest=1"  > $testfolder/Variables.txt
 
 if [ "$option" -eq '1' ]
 then
-  echo -e "stateMonitor=1\ncps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/DataTest.txt
+  echo -e "stateMonitor=1\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBonos=$NumBonos"  > $testfolder/DataTest.txt
   echo Monitoring dockers
 fi
 
 #Execute VM monitor script
 if [ "$option" -eq '2' ]
 then
-  echo -e "stateMonitor=2\ncps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/DataTest.txt
+  echo -e "stateMonitor=2\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBonos=$NumBonos"  > $testfolder/DataTest.txt
   echo Monitoring VMs
 fi
 
 #Execute docker and VM monitor script
 if [ "$option" -eq '3' ]
 then
-  echo -e "stateMonitor=3\ncps=$cps\nduration=$duration\nNumTest=$NumTest"  > $testfolder/DataTest.txt
+  echo -e "stateMonitor=3\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBonos=$NumBonos"  > $testfolder/DataTest.txt
   echo Monitoring dockers and VMs
 fi
 
