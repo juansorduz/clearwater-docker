@@ -10,7 +10,7 @@ NumBono=$NumSipp
 BonoIPs=$(kubectl get pods -o wide | grep bono | cut -d ' ' -f34)
 ip=$(echo $BonoIPs | cut -d ' ' -f$NumBono);
 
-echo [SCTIPT GENERADOR TRAFICO] sipppod=$sipptest cps: $cps, usuarios: $usrs, tiempo: $time, ipBono: $ip
+echo [SCTIPT GENERDOR RETARDO] sipppod=$sipptest ipBono: $ip
 
 cp $directory/sip-stress-latency-template $directory/sip-stress-latency$NumSipp
 sed -i "69s@192.168.190.72@$ip@" $directory/sip-stress-latency$NumSipp
@@ -21,10 +21,10 @@ kubectl cp $directory/users_test_latency.csv.$NumSipp $sipptest:/usr/share/clear
 echo Sending single latency script
 kubectl cp $directory/sip-stress-latency$NumSipp $sipptest:/usr/share/clearwater/bin/
 
-kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/users_test_latency.csv.1
-kubectl exec $sipptest chmod 777 /usr/share/clearwater/bin/sip-stress-latency
-kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/users_test_latency.csv.1
-kubectl exec $sipptest chmod +x /usr/share/clearwater/bin/sip-stress-latency
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/sip-stress/users_test_latency.csv.$NumSipp
+kubectl exec $sipptest chmod 777 /usr/share/clearwater/bin/sip-stress-latency$NumSipp
+kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/users_test_latency.csv.$NumSipp
+kubectl exec $sipptest chmod +x /usr/share/clearwater/bin/sip-stress-latency$NumSipp
 
 [ -e $testfolder/SingleLatencyTest$NumSipp.csv ] && rm $testfolder/SingleLatencyTest$NumSipp.csv
 touch $testfolder/SingleLatencyTest$NumSipp.csv
@@ -32,7 +32,7 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
-  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency 2>&1 > /dev/null)"
+  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
   #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency > /dev/null
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
