@@ -80,7 +80,7 @@ for i in $(seq 1 5); do
   rm -f ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
 done
 
-#Logic to select all microservice instances
+#Logic to create users in sipppods
 NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
 SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 #SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
@@ -99,10 +99,3 @@ kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-
 #   kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
 # done
 done
-
-sipptestpod=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
-cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator
-kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator $sipptestpod:/usr/share/clearwater/infrastructure/scripts/sip-stress
-kubectl exec $sipptestpod touch /usr/share/clearwater/sip-stress/users_test_latency.csv.1
-kubectl exec $sipptestpod touch /usr/share/clearwater/bin/sip-stress-latency
-kubectl exec $sipptestpod /usr/share/clearwater/infrastructure/scripts/sip-stress
