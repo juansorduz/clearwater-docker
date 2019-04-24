@@ -2,8 +2,8 @@
 #CONTADOR=0
 Duration=${1:-120}
 password=${2:-secret}
-NumberTest=${3:-2}
-option=${4:-3}
+option=${3:-3}
+NumberTest=${4:-2}
 
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 rm -r ~/ClearwaterTestResults/Kubernetes5
@@ -39,38 +39,38 @@ echo -e "NumSipp=5\nNumBono=5\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintes
 exit 0
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  20 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  20 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  30 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  30 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  40 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  40 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  50 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  50 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  60 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  60 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  70 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  70 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  80 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  80 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  90 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  90 $Duration $password $option $NumberTest
 #sleep 30
 #echo Sleeping zZzZzZ
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  100 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  100 $Duration $password $option $NumberTest
 
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  120 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  120 $Duration $password $option $NumberTest
 
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  150 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  150 $Duration $password $option $NumberTest
 
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  200 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  200 $Duration $password $option $NumberTest
 
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  250 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  250 $Duration $password $option $NumberTest
 
-. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  300 $Duration $ip $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat/DatMonitor1.sh  300 $Duration $password $option $NumberTest

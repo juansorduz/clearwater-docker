@@ -2,8 +2,9 @@
 #CONTADOR=0
 Duration=${1:-120}
 password=${2:-secret}
-NumberTest=${3:-2}
-option=${4:-3}
+option=${3:-3}
+NumberTest=${4:-2}
+
 
 
 #Loading test characteristics
