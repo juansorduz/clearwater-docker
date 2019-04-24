@@ -166,7 +166,7 @@ echo SumFinishTests $SumFinishTests
 while [ "$SumTests" -lt "$SumFinishTests" ]; do
 
      SumTests=$(cat $testfolder/Variables.txt | wc -l)
-     #echo $stateTest
+     echo $SumTests
      if [ "$SumTests" -eq "$SumFinishTests" ]
      then
        sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
