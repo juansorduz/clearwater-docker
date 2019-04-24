@@ -1,7 +1,8 @@
 #!/bin/bash
 NumSipp=${1:-1}
 directory=~/clearwater-docker/ScriptsDat2/Latency
-sipptest=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+sipptest=$(echo $SipptestPods | cut -d ' ' -f$NumSipp);
 
 #Optaining bono ip
 #NumBono can change, for this test we have pairs of sipp and bono
