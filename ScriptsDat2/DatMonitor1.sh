@@ -66,7 +66,7 @@ sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "mkd
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b$NumBonos/$cps$duration/$NumTest"
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b$NumBonos/$cps$duration/$NumTest"
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b$NumBonos/$cps$duration/$NumTest"
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no master@$AddressVM7 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b$NumBonos/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no master@$AddressVM0 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b$NumBonos/$cps$duration/$NumTest"
 sleep 2
 
 echo Copying control file in local VMs
@@ -102,7 +102,7 @@ sleep 2
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 # sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
-# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no master@$AddressVM7 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
+# sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no master@$AddressVM0 ". ~/LocalDockerMonitor.sh $cps $duration $NumTest"
 
 #sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 #sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
@@ -110,7 +110,7 @@ sleep 2
 #sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 #sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 #sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
-#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no master@$AddressVM7 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
+#sshpass -p $password ssh -f -t -o StrictHostKeyChecking=no master@$AddressVM0 "nohup bash ~/LocalDockerMonitor.sh $cps $duration $NumTest &"
 
 
 ################################################################################
