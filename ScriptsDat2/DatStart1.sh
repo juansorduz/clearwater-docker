@@ -74,6 +74,20 @@ kubectl apply -f kubernetes3
 sleep 300
 urcassandrapod=$(kubectl get pods | grep urcassandra | cut -d ' ' -f1)
 kubectl exec $urcassandrapod /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh $usuarios
+
+#Logic to select all microservice instances
+NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
+SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
+echo $SipptestIPs
+for i in $(seq 1 $NumSipptest); do
+echo $i;
+LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
+LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
+echo SipptestPod $LocalSipptestPod;
+echo SipptestIP $LocalSipptestIP;
+done
+
 sipptestpod=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 cp ~/clearwater-docker/ScriptsDat/TrafficGenerator/sip-stress-usergenerator-template ~/clearwater-docker/ScriptsDat/TrafficGenerator/sip-stress-usergenerator
 kubectl cp ~/clearwater-docker/ScriptsDat/TrafficGenerator/sip-stress-usergenerator $sipptestpod:/usr/share/clearwater/infrastructure/scripts/sip-stress
