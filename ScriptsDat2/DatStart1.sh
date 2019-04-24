@@ -75,6 +75,11 @@ sleep 300
 urcassandrapod=$(kubectl get pods | grep urcassandra | cut -d ' ' -f1)
 kubectl exec $urcassandrapod /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh $usuarios
 
+#Logic for delete old ScriptsDat2
+for i in $(seq 1 5); do
+  rm -f ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+done
+
 #Logic to select all microservice instances
 NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
 SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
