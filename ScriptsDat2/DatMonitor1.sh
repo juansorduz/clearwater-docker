@@ -148,7 +148,7 @@ for i in $(seq 1 $NumSipptest); do
 echo Prueba de retardo No.$i;
 #LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
 #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
-. ~/clearwater-docker/ScriptsDat2/Latency/Tester_Latency.sh $i &
+#. ~/clearwater-docker/ScriptsDat2/Latency/Tester_Latency.sh $i &
 done
 
 
