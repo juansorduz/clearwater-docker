@@ -14,7 +14,7 @@ sipptest=$(echo $SipptestPods | cut -d ' ' -f$NumSipp);
 #Optaining bono ip
 #NumBono can change, for this test we have pairs of sipp and bono
 NumBono=$NumSipp
-BonoIPs=$(kubectl get pods -o wide | grep bono | cut -d ' ' -f34)
+BonoIPs=$(kubectl get pods -o wide | grep bono | cut -d ' ' -f35)
 ip=$(echo $BonoIPs | cut -d ' ' -f$NumBono);
 
 echo [SCTIPT GENERADOR TRAFICO] sipppod=$sipptest cps: $cps, usuarios: $usrs, tiempo: $time, ipBono: $ip
