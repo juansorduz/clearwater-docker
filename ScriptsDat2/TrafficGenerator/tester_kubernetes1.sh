@@ -8,13 +8,13 @@ time2=$(($time * 1000))
 usrs=$(($cps * $time))
 max_pause="$(($time2 - $time_call))"
 #Optaining sipp pod
-SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+SipptestPods=$(kubectl get pods | grep sipptest | awk '{print $1}')
 sipptest=$(echo $SipptestPods | cut -d ' ' -f$NumSipp);
 #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
 #Optaining bono ip
 #NumBono can change, for this test we have pairs of sipp and bono
 NumBono=$NumSipp
-BonoIPs=$(kubectl get pods -o wide | grep bono | cut -d ' ' -f35)
+BonoIPs=$(kubectl get pods -o wide | grep bono | awk '{print $6}')
 ip=$(echo $BonoIPs | cut -d ' ' -f$NumBono);
 
 echo [SCTIPT GENERADOR TRAFICO] sipppod=$sipptest cps: $cps, usuarios: $usrs, tiempo: $time, ipBono: $ip
