@@ -10,7 +10,7 @@ NumBono=$NumSipp
 BonoIPs=$(kubectl get pods -o wide | grep bono | cut -d ' ' -f34)
 ip=$(echo $BonoIPs | cut -d ' ' -f$NumBono);
 
-echo [SCTIPT GENERDOR RETARDO] sipppod=$sipptest ipBono: $ip
+echo [SCTIPT GENERDOR RETARDO] sipppod=$sipptest ipBono=$ip
 
 cp $directory/sip-stress-latency-template $directory/sip-stress-latency$NumSipp
 sed -i "69s@192.168.190.72@$ip@" $directory/sip-stress-latency$NumSipp
@@ -51,6 +51,6 @@ while [ "$stateTest" -eq '1' ]; do
   source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
   then
-    echo Finalizo prueba Latencia
+    echo Finalizo prueba Retardo
   fi
 done
