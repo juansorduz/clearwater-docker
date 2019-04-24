@@ -15,6 +15,7 @@ kubectl label nodes worker6 Tnode=sipp
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 echo Copying files to local VMs
 echo Copying Data Control monitor files
+cp ~/clearwater-docker/ScriptsDat2/LocalFiles/DataTest.txt ~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/DataTest.txt worker1@$AddressVM1:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/DataTest.txt worker2@$AddressVM2:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/DataTest.txt worker3@$AddressVM3:~/
@@ -24,6 +25,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scri
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/DataTest.txt master@$AddressVM0:~/
 
 echo Copying Control monitor files
+cp ~/clearwater-docker/ScriptsDat2/LocalFiles/ControlLocalDockerMonitor1.sh ~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/ControlLocalDockerMonitor1.sh worker1@$AddressVM1:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/ControlLocalDockerMonitor1.sh worker2@$AddressVM2:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/ControlLocalDockerMonitor1.sh worker3@$AddressVM3:~/
@@ -33,7 +35,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scri
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/ControlLocalDockerMonitor1.sh master@$AddressVM0:~/
 
 echo Copying Type1 monitor file
-
+cp ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor1.sh ~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor1.sh worker1@$AddressVM1:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor1.sh worker2@$AddressVM2:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor1.sh worker3@$AddressVM3:~/
@@ -43,6 +45,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scri
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor1.sh master@$AddressVM0:~/
 
 echo Copying Type2 monitor file
+cp ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor2.sh ~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor2.sh worker1@$AddressVM1:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor2.sh worker2@$AddressVM2:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor2.sh worker3@$AddressVM3:~/
@@ -52,6 +55,7 @@ sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/Scri
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor2.sh master@$AddressVM0:~/
 
 echo Copying Type3 monitor file
+cp ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor3.sh ~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor3.sh worker1@$AddressVM1:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor3.sh worker2@$AddressVM2:~/
 sshpass -p $password scp -r -o StrictHostKeyChecking=no ~/clearwater-docker/ScriptsDat2/LocalFiles/LocalDockerMonitor3.sh worker3@$AddressVM3:~/
