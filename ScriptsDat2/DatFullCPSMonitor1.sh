@@ -39,7 +39,7 @@ for j in $(seq 1 5); do
 done
 done
 
-echo Duration $Duration password $password option $option NumberTest $NumberTest
+#echo Duration $Duration password $password option $option NumberTest $NumberTest
 
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  20 $Duration $password $option $NumberTest
