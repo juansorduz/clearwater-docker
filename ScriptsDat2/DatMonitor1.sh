@@ -148,8 +148,8 @@ for i in $(seq 1 $NumSipp); do
 echo Prueba de carga No.$i;
 #LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
 #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
-. ~/clearwater-docker/ScriptsDat2/TrafficGenerator/tester_kubernetes1.sh $CPSperSippPod $duration $i &
-. ~/clearwater-docker/ScriptsDat2/Latency/Tester_Latency1.sh $i &
+#. ~/clearwater-docker/ScriptsDat2/TrafficGenerator/tester_kubernetes1.sh $CPSperSippPod $duration $i &
+#. ~/clearwater-docker/ScriptsDat2/Latency/Tester_Latency1.sh $i &
 done
 
 
