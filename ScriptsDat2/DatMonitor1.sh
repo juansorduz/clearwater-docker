@@ -23,25 +23,25 @@ kubectl scale deployment urhomestead --replicas=$NumURH
 kubectl scale deployment mschomestead --replicas=$NumMSCH
 
 #Logic to create users in sipppods
-echo Creating users in sipppods
-NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
-SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
-#SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
-for i in $(seq 1 $NumSipptest); do
-#echo $i;
-LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
-#LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
-echo SipptestPod $LocalSipptestPod;
-#echo SipptestIP $LocalSipptestIP;
-# cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$i ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
-# kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
-# kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$i
-for j in $(seq 1 5); do
-  cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$j ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
-  kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
-  kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
-done
-done
+# echo Creating users in sipppods
+# NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
+# SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+# #SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
+# for i in $(seq 1 $NumSipptest); do
+# #echo $i;
+# LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
+# #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
+# echo SipptestPod $LocalSipptestPod;
+# #echo SipptestIP $LocalSipptestIP;
+# # cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$i ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+# # kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
+# # kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$i
+# for j in $(seq 1 5); do
+#   cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$j ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+#   kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
+#   kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
+# done
+# done
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
@@ -166,7 +166,8 @@ SumFinishTests=`echo $NumSipp + 1 | bc`
 echo SumFinishTests $SumFinishTests
 while [ "$SumTests" -lt "$SumFinishTests" ]; do
 
-     SumTests=$(cat $testfolder/Variables.txt | wc -l)
+     #SumTests=$(cat $testfolder/Variables.txt | wc -l)
+     SumTests=10
      #echo $SumTests
      if [ "$SumTests" -eq "$SumFinishTests" ]
      then
