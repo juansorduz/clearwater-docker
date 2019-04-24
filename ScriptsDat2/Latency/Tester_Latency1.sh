@@ -16,7 +16,7 @@ cp $directory/sip-stress-latency-template $directory/sip-stress-latency$NumSipp
 sed -i "69s@192.168.190.72@$ip@" $directory/sip-stress-latency$NumSipp
 echo Sending single latency scenario
 kubectl cp $directory/sip-stress-complete-latency.xml $sipptest:/usr/share/clearwater/sip-stress/
-echo Sending csv file for single test $directory/users_test_latency.csv.1
+echo Sending csv file for single test $directory/users_test_latency.csv.$NumSipp
 kubectl cp $directory/users_test_latency.csv.$NumSipp $sipptest:/usr/share/clearwater/sip-stress/
 echo Sending single latency script
 kubectl cp $directory/sip-stress-latency$NumSipp $sipptest:/usr/share/clearwater/bin/
