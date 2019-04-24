@@ -167,7 +167,7 @@ echo SumFinishTests $SumFinishTests
 while [ "$SumTests" -lt "$SumFinishTests" ]; do
 
      #SumTests=$(cat $testfolder/Variables.txt | wc -l)
-     SumTests=10
+     SumTests=4
      #echo $SumTests
      if [ "$SumTests" -eq "$SumFinishTests" ]
      then
