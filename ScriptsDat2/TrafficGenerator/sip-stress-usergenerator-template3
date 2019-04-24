@@ -6,15 +6,15 @@
 # - node_idx - index of this node (--index parameter to chef)
 # - sipp_count - number of sipp instances per node
 # - password - SIP password to use for all DNs (insecure but OK for stress)
-base=2010000002
-count=49998
+base=2010020001
+count=10000
 node_idx=1
 sipp_count=1
 password=7kkzTyGW
 . /etc/clearwater/config
 
 # Clear out old configuration files.
-rm -f /usr/share/clearwater/sip-stress/users.csv.*
+#rm -f /usr/share/clearwater/sip-stress/users.csv.*
 
 # Figure out how many targets we have.  Due to TCP port limitations, we can't
 # run more than one sipp instance per target.
@@ -35,5 +35,5 @@ for index in $(seq $(((node_idx - 1) * sipp_count + 1)) $((node_idx * sipp_count
     do
       echo "$dn;[authentication username=$dn@$home_domain password=$password];$((dn + 1));[authentication username=$((dn + 1))@$home_domain password=$password]"
     done
-  } > /usr/share/clearwater/sip-stress/users.csv.$index
+  } > /usr/share/clearwater/sip-stress/users.csv.2
 done
