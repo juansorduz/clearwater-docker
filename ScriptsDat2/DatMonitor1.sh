@@ -3,10 +3,9 @@
 
 cps=${1:-10}
 duration=${2:-120}
-NumBonos=${3:-2}
-password=${4:-secret}
-option=${5:-3}
-NumberTest=${6:-2}
+password=${3:-secret}
+option=${4:-3}
+NumberTest=${5:-2}
 
 
 #Looking for VMs ip
@@ -14,6 +13,9 @@ source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 
 #Principal Script to mak3 32 t3sts
 NumTest=1
+#In this test the number of bonos is the same of sipppods
+NumBonos=$(kubectl get pods | grep sipptest | wc -l)
+echo NumBonos= $NumBonos
 #NumberTest=33
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
@@ -133,7 +135,7 @@ SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 CPSperSippPod=$(echo "scale=0; $cps/$NumSipptest" | bc -l)
 #echo $CPSperSippPod
 for i in $(seq 1 $NumSipptest); do
-#echo $i;
+echo Prueba de carga No.$i;
 #LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
 #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
 . ~/clearwater-docker/ScriptsDat2/TrafficGenerator/tester_kubernetes1.sh $CPSperSippPod $duration $i &
@@ -143,7 +145,7 @@ done
 #Execute latency script on background
 ################################################################################
 for i in $(seq 1 $NumSipptest); do
-#echo $i;
+echo Prueba de retardo No.$i;
 #LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
 #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
 . ~/clearwater-docker/ScriptsDat2/Latency/Tester_Latency.sh $i &
