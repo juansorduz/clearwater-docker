@@ -90,8 +90,8 @@ echo SipptestPod $LocalSipptestPod;
 # kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress-usergenerator$i
 for j in $(seq 1 5); do
   cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$j ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
-  kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/
-  kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress-usergenerator$j
+  kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
+  kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
 done
 done
 
