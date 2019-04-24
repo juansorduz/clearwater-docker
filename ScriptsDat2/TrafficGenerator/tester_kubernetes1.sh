@@ -46,4 +46,4 @@ kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
 #sleep 30
 
 echo Finalizo script generador de trafico
-echo stateTest=2 > $testfolder/Variables.txt
+echo stateTest$NumSipp=2 >> $testfolder/Variables.txt
