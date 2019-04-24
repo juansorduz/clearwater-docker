@@ -39,8 +39,8 @@ kubectl exec $sipptest chmod +x /usr/share/clearwater/sip-stress/sip-stress.xml
 
 
 #touch $testfolder/logsSIPpTest.txt
-kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest$NumSipp.txt
-#kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest$NumSipp.txt 2> /dev/nul
+#kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest$NumSipp.txt
+kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest$NumSipp.txt 2> /dev/nul
 
 kubectl cp $sipptest:/var/log/clearwater-sipp/ $testfolder
 #sleep 30
