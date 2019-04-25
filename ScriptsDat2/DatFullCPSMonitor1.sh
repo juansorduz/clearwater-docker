@@ -42,6 +42,7 @@ done
 
 #echo Duration $Duration password $password option $option NumberTest $NumberTest
 
+mkdir -p $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 kubectl get pods -o wide > $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/PODSDISTRIBUTION
 kubectl get pods -o wide -n kube-system >> $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/PODSDISTRIBUTION
 
