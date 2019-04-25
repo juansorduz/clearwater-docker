@@ -42,6 +42,10 @@ done
 
 #echo Duration $Duration password $password option $option NumberTest $NumberTest
 
+kubectl get pods -o wide > $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/PODSDISTRIBUTION
+kubectl get pods -o wide -n kube-system >> $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/PODSDISTRIBUTION
+
+
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  20 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  30 $Duration $password $option $NumberTest
