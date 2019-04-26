@@ -14,6 +14,8 @@ case $yn in
   * ) echo "Elija una opcion.";;
 esac
 
+exit 0
+
 #yes | ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password
 # rm -r ~/ClearwaterTestResults/Kubernetes5
 # sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "rm -r ~/ClearwaterTestResults/Kubernetes5"
