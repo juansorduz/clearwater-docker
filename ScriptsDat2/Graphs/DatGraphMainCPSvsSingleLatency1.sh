@@ -18,5 +18,5 @@ set output "Despliegueb$CPSvsLATENCY{NumBono}urs${NumURS}mscs${NumMSCS}urh${NumU
 set xlabel "CPS"
 set ylabel "LATENCY (ms)"
 set title "CPS vs Latency b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
-plot "$testMainfolder/Kubernetes4/SUMMARYSINGLELATENCY" using 2:xtic(1) title 'Latency' w l ls 1
+plot "$testMainfolder/SUMMARYSINGLELATENCY" using 2:xtic(1) title 'Latency' w l ls 1
 EOF
