@@ -1,7 +1,7 @@
 #!/bin/bash
 #CONTADOR=0
 Duration=${1:-120}
-NumberTest=${4:-2}
+NumberTest=${2:-2}
 
 # source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 # rm -r ~/ClearwaterTestResults/Kubernetes5
