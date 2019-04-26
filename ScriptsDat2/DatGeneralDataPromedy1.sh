@@ -33,10 +33,10 @@ NumProms=0
 #LATENCY
 #############################################################################
 echo Calculating Latency
-DatosLatency=$(<$testfolder/PromediosLatency$cps)
+DatosLatency=$(<$testfolder/PromediosDelay$cps)
 AverageLatency=0
 VarLatency=0
-NumProms=$(wc -l < $testfolder/PromediosLatency$cps)
+NumProms=$(wc -l < $testfolder/PromediosDelay$cps)
 for i in ${DatosLatency[@]}; do  AverageLatency=$(echo "$AverageLatency + $i" | bc -l) ; done
 AverageLatency=$(echo "scale=3;$AverageLatency/$NumProms" | bc -l)
 for i in ${DatosLatency[@]}; do DiferenceVar=$(echo "$i - $AverageLatency" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarLatency=$(echo "$VarLatency + $DiferenceVar" | bc -l) ; done
