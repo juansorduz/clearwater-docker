@@ -29,7 +29,7 @@ while [ $NumTest -lt $NumberTest ]; do
   #LATENCY
   #############################################################################
   cd $testfolder/$NumTest
-  cat $testfolder/*.rtt > $testfolder/RecollectionDelay.csv
+  cat $testfolder/*rtt.csv > $testfolder/RecollectionDelay.csv
   #latencyfile=$(ls | grep rtt)
   #tail -n +20 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
   tail -n +2 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
