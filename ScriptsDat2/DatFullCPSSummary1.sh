@@ -4,7 +4,7 @@ Duration=${1:-120}
 NumberTest=${2:-2}
 
 #rm -r ~/ClearwaterTestResults
-echo duration $Duration NumberTest $NumberTest
+echo CPS Test duration $Duration NumberTest $NumberTest
 
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 

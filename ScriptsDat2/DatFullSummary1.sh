@@ -3,6 +3,7 @@
 Duration=${1:-120}
 NumberTest=${2:-2}
 
+echo Duration $Duration NumberTest $NumberTest
 # source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 # rm -r ~/ClearwaterTestResults/Kubernetes5
 # sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "rm -r ~/ClearwaterTestResults/Kubernetes5"
