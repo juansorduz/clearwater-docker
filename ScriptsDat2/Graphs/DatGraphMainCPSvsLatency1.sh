@@ -17,6 +17,6 @@ set key outside below
 set output "DespliegueCPSvsDELAYb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.png"
 set xlabel "CPS"
 set ylabel "DELAY (ms)"
-set title "CPS vs LATENCY Deployment Kubernetes"
+set title "CPS vs LATENCY b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
 plot "$testMainfolder/SUMMARYLATENCY" using 2:xtic(1) title 'Latency' w l ls 1
 EOF

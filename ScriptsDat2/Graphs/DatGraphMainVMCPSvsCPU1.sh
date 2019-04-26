@@ -19,7 +19,7 @@ set key outside below
 set output "DespliegueVMCPSvsCPUb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.png"
 set xlabel "CPS"
 set ylabel "CPU (%)"
-set title "CPS vs CPU Deployment Kubernetes"
+set title "CPS vs CPU b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
 plot "$testMainfolder/SUMMARYVMCPU" \
             using 2:3:xtic(1) title "VM1" fill pattern 1 lc 8, \
             '' using 4:5:xtic(1) title "VM2" fill pattern 2 lc 8, \
