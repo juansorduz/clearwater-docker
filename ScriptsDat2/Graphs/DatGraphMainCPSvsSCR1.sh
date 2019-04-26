@@ -17,7 +17,7 @@ set xtics format ""
 set grid ytics
 set key outside below
 set terminal pdf
-set output "Despliegueb$CPSvsSCR{NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.pdf"
+set output "DespliegueCPSvsSCRb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
