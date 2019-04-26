@@ -9,8 +9,9 @@ DelayBeforeACK=${5:-15}
 #NumTest=1
 #NumberTest=33
 Duration=1
-testMainfolder=~/ClearwaterTestResults/Kubernetes4
-testfolder=~/ClearwaterTestResults/Kubernetes4/$cps$duration
+source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
+mkdir -p $testfolder
 
 #Deleting old files
 [ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
