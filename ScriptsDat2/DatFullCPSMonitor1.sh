@@ -17,7 +17,7 @@ kubectl scale deployment ursprout --replicas=$NumURS
 kubectl scale deployment mscsprout --replicas=$NumMSCS
 kubectl scale deployment urhomestead --replicas=$NumURH
 kubectl scale deployment mschomestead --replicas=$NumMSCH
-sleep 15
+sleep 30
 
 #Logic to create users in sipppods
 echo Creating users in sipppods
