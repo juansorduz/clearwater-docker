@@ -12,6 +12,8 @@ source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/DatDockerDataSummary1.sh  10 $duration $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatVMDataSummary1.sh  10 $duration $NumberTest
 
+exit 0
+
 . ~/clearwater-docker/ScriptsDat2/DatGeneralDataSummary1.sh  20 $duration $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatDockerDataSummary1.sh  20 $duration $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatVMDataSummary1.sh  20 $duration $NumberTest
