@@ -60,7 +60,7 @@ while [ $NumTest -lt $NumberTest ]; do
     #romRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
     if [ $NumData = '0' ];
     then
-      echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales.
+      echo CPS $cps Prueba $NumTest docker $i con falla, no se considerara en los promedios generales.
     else
         PromCPU=$(echo "scale=3; $SumCPU/$NumData" | bc -l)
         PromRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
