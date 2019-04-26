@@ -37,7 +37,8 @@ while [ $NumTest -lt $NumberTest ]; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/Docker$i.txt ] && rm $testfolder/$NumTest/Docker$i.txt
     [ -e $testfolder/$NumTest/Docker$i ] && rm $testfolder/$NumTest/Docker$i
-    tail -n +20 "$testfolder/$NumTest/Docker$i.csv" > "$testfolder/$NumTest/Docker$i"
+    #tail -n +20 "$testfolder/$NumTest/Docker$i.csv" > "$testfolder/$NumTest/Docker$i"
+    tail -n +2 "$testfolder/$NumTest/Docker$i.csv" > "$testfolder/$NumTest/Docker$i"
     #tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i.txt"
     #head -n +20 "$testfolder/$NumTest/$i.txt" > "$testfolder/$NumTest/$i"
     SumCPU=0
