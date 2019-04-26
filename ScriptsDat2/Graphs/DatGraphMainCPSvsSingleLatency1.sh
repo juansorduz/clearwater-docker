@@ -1,6 +1,9 @@
 #!/bin/bash
-mkdir -p ~/ClearwaterTestResults/Kubernetes4/Graphs
-cd ~/ClearwaterTestResults/Kubernetes4/Graphs
+source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
+testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
+mkdir -p $testMainfolder/Graphs
+cd $testMainfolder/Graphs
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
 red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
@@ -14,6 +17,6 @@ set terminal pdf
 set output "DespliegueKU4MainCPSvsSINGLELATENCY.pdf"
 set xlabel "CPS"
 set ylabel "LATENCY (ms)"
-set title "CPS vs SINGLELATENCY Deployment Kubernetes"
+set title "CPS vs Latency b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
 plot "~/ClearwaterTestResults/Kubernetes4/SUMMARYSINGLELATENCY" using 2:xtic(1) title 'Latency' w l ls 1
 EOF
