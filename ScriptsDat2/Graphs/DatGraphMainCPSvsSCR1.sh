@@ -2,7 +2,7 @@
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
-Graphfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/Graphs
+Graphfolder=$Maintestfolder/Graphs/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 mkdir -p $Graphfolder
 cd $Graphfolder
 echo $Graphfolder
