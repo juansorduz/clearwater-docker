@@ -7,7 +7,14 @@ NumberTest=${4:-2}
 
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 
-yes | ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password
+read -p "Borrar informacion previa?" yn
+case $yn in
+  [Yy]* ) ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password; break;;
+  [Nn]* ) echo Se reescribira la informacion previa;;
+  * ) echo "Elija una opcion.";;
+esac
+
+#yes | ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password
 # rm -r ~/ClearwaterTestResults/Kubernetes5
 # sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "rm -r ~/ClearwaterTestResults/Kubernetes5"
 # sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "rm -r ~/ClearwaterTestResults/Kubernetes5"
