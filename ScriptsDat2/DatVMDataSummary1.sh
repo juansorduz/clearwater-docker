@@ -94,7 +94,7 @@ while [ $NumTest -lt $NumberTest ]; do
 
     if [ $NumData = '0' ];
     then
-      echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales.
+      echo CPS $cps Prueba $NumTest VM $i con falla, no se considerara en los promedios generales.
     else
         PromRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
         echo $PromRAM >> $testfolder/Summary$i$cps
