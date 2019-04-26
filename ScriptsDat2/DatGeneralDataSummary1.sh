@@ -14,7 +14,7 @@ testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch
 mkdir -p $testfolder
 
 #Deleting old files
-[ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/PromediosLatency$cps
+[ -e $testfolder/PromediosDelay$cps ] && rm $testfolder/PromediosDelay$cps
 [ -e $testfolder/PromediosSingleLatency$cps ] && rm $testfolder/PromediosSingleLatency$cps
 [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
 
@@ -29,8 +29,10 @@ while [ $NumTest -lt $NumberTest ]; do
   #LATENCY
   #############################################################################
   cd $testfolder/$NumTest
-  latencyfile=$(ls | grep rtt)
-  tail -n +20 "$latencyfile" > "$testfolder/$NumTest/latencydata.csv"
+  cat $testfolder/*.rtt > $testfolder/RecollectionDelay.csv
+  #latencyfile=$(ls | grep rtt)
+  #tail -n +20 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
+  tail -n +2 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
   SumLatency=0
   PromLatency=0
   NumDataLatency=0
@@ -41,7 +43,7 @@ while [ $NumTest -lt $NumberTest ]; do
     #echo $responsetime
     SumLatency=`echo $SumLatency + $responsetime | bc`
     let NumDataLatency=NumDataLatency+1
-  done < "$testfolder/$NumTest/latencydata.csv"
+  done < "$testfolder/$NumTest/delay.csv"
 
   if [ $NumDataLatency = '0' ];
   then
@@ -50,7 +52,7 @@ while [ $NumTest -lt $NumberTest ]; do
       PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
       #PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
       #PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
-      echo $PromLatency >> $testfolder/PromediosLatency$cps
+      echo $PromLatency >> $testfolder/PromediosDelay$cps
       echo Latency = $PromLatency
       #echo NumTest $NumTest PromLatency $PromLatency
   fi
@@ -61,7 +63,7 @@ while [ $NumTest -lt $NumberTest ]; do
   PromSingleLatency=0
   NumData=0
 
-  [ -e $testfolder/PromediosLatency$cps ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
+  [ -e $testfolder/PromediosDelay$cps ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
 
   for i in $(seq 1 $NumSipp); do
   cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
