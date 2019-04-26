@@ -1,6 +1,6 @@
 #!/bin/bash
 #CONTADOR=0
-password=${2:-secret}
+password=${1:-secret}
 
 echo Deleting all information
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
