@@ -63,7 +63,7 @@ while [ $NumTest -lt $NumberTest ]; do
   PromSingleLatency=0
   NumData=0
 
-  [ -e $testfolder/PromediosDelay$cps ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
+  [ -e $testfolder/$NumTest/SingleLatencyTest.csv ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
 
   for i in $(seq 1 $NumSipp); do
   cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
