@@ -16,8 +16,7 @@ set boxwidth 0.9
 set xtics format ""
 set grid ytics
 set key outside below
-set terminal pdf
-set output "DespliegueVMCPSvsCPUb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.pdf"
+set output "DespliegueVMCPSvsCPUb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.jpg"
 set xlabel "CPS"
 set ylabel "CPU (%)"
 set title "CPS vs CPU Deployment Kubernetes"

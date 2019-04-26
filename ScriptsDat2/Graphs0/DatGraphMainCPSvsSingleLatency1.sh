@@ -15,7 +15,8 @@ set style line 1 lt 1 lw 1 pt 1 linecolor rgb "0x767676"
 set xtics format ""
 set grid ytics
 set key outside below
-set output "DespliegueCPSvsLATENCYb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.jpg"
+set terminal pdf
+set output "DespliegueCPSvsLATENCYb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}.pdf"
 set xlabel "CPS"
 set ylabel "LATENCY (ms)"
 set title "CPS vs Latency b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
