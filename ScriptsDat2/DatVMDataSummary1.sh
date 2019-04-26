@@ -59,7 +59,7 @@ while [ $NumTest -lt $NumberTest ]; do
 
     if [ $NumData = '0' ];
     then
-      echo CPS $cps Prueba $NumTest con falla, no se considerara en los promedios generales.
+      echo CPS $cps Prueba $NumTest VM $i con falla, no se considerara en los promedios generales.
     else
         PromCPU=$(echo "scale=3; $SumCPU/$NumData" | bc -l)
         echo $PromCPU >> $testfolder/Summary$i$cps
