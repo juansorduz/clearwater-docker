@@ -79,27 +79,27 @@ sleep 300
 urcassandrapod=$(kubectl get pods | grep urcassandra | cut -d ' ' -f1)
 kubectl exec $urcassandrapod /usr/share/clearwater/crest-prov/src/metaswitch/crest/tools/stress_provision.sh $usuarios
 
-#Logic for delete old ScriptsDat2
-for i in $(seq 1 5); do
-  rm -f ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
-done
-
-#Logic to create users in sipppods
-NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
-SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
-#SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
-for i in $(seq 1 $NumSipptest); do
-#echo $i;
-LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
-#LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
-echo SipptestPod $LocalSipptestPod;
-#echo SipptestIP $LocalSipptestIP;
-cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$i ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
-kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
-kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$i
-# for j in $(seq 1 5); do
-#   cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$j ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
-#   kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
-#   kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
+# #Logic for delete old ScriptsDat2
+# for i in $(seq 1 5); do
+#   rm -f ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
 # done
-done
+#
+# #Logic to create users in sipppods
+# NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
+# SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
+# #SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
+# for i in $(seq 1 $NumSipptest); do
+# #echo $i;
+# LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
+# #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
+# echo SipptestPod $LocalSipptestPod;
+# #echo SipptestIP $LocalSipptestIP;
+# cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$i ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+# kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
+# kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$i
+# # for j in $(seq 1 5); do
+# #   cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$j ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+# #   kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
+# #   kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
+# # done
+# done
