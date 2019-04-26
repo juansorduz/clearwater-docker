@@ -20,5 +20,5 @@ set output "DespliegueCPSvsLATENCYb${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumU
 set xlabel "CPS"
 set ylabel "LATENCY (ms)"
 set title "CPS vs Latency b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
-plot "<(sed -n '1,15p' $testMainfolder/SUMMARYSINGLELATENCY)" using 1:2 with lines
+plot "<(sed -n '1,15p' $testMainfolder/SUMMARYSINGLELATENCY)" using 2:xtic(1) title 'Latency' w l ls 1
 EOF
