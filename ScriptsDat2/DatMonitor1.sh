@@ -105,6 +105,7 @@ rm -f $testfolder/VM3LocalVMdata.csv
 rm -f $testfolder/VM4LocalVMdata.csv
 rm -f $testfolder/VM5LocalVMdata.csv
 rm -f $testfolder/VM6LocalVMdata.csv
+rm -f $testfolder/VM7LocalVMdata.csv
 rm -f $testfolder/VM0LocalVMdata.csv
 
 ################################################################################

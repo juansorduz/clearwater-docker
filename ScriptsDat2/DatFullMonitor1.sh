@@ -12,7 +12,7 @@ case $yn in
     [Nn]* ) echo Se sobreescribira informacion previa;;
 esac
 
-exit 0
+#exit 0
 
 #yes | ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password
 # rm -r ~/ClearwaterTestResults/Kubernetes5
