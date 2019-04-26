@@ -9,7 +9,7 @@ source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 read -p "Desea borrar informacion previa?" yn
 case $yn in
     [Yy]* ) ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password;;
-    [Nn]* exit;;
+    [Nn]* ) exit;;
 esac
 
 exit 0
