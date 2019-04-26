@@ -6,11 +6,10 @@ option=${3:-3}
 NumberTest=${4:-2}
 
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
-echo "Borrar informacion previa?"
-select yn in "Y" "N"
+read -p "Desea borrar informacion previa?" yn
 case $yn in
-    Y ) ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password;;
-    N ) exit;;
+    [Yy]* ) ~/clearwater-docker/ScriptsDat2/DatFullDelete1.sh $password;;
+    [Nn]* exit;;
 esac
 
 exit 0
