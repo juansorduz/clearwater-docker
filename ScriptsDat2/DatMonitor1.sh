@@ -23,7 +23,7 @@ NumTest=1
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
-echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, option=$option
+echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, option=$option, b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 #Create tests folder if not exits
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
 mkdir -p $testfolder
