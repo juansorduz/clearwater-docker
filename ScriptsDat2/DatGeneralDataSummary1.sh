@@ -87,17 +87,25 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   #SUCCESFULL CALL RATE
   #############################################################################
-  CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
-  SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
-  FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+  TotalCallGenerate=0
+  TotalSuccessfullCallGenerate=0
+  TotalFailedCallGenerate=0
+  for i in $(seq 1 $NumSipp); do
+    CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+    SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+    FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+    CallGenerate=${CallGenerate::-1}
+    SuccesfullCall=${SuccesfullCall::-1}
+    FailedCall=${FailedCall::-1}
+    TotalCallGenerate=`echo $TotalCallGenerate + $CallGenerate | bc`
+    TotalSuccessfullCallGenerate=`echo $TotalSuccessfullCallGenerate + $SuccesfullCall | bc`
+    TotalFailedCallGenerate=`echo $TotalFailedCallGenerate + $FailedCall | bc`
+  done
   Scale=100
-  CallGenerate=${CallGenerate::-1}
-  SuccesfullCall=${SuccesfullCall::-1}
-  FailedCall=${FailedCall::-1}
-  SuccesfullCallRate=$(echo "scale=3; $SuccesfullCall*$Scale" | bc -l)
-  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$CallGenerate" | bc -l)
+  SuccesfullCallRate=$(echo "scale=3; $TotalSuccessfullCallGenerate*$Scale" | bc -l)
+  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$TotalCallGenerate" | bc -l)
   echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
-  echo Call Generate:$CallGenerate SuccesfullCall:$SuccesfullCall FailedCall $FailedCall SCR:$SuccesfullCallRate
+  echo Call Generate:$TotalCallGenerate SuccesfullCall:$TotalSuccessfullCallGenerate FailedCall $TotalFailedCallGenerate SCR:$SuccesfullCallRate
 
   let NumTest=NumTest+1
 done
