@@ -76,7 +76,8 @@ while [ $NumTest -lt $NumberTest ]; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
     [ -e $testfolder/$NumTest/$i ] && rm $testfolder/$NumTest/$i
-    tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i"
+    #tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i"
+    tail -n +2 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i"
     #tail -n +20 "$testfolder/$NumTest/$i.csv" > "$testfolder/$NumTest/$i.txt"
     #head -n +20 "$testfolder/$NumTest/$i.txt" > "$testfolder/$NumTest/$i"
     SumRAM=0
