@@ -5,7 +5,7 @@ testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch
 Graphfolder=$Maintestfolder/Graphs/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 mkdir -p $Graphfolder
 cd $Graphfolder
-echo $Graphfolder
+#echo $Graphfolder
 
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
