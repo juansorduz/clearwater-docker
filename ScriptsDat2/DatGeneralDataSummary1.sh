@@ -91,9 +91,9 @@ while [ $NumTest -lt $NumberTest ]; do
   TotalSuccessfullCallGenerate=0
   TotalFailedCallGenerate=0
   for i in $(seq 1 $NumSipp); do
-    CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
-    SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
-    FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest.txt | cut -d '|' -f3)
+    CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+    SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+    FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
     CallGenerate=${CallGenerate::-1}
     SuccesfullCall=${SuccesfullCall::-1}
     FailedCall=${FailedCall::-1}
