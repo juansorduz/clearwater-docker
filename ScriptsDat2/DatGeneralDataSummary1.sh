@@ -60,6 +60,12 @@ while [ $NumTest -lt $NumberTest ]; do
   SumSingleLatency=0
   PromSingleLatency=0
   NumData=0
+
+  rm $testfolder/$NumTest/SingleLatencyTest.csv
+
+  for i in $(seq 1 $NumSipp); do
+  cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
+  done
   while IFS=" " read -r SingleLatency remainder
   do
     #CPU=${echo $CPU | bc}
