@@ -16,6 +16,7 @@ sipptest=$(echo $SipptestPods | cut -d ' ' -f$NumSipp);
 NumBono=$NumSipp
 BonoIPs=$(kubectl get pods -o wide | grep bono | awk '{print $6}')
 ip=$(echo $BonoIPs | cut -d ' ' -f$NumBono);
+userfile=users$NumSipp.csv
 
 echo [SCTIPT GENERADOR TRAFICO] sipppod=$sipptest cps: $cps, usuarios: $usrs, tiempo: $time, ipBono: $ip
 
@@ -28,6 +29,7 @@ sed -i '45s@.*@num_users=code@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator
 sed -i "45s@code@$usrs@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress$NumSipp
 #192.168.190.20
 sed -i "70s@192.168.190.20@$ip@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress$NumSipp
+sed -i "70s@users.csv@$userfile@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress$NumSipp
 
 
 kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress$NumSipp $sipptest:/usr/share/clearwater/bin/sip-stress

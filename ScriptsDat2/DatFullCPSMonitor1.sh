@@ -55,8 +55,8 @@ sed -i "14s@0@$j@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-u
 kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
 kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
 
-echo base $base
-echo Users per Sipp $UsersPerSipp
+#echo base $base
+#echo Users per Sipp $UsersPerSipp
 
 base=`echo $base + $UsersPerSipp | bc`
 base=`echo $base + $IncrementUser | bc`
@@ -64,7 +64,7 @@ done
 
 done
 
-exit 0
+#exit 0
 #echo Duration $Duration password $password option $option NumberTest $NumberTest
 
 mkdir -p $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
