@@ -12,12 +12,13 @@ source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 
 #Updating deployment to test TestCharacteristics
 kubectl scale deployment sipptest --replicas=$NumSipp
-kubectl scale deployment bono --replicas=$NumBono
+#kubectl scale deployment bono --replicas=$NumBono
 kubectl scale deployment ursprout --replicas=$NumURS
 kubectl scale deployment mscsprout --replicas=$NumMSCS
 kubectl scale deployment urhomestead --replicas=$NumURH
 kubectl scale deployment mschomestead --replicas=$NumMSCH
-sleep 30
+#sleep 30
+sleep 5
 
 #Logic to create users in sipppods
 echo Creating users in sipppods
