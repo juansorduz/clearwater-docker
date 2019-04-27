@@ -55,7 +55,9 @@ sed -i "14s@0@$j@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-u
 kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
 kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
 
-base=2010000010
+echo base $base
+echo Users per Sipp $UsersPerSipp
+
 base=`echo $base + $UsersPerSipp | bc`
 base=`echo $base + $IncrementUser | bc`
 done
