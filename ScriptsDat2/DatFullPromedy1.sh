@@ -65,28 +65,28 @@ echo duration $duration NumberTest $NumberTest
 # . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
 
 echo PRUEBA DE DESPLIEGUE CON b1u1s1
-# echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-# . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
-#
-# echo PRUEBA DE DESPLIEGUE CON b2u1s1
-# echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-# . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
-#
-# echo PRUEBA DE DESPLIEGUE CON b1u2s1
-# echo -e "NumSipp=1\nNumBono=1\nNumURS=2\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-# . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
-#
-# echo PRUEBA DE DESPLIEGUE CON b1u1s2
-# echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=2\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-# . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
-#
-# echo PRUEBA DE DESPLIEGUE CON b3u1s1
-# echo -e "NumSipp=3\nNumBono=3\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-# . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
-#
-# echo PRUEBA DE DESPLIEGUE CON b2u2s1
-# echo -e "NumSipp=2\nNumBono=2\nNumURS=2\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-# . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
+echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
+
+echo PRUEBA DE DESPLIEGUE CON b2u1s1
+echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
+
+echo PRUEBA DE DESPLIEGUE CON b1u2s1
+echo -e "NumSipp=1\nNumBono=1\nNumURS=2\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
+
+echo PRUEBA DE DESPLIEGUE CON b1u1s2
+echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=2\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
+
+echo PRUEBA DE DESPLIEGUE CON b3u1s1
+echo -e "NumSipp=3\nNumBono=3\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
+
+echo PRUEBA DE DESPLIEGUE CON b2u2s1
+echo -e "NumSipp=2\nNumBono=2\nNumURS=2\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
 
 echo PRUEBA DE DESPLIEGUE CON b2u1s2
 echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=2\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
