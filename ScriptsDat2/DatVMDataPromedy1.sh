@@ -21,8 +21,8 @@ then
   echo Deleting old scripts
   [ -e $testMainfolder/SUMMARYVMCPU ] && rm $testMainfolder/SUMMARYVMCPU
   [ -e $testMainfolder/SUMMARYVMRAM ] && rm $testMainfolder/SUMMARYVMRAM
-  echo "#cps CPUVM1 VarVM1 CPUVM2 VarVM2 CPUVM3 VarVM3 CPUVM4 VarVM4 CPUVM5 VarVM5 CPUVM6 VarVM6 CPUVM7 VarVM7 CPUVMTOTAL VarVMTOTAL" >> $testMainfolder/SUMMARYVMCPU
-  echo "#cps RAMVM1 VarVM1 RAMVM2 VarVM2 RAMVM3 VarVM3 RAMVM4 VarVM4 RAMVM5 VarVM5 RAMVM6 VarVM6 RAMVM7 VarVM7 RAMVMTOTAL VarVMTOTAL" >> $testMainfolder/SUMMARYVMRAM
+  echo "#cps CPUVM0 VarVM0 CPUVM1 VarVM1 CPUVM2 VarVM2 CPUVM3 VarVM3 CPUVM4 VarVM4 CPUVM5 VarVM5 CPUVM6 VarVM6 CPUVM7 VarVM7 CPUVMTOTAL VarVMTOTAL" >> $testMainfolder/SUMMARYVMCPU
+  echo "#cps RAMVM0 VarVM0 RAMVM1 VarVM1 RAMVM2 VarVM2 RAMVM3 VarVM3 RAMVM4 VarVM4 RAMVM5 VarVM5 RAMVM6 VarVM6 RAMVM7 VarVM7 RAMVMTOTAL VarVMTOTAL" >> $testMainfolder/SUMMARYVMRAM
 fi
 
 DiferenceVar=0
@@ -32,6 +32,7 @@ NumProms=0
 #CPU
 #############################################################################
 echo Calculating CPU
+DatosCPUVM0=$(<$testfolder/SummaryVM0LocalVMCPUdata$cps)
 DatosCPUVM1=$(<$testfolder/SummaryVM1LocalVMCPUdata$cps)
 DatosCPUVM2=$(<$testfolder/SummaryVM2LocalVMCPUdata$cps)
 DatosCPUVM3=$(<$testfolder/SummaryVM3LocalVMCPUdata$cps)
@@ -41,6 +42,7 @@ DatosCPUVM6=$(<$testfolder/SummaryVM6LocalVMCPUdata$cps)
 DatosCPUVM7=$(<$testfolder/SummaryVM7LocalVMCPUdata$cps)
 DatosCPUVMTOTAL=$(<$testfolder/SummaryVMTOTALLocalVMCPUdata$cps)
 
+AverageCPUVM0=0
 AverageCPUVM1=0
 AverageCPUVM2=0
 AverageCPUVM3=0
@@ -50,6 +52,7 @@ AverageCPUVM6=0
 AverageCPUVM7=0
 AverageCPUVMTOTAL=0
 
+VarCPUVM0=0
 VarCPUVM1=0
 VarCPUVM2=0
 VarCPUVM3=0
@@ -58,6 +61,13 @@ VarCPUVM5=0
 VarCPUVM6=0
 VarCPUVM7=0
 VarCPUVMTOTAL=0
+
+NumProms=$(wc -l < $testfolder/SummaryVM0LocalVMCPUdata$cps)
+for i in ${DatosCPUVM0[@]}; do  AverageCPUVM0=$(echo "$AverageCPUVM0 + $i" | bc -l) ; done
+AverageCPUVM0=$(echo "scale=3;$AverageCPUVM0/$NumProms" | bc -l)
+for i in ${DatosCPUVM0[@]}; do DiferenceVar=$(echo "$i - $AverageCPUVM0" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarCPUVM0=$(echo "$VarCPUVM0 + $DiferenceVar" | bc -l) ; done
+VarCPUVM0=$(echo "scale=3;$VarCPUVM0/$NumProms" | bc -l)
+VarCPUVM0=$(echo "scale=3;sqrt($VarCPUVM0)" | bc -l)
 
 NumProms=$(wc -l < $testfolder/SummaryVM1LocalVMCPUdata$cps)
 for i in ${DatosCPUVM1[@]}; do  AverageCPUVM1=$(echo "$AverageCPUVM1 + $i" | bc -l) ; done
@@ -115,11 +125,12 @@ for i in ${DatosCPUVMTOTAL[@]}; do DiferenceVar=$(echo "$i - $AverageCPUVMTOTAL"
 VarCPUVMTOTAL=$(echo "scale=3;$VarCPUVMTOTAL/$NumProms" | bc -l)
 VarCPUVMTOTAL=$(echo "scale=3;sqrt($VarCPUVMTOTAL)" | bc -l)
 
-echo "$cps $AverageCPUVM1 $VarCPUVM1 $AverageCPUVM2 $VarCPUVM2 $AverageCPUVM3 $VarCPUVM3 $AverageCPUVM4 $VarCPUVM4 $AverageCPUVM5 $VarCPUVM5 $AverageCPUVM6 $VarCPUVM6 $AverageCPUVM7 $VarCPUVM7 $AverageCPUVMTOTAL $VarCPUVMTOTAL" >> $testMainfolder/SUMMARYVMCPU
+echo "$cps $AverageCPUVM0 $VarCPUVM0 $AverageCPUVM1 $VarCPUVM1 $AverageCPUVM2 $VarCPUVM2 $AverageCPUVM3 $VarCPUVM3 $AverageCPUVM4 $VarCPUVM4 $AverageCPUVM5 $VarCPUVM5 $AverageCPUVM6 $VarCPUVM6 $AverageCPUVM7 $VarCPUVM7 $AverageCPUVMTOTAL $VarCPUVMTOTAL" >> $testMainfolder/SUMMARYVMCPU
 #############################################################################
 #RAM
 #############################################################################
 echo Calculating RAM
+DatosRAMVM0=$(<$testfolder/SummaryVM0LocalVMRAMdata$cps)
 DatosRAMVM1=$(<$testfolder/SummaryVM1LocalVMRAMdata$cps)
 DatosRAMVM2=$(<$testfolder/SummaryVM2LocalVMRAMdata$cps)
 DatosRAMVM3=$(<$testfolder/SummaryVM3LocalVMRAMdata$cps)
@@ -129,6 +140,7 @@ DatosRAMVM6=$(<$testfolder/SummaryVM6LocalVMRAMdata$cps)
 DatosRAMVM7=$(<$testfolder/SummaryVM7LocalVMRAMdata$cps)
 DatosRAMVMTOTAL=$(<$testfolder/SummaryVMTOTALLocalVMRAMdata$cps)
 
+AverageRAMVM0=0
 AverageRAMVM1=0
 AverageRAMVM2=0
 AverageRAMVM3=0
@@ -138,6 +150,7 @@ AverageRAMVM6=0
 AverageRAMVM7=0
 AverageRAMVMTOTAL=0
 
+VarRAMVM0=0
 VarRAMVM1=0
 VarRAMVM2=0
 VarRAMVM3=0
@@ -146,6 +159,13 @@ VarRAMVM5=0
 VarRAMVM6=0
 VarRAMVM7=0
 VarRAMVMTOTAL=0
+
+NumProms=$(wc -l < $testfolder/SummaryVM0LocalVMRAMdata$cps)
+for i in ${DatosRAMVM0[@]}; do  AverageRAMVM0=$(echo "$AverageRAMVM0 + $i" | bc -l) ; done
+AverageRAMVM0=$(echo "scale=3;$AverageRAMVM0/$NumProms" | bc -l)
+for i in ${DatosRAMVM0[@]}; do DiferenceVar=$(echo "$i - $AverageRAMVM0" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarRAMVM0=$(echo "$VarRAMVM0 + $DiferenceVar" | bc -l) ; done
+VarRAMVM0=$(echo "scale=3;$VarRAMVM0/$NumProms" | bc -l)
+VarRAMVM0=$(echo "scale=3;sqrt($VarRAMVM0)" | bc -l)
 
 NumProms=$(wc -l < $testfolder/SummaryVM1LocalVMRAMdata$cps)
 for i in ${DatosRAMVM1[@]}; do  AverageRAMVM1=$(echo "$AverageRAMVM1 + $i" | bc -l) ; done
@@ -203,4 +223,4 @@ for i in ${DatosRAMVMTOTAL[@]}; do DiferenceVar=$(echo "$i - $AverageRAMVMTOTAL"
 VarRAMVMTOTAL=$(echo "scale=3;$VarRAMVMTOTAL/$NumProms" | bc -l)
 VarRAMVMTOTAL=$(echo "scale=3;sqrt($VarRAMVMTOTAL)" | bc -l)
 
-echo "$cps $AverageRAMVM1 $VarRAMVM1 $AverageRAMVM2 $VarRAMVM2 $AverageRAMVM3 $VarRAMVM3 $AverageRAMVM4 $VarRAMVM4 $AverageRAMVM5 $VarRAMVM5 $AverageRAMVM6 $VarRAMVM6 $AverageRAMVM7 $VarRAMVM7 $AverageRAMVMTOTAL $VarRAMVMTOTAL" >> $testMainfolder/SUMMARYVMRAM
+echo "$cps $AverageRAMVM0 $VarRAMVM0 $AverageRAMVM1 $VarRAMVM1 $AverageRAMVM2 $VarRAMVM2 $AverageRAMVM3 $VarRAMVM3 $AverageRAMVM4 $VarRAMVM4 $AverageRAMVM5 $VarRAMVM5 $AverageRAMVM6 $VarRAMVM6 $AverageRAMVM7 $VarRAMVM7 $AverageRAMVMTOTAL $VarRAMVMTOTAL" >> $testMainfolder/SUMMARYVMRAM

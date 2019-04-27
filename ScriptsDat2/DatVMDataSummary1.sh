@@ -36,7 +36,7 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   TOTALCPU=0
   TOTALRAM=0
-  for i in VM1LocalVMCPUdata VM2LocalVMCPUdata VM3LocalVMCPUdata VM4LocalVMCPUdata VM5LocalVMCPUdata VM6LocalVMCPUdata VM7LocalVMCPUdata; do
+  for i in VM0LocalVMCPUdata VM1LocalVMCPUdata VM2LocalVMCPUdata VM3LocalVMCPUdata VM4LocalVMCPUdata VM5LocalVMCPUdata VM6LocalVMCPUdata VM7LocalVMCPUdata; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
     [ -e $testfolder/$NumTest/$i ] && rm $testfolder/$NumTest/$i
@@ -63,7 +63,7 @@ while [ $NumTest -lt $NumberTest ]; do
     else
         PromCPU=$(echo "scale=3; $SumCPU/$NumData" | bc -l)
         echo $PromCPU >> $testfolder/Summary$i$cps
-        if [ $i != 'VM7LocalVMCPUdata' ];
+        if [ $i != 'VM0LocalVMCPUdata' ];
         then
             TOTALCPU=`echo $TOTALCPU + $PromCPU | bc`
         fi
@@ -72,7 +72,7 @@ while [ $NumTest -lt $NumberTest ]; do
   done
   echo $TOTALCPU >> $testfolder/SummaryVMTOTALLocalVMCPUdata$cps
 
-  for i in VM1LocalVMRAMdata VM2LocalVMRAMdata VM3LocalVMRAMdata VM4LocalVMRAMdata VM5LocalVMRAMdata VM6LocalVMRAMdata VM7LocalVMRAMdata; do
+  for i in VM0LocalVMRAMdata VM1LocalVMRAMdata VM2LocalVMRAMdata VM3LocalVMRAMdata VM4LocalVMRAMdata VM5LocalVMRAMdata VM6LocalVMRAMdata VM7LocalVMRAMdata; do
     #echo $testfolder
     [ -e $testfolder/$NumTest/$i.txt ] && rm $testfolder/$NumTest/$i.txt
     [ -e $testfolder/$NumTest/$i ] && rm $testfolder/$NumTest/$i
@@ -99,7 +99,7 @@ while [ $NumTest -lt $NumberTest ]; do
     else
         PromRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
         echo $PromRAM >> $testfolder/Summary$i$cps
-        if [ $i != 'VM7LocalVMRAMdata' ];
+        if [ $i != 'VM0LocalVMRAMdata' ];
         then
             TOTALRAM=`echo $TOTALRAM + $PromRAM | bc`
         fi
