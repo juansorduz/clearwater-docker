@@ -24,6 +24,11 @@ echo Creating users in sipppods
 NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
 SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
 #SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
+base=2010000010
+IncrementUser=1
+count=9990
+TotalUsers=49990
+UsersPerSipp=$(echo "scale=0; $TotalUsers/$NumSipptest" | bc -l)
 for i in $(seq 1 $NumSipptest); do
 #echo $i;
 LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
@@ -33,14 +38,24 @@ echo SipptestPod $LocalSipptestPod;
 # cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$i ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
 # kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
 # kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$i
-for j in $(seq 1 5); do
-  echo Grupo de usuario $j
-  cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$j ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
-  kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
-  kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
-done
+cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template1 ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+
+sed -i '9s@.*@base=2010000010@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+sed -i "9s@2010000010@$base@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+
+sed -i '10s@.*@count=9990@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+sed -i "10s@9990@$UsersPerSipp@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
+
+kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
+kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$i
+
+base=2010000010
+base=`echo $base + $UsersPerSipp | bc`
+base=`echo $base + $IncrementUser | bc`
+
 done
 
+exit 0
 #echo Duration $Duration password $password option $option NumberTest $NumberTest
 
 mkdir -p $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
