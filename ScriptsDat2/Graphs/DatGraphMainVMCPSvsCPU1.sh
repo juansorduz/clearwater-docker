@@ -21,11 +21,5 @@ set xlabel "CPS"
 set ylabel "CPU (%)"
 set title "CPS vs CPU b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
 plot "$testMainfolder/SUMMARYVMCPU" \
-            using 2:3:xtic(1) title "VM1" fill pattern 1 lc 8, \
-            '' using 4:5:xtic(1) title "VM2" fill pattern 2 lc 8, \
-            '' using 6:7:xtic(1) title "VM3" fill pattern 3 lc 8, \
-            '' using 8:9:xtic(1) title "VM4" fill pattern 4 lc 8, \
-            '' using 10:11:xtic(1) title "VM5" fill pattern 5 lc 8, \
-            '' using 12:13:xtic(1) title "VM6" fill pattern 6 lc 8, \
-            '' using 14:15:xtic(1) title "VM7" fill pattern 7 lc 8
+            using 18:19:xtic(1) title "VMTotal" fill pattern 7 lc 8
 EOF
