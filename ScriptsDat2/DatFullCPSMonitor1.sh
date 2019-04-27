@@ -49,8 +49,11 @@ sed -i "9s@2010000010@$base@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/s
 sed -i '10s@.*@count=9990@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
 sed -i "10s@9990@$UsersPerSipp@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
 
-kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress
-kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress
+sed -i '14s@.*@NumGroupUser=0@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+sed -i "14s@0@$j@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+
+kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
+kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
 
 base=2010000010
 base=`echo $base + $UsersPerSipp | bc`
