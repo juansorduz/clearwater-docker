@@ -24,7 +24,7 @@ NumTest=1
 #NumberTest=2
 while [ $NumTest -lt $NumberTest ]; do
   #Calculating CPU and RAM
-  echo Resumen general numero $NumTest, cps $cps
+  echo Resumen general numero $NumTest, cps $cps b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
   #############################################################################
   #LATENCY
   #############################################################################

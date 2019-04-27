@@ -14,7 +14,7 @@ source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
 mkdir -p $testfolder
 
-echo Docker cps $cps duration $duration
+echo Docker cps $cps duration $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 #Deleting old files
 for i in astaire_astaire urcassandra_urcassandra msccassandra_msccassandra chronos_chronos bono_bono ellis_ellis homer_homer urhomestead_urhomestead mschomestead_mschomestead homestead-prov_homestead-prov ralf_ralf ursprout_ursprout mscsprout_mscsprout sipptest_sipptest; do
    [ -e $testfolder/PromediosCPUDocker$i$cps ] && rm $testfolder/PromediosCPUDocker$i$cps

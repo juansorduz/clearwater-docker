@@ -14,7 +14,7 @@ testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
 mkdir -p $testfolder
 
-echo CPS: $cps Duration: $duration
+echo CPS: $cps Duration: $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 #Deleting old filesd
 if [ $cps = '10' ];
 then
