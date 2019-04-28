@@ -79,7 +79,7 @@ while [ $NumTest -lt $NumberTest ]; do
     let NumData=NumData+1
   done < "$testfolder/$NumTest/SingleLatencyTest.csv"
   #echo  $NumData
-  exit 0
+
 
   if [ $NumData = '0' ];
   then
@@ -89,6 +89,7 @@ while [ $NumTest -lt $NumberTest ]; do
       echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
       echo SingleLatency $PromSingleLatency
   fi
+  exit 0
   #############################################################################
   #SUCCESFULL CALL RATE
   #############################################################################
