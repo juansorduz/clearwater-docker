@@ -69,7 +69,7 @@ while [ $NumTest -lt $NumberTest ]; do
   for i in $(seq 1 $NumSipp); do
   cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
   done
-  exit 0
+
   while IFS=" " read -r SingleLatency remainder
   do
     #CPU=${echo $CPU | bc}
@@ -79,6 +79,7 @@ while [ $NumTest -lt $NumberTest ]; do
     let NumData=NumData+1
   done < "$testfolder/$NumTest/SingleLatencyTest.csv"
   #echo  $NumData
+  exit 0
 
   if [ $NumData = '0' ];
   then
