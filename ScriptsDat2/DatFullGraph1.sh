@@ -112,11 +112,12 @@ echo GRAFICA CON 1 BONO
 # . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 # . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
 
+echo A CONTINUACION SE EJECUTAN DIFERENTES PRUEBAS CON DESPLIEGUES DIFERENTES
 echo PRUEBA DE DESPLIEGUE CON b1u1s1
 echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSCR1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsLatency1.sh
-. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
+#. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
 
@@ -124,15 +125,16 @@ echo PRUEBA DE DESPLIEGUE CON b2u1s1
 echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSCR1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsLatency1.sh
-. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
+#. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
+#exit 0
 
 echo PRUEBA DE DESPLIEGUE CON b1u2s1
 echo -e "NumSipp=1\nNumBono=1\nNumURS=2\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSCR1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsLatency1.sh
-. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
+#. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
 
@@ -140,7 +142,7 @@ echo PRUEBA DE DESPLIEGUE CON b1u1s2
 echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=2\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSCR1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsLatency1.sh
-. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
+#. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
 
@@ -148,7 +150,7 @@ echo PRUEBA DE DESPLIEGUE CON b3u1s1
 echo -e "NumSipp=3\nNumBono=3\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSCR1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsLatency1.sh
-. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
+#. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
 
@@ -156,7 +158,7 @@ echo PRUEBA DE DESPLIEGUE CON b2u2s1
 echo -e "NumSipp=2\nNumBono=2\nNumURS=2\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSCR1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsLatency1.sh
-. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
+#. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
 
@@ -164,7 +166,7 @@ echo PRUEBA DE DESPLIEGUE CON b2u1s2
 echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=2\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSCR1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsLatency1.sh
-. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
+#. ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainCPSvsSingleLatency1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsCPU1.sh
 . ~/clearwater-docker/ScriptsDat2/Graphs/DatGraphMainVMCPSvsRAM1.sh
 
