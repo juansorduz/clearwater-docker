@@ -12,7 +12,7 @@ source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/DatDockerDataPromedy1.sh  10 $duration $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatVMDataPromedy1.sh  10 $duration $NumberTest
 
-exit 0
+#exit 0
 # . ~/clearwater-docker/ScriptsDat2/DatGeneralDataPromedy1.sh  20 $duration $NumberTest
 # . ~/clearwater-docker/ScriptsDat2/DatDockerDataPromedy1.sh  20 $duration $NumberTest
 # . ~/clearwater-docker/ScriptsDat2/DatVMDataPromedy1.sh  20 $duration $NumberTest
