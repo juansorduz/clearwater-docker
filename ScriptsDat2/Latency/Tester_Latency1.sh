@@ -35,13 +35,13 @@ while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
   #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
-  #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp)"
-  ERRORVARIABLE=0
-  kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
+  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp)"
+  #ERRORVARIABLE=0
+  #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
   #echo $LATENCY
-  #echo $ERRORVARIABLE
+  echo $ERRORVARIABLE
   ERROR_LENGTH=${#ERRORVARIABLE}
   echo $ERROR_LENGTH
   if [ "$ERROR_LENGTH" -lt '150' ]
