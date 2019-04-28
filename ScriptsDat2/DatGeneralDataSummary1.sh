@@ -65,7 +65,7 @@ while [ $NumTest -lt $NumberTest ]; do
 
   #[ -e $testfolder/$NumTest/SingleLatencyTest.csv ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
   cat $testfolder/$NumTest/SingleLatencyTest1.csv > $testfolder/$NumTest/SingleLatencyTest.csv
-
+  exit 0
   for i in $(seq 2 $NumSipp); do
   cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
   done
