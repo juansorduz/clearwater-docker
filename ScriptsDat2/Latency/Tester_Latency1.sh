@@ -15,7 +15,7 @@ echo [SCTIPT GENERDOR RETARDO] sipppod=$sipptest ipBono=$ip
 userfile=users_test_latency.csv.$NumSipp
 cp $directory/sip-stress-latency-template $directory/sip-stress-latency$NumSipp
 sed -i "69s@192.168.190.72@$ip@" $directory/sip-stress-latency$NumSipp
-sed -i "69s@users_test_latency.csv.1@$userfile@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress$NumSipp
+sed -i "69s@users_test_latency.csv.1@$userfile@" $directory/sip-stress-latency$NumSipp
 echo Sending single latency scenario
 kubectl cp $directory/sip-stress-complete-latency.xml $sipptest:/usr/share/clearwater/sip-stress/
 echo Sending csv file for single test $directory/users_test_latency.csv.$NumSipp
@@ -37,7 +37,7 @@ while [ "$stateTest" -eq '1' ]; do
   #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
   #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp)"
   ERRORVARIABLE=0
-  kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency 
+  kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
   #echo $LATENCY
