@@ -113,7 +113,7 @@ while [ $NumTest -lt $NumberTest ]; do
   echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
   echo Call Generate:$TotalCallGenerate SuccesfullCall:$TotalSuccessfullCallGenerate FailedCall $TotalFailedCallGenerate SCR:$SuccesfullCallRate
 
-  exit 0
+  #exit 0
 
   let NumTest=NumTest+1
 done
