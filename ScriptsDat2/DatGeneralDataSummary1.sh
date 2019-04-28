@@ -47,7 +47,7 @@ while [ $NumTest -lt $NumberTest ]; do
 
   if [ $NumDataLatency = '0' ];
   then
-    echo CPS $cps Prueba Latencia $NumTest con falla, no se considerara en los promedios generales de latencia.
+    echo CPS $cps Prueba Delay $NumTest con falla, no se considerara en los promedios generales de latencia.
   else
       PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
       #PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
@@ -80,7 +80,7 @@ while [ $NumTest -lt $NumberTest ]; do
 
   if [ $NumData = '0' ];
   then
-    echo CPS $cps Prueba Delay $NumTest con falla, no se considerara en los promedios generales.
+    echo CPS $cps Prueba Latencia $NumTest con falla, no se considerara en los promedios generales.
   else
       PromSingleLatency=$(echo "scale=3; $SumSingleLatency/$NumData" | bc -l)
       echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
