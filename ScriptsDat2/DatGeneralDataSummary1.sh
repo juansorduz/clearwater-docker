@@ -64,11 +64,12 @@ while [ $NumTest -lt $NumberTest ]; do
   NumData=0
 
   [ -e $testfolder/$NumTest/SingleLatencyTest.csv ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
-  cat $testfolder/$NumTest/SingleLatencyTest1.csv > $testfolder/$NumTest/SingleLatencyTest.csv
-  exit 0
-  for i in $(seq 2 $NumSipp); do
+  #cat $testfolder/$NumTest/SingleLatencyTest1.csv > $testfolder/$NumTest/SingleLatencyTest.csv
+
+  for i in $(seq 1 $NumSipp); do
   cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
   done
+  exit 0
   while IFS=" " read -r SingleLatency remainder
   do
     #CPU=${echo $CPU | bc}
