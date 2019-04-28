@@ -32,7 +32,8 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
-  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
+  #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
+  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp)"
   #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency > /dev/null
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
