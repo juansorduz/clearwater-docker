@@ -34,8 +34,8 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
-  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
-  #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp)"
+  #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
+  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
   #ERRORVARIABLE=0
   #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
   END=$(date +%s.%N)
@@ -46,11 +46,11 @@ while [ "$stateTest" -eq '1' ]; do
   echo $ERROR_LENGTH
   if [ "$ERROR_LENGTH" -lt '150' ]
   then
-    echo Valor positivo $LATENCY
+    echo Valor positivo $NumSipp $LATENCY
     echo $LATENCY >> $testfolder/SingleLatencyTest$NumSipp.csv
 
    else
-     echo Valor negativoo $LATENCY
+     echo Valor negativoo $NumSipp $LATENCY
   fi
   source $testfolder/Variables.txt
   if [ "$stateTest" -eq '2' ]
