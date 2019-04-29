@@ -27,6 +27,7 @@ echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, option
 #Create tests folder if not exits
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
 mkdir -p $testfolder
+rm -rfv $testfolder/*
 #testfolder=~/ClearwaterTestResults/Kubernetes5/b$NumBono/$cps$duration/$NumTest
 export testfolder
 
