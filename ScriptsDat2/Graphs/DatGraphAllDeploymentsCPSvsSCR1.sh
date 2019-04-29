@@ -15,7 +15,6 @@ set boxwidth 0.9
 set style line 1 lt 1 lw 1 pt 1 linecolor rgb "0x767676"
 set xtics format ""
 set grid ytics
-set grid xtics
 set key outside below
 set terminal pdf
 set output "DespliegueCPSvsSCRAllKubernetesDeployments.pdf"
