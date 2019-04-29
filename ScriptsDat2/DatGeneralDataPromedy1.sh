@@ -20,8 +20,10 @@ if [ $cps = '10' ];
 then
   echo Deleting old scripts
   [ -e $testMainfolder/SUMMARYLATENCY ] && rm $testMainfolder/SUMMARYLATENCY
+  [ -e $testMainfolder/SUMMARYSINGLELATENCY ] && rm $testMainfolder/SUMMARYSINGLELATENCY
   [ -e $testMainfolder/SUMMARYSCR ] && rm $testMainfolder/SUMMARYSCR
-  echo "#cps Latency VarLatency" >> $testMainfolder/SUMMARYLATENCY
+  echo "#cps Delay VarLatency" >> $testMainfolder/SUMMARYLATENCY
+  echo "#cps Latency VarLatency" >> $testMainfolder/SUMMARYSINGLELATENCY
   echo "#cps SuccessfullCallRate VarSuccessfullCallRate" >> $testMainfolder/SUMMARYSCR
 
 fi
@@ -33,10 +35,10 @@ NumProms=0
 #LATENCY
 #############################################################################
 echo Calculating Latency
-DatosLatency=$(<$testfolder/PromediosSingleLatency$cps)
+DatosLatency=$(<$testfolder/PromediosDelay$cps)
 AverageLatency=0
 VarLatency=0
-NumProms=$(wc -l < $testfolder/PromediosSingleLatency$cps)
+NumProms=$(wc -l < $testfolder/PromediosDelay$cps)
 for i in ${DatosLatency[@]}; do  AverageLatency=$(echo "$AverageLatency + $i" | bc -l) ; done
 AverageLatency=$(echo "scale=3;$AverageLatency/$NumProms" | bc -l)
 for i in ${DatosLatency[@]}; do DiferenceVar=$(echo "$i - $AverageLatency" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarLatency=$(echo "$VarLatency + $DiferenceVar" | bc -l) ; done
