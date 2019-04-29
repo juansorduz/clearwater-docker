@@ -2,7 +2,7 @@
 cps=${1:-10}
 time=${2:-10}
 NumSipp=${3:-1}
-ip=${4:-10.55.3.95}
+ip=${4:-10.55.3.89}
 time_call=${5:-3000}
 cp ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-template.xml ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress.xml
 time2=$(($time * 1000))
