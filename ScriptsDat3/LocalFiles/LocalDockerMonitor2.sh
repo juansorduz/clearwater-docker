@@ -8,19 +8,17 @@ NumMSCS=${6:-1}
 NumURH=${7:-1}
 NumMSCH=${8:-1}
 
-mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest
-testfolder=~/ClearwaterTestResults/VM1/$cps$duration/$NumTest
+mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
+testfolder=~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
 
 echo EJECUTANDO SCRIPT MONITOR VM $USER
 
 rm -f $testfolder/Tiempos.csv
-rm -f $testfolder/contenedores.csv
 rm -f $testfolder/VMCPU.csv
 rm -f $testfolder/VMRAM.csv
 
 #Start time and metrics recollector script
 echo "Initial time: $(date +"%T")" > $testfolder/Tiempos.csv
-docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) > $testfolder/contenedores.csv
 top -b -n 1 | awk 'NR>7 { sum += $9; } END { print sum; }' > $testfolder/VMCPU.csv
 top -b -n 1 | awk 'NR>7 { sum += $10; } END { print sum; }' > $testfolder/VMRAM.csv
 
@@ -30,9 +28,9 @@ while [ "$stateTest" -eq '1' ]; do
      now=$(date +"%T")
      #echo $now
      echo -e "Tiempo $now" >> $testfolder/Tiempos.csv
-     docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}" $(docker ps -q) >> $testfolder/contenedores.csv
      top -b -n 1 | awk 'NR>7 { sum += $9; } END { print sum; }' >> $testfolder/VMCPU.csv
      top -b -n 1 | awk 'NR>7 { sum += $10; } END { print sum; }' >> $testfolder/VMRAM.csv
+
      source $testfolder/Variables.txt
      if [ "$stateTest" -eq '2' ]
      then
