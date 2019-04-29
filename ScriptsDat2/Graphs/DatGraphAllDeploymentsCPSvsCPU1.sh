@@ -23,10 +23,10 @@ set output "DespliegueVMCPSvsCPU.pdf"
 set xlabel "CPS"
 set ylabel "CPU (%)"
 set title "CPS vs CPU b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
-plot "$Maintestfolder/b1urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur1msc2' fill patter 1 lc 8, \
-     "$Maintestfolder/b1urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur2msc1' fill patter 2 lc 8, \
-     "$Maintestfolder/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc1' fill patter 3 lc 8, \
-     "$Maintestfolder/b2urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc2' fill patter 4 lc 8, \
-     "$Maintestfolder/b2urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur2msc1' fill patter 5 lc 8, \
-     "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' fill patter 6 lc 8
+plot "$Maintestfolder/b1urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur1msc2' lc 2, \
+     "$Maintestfolder/b1urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur2msc1' lc 3, \
+     "$Maintestfolder/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc1' lc 4, \
+     "$Maintestfolder/b2urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc2' lc 5, \
+     "$Maintestfolder/b2urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur2msc1' lc 6, \
+     "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' lc 7
 EOF

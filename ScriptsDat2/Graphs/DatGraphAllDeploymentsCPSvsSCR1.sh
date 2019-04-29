@@ -21,10 +21,10 @@ set output "DespliegueCPSvsSCRAllKubernetesDeployments.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
-plot "$Maintestfolder/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc2' w l lc 1, \
-     "$Maintestfolder/b1urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur2msc1' w l lc 2, \
-     "$Maintestfolder/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc1' w l lc 3, \
-     "$Maintestfolder/b2urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc2' w l lc 4, \
-     "$Maintestfolder/b2urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur2msc1' w l lc 5, \
-     "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 6
+plot "$Maintestfolder/b1urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b1ur1msc2' lc 2, \
+     "$Maintestfolder/b1urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b1ur2msc1' lc 3, \
+     "$Maintestfolder/b2urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b2ur1msc1' lc 4, \
+     "$Maintestfolder/b2urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b2ur1msc2' lc 5, \
+     "$Maintestfolder/b2urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b2ur2msc1' lc 6, \
+     "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b3ur1msc1' lc 7
 EOF
