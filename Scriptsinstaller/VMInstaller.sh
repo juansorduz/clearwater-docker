@@ -1,10 +1,10 @@
 #### All images must have openssh-server installed and a fix IP address in /etc/network/interfaces starting with ip_base.140
 ## users in VMs must be named clearwater
-ip_base=${1:-192.168.0.}
-ip_dns=${1:-192.168.0.8}
+ip_base=${1:-10.55.2.}
+ip_dns=${1:-10.55.2.190}
 password=${2:-'123'}
-j=32
-k=32
+j=191
+k=191
 for i in ellis bono sprout homer dime vellum ; do
   l=$ip_base$k
   echo $i
