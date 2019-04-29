@@ -43,8 +43,8 @@ docker exec $sipptest chmod +x /usr/share/clearwater/sip-stress/sip-stress.xml
 
 
 #touch $testfolder/logsSIPpTest.txt
-#docker exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest$NumSipp.txt
-docker exec $sipptest ./usr/share/clearwater/bin/sip-stress
+docker exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest$NumSipp.txt
+#docker exec $sipptest ./usr/share/clearwater/bin/sip-stress
 #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress > $testfolder/logsSIPpTest$NumSipp.txt 2> /dev/nul
 
 docker cp $sipptest:/var/log/clearwater-sipp/ $testfolder
