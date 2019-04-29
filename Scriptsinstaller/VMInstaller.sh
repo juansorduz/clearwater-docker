@@ -56,7 +56,7 @@ sshpass -p $password ssh -t worker$m@$l "echo $'nameserver '"$ip_dns" > /tmp/dns
 sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S cp /tmp/dnsmasq.resolv.conf /etc/"
 sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S cp /etc/default/dnsmasq /tmp/"
 sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S chmod +x /tmp/*"
-sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S chown clearwater /tmp/*"
+sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S chown worker$m /tmp/*"
 sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S echo 'RESOLV_CONF=/etc/dnsmasq.resolv.conf' >> /tmp/dnsmasq"
 sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S cp -rf /tmp/dnsmasq /etc/default/"
 sshpass -p $password ssh -t worker$m@$l "echo $password | sudo -S service dnsmasq restart"
