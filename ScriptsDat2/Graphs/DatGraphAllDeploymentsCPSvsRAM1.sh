@@ -8,7 +8,7 @@ cd $Graphfolder
 #echo $Graphfolder
 
 gnuplot <<- EOF
-set terminal png size 800 lc 8,500 enhanced font "Helvetica lc 8,20"
+set terminal png size 800,500 enhanced font "Helvetica,20"
 red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
 set yrange [0:500]
 set style data histogram
