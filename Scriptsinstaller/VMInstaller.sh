@@ -2,7 +2,7 @@
 ## users in VMs must be named clearwater
 ip_base=${1:-10.55.2.}
 ip_dns=${1:-10.55.2.190}
-password=${2:-'123'}
+password=${2:-'nfv1234'}
 j=191
 k=191
 m=1
