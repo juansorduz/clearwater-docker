@@ -68,6 +68,8 @@ echo PRUEBA DE DESPLIEGUE CON b1u1s1
 echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/DatFullCPSSummary1.sh $duration $NumberTest
 
+exit 0
+
 echo PRUEBA DE DESPLIEGUE CON b2u1s1
 echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/DatFullCPSSummary1.sh $duration $NumberTest
