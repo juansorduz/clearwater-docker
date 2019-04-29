@@ -8,8 +8,8 @@ NumMSCS=${6:-1}
 NumURH=${7:-1}
 NumMSCH=${8:-1}
 
-mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
-testfolder=~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
+mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest
+testfolder=~/ClearwaterTestResults/VM1/$cps$duration/$NumTest
 
 echo EJECUTANDO SCRIPT MONITOR VM $USER
 

@@ -9,22 +9,22 @@ do
   #Execute docker monitor script
   if [ "$stateMonitor" -eq '1' ]
   then
-    ~/LocalDockerMonitor1.sh $cps $duration $NumTest $NumBono ${NumURS} ${NumMSCS} ${NumURH} ${NumMSCH} &
-    echo -e "stateMonitor=0\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > ~/DataTest.txt
+    ~/LocalDockerMonitor1.sh $cps $duration $NumTest  &
+    echo -e "stateMonitor=0\ncps=$cps\nduration=$duration"  > ~/DataTest.txt
   fi
 
   #Execute VM monitor script
   if [ "$stateMonitor" -eq '2' ]
   then
-    ~/LocalDockerMonitor2.sh $cps $duration $NumTest $NumBono ${NumURS} ${NumMSCS} ${NumURH} ${NumMSCH} &
-    echo -e "stateMonitor=0\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > ~/DataTest.txt
+    ~/LocalDockerMonitor2.sh $cps $duration $NumTest  &
+    echo -e "stateMonitor=0\ncps=$cps\nduration=$duration"  > ~/DataTest.txt
   fi
 
   #Execute docker and VM monitor script
   if [ "$stateMonitor" -eq '3' ]
   then
-    ~/LocalDockerMonitor3.sh $cps $duration $NumTest $NumBono ${NumURS} ${NumMSCS} ${NumURH} ${NumMSCH} &
-    echo -e "stateMonitor=0\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > ~/DataTest.txt
+    ~/LocalDockerMonitor3.sh $cps $duration $NumTest  &
+    echo -e "stateMonitor=0\ncps=$cps\nduration=$duration"  > ~/DataTest.txt
   fi
 
 done
