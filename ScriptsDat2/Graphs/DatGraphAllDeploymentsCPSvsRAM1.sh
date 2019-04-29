@@ -17,6 +17,7 @@ set style fill solid
 set boxwidth 0.9
 set xtics format ""
 set grid ytics
+set grid xtics
 set key outside below
 set terminal pdf
 set output "DespliegueVMCPSvsRAM.pdf"
