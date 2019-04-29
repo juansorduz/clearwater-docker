@@ -501,7 +501,7 @@
 -->
 
   <!-- definition of the response time repartition table (unit is ms)   -->
-  <ResponseTimeRepartition value="50. 100, 150, 200, 300, 500, 1000, 10000"/>
+  <ResponseTimeRepartition value="10, 25, 50, 100, 150, 200, 300, 500, 1000, 10000"/>
   <!-- <ResponseTimeRepartition value="500, 1000, 2000, 3000, 4000, 7000, 10000"/>-->
 
   <!-- definition of the call length repartition table (unit is ms)     -->
