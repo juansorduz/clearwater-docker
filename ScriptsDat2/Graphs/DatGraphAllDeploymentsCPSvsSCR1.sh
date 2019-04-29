@@ -16,7 +16,8 @@ set style line 1 lt 1 lw 1 pt 1 linecolor rgb "0x767676"
 set xtics format ""
 set grid ytics
 set key outside below
-set output "DespliegueCPSvsSCRAllKubernetesDeployments.png"
+set terminal pdf
+set output "DespliegueCPSvsSCRAllKubernetesDeployments.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
