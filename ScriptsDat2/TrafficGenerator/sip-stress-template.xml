@@ -69,13 +69,13 @@
     ]]>
   </send>
 
-  <recv response="401" auth="true" rtd="call-setup">
+  <recv response="401" auth="true">
     <action>
       <add assign_to="reg_repeat" value="1" />
     </action>
   </recv>
 
-  <send>
+  <send start_rtd="register-setup">
     <![CDATA[
 
       REGISTER sip:[service];transport=[transport] SIP/2.0
@@ -96,7 +96,7 @@
     ]]>
   </send>
 
-  <recv response="200">
+  <recv response="200" rtd="register-setup">
     <action>
       <ereg regexp="rport=([^;]*);.*received=([^;]*);" search_in="hdr" header="Via:" assign_to="dummy,nat_port,nat_ip_addr" />
       <add assign_to="reg_repeat" value="1" />
