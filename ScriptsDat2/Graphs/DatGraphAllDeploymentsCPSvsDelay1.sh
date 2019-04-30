@@ -29,11 +29,5 @@ plot "$Maintestfolder/b1urs1mscs1urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title
      "$Maintestfolder/b2urs1mscs2urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b2ur1msc2' w l lc 5, \
      "$Maintestfolder/b2urs2mscs1urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b2ur2msc1' w l lc 6, \
      "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b3ur1msc1' w l lc 7, \
-     "$Maintestfolder/b3urs2mscs1urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b3ur1msc1' w l lc 9, \
-     "$Maintestfolder/b3urs1mscs2urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b3ur1msc1' w l lc 10, \
-     "$Maintestfolder/b4urs1mscs1urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b3ur1msc1' w l lc 11, \
-     "$Maintestfolder/b4urs2mscs1urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b3ur1msc1' w l lc 12, \
-     "$Maintestfolder/b4urs1mscs2urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b3ur1msc1' w l lc 13, \
-     "$Maintestfolder/b5urs1mscs1urh1msch1/SUMMARYLATENCY" using 2:xtic(1) title 'b3ur1msc1' w l lc 14, \     
      "~/ClearwaterTestResults/VM1/SUMMARYLATENCY" using 2:xtic(1) title 'VM' w l lc 8
 EOF
