@@ -8,7 +8,7 @@ NumberTest=${4:-2}
 
 
 #Loading test characteristics
-source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+source ~/clearwater-docker/ScriptsDat3/TrafficGenerator/TestCharacteristics
 
 #Updating deployment to test TestCharacteristics
 # kubectl scale deployment sipptest --replicas=$NumSipp
@@ -39,22 +39,22 @@ for i in $(seq 1 $NumSipptest); do
 echo SipptestPod $LocalSipptestPod;
 base=2010000010
 #echo SipptestIP $LocalSipptestIP;
-# cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template$i ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i
-# kubectl cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
+# cp ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator-template$i ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$i
+# kubectl cp ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$i $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$i
 # kubectl exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$i
 for j in $(seq 1 $NumSipptest); do
-cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator-template1 ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+cp ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator-template1 ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j
 
-sed -i '9s@.*@base=2010000010@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
-sed -i "9s@2010000010@$base@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+sed -i '9s@.*@base=2010000010@' ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j
+sed -i "9s@2010000010@$base@" ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j
 
-sed -i '10s@.*@count=9990@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
-sed -i "10s@9990@$UsersPerSipp@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+sed -i '10s@.*@count=9990@' ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j
+sed -i "10s@9990@$UsersPerSipp@" ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j
 
-sed -i '14s@.*@NumGroupUser=0@' ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
-sed -i "14s@0@$j@" ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j
+sed -i '14s@.*@NumGroupUser=0@' ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j
+sed -i "14s@0@$j@" ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j
 
-docker cp ~/clearwater-docker/ScriptsDat2/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
+docker cp ~/clearwater-docker/ScriptsDat3/TrafficGenerator/sip-stress-usergenerator$j $LocalSipptestPod:/usr/share/clearwater/infrastructure/scripts/sip-stress$j
 docker exec $LocalSipptestPod /usr/share/clearwater/infrastructure/scripts/sip-stress$j
 
 #echo base $base
@@ -75,24 +75,24 @@ done
 # kubectl get pods -o wide -n kube-system >> $Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/PODSDISTRIBUTION
 
 
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  10 $Duration $password $option $NumberTest
 
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  20 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  30 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  40 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  60 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  70 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  80 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  90 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  100 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  120 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  150 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  180 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  210 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  240 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  270 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  200 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  250 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  300 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  20 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  30 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  40 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  50 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  60 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  70 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  80 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  90 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  100 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  120 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  150 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  180 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  210 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  240 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  270 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  200 $Duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  250 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat3/DatMonitor1.sh  300 $Duration $password $option $NumberTest
 #exit 0
