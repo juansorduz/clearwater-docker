@@ -45,7 +45,7 @@ while [ "$stateTest" -eq '1' ]; do
   #echo $LATENCY
   #echo $ERRORVARIABLE
   ERROR_LENGTH=${#ERRORVARIABLE}
-  #echo $ERROR_LENGTH
+  echo $ERROR_LENGTH
   if [ "$ERROR_LENGTH" -lt '300' ]
   then
     #echo Valor positivo $NumSipp $LATENCY
