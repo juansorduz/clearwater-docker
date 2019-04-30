@@ -1,6 +1,6 @@
 #!/bin/bash
 NumSipp=${1:-1}
-ip=${2:-10.55.3.95}
+ip=${2:-10.55.3.89}
 directory=~/clearwater-docker/ScriptsDat3/Latency
 #SipptestPods=$(kubectl get pods | grep sipptest | awk '{print $1}')
 #sipptest=$(echo $SipptestPods | cut -d ' ' -f$NumSipp);
