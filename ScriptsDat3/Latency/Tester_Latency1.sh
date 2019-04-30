@@ -36,8 +36,8 @@ source $testfolder/Variables.txt
 while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
-  #ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
-  ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
+  ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
+  #ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
   #ERRORVARIABLE=0
   #docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
   END=$(date +%s.%N)
