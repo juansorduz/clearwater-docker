@@ -9,12 +9,12 @@ DelayBeforeACK=${5:-15}
 #NumTest=1
 #NumberTest=33
 Duration=1
-source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
-testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
+source ~/clearwater-docker/ScriptsDat3/TrafficGenerator/TestCharacteristics
+testMainfolder=$Maintestfolder/
+testfolder=$Maintestfolder/$cps$duration
 mkdir -p $testfolder
 
-echo CPS: $cps Duration: $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
+echo CPS: $cps Duration: $duration
 #Deleting old files
 if [ $cps = '10' ];
 then

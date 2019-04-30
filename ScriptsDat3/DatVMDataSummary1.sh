@@ -9,11 +9,11 @@ DelayBeforeACK=${5:-15}
 #NumTest=1
 #NumberTest=33
 Duration=1
-source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
+source ~/clearwater-docker/ScriptsDat3/TrafficGenerator/TestCharacteristics
+testfolder=$Maintestfolder/$cps$duration
 mkdir -p $testfolder
 
-echo Docker cps $cps duration $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
+echo Docker cps $cps duration $duration
 #Deleting old files
 for i in VM1LocalVMCPUdata VM2LocalVMCPUdata VM3LocalVMCPUdata VM4LocalVMCPUdata VM5LocalVMCPUdata VM6LocalVMCPUdata VM7LocalVMCPUdata; do
    [ -e $testfolder/Summary$i$cps ] && rm $testfolder/Summary$i$cps
@@ -63,7 +63,7 @@ while [ $NumTest -lt $NumberTest ]; do
     else
         PromCPU=$(echo "scale=3; $SumCPU/$NumData" | bc -l)
         echo $PromCPU >> $testfolder/Summary$i$cps
-        if [ $i != 'VM0LocalVMCPUdata' ];
+        if [ $i != 'VM7LocalVMCPUdata' ];
         then
             TOTALCPU=`echo $TOTALCPU + $PromCPU | bc`
         fi
@@ -99,7 +99,7 @@ while [ $NumTest -lt $NumberTest ]; do
     else
         PromRAM=$(echo "scale=3; $SumRAM/$NumData" | bc -l)
         echo $PromRAM >> $testfolder/Summary$i$cps
-        if [ $i != 'VM0LocalVMRAMdata' ];
+        if [ $i != 'VM7LocalVMRAMdata' ];
         then
             TOTALRAM=`echo $TOTALRAM + $PromRAM | bc`
         fi
