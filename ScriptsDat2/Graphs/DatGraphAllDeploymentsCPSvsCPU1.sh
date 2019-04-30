@@ -30,5 +30,6 @@ plot "$Maintestfolder/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) tit
      "$Maintestfolder/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc1' lc 4, \
      "$Maintestfolder/b2urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc2' lc 5, \
      "$Maintestfolder/b2urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur2msc1' lc 6, \
-     "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' lc 7
+     "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' lc 7, \
+     "~/ClearwaterTestResults/VM1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Virtual Machines' lc 8
 EOF
