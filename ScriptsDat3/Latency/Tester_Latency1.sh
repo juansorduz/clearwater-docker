@@ -1,6 +1,6 @@
 #!/bin/bash
 NumSipp=${1:-1}
-ip=${2:-10.55.3.95}
+ip=${2:-10.55.3.89}
 directory=~/clearwater-docker/ScriptsDat3/Latency
 #SipptestPods=$(kubectl get pods | grep sipptest | awk '{print $1}')
 #sipptest=$(echo $SipptestPods | cut -d ' ' -f$NumSipp);
@@ -37,9 +37,9 @@ while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
   ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
-  #ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
+  #ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
   #ERRORVARIABLE=0
-  #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
+  #docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
   #echo $LATENCY
