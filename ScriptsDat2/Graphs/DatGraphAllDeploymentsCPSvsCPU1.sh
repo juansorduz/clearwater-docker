@@ -31,5 +31,11 @@ plot "$Maintestfolder/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) tit
      "$Maintestfolder/b2urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc2' lc 5, \
      "$Maintestfolder/b2urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur2msc1' lc 6, \
      "$Maintestfolder/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' lc 7, \
+     "$Maintestfolder/b3urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur2msc1' lc 9, \
+     "$Maintestfolder/b3urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc2' lc 10, \
+     "$Maintestfolder/b4urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b4ur1msc1' lc 11, \
+     "$Maintestfolder/b4urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b4ur2msc1' lc 12, \
+     "$Maintestfolder/b4urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b4ur1msc2' lc 13, \
+     "$Maintestfolder/b5urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b5ur1msc1' lc 14, \
      "~/ClearwaterTestResults/VM1/SUMMARYVMCPU" using 18:19:xtic(1) title 'VM' lc 8
 EOF
