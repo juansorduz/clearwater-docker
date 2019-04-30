@@ -24,12 +24,12 @@ NumTest=1
 #NumberTest=2
 while [ $NumTest -lt $NumberTest ]; do
   #Calculating CPU and RAM
-  echo Resumen general numero $NumTest, cps $cps 
+  echo Resumen general numero $NumTest, cps $cps
   #############################################################################
   #LATENCY
   #############################################################################
   cd $testfolder/$NumTest
-  cat $testfolder/$NumTest/*rtt.csv > $testfolder/$NumTest/RecollectionDelay.csv
+  cat $testfolder/$NumTest/clearwater-sipp/*rtt.csv > $testfolder/$NumTest/RecollectionDelay.csv
   #latencyfile=$(ls | grep rtt)
   #tail -n +20 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
   tail -n +2 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
