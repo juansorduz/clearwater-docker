@@ -38,14 +38,14 @@ while [ "$stateTest" -eq '1' ]; do
   START=$(date +%s.%N)
   #ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
   ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
-  #ERRORVARIABLE=0
-  #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
+  ERRORVARIABLE=0
+  docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
   END=$(date +%s.%N)
   LATENCY=$(echo "$END - $START" | bc)
   #echo $LATENCY
   #echo $ERRORVARIABLE
   ERROR_LENGTH=${#ERRORVARIABLE}
-  echo $ERROR_LENGTH
+  #echo $ERROR_LENGTH
   if [ "$ERROR_LENGTH" -lt '300' ]
   then
     #echo Valor positivo $NumSipp $LATENCY
