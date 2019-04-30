@@ -37,7 +37,7 @@ while [ "$stateTest" -eq '1' ]; do
 #echo REGISTRY
   START=$(date +%s.%N)
   #ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1 > /dev/null)"
-  ERRORVARIABLE="$(kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
+  ERRORVARIABLE="$(docker exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp 2>&1)"
   #ERRORVARIABLE=0
   #kubectl exec $sipptest ./usr/share/clearwater/bin/sip-stress-latency$NumSipp
   END=$(date +%s.%N)
