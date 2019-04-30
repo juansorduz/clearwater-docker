@@ -32,7 +32,8 @@ TotalUsers=49990
 UsersPerSipp=$(echo "scale=0; $TotalUsers/$NumSipptest" | bc -l)
 for i in $(seq 1 $NumSipptest); do
 #echo $i;
-LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
+#LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
+LocalSipptestPod=sipptest
 #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
 echo SipptestPod $LocalSipptestPod;
 base=2010000010
