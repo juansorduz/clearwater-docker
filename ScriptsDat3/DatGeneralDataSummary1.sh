@@ -12,7 +12,7 @@ Duration=1
 source ~/clearwater-docker/ScriptsDat3/TrafficGenerator/TestCharacteristics
 testfolder=$Maintestfolder/$cps$duration
 mkdir -p $testfolder
-mkdir $testfolder/RangesLatency
+mkdir -p $testfolder/RangesLatency
 
 #Deleting old files
 [ -e $testfolder/PromediosDelay$cps ] && rm $testfolder/PromediosDelay$cps
