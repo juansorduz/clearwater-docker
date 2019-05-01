@@ -25,6 +25,10 @@ then
   echo "#cps Delay VarLatency" >> $testMainfolder/SUMMARYLATENCY
   echo "#cps Latency VarLatency" >> $testMainfolder/SUMMARYSINGLELATENCY
   echo "#cps SuccessfullCallRate VarSuccessfullCallRate" >> $testMainfolder/SUMMARYSCR
+  for j in regSetup CallSetup CallTeardown ; do
+    [ -e $testMainfolder/SUMMARY$j ] && rm $testMainfolder/SUMMARY$j
+    echo "cps AverageRange010 VarRange010 AverageRange1025 VarRange1025 AverageRange2550 VarRange2550 AverageRange50100 VarRange50100 AverageRange100150 VarRange100150 AverageRange150200 VarRange150200 AverageRange200300 VarRange200300 AverageRange300500 VarRange300500 AverageRange5001000 VarRange5001000 AverageRange100010000 VarRange100010000 AverageRange10000n VarRange10000n" >> testMainfolder/SUMMARY$j
+  done
 
 fi
 
