@@ -80,7 +80,7 @@ echo "$cps $AverageSCPS $VarSCPS" >> $testMainfolder/SUMMARYSCR
 #LATENCY2
 #############################################################################
 for j in regSetup CallSetup CallTeardown ; do
-  echo Ranges Latency
+  echo Ranges Latency $j
   DatosRange010=$(<$testfolder/RangesLatency/Range010$j.csv)
   DatosRange1025=$(<$testfolder/RangesLatency/Range1025$j.csv)
   DatosRange2550=$(<$testfolder/RangesLatency/Range2550$j.csv)
