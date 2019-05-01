@@ -78,7 +78,7 @@ echo "$cps $AverageSCPS $VarSCPS" >> $testMainfolder/SUMMARYSCR
 for j in regSetup CallSetup CallTeardown ; do
   echo Ranges Latency
   DatosRange010=$(<$testfolder/RangesLatency/Range010$j.csv)
-  DatosRange1025=$(<$testfolder/RangesLatency/Range1025$j.csvs)
+  DatosRange1025=$(<$testfolder/RangesLatency/Range1025$j.csv)
   DatosRange2550=$(<$testfolder/RangesLatency/Range2550$j.csv)
   DatosRange50100=$(<$testfolder/RangesLatency/Range50100$j.csv)
   DatosRange100150=$(<$testfolder/RangesLatency/Range100150$j.csv)
@@ -120,7 +120,7 @@ for j in regSetup CallSetup CallTeardown ; do
   VarRange010=$(echo "scale=3;$VarRange010/$NumProms" | bc -l)
   VarRange010=$(echo "scale=3;sqrt($VarRange010)" | bc -l)
 
-  NumProms=$(wc -l < $testfolder//RangesLatency/Range1025$j.csvs)
+  NumProms=$(wc -l < $testfolder//RangesLatency/Range1025$j.csv)
   for i in ${DatosRange1025[@]}; do  AverageRange1025=$(echo "$AverageRange1025 + $i" | bc -l) ; done
   AverageRange1025=$(echo "scale=3;$AverageRange1025/$NumProms" | bc -l)
   for i in ${DatosRange1025[@]}; do DiferenceVar=$(echo "$i - $AverageRange1025" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarRange1025=$(echo "$VarRange1025 + $DiferenceVar" | bc -l) ; done
