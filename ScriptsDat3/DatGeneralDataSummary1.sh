@@ -70,13 +70,21 @@ while [ $NumTest -lt $NumberTest ]; do
   cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
   done
 
-  while IFS=" " read -r SingleLatency remainder
+  while IFS=" " read -r SingleLatency ERROR_LENGTH remainder
   do
     #CPU=${echo $CPU | bc}
     #echo  $datetime $cpu $ram
-    SumSingleLatency=`echo $SumSingleLatency + $SingleLatency | bc`
-    #echo $SumCPU
-    let NumData=NumData+1
+    if [ "$ERROR_LENGTH" -lt '300' ]
+    then
+      #echo Valor positivo $NumSipp $LATENCY
+      SumSingleLatency=`echo $SumSingleLatency + $SingleLatency | bc`
+      #echo $SumCPU
+      let NumData=NumData+1
+
+     else
+       echo Valor negativoo $SingleLatency $ERROR_LENGTH
+    fi
+
   done < "$testfolder/$NumTest/SingleLatencyTest.csv"
   #echo  $NumData
 
