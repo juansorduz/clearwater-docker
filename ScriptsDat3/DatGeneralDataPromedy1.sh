@@ -10,9 +10,11 @@ DelayBeforeACK=${5:-15}
 #NumberTest=33
 Duration=1
 source ~/clearwater-docker/ScriptsDat3/TrafficGenerator/TestCharacteristics
-testMainfolder=$Maintestfolder/
+#testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
+testMainfolder=~/ClearwaterTestResults/Summaries
 testfolder=$Maintestfolder/$cps$duration
 mkdir -p $testfolder
+mkdir -p $testMainfolder
 
 echo CPS: $cps Duration: $duration
 #Deleting old files
