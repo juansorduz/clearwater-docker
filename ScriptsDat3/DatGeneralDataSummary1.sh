@@ -212,32 +212,45 @@ while [ $NumTest -lt $NumberTest ]; do
       # echo $j TotalRange100010000 + $TotalRange100010000
       # echo $j TotalRange10000n + $TotalRange10000n
     done
-    Total=`echo $TotalRange010 + $TotalRange1025 + $TotalRange2550 + $TotalRange50100 + $TotalRange100150 + $TotalRange150200 + $TotalRange200300 + $TotalRange300500 + $TotalRange5001000 + $TotalRange100010000 + $TotalRange10000n | bc`
-    #echo $Total
-    #echo $Scale
-    TotalRange010=$(echo "scale=2; $TotalRange010*$Scale" | bc -l)
-    TotalRange1025=$(echo "scale=2; $TotalRange1025*$Scale" | bc -l)
-    TotalRange2550=$(echo "scale=2; $TotalRange2550*$Scale" | bc -l)
-    TotalRange50100=$(echo "scale=2; $TotalRange50100*$Scale" | bc -l)
-    TotalRange100150=$(echo "scale=2; $TotalRange100150*$Scale" | bc -l)
-    TotalRange150200=$(echo "scale=2; $TotalRange150200*$Scale" | bc -l)
-    TotalRange200300=$(echo "scale=2; $TotalRange200300*$Scale" | bc -l)
-    TotalRange300500=$(echo "scale=2; $TotalRange300500*$Scale" | bc -l)
-    TotalRange5001000=$(echo "scale=2; $TotalRange5001000*$Scale" | bc -l)
-    TotalRange100010000=$(echo "scale=2; $TotalRange100010000*$Scale" | bc -l)
-    TotalRange10000n=$(echo "scale=2; $TotalRange10000n*$Scale" | bc -l)
 
-    echo "scale=2; $TotalRange010/$Total" | bc -l >> $testfolder/RangesLatency/Range010$j.csv
-    echo "scale=2; $TotalRange1025/$Total" | bc -l >> $testfolder/RangesLatency/Range1025$j.csv
-    echo "scale=2; $TotalRange2550/$Total" | bc -l >> $testfolder/RangesLatency/Range2550$j.csv
-    echo "scale=2; $TotalRange50100/$Total" | bc -l >> $testfolder/RangesLatency/Range50100$j.csv
-    echo "scale=2; $TotalRange100150/$Total" | bc -l >> $testfolder/RangesLatency/Range100150$j.csv
-    echo "scale=2; $TotalRange150200/$Total" | bc -l >> $testfolder/RangesLatency/Range150200$j.csv
-    echo "scale=2; $TotalRange200300/$Total" | bc -l >> $testfolder/RangesLatency/Range200300$j.csv
-    echo "scale=2; $TotalRange300500/$Total" | bc -l >> $testfolder/RangesLatency/Range300500$j.csv
-    echo "scale=2; $TotalRange5001000/$Total" | bc -l >> $testfolder/RangesLatency/Range5001000$j.csv
-    echo "scale=2; $TotalRange100010000/$Total" | bc -l >> $testfolder/RangesLatency/Range100010000$j.csv
-    echo "scale=2; $TotalRange10000n/$Total" | bc -l >> $testfolder/RangesLatency/Range10000n$j.csv
+    echo $TotalRange010 >> $testfolder/RangesLatency/Range010$j.csv
+    echo $TotalRange1025 >> $testfolder/RangesLatency/Range1025$j.csv
+    echo $TotalRange2550 >> $testfolder/RangesLatency/Range2550$j.csv
+    echo $TotalRange50100 >> $testfolder/RangesLatency/Range50100$j.csv
+    echo $TotalRange100150 >> $testfolder/RangesLatency/Range100150$j.csv
+    echo $TotalRange150200 >> $testfolder/RangesLatency/Range150200$j.csv
+    echo $TotalRange200300 >> $testfolder/RangesLatency/Range200300$j.csv
+    echo $TotalRange300500 >> $testfolder/RangesLatency/Range300500$j.csv
+    echo $TotalRange5001000 >> $testfolder/RangesLatency/Range5001000$j.csv
+    echo $TotalRange100010000 >> $testfolder/RangesLatency/Range100010000$j.csv
+    echo $TotalRange10000n >> $testfolder/RangesLatency/Range10000n$j.csv
+
+    # Total=`echo $TotalRange010 + $TotalRange1025 + $TotalRange2550 + $TotalRange50100 + $TotalRange100150 + $TotalRange150200 + $TotalRange200300 + $TotalRange300500 + $TotalRange5001000 + $TotalRange100010000 + $TotalRange10000n | bc`
+    # #echo $Total
+    # #echo $Scale
+    # TotalRange010=$(echo "scale=2; $TotalRange010*$Scale" | bc -l)
+    # TotalRange1025=$(echo "scale=2; $TotalRange1025*$Scale" | bc -l)
+    # TotalRange2550=$(echo "scale=2; $TotalRange2550*$Scale" | bc -l)
+    # TotalRange50100=$(echo "scale=2; $TotalRange50100*$Scale" | bc -l)
+    # TotalRange100150=$(echo "scale=2; $TotalRange100150*$Scale" | bc -l)
+    # TotalRange150200=$(echo "scale=2; $TotalRange150200*$Scale" | bc -l)
+    # TotalRange200300=$(echo "scale=2; $TotalRange200300*$Scale" | bc -l)
+    # TotalRange300500=$(echo "scale=2; $TotalRange300500*$Scale" | bc -l)
+    # TotalRange5001000=$(echo "scale=2; $TotalRange5001000*$Scale" | bc -l)
+    # TotalRange100010000=$(echo "scale=2; $TotalRange100010000*$Scale" | bc -l)
+    # TotalRange10000n=$(echo "scale=2; $TotalRange10000n*$Scale" | bc -l)
+    #
+    # echo "scale=2; $TotalRange010/$Total" | bc -l >> $testfolder/RangesLatency/Range010$j.csv
+    # echo "scale=2; $TotalRange1025/$Total" | bc -l >> $testfolder/RangesLatency/Range1025$j.csv
+    # echo "scale=2; $TotalRange2550/$Total" | bc -l >> $testfolder/RangesLatency/Range2550$j.csv
+    # echo "scale=2; $TotalRange50100/$Total" | bc -l >> $testfolder/RangesLatency/Range50100$j.csv
+    # echo "scale=2; $TotalRange100150/$Total" | bc -l >> $testfolder/RangesLatency/Range100150$j.csv
+    # echo "scale=2; $TotalRange150200/$Total" | bc -l >> $testfolder/RangesLatency/Range150200$j.csv
+    # echo "scale=2; $TotalRange200300/$Total" | bc -l >> $testfolder/RangesLatency/Range200300$j.csv
+    # echo "scale=2; $TotalRange300500/$Total" | bc -l >> $testfolder/RangesLatency/Range300500$j.csv
+    # echo "scale=2; $TotalRange5001000/$Total" | bc -l >> $testfolder/RangesLatency/Range5001000$j.csv
+    # echo "scale=2; $TotalRange100010000/$Total" | bc -l >> $testfolder/RangesLatency/Range100010000$j.csv
+    # echo "scale=2; $TotalRange10000n/$Total" | bc -l >> $testfolder/RangesLatency/Range10000n$j.csv
     # AverageRange010=$(echo "scale=2; $TotalRange010/$Total" | bc -l)
     # AverageRange1025=$(echo "scale=2; $TotalRange1025/$Total" | bc -l)
     # AverageRange2550=$(echo "scale=2; $TotalRange2550/$Total" | bc -l)
