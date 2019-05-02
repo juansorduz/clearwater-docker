@@ -86,7 +86,7 @@ for j in regSetup CallSetup CallTeardown ; do
   DatosRange2550=$(<$testfolder/RangesLatency/Range2550$j.csv)
   DatosRange50100=$(<$testfolder/RangesLatency/Range50100$j.csv)
   DatosRange100150=$(<$testfolder/RangesLatency/Range100150$j.csv)
-  #DatosRange150200=$(<$testfolder/RangesLatency/Range150200$j.csv)
+  DatosRange150200=$(<$testfolder/RangesLatency/Range150200$j.csv)
   DatosRange200300=$(<$testfolder/RangesLatency/Range200300$j.csv)
   DatosRange300500=$(<$testfolder/RangesLatency/Range300500$j.csv)
   DatosRange5001000=$(<$testfolder/RangesLatency/Range5001000$j.csv)
