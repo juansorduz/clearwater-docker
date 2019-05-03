@@ -74,16 +74,15 @@ kubectl get pods -o wide -n kube-system >> $Maintestfolder/b${NumBono}urs${NumUR
 
 echo Starting tests
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $Duration $password $option $NumberTest
-
 #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  20 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  30 $Duration $password $option $NumberTest
 #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  40 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $Duration $password $option $NumberTest
+·. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  60 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  70 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  80 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  70 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  80 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  90 $Duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  100 $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  100 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  120 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  150 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  180 $Duration $password $option $NumberTest
