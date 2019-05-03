@@ -1,4 +1,5 @@
  #!/bin/bash
+ nivel=${1:-120}
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
@@ -20,7 +21,7 @@ set grid ytics
 set grid xtics
 set key outside below
 set terminal pdf
-set output "DespliegueVMCPSvsCPU.pdf"
+set output "${nivel}DespliegueVMCPSvsCPU.pdf"
 set xlabel "CPS"
 set ylabel "CPU (%)"
 set title "CPS vs CPU b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
@@ -28,14 +29,5 @@ plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using
      "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur1msc2' lc 2, \
      "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur2msc1' lc 3, \
      "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc1' lc 4, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc2' lc 5, \
-     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur2msc1' lc 6, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' lc 7, \
-     "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur2msc1' lc 9, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc2' lc 10, \
-     "~/ClearwaterTestResults/Summaries/b4urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b4ur1msc1' lc 11, \
-     "~/ClearwaterTestResults/Summaries/b4urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b4ur2msc1' lc 12, \
-     "~/ClearwaterTestResults/Summaries/b4urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b4ur1msc2' lc 13, \
-     "~/ClearwaterTestResults/Summaries/b5urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b5ur1msc1' lc 14, \
      "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMCPU" using 18:19:xtic(1) title 'VM' lc 8
 EOF
