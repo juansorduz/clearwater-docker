@@ -6,17 +6,17 @@ option=${3:-3}
 NumberTest=${4:-2}
 
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
-
-echo A CONTINUACION SE EJECUTAN DIFERENTES PRUEBAS CON DESPLIEGUES DIFERENTES
-echo PRUEBA DE DESPLIEGUE CON b1u1s1
 START=$(date +%s.%N)
-echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-. ~/clearwater-docker/ScriptsDat2/DatFullCPSMonitor1.sh $Duration $password $option $NumberTest
+echo PRUEBA COMPLETA
+#echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullMonitor1.sh $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatFullSummary1.sh $Duration $password $option $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatFullPromedy1.sh $Duration $password $option $NumberTest
 END=$(date +%s.%N)
 LATENCY=$(echo "$END - $START" | bc)
-echo Latency $LATENCY > ~/LatencyCompleteMonitortxt
+echo Latency $LATENCY > ~/LatencyCompleteDeployment.txt
 
-#exit 0
+exit 0
 
 echo PRUEBA DE DESPLIEGUE CON b2u1s1
 echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics

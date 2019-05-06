@@ -11,7 +11,7 @@ NumMSCH=${8:-1}
 mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
 testfolder=~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
 
-echo EJECUTANDO SCRIPT MONITOR VM $USER
+echo EJECUTANDO SCRIPT MONITOR VM $USER b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
 
 rm -f $testfolder/Tiempos.csv
 rm -f $testfolder/VMCPU.csv
