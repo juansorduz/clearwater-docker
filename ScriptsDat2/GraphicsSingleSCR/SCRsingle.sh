@@ -22,8 +22,8 @@ set output "DespliegueCPSvsSCRb1urs1mscs1urh1msch1.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
-plot "~/ClearwaterTestResults/Kubernetes5/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 1, \
-
+plot "~/ClearwaterTestResults/Kubernetes5/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 3, \
+plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 4
 EOF
 
 gnuplot <<- EOF
@@ -41,8 +41,8 @@ set output "DespliegueCPSvsSCRb2urs1mscs1urh1msch1.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
-plot "~/ClearwaterTestResults/Kubernetes5/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc1' w l lc 1, \
-
+plot "~/ClearwaterTestResults/Kubernetes5/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc1' w l lc 3, \
+plot "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc1' w l lc 4
 EOF
 
 gnuplot <<- EOF
@@ -60,8 +60,8 @@ set output "DespliegueCPSvsSCR3urs1mscs1urh1msch1.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
-plot "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 1, \
-
+plot "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 3, \
+plot "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 4
 EOF
 
 gnuplot <<- EOF
@@ -79,8 +79,8 @@ set output "DespliegueCPSvsSCRb3urs2mscs1urh1msch1.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
-plot "~/ClearwaterTestResults/Kubernetes5/b3urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur2msc1' w l lc 1, \
-
+plot "~/ClearwaterTestResults/Kubernetes5/b3urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur2msc1' w l lc 3, \
+plot "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur2msc1' w l lc 4
 EOF
 
 gnuplot <<- EOF
@@ -98,6 +98,6 @@ set output "DespliegueCPSvsSCRb3urs1mscs2urh1msch1.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
-plot "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc2' w l lc 1, \
-
+plot "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc2' w l lc 3, \
+plot "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc2' w l lc 4
 EOF
