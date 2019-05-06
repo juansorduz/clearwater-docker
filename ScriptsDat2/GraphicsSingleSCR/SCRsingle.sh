@@ -101,3 +101,22 @@ set title "CPS vs SCR"
 plot "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc2DESPLIEGUE1' w l lc 3, \
      "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc2DESPLIEGUE2' w l lc 4
 EOF
+
+gnuplot <<- EOF
+set terminal png size 800,500 enhanced font "Helvetica,20"
+red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
+set yrange [0:110]
+set boxwidth 0.9
+set style line 1 lt 1 lw 1 pt 1 linecolor rgb "0x767676"
+set xtics format ""
+set grid ytics
+set grid xtics
+set key outside below
+set terminal pdf
+set output "DespliegueCPSvsSCRVM.pdf"
+set xlabel "CPS"
+set ylabel "SCR (%)"
+set title "CPS vs SCR"
+plot "~/ClearwaterTestResults/VM1/SUMMARYSCR" using 2:xtic(1) title 'VMDESPLIEGUE1' w l lc 3, \
+     "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR" using 2:xtic(1) title 'VMDESPLIEGUE2' w l lc 4
+EOF
