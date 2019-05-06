@@ -16,9 +16,9 @@ set xlabel "CPS"
 set ylabel "CPU (%)"
 set title "CPS vs CPU b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}"
 plot "~/ClearwaterTestResults/Kubernetes5/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur1msc1' lc 1, \
-     "~/ClearwaterTestResults/Kubernetes5/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc1' lc 4, \
-     "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' lc 7, \
-     "~/ClearwaterTestResults/Kubernetes5/b3urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur2msc1' lc 10, \
-     "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc2' lc 11, \
+     "~/ClearwaterTestResults/Kubernetes5/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b2ur1msc1' lc 2, \
+     "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc1' lc 6, \
+     "~/ClearwaterTestResults/Kubernetes5/b3urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur2msc1' lc 7, \
+     "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b3ur1msc2' lc 5, \
      "~/ClearwaterTestResults/VM1/SUMMARYVMCPU" using 18:19:xtic(1) title 'VM' lc 8
 EOF
