@@ -60,7 +60,7 @@ set output "DespliegueCPSvsSCR3urs1mscs1urh1msch1.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 set title "CPS vs SCR"
-plot "~/ClearwaterTestResults/Kubernetes5/3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 1, \
+plot "~/ClearwaterTestResults/Kubernetes5/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 1, \
 
 EOF
 
