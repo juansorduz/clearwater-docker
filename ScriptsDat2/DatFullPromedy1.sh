@@ -5,18 +5,23 @@ NumberTest=${2:-2}
 
 echo duration $duration NumberTest $NumberTest
 
-echo A CONTINUACION SE EJECUTAN DIFERENTES PRUEBAS CON DESPLIEGUES DIFERENTES
-echo PRUEBA DE DESPLIEGUE CON b1u1s1
+# echo A CONTINUACION SE EJECUTAN DIFERENTES PRUEBAS CON DESPLIEGUES DIFERENTES
+# echo PRUEBA DE DESPLIEGUE CON b1u1s1
+# START=$(date +%s.%N)
+# echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+# . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
+# END=$(date +%s.%N)
+# LATENCY=$(echo "$END - $START" | bc)
+# echo Latency $LATENCY > ~/LatencyCompletePromedy.txt
+
+echo PRUEBA DE DESPLIEGUE CON b2u1s1
 START=$(date +%s.%N)
-echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
 END=$(date +%s.%N)
 LATENCY=$(echo "$END - $START" | bc)
 echo Latency $LATENCY > ~/LatencyCompletePromedy.txt
-
-echo PRUEBA DE DESPLIEGUE CON b2u1s1
-echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-. ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh $duration $NumberTest
 #exit 0
 
 echo PRUEBA DE DESPLIEGUE CON b1u2s1
