@@ -87,11 +87,11 @@ echo Starting tests
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  150 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  175 $Duration $password $option $NumberTest
 . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  200 $Duration $password $option $NumberTest
-exit 0
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  225 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  250 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  275 $Duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  300 $Duration $password $option $NumberTest
+# exit 0
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  225 $Duration $password $option $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  250 $Duration $password $option $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  275 $Duration $password $option $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  300 $Duration $password $option $NumberTest
 #
 # . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $Duration $password $option $NumberTest
 # #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  20 $Duration $password $option $NumberTest
