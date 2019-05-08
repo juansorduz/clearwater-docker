@@ -18,7 +18,7 @@ mkdir -p $testMainfolder
 
 echo CPS: $cps Duration: $duration
 #Deleting old filesd
-if [ $cps = '10' ];
+if [ $cps = '25' ];
 then
   echo Deleting old scripts
   [ -e $testMainfolder/SUMMARYVMCPU ] && rm $testMainfolder/SUMMARYVMCPU
