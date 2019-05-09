@@ -32,9 +32,10 @@ do
   SCR=$(echo "scale=0;$SCR/$Scale" | bc -l)
   if ((SCR >= $LowerLimit && SCR <= $UpperLimit)); then
   # your code
-    #echo  $SCR
-    line=$(sed -n "${NumLine}p" $testMainfolder/PromediosSCPS$cps)
-    echo $line
+    echo  $SCR
+    sed -n "${NumLine}p" $testMainfolder/PromediosSCPS$cps >> $testMainfolder/CleanPromediosSCPS$cps
+    sed -n "${NumLine}p" $testMainfolder/SummaryVMTOTALLocalVMCPUdata$cps >> $testMainfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps
+    sed -n "${NumLine}p" $testMainfolder/SummaryVMTOTALLocalVMRAMdata$cps >> $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps
 
   fi
   #cat $testMainfolder/PromediosSCPS$cps | wc -l
