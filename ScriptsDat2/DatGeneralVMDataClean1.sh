@@ -28,7 +28,11 @@ testMainfolder=~/ClearwaterTestResults/VM1/$cps$duration
 NumLine=1
 while IFS=" " read -r SCR remainder
 do
+  #echo  $SCR
+  if ((SCR >= $LowerLimit && SCR <= $UpperLimit)); then
+  # your code
   echo  $SCR
+  fi
   #cat $testMainfolder/PromediosSCPS$cps | wc -l
 
 
