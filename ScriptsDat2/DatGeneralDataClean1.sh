@@ -14,7 +14,7 @@ Duration=1
 #testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
 testMainfolder=~/ClearwaterTestResults/Summaries/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
 #testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
-mkdir -p $testMainfolder
+#mkdir -p $testMainfolder
 #mkdir -p $testfolder
 
 [ -e $testMainfolder/CLEANSUMMARYSCR ] && rm $testMainfolder/CLEANSUMMARYSCR
@@ -25,7 +25,7 @@ while IFS=" " read -r LocalSCR remainder
 do
   echo  remainder
 
-done < "$testfolder/$NumTest/SingleLatencyTest.csv"
+done < "$testMainfolder/SUMMARYSCR "
 
 exit 0
 
