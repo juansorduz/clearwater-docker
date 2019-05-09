@@ -29,6 +29,7 @@ NumLine=0
 while IFS=" " read -r SCR remainder
 do
   echo  $NumLine
+  cat $testMainfolder/PromediosSCPS$cps | wc -l
   let NumLine=NumLine+1
 
 done < "$testMainfolder/PromediosSCPS$cps"
