@@ -25,11 +25,11 @@ testMainfolder=~/ClearwaterTestResults/VM1/$cps$duration
 [ -e $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps ] && rm $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps
 
 
-NumLine=0
+NumLine=1
 while IFS=" " read -r SCR remainder
 do
   echo  $NumLine
-  cat $testMainfolder/PromediosSCPS$cps | wc -l
+  #cat $testMainfolder/PromediosSCPS$cps | wc -l
   let NumLine=NumLine+1
 
 done < "$testMainfolder/PromediosSCPS$cps"
