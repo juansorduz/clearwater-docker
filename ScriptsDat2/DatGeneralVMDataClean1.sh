@@ -26,7 +26,7 @@ testMainfolder=~/ClearwaterTestResults/VM1/$cps$duration
 
 while IFS=" " read -r SCR remainder
 do
-  echo  remainder
+  echo  $remainder
 
 done < "$testMainfolder/PromediosSCPS$cps"
 
