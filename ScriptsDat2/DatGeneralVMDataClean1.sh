@@ -32,7 +32,7 @@ do
   SCR=$(echo "scale=0;$SCR/$Scale" | bc -l)
   if ((SCR >= $LowerLimit && SCR <= $UpperLimit)); then
   # your code
-    echo  $SCR
+    #echo  $SCR
     line=$(sed -n "${NumLine}p" $testMainfolder/PromediosSCPS$cps)
     echo $line
 
