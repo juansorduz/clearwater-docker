@@ -12,7 +12,7 @@ NumMSCH=${7:-1}
 Duration=1
 #source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 #testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
-testMainfolder=~/ClearwaterTestResults/Summaries/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
+testMainfolder=~/ClearwaterTestResults/Summaries/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 #testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
 #mkdir -p $testMainfolder
 #mkdir -p $testfolder
