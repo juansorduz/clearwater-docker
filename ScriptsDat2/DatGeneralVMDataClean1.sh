@@ -24,11 +24,12 @@ testMainfolder=~/ClearwaterTestResults/VM1/$cps$duration
 [ -e $testMainfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps ] && rm $testMainfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps
 [ -e $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps ] && rm $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps
 
-
+Scale=1
 NumLine=1
 while IFS=" " read -r SCR remainder
 do
   #echo  $SCR
+  SCR=$(echo "scale=0;$SCR/$Scale" | bc -l)
   if ((SCR >= $LowerLimit && SCR <= $UpperLimit)); then
   # your code
   echo  $SCR
