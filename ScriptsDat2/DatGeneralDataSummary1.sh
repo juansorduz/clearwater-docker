@@ -15,10 +15,12 @@ mkdir -p $testfolder
 mkdir -p $testfolder/RangesLatency
 
 #Deleting old files
-#[ -e $testfolder/PromediosDelay$cps ] && rm $testfolder/PromediosDelay$cps
-[ -e $testfolder/PromediosSingleLatency$cps ] && rm $testfolder/PromediosSingleLatency$cps
-[ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
-rm -rfv $testfolder/RangesLatency/* > /dev/null
+for i in call-setup register-setup call-teardown; do
+ [ -e $testfolder/PromediosLatency$i$cps ] && rm $testfolder/PromediosLatency$i$cps
+done
+# [ -e $testfolder/PromediosSingleLatency$cps ] && rm $testfolder/PromediosSingleLatency$cps
+# [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
+# rm -rfv $testfolder/RangesLatency/* > /dev/null
 
 #exit 0
 
@@ -30,200 +32,198 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   #LATENCY1
   #############################################################################
-  # cd $testfolder/$NumTest
-  # cat $testfolder/$NumTest/*rtt.csv > $testfolder/$NumTest/RecollectionDelay.csv
-  # #latencyfile=$(ls | grep rtt)
-  # #tail -n +20 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
-  # tail -n +2 "RecollectionDelay.csv" > "$testfolder/$NumTest/delay.csv"
-  # SumLatency=0
-  # PromLatency=0
-  # NumDataLatency=0
-  # #echo $latencyfile
-  # #echo NumTest $NumTest PromLatency $PromLatency
-  # while IFS=";" read -r date responsetime timername remainder
-  # do
-  #   #echo $responsetime
-  #   SumLatency=`echo $SumLatency + $responsetime | bc`
-  #   let NumDataLatency=NumDataLatency+1
-  # done < "$testfolder/$NumTest/delay.csv"
-  #
-  # if [ $NumDataLatency = '0' ];
-  # then
-  #   echo CPS $cps Prueba Delay $NumTest con falla, no se considerara en los promedios generales de latencia.
-  # else
-  #     PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
-  #     #PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
-  #     #PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
-  #     echo $PromLatency >> $testfolder/PromediosDelay$cps
-  #     echo Latency = $PromLatency
-  #     #echo NumTest $NumTest PromLatency $PromLatency
-  # fi
-  # #############################################################################
-  # #SINGLE LATENCY
-  # #############################################################################
-  SumSingleLatency=0
-  PromSingleLatency=0
-  NumData=0
-
-  [ -e $testfolder/$NumTest/SingleLatencyTest.csv ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
-  #cat $testfolder/$NumTest/SingleLatencyTest1.csv > $testfolder/$NumTest/SingleLatencyTest.csv
-
-  for i in $(seq 1 $NumSipp); do
-  cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
-  done
-
-  while IFS=" " read -r SingleLatency ERROR_LENGTH remainder
-  do
-    #CPU=${echo $CPU | bc}
-    #echo  $datetime $cpu $ram
-    if [ "$ERROR_LENGTH" -lt '300' ]
-    then
-      #echo Valor positivo $NumSipp $LATENCY
-      SumSingleLatency=`echo $SumSingleLatency + $SingleLatency | bc`
-      #echo $SumCPU
-      let NumData=NumData+1
-
-     else
-       echo Valor negativoo $SingleLatency $ERROR_LENGTH
-    fi
-
-  done < "$testfolder/$NumTest/SingleLatencyTest.csv"
-  #echo  $NumData
-  #echo  $NumData
-
-
-  if [ $NumData = '0' ];
-  then
-    echo CPS $cps Prueba Latencia $NumTest con falla, no se considerara en los promedios generales.
-  else
-      PromSingleLatency=$(echo "scale=3; $SumSingleLatency/$NumData" | bc -l)
-      echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
-      echo SingleLatency $PromSingleLatency
-  fi
-
-  #############################################################################
-  #SUCCESFULL CALL RATE
-  #############################################################################
-  TotalCallGenerate=0
-  TotalSuccessfullCallGenerate=0
-  TotalFailedCallGenerate=0
-  for i in $(seq 1 $NumSipp); do
-    CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
-    SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
-    FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
-    CallGenerate=${CallGenerate::-1}
-    SuccesfullCall=${SuccesfullCall::-1}
-    FailedCall=${FailedCall::-1}
-    TotalCallGenerate=`echo $TotalCallGenerate + $CallGenerate | bc`
-    TotalSuccessfullCallGenerate=`echo $TotalSuccessfullCallGenerate + $SuccesfullCall | bc`
-    TotalFailedCallGenerate=`echo $TotalFailedCallGenerate + $FailedCall | bc`
-  done
-  Scale=100
-  SuccesfullCallRate=$(echo "scale=3; $TotalSuccessfullCallGenerate*$Scale" | bc -l)
-  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$TotalCallGenerate" | bc -l)
-  echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
-  echo Call Generate:$TotalCallGenerate SuccesfullCall:$TotalSuccessfullCallGenerate FailedCall $TotalFailedCallGenerate SCR:$SuccesfullCallRate
-
-  #exit 0
-  #############################################################################
-  #LATENCY2
-  #############################################################################
   cd $testfolder/$NumTest
-  #cat $testfolder/$NumTest/*screen.log > $testfolder/$NumTest/RecollectionRangesDelay.csv
-  Scale=100
-  NameScreenLogs=$(ls | grep screen)
-  NumScreenLogs=$(ls | grep screen | wc -l)
-  echo $NameScreenLogs
-  echo $NumScreenLogs
-  #Start with source information clasification
-  for i in $(seq 1 $NumScreenLogs); do
-    #echo Hello
-    SpecificLogFile=$(echo $NameScreenLogs | awk "{print $"$i"}")
-    echo LogFile $1 $SpecificLogFile
-    startLineRegSetup=$(grep -n "Average Response Time Repartition register-setup" $SpecificLogFile  | grep -Eo '^[^:]+')
-    startLineCallAverage=$(grep -n "Average Call Length Repartition" $SpecificLogFile | grep -Eo '^[^:]+')
-    startLineCallSetup=$(grep -n "Average Response Time Repartition call-setup" $SpecificLogFile  | grep -Eo '^[^:]+')
-    startLineCallTeardown=$(grep -n "Average Response Time Repartition call-teardown" $SpecificLogFile  | grep -Eo '^[^:]+')
-    FinalLine=$(cat $SpecificLogFile | wc -l)
-    sed -n "$startLineRegSetup,$startLineCallAverage p" $SpecificLogFile > regSetup$i.csv
-    sed -n "$startLineCallAverage,$startLineCallSetup p" $SpecificLogFile > CallAverage$i.csv
-    sed -n "$startLineCallSetup,$startLineCallTeardown p" $SpecificLogFile > CallSetup$i.csv
-    sed -n "$startLineCallTeardown,$FinalLine p" $SpecificLogFile > CallTeardown$i.csv
-  done
-  for j in regSetup CallSetup CallTeardown ; do
-    #for i in regSetup CallAverage CallSetup CallTeardown ; do
-    # AverageRange010=0
-    # AverageRange1025=0
-    # AverageRange2550=0
-    # AverageRange50100=0
-    # AverageRange100150=0
-    # AverageRange150200=0
-    # AverageRange200300=0
-    # AverageRange300500=0
-    # AverageRange5001000=0
-    # AverageRange100010000=0
-    # AverageRange10000n=0
-    TotalRange010=0
-    TotalRange1025=0
-    TotalRange2550=0
-    TotalRange50100=0
-    TotalRange100150=0
-    TotalRange150200=0
-    TotalRange200300=0
-    TotalRange300500=0
-    TotalRange5001000=0
-    TotalRange100010000=0
-    TotalRange10000n=0
-    Total=0
-    #for i in regSetup CallSetup CallTeardown ; do
-    for i in $(seq 1 $NumScreenLogs); do
-      Range010=$(cat $j$i.csv | grep -n "0 ms <= n <        10 ms :" | awk '{print $10}')
-      Range1025=$(cat $j$i.csv | grep -n "10 ms <= n <        25 ms :" | awk '{print $10}')
-      Range2550=$(cat $j$i.csv | grep -n "25 ms <= n <        50 ms :" | awk '{print $10}')
-      Range50100=$(cat $j$i.csv | grep -n "50 ms <= n <       100 ms :" | awk '{print $10}')
-      Range100150=$(cat $j$i.csv | grep -n "100 ms <= n <       150 ms :" | awk '{print $10}')
-      Range150200=$(cat $j$i.csv | grep -n "150 ms <= n <       200 ms :" | awk '{print $10}')
-      Range200300=$(cat $j$i.csv | grep -n "200 ms <= n <       300 ms :" | awk '{print $10}')
-      Range300500=$(cat $j$i.csv | grep -n "300 ms <= n <       500 ms :" | awk '{print $10}')
-      Range5001000=$(cat $j$i.csv | grep -n "500 ms <= n <      1000 ms :" | awk '{print $10}')
-      Range100010000=$(cat $j$i.csv | grep -n "1000 ms <= n <     10000 ms :" | awk '{print $10}')
-      Range10000n=$(cat $j$i.csv | grep -n "n >=    10000 ms :" | awk '{print $7}')
-      #echo $Range10000n
-      TotalRange010=`echo $TotalRange010 + $Range010 | bc`
-      TotalRange1025=`echo $TotalRange1025 + $Range1025 | bc`
-      TotalRange2550=`echo $TotalRange2550 + $Range2550 | bc`
-      TotalRange50100=`echo $TotalRange50100 + $Range50100 | bc`
-      TotalRange100150=`echo $TotalRange100150 + $Range100150 | bc`
-      TotalRange150200=`echo $TotalRange150200 + $Range150200 | bc`
-      TotalRange200300=`echo $TotalRange200300 + $Range200300 | bc`
-      TotalRange300500=`echo $TotalRange300500 + $Range300500 | bc`
-      TotalRange5001000=`echo $TotalRange5001000 + $Range5001000 | bc`
-      TotalRange100010000=`echo $TotalRange100010000 + $Range100010000 | bc`
-      TotalRange10000n=`echo $TotalRange10000n + $Range10000n | bc`
-      # echo $j TotalRange010 + $TotalRange010
-      # echo $j TotalRange1025 + $TotalRange1025
-      # echo $j TotalRange2550 + $TotalRange2550
-      # echo $j TotalRange50100 + $TotalRange50100
-      # echo $j TotalRange100150 + $TotalRange100150
-      # echo $j TotalRange150200 + $TotalRange150200
-      # echo $j TotalRange200300 + $TotalRange200300
-      # echo $j TotalRange300500 + $TotalRange300500
-      # echo $j TotalRange5001000 + $TotalRange5001000
-      # echo $j TotalRange100010000 + $TotalRange100010000
-      # echo $j TotalRange10000n + $TotalRange10000n
-    done
+  cat $testfolder/$NumTest/*rtt.csv > $testfolder/$NumTest/RecollectionLatency.csv
+  for i in call-setup register-setup call-teardown; do
+     cat $testfolder/$NumTest/RecollectionLatency.csv | grep $i > $testfolder/$NumTest/RecollectionLatency$i.csv;
+     SumLatency=0
+     PromLatency=0
+     NumDataLatency=0
+     while IFS=";" read -r date latency timername remainder
+     do
+       #echo $responsetime
+       SumLatency=`echo $SumLatency + $latency | bc`
+       let NumDataLatency=NumDataLatency+1
+     done < "$testfolder/$NumTest/RecollectionLatency$i.csv"
 
-    echo $TotalRange010 >> $testfolder/RangesLatency/Range010$j.csv
-    echo $TotalRange1025 >> $testfolder/RangesLatency/Range1025$j.csv
-    echo $TotalRange2550 >> $testfolder/RangesLatency/Range2550$j.csv
-    echo $TotalRange50100 >> $testfolder/RangesLatency/Range50100$j.csv
-    echo $TotalRange100150 >> $testfolder/RangesLatency/Range100150$j.csv
-    echo $TotalRange150200 >> $testfolder/RangesLatency/Range150200$j.csv
-    echo $TotalRange200300 >> $testfolder/RangesLatency/Range200300$j.csv
-    echo $TotalRange300500 >> $testfolder/RangesLatency/Range300500$j.csv
-    echo $TotalRange5001000 >> $testfolder/RangesLatency/Range5001000$j.csv
-    echo $TotalRange100010000 >> $testfolder/RangesLatency/Range100010000$j.csv
-    echo $TotalRange10000n >> $testfolder/RangesLatency/Range10000n$j.csv
+     if [ $NumDataLatency = '0' ];
+     then
+       echo CPS $cps Prueba Latency$i $NumTest con falla, no se considerara en los promedios generales de latencia.
+     else
+         PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
+         #PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
+         #PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
+         echo $PromLatency >> $testfolder/PromediosLatency$i$cps
+         echo Latency $i = $PromLatency
+         #echo NumTest $NumTest PromLatency $PromLatency
+     fi
+  done
+  # # #############################################################################
+  # # #SINGLE LATENCY
+  # # #############################################################################
+  # SumSingleLatency=0
+  # PromSingleLatency=0
+  # NumData=0
+  #
+  # [ -e $testfolder/$NumTest/SingleLatencyTest.csv ] && rm $testfolder/$NumTest/SingleLatencyTest.csv
+  # #cat $testfolder/$NumTest/SingleLatencyTest1.csv > $testfolder/$NumTest/SingleLatencyTest.csv
+  #
+  # for i in $(seq 1 $NumSipp); do
+  # cat $testfolder/$NumTest/SingleLatencyTest$i.csv >> $testfolder/$NumTest/SingleLatencyTest.csv
+  # done
+  #
+  # while IFS=" " read -r SingleLatency ERROR_LENGTH remainder
+  # do
+  #   #CPU=${echo $CPU | bc}
+  #   #echo  $datetime $cpu $ram
+  #   if [ "$ERROR_LENGTH" -lt '300' ]
+  #   then
+  #     #echo Valor positivo $NumSipp $LATENCY
+  #     SumSingleLatency=`echo $SumSingleLatency + $SingleLatency | bc`
+  #     #echo $SumCPU
+  #     let NumData=NumData+1
+  #
+  #    else
+  #      echo Valor negativoo $SingleLatency $ERROR_LENGTH
+  #   fi
+  #
+  # done < "$testfolder/$NumTest/SingleLatencyTest.csv"
+  # #echo  $NumData
+  # #echo  $NumData
+  #
+  #
+  # if [ $NumData = '0' ];
+  # then
+  #   echo CPS $cps Prueba Latencia $NumTest con falla, no se considerara en los promedios generales.
+  # else
+  #     PromSingleLatency=$(echo "scale=3; $SumSingleLatency/$NumData" | bc -l)
+  #     echo $PromSingleLatency >> $testfolder/PromediosSingleLatency$cps
+  #     echo SingleLatency $PromSingleLatency
+  # fi
+  #
+  # #############################################################################
+  # #SUCCESFULL CALL RATE
+  # #############################################################################
+  # TotalCallGenerate=0
+  # TotalSuccessfullCallGenerate=0
+  # TotalFailedCallGenerate=0
+  # for i in $(seq 1 $NumSipp); do
+  #   CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+  #   SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+  #   FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+  #   CallGenerate=${CallGenerate::-1}
+  #   SuccesfullCall=${SuccesfullCall::-1}
+  #   FailedCall=${FailedCall::-1}
+  #   TotalCallGenerate=`echo $TotalCallGenerate + $CallGenerate | bc`
+  #   TotalSuccessfullCallGenerate=`echo $TotalSuccessfullCallGenerate + $SuccesfullCall | bc`
+  #   TotalFailedCallGenerate=`echo $TotalFailedCallGenerate + $FailedCall | bc`
+  # done
+  # Scale=100
+  # SuccesfullCallRate=$(echo "scale=3; $TotalSuccessfullCallGenerate*$Scale" | bc -l)
+  # SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$TotalCallGenerate" | bc -l)
+  # echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
+  # echo Call Generate:$TotalCallGenerate SuccesfullCall:$TotalSuccessfullCallGenerate FailedCall $TotalFailedCallGenerate SCR:$SuccesfullCallRate
+  #
+  # #exit 0
+  # #############################################################################
+  # #LATENCY2
+  # #############################################################################
+  # cd $testfolder/$NumTest
+  # #cat $testfolder/$NumTest/*screen.log > $testfolder/$NumTest/RecollectionRangesDelay.csv
+  # Scale=100
+  # NameScreenLogs=$(ls | grep screen)
+  # NumScreenLogs=$(ls | grep screen | wc -l)
+  # echo $NameScreenLogs
+  # echo $NumScreenLogs
+  # #Start with source information clasification
+  # for i in $(seq 1 $NumScreenLogs); do
+  #   #echo Hello
+  #   SpecificLogFile=$(echo $NameScreenLogs | awk "{print $"$i"}")
+  #   echo LogFile $1 $SpecificLogFile
+  #   startLineRegSetup=$(grep -n "Average Response Time Repartition register-setup" $SpecificLogFile  | grep -Eo '^[^:]+')
+  #   startLineCallAverage=$(grep -n "Average Call Length Repartition" $SpecificLogFile | grep -Eo '^[^:]+')
+  #   startLineCallSetup=$(grep -n "Average Response Time Repartition call-setup" $SpecificLogFile  | grep -Eo '^[^:]+')
+  #   startLineCallTeardown=$(grep -n "Average Response Time Repartition call-teardown" $SpecificLogFile  | grep -Eo '^[^:]+')
+  #   FinalLine=$(cat $SpecificLogFile | wc -l)
+  #   sed -n "$startLineRegSetup,$startLineCallAverage p" $SpecificLogFile > regSetup$i.csv
+  #   sed -n "$startLineCallAverage,$startLineCallSetup p" $SpecificLogFile > CallAverage$i.csv
+  #   sed -n "$startLineCallSetup,$startLineCallTeardown p" $SpecificLogFile > CallSetup$i.csv
+  #   sed -n "$startLineCallTeardown,$FinalLine p" $SpecificLogFile > CallTeardown$i.csv
+  # done
+  # for j in regSetup CallSetup CallTeardown ; do
+  #   #for i in regSetup CallAverage CallSetup CallTeardown ; do
+  #   # AverageRange010=0
+  #   # AverageRange1025=0
+  #   # AverageRange2550=0
+  #   # AverageRange50100=0
+  #   # AverageRange100150=0
+  #   # AverageRange150200=0
+  #   # AverageRange200300=0
+  #   # AverageRange300500=0
+  #   # AverageRange5001000=0
+  #   # AverageRange100010000=0
+  #   # AverageRange10000n=0
+  #   TotalRange010=0
+  #   TotalRange1025=0
+  #   TotalRange2550=0
+  #   TotalRange50100=0
+  #   TotalRange100150=0
+  #   TotalRange150200=0
+  #   TotalRange200300=0
+  #   TotalRange300500=0
+  #   TotalRange5001000=0
+  #   TotalRange100010000=0
+  #   TotalRange10000n=0
+  #   Total=0
+  #   #for i in regSetup CallSetup CallTeardown ; do
+  #   for i in $(seq 1 $NumScreenLogs); do
+  #     Range010=$(cat $j$i.csv | grep -n "0 ms <= n <        10 ms :" | awk '{print $10}')
+  #     Range1025=$(cat $j$i.csv | grep -n "10 ms <= n <        25 ms :" | awk '{print $10}')
+  #     Range2550=$(cat $j$i.csv | grep -n "25 ms <= n <        50 ms :" | awk '{print $10}')
+  #     Range50100=$(cat $j$i.csv | grep -n "50 ms <= n <       100 ms :" | awk '{print $10}')
+  #     Range100150=$(cat $j$i.csv | grep -n "100 ms <= n <       150 ms :" | awk '{print $10}')
+  #     Range150200=$(cat $j$i.csv | grep -n "150 ms <= n <       200 ms :" | awk '{print $10}')
+  #     Range200300=$(cat $j$i.csv | grep -n "200 ms <= n <       300 ms :" | awk '{print $10}')
+  #     Range300500=$(cat $j$i.csv | grep -n "300 ms <= n <       500 ms :" | awk '{print $10}')
+  #     Range5001000=$(cat $j$i.csv | grep -n "500 ms <= n <      1000 ms :" | awk '{print $10}')
+  #     Range100010000=$(cat $j$i.csv | grep -n "1000 ms <= n <     10000 ms :" | awk '{print $10}')
+  #     Range10000n=$(cat $j$i.csv | grep -n "n >=    10000 ms :" | awk '{print $7}')
+  #     #echo $Range10000n
+  #     TotalRange010=`echo $TotalRange010 + $Range010 | bc`
+  #     TotalRange1025=`echo $TotalRange1025 + $Range1025 | bc`
+  #     TotalRange2550=`echo $TotalRange2550 + $Range2550 | bc`
+  #     TotalRange50100=`echo $TotalRange50100 + $Range50100 | bc`
+  #     TotalRange100150=`echo $TotalRange100150 + $Range100150 | bc`
+  #     TotalRange150200=`echo $TotalRange150200 + $Range150200 | bc`
+  #     TotalRange200300=`echo $TotalRange200300 + $Range200300 | bc`
+  #     TotalRange300500=`echo $TotalRange300500 + $Range300500 | bc`
+  #     TotalRange5001000=`echo $TotalRange5001000 + $Range5001000 | bc`
+  #     TotalRange100010000=`echo $TotalRange100010000 + $Range100010000 | bc`
+  #     TotalRange10000n=`echo $TotalRange10000n + $Range10000n | bc`
+  #     # echo $j TotalRange010 + $TotalRange010
+  #     # echo $j TotalRange1025 + $TotalRange1025
+  #     # echo $j TotalRange2550 + $TotalRange2550
+  #     # echo $j TotalRange50100 + $TotalRange50100
+  #     # echo $j TotalRange100150 + $TotalRange100150
+  #     # echo $j TotalRange150200 + $TotalRange150200
+  #     # echo $j TotalRange200300 + $TotalRange200300
+  #     # echo $j TotalRange300500 + $TotalRange300500
+  #     # echo $j TotalRange5001000 + $TotalRange5001000
+  #     # echo $j TotalRange100010000 + $TotalRange100010000
+  #     # echo $j TotalRange10000n + $TotalRange10000n
+  #   done
+  #
+  #   echo $TotalRange010 >> $testfolder/RangesLatency/Range010$j.csv
+  #   echo $TotalRange1025 >> $testfolder/RangesLatency/Range1025$j.csv
+  #   echo $TotalRange2550 >> $testfolder/RangesLatency/Range2550$j.csv
+  #   echo $TotalRange50100 >> $testfolder/RangesLatency/Range50100$j.csv
+  #   echo $TotalRange100150 >> $testfolder/RangesLatency/Range100150$j.csv
+  #   echo $TotalRange150200 >> $testfolder/RangesLatency/Range150200$j.csv
+  #   echo $TotalRange200300 >> $testfolder/RangesLatency/Range200300$j.csv
+  #   echo $TotalRange300500 >> $testfolder/RangesLatency/Range300500$j.csv
+  #   echo $TotalRange5001000 >> $testfolder/RangesLatency/Range5001000$j.csv
+  #   echo $TotalRange100010000 >> $testfolder/RangesLatency/Range100010000$j.csv
+  #   echo $TotalRange10000n >> $testfolder/RangesLatency/Range10000n$j.csv
 
     # Total=`echo $TotalRange010 + $TotalRange1025 + $TotalRange2550 + $TotalRange50100 + $TotalRange100150 + $TotalRange150200 + $TotalRange200300 + $TotalRange300500 + $TotalRange5001000 + $TotalRange100010000 + $TotalRange10000n | bc`
     # #echo $Total
@@ -274,7 +274,7 @@ while [ $NumTest -lt $NumberTest ]; do
     # echo Average= $AverageRange5001000
     # echo Average= $AverageRange100010000
     # echo Average= $AverageRange10000n
-  done
+  # done
 
   let NumTest=NumTest+1
 done
