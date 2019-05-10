@@ -28,7 +28,7 @@ plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using
      "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 3' lc 3, \
      "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 4' lc 4, \
      "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 7' lc 7, \
-     "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMRAM" using 18:19:xtic(1) title 'VM' lc 8
+     "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMRAM" using 18:19:xtic(1) title 'vIMS' lc 8
 EOF
 
 # "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b1ur1msc1' lc 1, \
