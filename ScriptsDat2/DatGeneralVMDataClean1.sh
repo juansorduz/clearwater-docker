@@ -15,37 +15,94 @@ Duration=1
 #source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 #testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
 #testMainfolder=~/ClearwaterTestResults/Summaries/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
-testMainfolder=~/ClearwaterTestResults/VM1/$cps$duration
+testfolder=~/ClearwaterTestResults/VM1/$cps$duration
 #testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
 #mkdir -p $testMainfolder
 #mkdir -p $testfolder
 
-[ -e $testMainfolder/CleanPromediosSCPS$cps ] && rm $testMainfolder/CleanPromediosSCPS$cps
-[ -e $testMainfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps ] && rm $testMainfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps
-[ -e $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps ] && rm $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps
-
 Scale=1
+PercentExpectedVarScale=20
 NumLine=1
-while IFS=" " read -r SCR remainder
+DataState=0
+
+#1. We copy data into new files to prevent losing DataState
+cat $testfolder/PromediosSCPS$cps > $testfolder/CleanPromediosSCPS$cps
+cat $testfolder/SummaryVMTOTALLocalVMCPUdata$cps > $testfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps
+cat $testfolder/SummaryVMTOTALLocalVMRAMdata$cps > $testfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps
+#cat $testfolder/$testfolder/PromediosLatencycall-setup$cps> $testfolder/CleanPromediosLatencycall-setup$cps
+
+#2. We determine if clear scr file is Ok
+DatosSCPS=$(<$testfolder/CleanPromediosSCPS$cps)
+AverageSCPS=0
+VarSCPS=0
+ExpectedVarSCPS=0
+NumProms=$(wc -l < $testfolder/CleanPromediosSCPS$cps)
+for i in ${DatosSCPS[@]}; do  AverageSCPS=$(echo "$AverageSCPS + $i" | bc -l) ; done
+AverageSCPS=$(echo "scale=3;$AverageSCPS/$NumProms" | bc -l)
+for i in ${DatosSCPS[@]}; do DiferenceVar=$(echo "$i - $AverageSCPS" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarSCPS=$(echo "$VarSCPS + $DiferenceVar" | bc -l) ; done
+VarSCPS=$(echo "scale=3;$VarSCPS/$NumProms" | bc -l)
+VarSCPS=$(echo "scale=3;sqrt($VarSCPS)" | bc -l)
+ExpectedVarSCPS=$(echo "scale=3;$AverageSCPS/$PercentExpectedVarScale" | bc -l)
+if ((VarSCPS <= $ExpectedVarSCPS)); then
+  DataState=1
+fi
+#3. Now we determine the limits to delete worng DataState
+MaxVarSCPS=0
+PercentMaxVarScale=10
+MaxVarSCPS=$(echo "scale=3;$AverageSCPS/$PercentMaxVarScale" | bc -l)
+LowerLimit=`echo $AverageSCPS - $MaxVarSCPS | bc`
+UpperLimit=`echo $AverageSCPS + $MaxVarSCPS | bc`
+
+while [ "$DataState" -eq '0' ];
 do
-  #echo  $SCR
-  SCR=$(echo "scale=0;$SCR/$Scale" | bc -l)
-  if ((SCR >= $LowerLimit && SCR <= $UpperLimit)); then
-  # your code
-    echo  $SCR
-    sed -n "${NumLine}p" $testMainfolder/PromediosSCPS$cps >> $testMainfolder/CleanPromediosSCPS$cps
-    sed -n "${NumLine}p" $testMainfolder/SummaryVMTOTALLocalVMCPUdata$cps >> $testMainfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps
-    sed -n "${NumLine}p" $testMainfolder/SummaryVMTOTALLocalVMRAMdata$cps >> $testMainfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps
-
+  #4. We delete worng files copy clean lines into temporaly files, if this file exist we delete them
+  [ -e $testfolder/TemporalPromediosSCPS$cps ] && rm $testfolder/TemporalPromediosSCPS$cps
+  [ -e $testfolder/TemporalSummaryVMTOTALLocalVMCPUdata$cps ] && rm $testfolder/TemporalSummaryVMTOTALLocalVMCPUdata$cps
+  [ -e $testfolder/TemporalSummaryVMTOTALLocalVMRAMdata$cps ] && rm $testfolder/TemporalSummaryVMTOTALLocalVMRAMdata$cps
+  #[ -e $testfolder/CleanPromediosLatencycall-setup$cps ] && rm $testfolder/TemporalPromediosLatencycall-setup$cps
+  while IFS=" " read -r SCR remainder
+  do
+    #echo  $SCR
+    SCR=$(echo "scale=0;$SCR/$Scale" | bc -l)
+    if ((SCR >= $LowerLimit && SCR <= $UpperLimit)); then
+    # your code
+      echo  $SCR
+      sed -n "${NumLine}p" $testfolder/CleanPromediosSCPS$cps >> $testfolder/TemporalPromediosSCPS$cps
+      sed -n "${NumLine}p" $testfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps >> $testfolder/TemporalSummaryVMTOTALLocalVMCPUdata$cps
+      sed -n "${NumLine}p" $testfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps >> $testfolder/TemporalSummaryVMTOTALLocalVMRAMdata$cps
+      #sed -n "${NumLine}p" $testfolder/PromediosLatency$i$cps >> $testfolder/CleanPromediosLatency$i$cps
+    fi
+    #cat $testfolder/PromediosSCPS$cps | wc -l
+    let NumLine=NumLine+1
+  done < "$testfolder/CleanPromediosSCPS$cps"
+  #5. Replace Temporal files into Clean files
+  cat $testfolder/TemporalPromediosSCPS$cps > $testfolder/CleanPromediosSCPS$cps
+  cat $testfolder/TemporalSummaryVMTOTALLocalVMCPUdata$cps > $testfolder/CleanSummaryVMTOTALLocalVMCPUdata$cps
+  cat $testfolder/TemporalSummaryVMTOTALLocalVMRAMdata$cps > $testfolder/CleanSummaryVMTOTALLocalVMRAMdata$cps
+  #cat $testfolder/$testfolder/TemporalPromediosLatencycall-setup$cps> $testfolder/CleanPromediosLatencycall-setup$cps
+  #6. Now we determine if this new file is clean
+  DatosSCPS=$(<$testfolder/CleanPromediosSCPS$cps)
+  AverageSCPS=0
+  VarSCPS=0
+  ExpectedVarSCPS=0
+  NumProms=$(wc -l < $testfolder/CleanPromediosSCPS$cps)
+  for i in ${DatosSCPS[@]}; do  AverageSCPS=$(echo "$AverageSCPS + $i" | bc -l) ; done
+  AverageSCPS=$(echo "scale=3;$AverageSCPS/$NumProms" | bc -l)
+  for i in ${DatosSCPS[@]}; do DiferenceVar=$(echo "$i - $AverageSCPS" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarSCPS=$(echo "$VarSCPS + $DiferenceVar" | bc -l) ; done
+  VarSCPS=$(echo "scale=3;$VarSCPS/$NumProms" | bc -l)
+  VarSCPS=$(echo "scale=3;sqrt($VarSCPS)" | bc -l)
+  ExpectedVarSCPS=$(echo "scale=3;$AverageSCPS/$PercentExpectedVarScale" | bc -l)
+  if ((VarSCPS <= $ExpectedVarSCPS)); then
+    DataState=1
   fi
-  #cat $testMainfolder/PromediosSCPS$cps | wc -l
+  #3. Now we determine the limits to delete worng DataState
+  MaxVarSCPS=0
+  PercentMaxVarScale=10
+  MaxVarSCPS=$(echo "scale=3;$AverageSCPS/$PercentMaxVarScale" | bc -l)
+  LowerLimit=`echo $AverageSCPS - $MaxVarSCPS | bc`
+  UpperLimit=`echo $AverageSCPS + $MaxVarSCPS | bc`
 
-
-
-  let NumLine=NumLine+1
-
-done < "$testMainfolder/PromediosSCPS$cps"
-
+done
 exit 0
 
 echo CPS: $cps Duration: $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
