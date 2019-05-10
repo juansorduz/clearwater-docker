@@ -44,10 +44,10 @@ NumProms=0
 #############################################################################
 echo Calculating Latency
 for j in call-setup register-setup call-teardown; do
-DatosLatency=$(<$testfolder/PromediosLatency$i$cps)
+DatosLatency=$(<$testfolder/PromediosLatency$j$cps)
 AverageLatency=0
 VarLatency=0
-NumProms=$(wc -l < $testfolder/PromediosLatency$i$cps)
+NumProms=$(wc -l < $testfolder/PromediosLatency$j$cps)
 for i in ${DatosLatency[@]}; do  AverageLatency=$(echo "$AverageLatency + $i" | bc -l) ; done
 AverageLatency=$(echo "scale=3;$AverageLatency/$NumProms" | bc -l)
 for i in ${DatosLatency[@]}; do DiferenceVar=$(echo "$i - $AverageLatency" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarLatency=$(echo "$VarLatency + $DiferenceVar" | bc -l) ; done
