@@ -21,15 +21,18 @@ set terminal pdf
 set output "DespliegueCPSvsSCR.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
-set title "CPS vs SCR"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 1' w l lc 1, \
-     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 2' w l lc 2, \
-     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 3' w l lc 3, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 4' w l lc 4, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 5' w l lc 5, \
-     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 6' w l lc 6, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 7' w l lc 7, \
-     "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR" using 2:xtic(1) title 'VM' w l lc 8
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 1, \
+     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 2' w l lc 2, \
+     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 2, \
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 3' w l lc 6, \
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 6, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 4' w l lc 7, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 7, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'Combination 5' w l lc 5, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 5, \
+     "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR" using 2:xtic(1) title 'Regular vIMS' w l lc 8, \
+     "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 8
 EOF
 
 # "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 1, \
