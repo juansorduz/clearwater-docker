@@ -43,7 +43,7 @@ NumProms=0
 #LATENCY
 #############################################################################
 echo Calculating Latency
-for i in call-setup register-setup call-teardown; do
+for j in call-setup register-setup call-teardown; do
 DatosLatency=$(<$testfolder/PromediosLatency$i$cps)
 AverageLatency=0
 VarLatency=0
@@ -53,7 +53,7 @@ AverageLatency=$(echo "scale=3;$AverageLatency/$NumProms" | bc -l)
 for i in ${DatosLatency[@]}; do DiferenceVar=$(echo "$i - $AverageLatency" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarLatency=$(echo "$VarLatency + $DiferenceVar" | bc -l) ; done
 VarLatency=$(echo "scale=3;$VarLatency/$NumProms" | bc -l)
 VarLatency=$(echo "scale=3;sqrt($VarLatency)" | bc -l)
-echo "$cps $AverageLatency $VarLatency" >> $testMainfolder/SUMMARYLATENCY$i
+echo "$cps $AverageLatency $VarLatency" >> $testMainfolder/SUMMARYLATENCY$j
 done
 # #############################################################################
 # #SINGLELATENCY
