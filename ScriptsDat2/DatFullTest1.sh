@@ -5,7 +5,9 @@ password=${2:-secret}
 option=${3:-3}
 NumberTest=${4:-2}
 
+echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
+. ~/clearwater-docker/ScriptsDat2/DatRefreshDeployment.sh $password
 
 echo A CONTINUACION SE EJECUTAN DIFERENTES PRUEBAS CON DESPLIEGUES DIFERENTES
 echo PRUEBAS DE NIVEL 0
