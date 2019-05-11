@@ -13,7 +13,7 @@ source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
 mkdir -p $testfolder
 
-echo Docker cps $cps duration $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
+echo cps $cps duration $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 #Deleting old files
 for i in VM1LocalVMCPUdata VM2LocalVMCPUdata VM3LocalVMCPUdata VM4LocalVMCPUdata VM5LocalVMCPUdata VM6LocalVMCPUdata VM7LocalVMCPUdata; do
    [ -e $testfolder/Summary$i$cps ] && rm $testfolder/Summary$i$cps

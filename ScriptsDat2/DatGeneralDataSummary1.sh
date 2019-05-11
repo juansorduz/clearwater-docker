@@ -15,8 +15,9 @@ mkdir -p $testfolder
 mkdir -p $testfolder/RangesLatency
 
 #Deleting old files
-for i in call-setup register-setup call-teardown; do
- [ -e $testfolder/PromediosLatency$i$cps ] && rm $testfolder/PromediosLatency$i$cps
+#for i in call-setup register-setup call-teardown; do
+for i in call-setup; do
+ [ -e $testfolder/PromediosLatencycall-setup$cps ] && rm $testfolder/PromediosLatencycall-setup$cps
 done
 # [ -e $testfolder/PromediosSingleLatency$cps ] && rm $testfolder/PromediosSingleLatency$cps
 # [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
@@ -34,7 +35,8 @@ while [ $NumTest -lt $NumberTest ]; do
   #############################################################################
   cd $testfolder/$NumTest
   cat $testfolder/$NumTest/*rtt.csv > $testfolder/$NumTest/RecollectionLatency.csv
-  for i in call-setup register-setup call-teardown; do
+  #for i in call-setup register-setup call-teardown; do
+  for i in call-setup; do
      cat $testfolder/$NumTest/RecollectionLatency.csv | grep $i > $testfolder/$NumTest/RecollectionLatency$i.csv;
      SumLatency=0
      PromLatency=0
@@ -101,30 +103,30 @@ while [ $NumTest -lt $NumberTest ]; do
   #     echo SingleLatency $PromSingleLatency
   # fi
   #
-  # #############################################################################
-  # #SUCCESFULL CALL RATE
-  # #############################################################################
-  # TotalCallGenerate=0
-  # TotalSuccessfullCallGenerate=0
-  # TotalFailedCallGenerate=0
-  # for i in $(seq 1 $NumSipp); do
-  #   CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
-  #   SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
-  #   FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
-  #   CallGenerate=${CallGenerate::-1}
-  #   SuccesfullCall=${SuccesfullCall::-1}
-  #   FailedCall=${FailedCall::-1}
-  #   TotalCallGenerate=`echo $TotalCallGenerate + $CallGenerate | bc`
-  #   TotalSuccessfullCallGenerate=`echo $TotalSuccessfullCallGenerate + $SuccesfullCall | bc`
-  #   TotalFailedCallGenerate=`echo $TotalFailedCallGenerate + $FailedCall | bc`
-  # done
-  # Scale=100
-  # SuccesfullCallRate=$(echo "scale=3; $TotalSuccessfullCallGenerate*$Scale" | bc -l)
-  # SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$TotalCallGenerate" | bc -l)
-  # echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
-  # echo Call Generate:$TotalCallGenerate SuccesfullCall:$TotalSuccessfullCallGenerate FailedCall $TotalFailedCallGenerate SCR:$SuccesfullCallRate
-  #
-  # #exit 0
+  #############################################################################
+  #SUCCESFULL CALL RATE
+  #############################################################################
+  TotalCallGenerate=0
+  TotalSuccessfullCallGenerate=0
+  TotalFailedCallGenerate=0
+  for i in $(seq 1 $NumSipp); do
+    CallGenerate=$(grep -F "OutGoing call created" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+    SuccesfullCall=$(grep -F "Successful call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+    FailedCall=$(grep -F "Failed call" $testfolder/$NumTest/logsSIPpTest$i.txt | cut -d '|' -f3)
+    CallGenerate=${CallGenerate::-1}
+    SuccesfullCall=${SuccesfullCall::-1}
+    FailedCall=${FailedCall::-1}
+    TotalCallGenerate=`echo $TotalCallGenerate + $CallGenerate | bc`
+    TotalSuccessfullCallGenerate=`echo $TotalSuccessfullCallGenerate + $SuccesfullCall | bc`
+    TotalFailedCallGenerate=`echo $TotalFailedCallGenerate + $FailedCall | bc`
+  done
+  Scale=100
+  SuccesfullCallRate=$(echo "scale=3; $TotalSuccessfullCallGenerate*$Scale" | bc -l)
+  SuccesfullCallRate=$(echo "scale=2; $SuccesfullCallRate/$TotalCallGenerate" | bc -l)
+  echo $SuccesfullCallRate >> $testfolder/PromediosSCPS$cps
+  echo Call Generate:$TotalCallGenerate SuccesfullCall:$TotalSuccessfullCallGenerate FailedCall $TotalFailedCallGenerate SCR:$SuccesfullCallRate
+
+  #exit 0
   # #############################################################################
   # #LATENCY2
   # #############################################################################

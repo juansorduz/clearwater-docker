@@ -21,14 +21,16 @@ echo CPS: $cps Duration: $duration b${NumBono}urs${NumURS}mscs${NumMSCS}urh${Num
 if [ $cps = '25' ];
 then
   echo Deleting old scripts
-  for i in call-setup register-setup call-teardown; do
+  #for i in call-setup register-setup call-teardown; do
+  for i in call-setup; do
    [ -e $testMainfolder/SUMMARYLATENCY$i ] && rm $testMainfolder/SUMMARYLATENCY$i
+   echo "#cps Latency VarLatency" >> $testMainfolder/SUMMARYLATENCY$i
   done
   # [ -e $testMainfolder/SUMMARYSINGLELATENCY ] && rm $testMainfolder/SUMMARYSINGLELATENCY
-  # [ -e $testMainfolder/SUMMARYSCR ] && rm $testMainfolder/SUMMARYSCR
+  [ -e $testMainfolder/SUMMARYSCR ] && rm $testMainfolder/SUMMARYSCR
   # #echo "#cps Delay VarLatency" >> $testMainfolder/SUMMARYLATENCY
   # echo "#cps Latency VarLatency" >> $testMainfolder/SUMMARYSINGLELATENCY
-  # echo "#cps SuccessfullCallRate VarSuccessfullCallRate" >> $testMainfolder/SUMMARYSCR
+  echo "#cps SuccessfullCallRate VarSuccessfullCallRate" >> $testMainfolder/SUMMARYSCR
   # for j in regSetup CallSetup CallTeardown ; do
   #   [ -e $testMainfolder/SUMMARY$j ] && rm $testMainfolder/SUMMARY$j
   #   echo "cps AverageRange010 VarRange010 AverageRange1025 VarRange1025 AverageRange2550 VarRange2550 AverageRange50100 VarRange50100 AverageRange100150 VarRange100150 AverageRange150200 VarRange150200 AverageRange200300 VarRange200300 AverageRange300500 VarRange300500 AverageRange5001000 VarRange5001000 AverageRange100010000 VarRange100010000 AverageRange10000n VarRange10000n" > $testMainfolder/SUMMARY$j
@@ -43,7 +45,8 @@ NumProms=0
 #LATENCY
 #############################################################################
 echo Calculating Latency
-for j in call-setup register-setup call-teardown; do
+#for j in call-setup register-setup call-teardown; do
+for j in call-setup; do
 DatosLatency=$(<$testfolder/PromediosLatency$j$cps)
 AverageLatency=0
 VarLatency=0
@@ -70,20 +73,20 @@ done
 # VarSingleLatency=$(echo "scale=3;sqrt($VarSingleLatency)" | bc -l)
 # echo "$cps $AverageSingleLatency $VarSingleLatency" >> $testMainfolder/SUMMARYSINGLELATENCY
 #
-# #############################################################################
-# #SUCCESFULL CALL RATE
-# #############################################################################
-# echo Calculatin SCR
-# DatosSCPS=$(<$testfolder/PromediosSCPS$cps)
-# AverageSCPS=0
-# VarSCPS=0
-# NumProms=$(wc -l < $testfolder/PromediosSCPS$cps)
-# for i in ${DatosSCPS[@]}; do  AverageSCPS=$(echo "$AverageSCPS + $i" | bc -l) ; done
-# AverageSCPS=$(echo "scale=3;$AverageSCPS/$NumProms" | bc -l)
-# for i in ${DatosSCPS[@]}; do DiferenceVar=$(echo "$i - $AverageSCPS" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarSCPS=$(echo "$VarSCPS + $DiferenceVar" | bc -l) ; done
-# VarSCPS=$(echo "scale=3;$VarSCPS/$NumProms" | bc -l)
-# VarSCPS=$(echo "scale=3;sqrt($VarSCPS)" | bc -l)
-# echo "$cps $AverageSCPS $VarSCPS" >> $testMainfolder/SUMMARYSCR
+#############################################################################
+#SUCCESFULL CALL RATE
+#############################################################################
+echo Calculatin SCR
+DatosSCPS=$(<$testfolder/PromediosSCPS$cps)
+AverageSCPS=0
+VarSCPS=0
+NumProms=$(wc -l < $testfolder/PromediosSCPS$cps)
+for i in ${DatosSCPS[@]}; do  AverageSCPS=$(echo "$AverageSCPS + $i" | bc -l) ; done
+AverageSCPS=$(echo "scale=3;$AverageSCPS/$NumProms" | bc -l)
+for i in ${DatosSCPS[@]}; do DiferenceVar=$(echo "$i - $AverageSCPS" | bc -l);DiferenceVar=$(echo "$DiferenceVar* $DiferenceVar" | bc -l); VarSCPS=$(echo "$VarSCPS + $DiferenceVar" | bc -l) ; done
+VarSCPS=$(echo "scale=3;$VarSCPS/$NumProms" | bc -l)
+VarSCPS=$(echo "scale=3;sqrt($VarSCPS)" | bc -l)
+echo "$cps $AverageSCPS $VarSCPS" >> $testMainfolder/SUMMARYSCR
 # #############################################################################
 # #LATENCY2
 # #############################################################################

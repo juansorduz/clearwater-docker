@@ -112,22 +112,13 @@ rm -f $testfolder/VM0LocalVMdata.csv
 ################################################################################
 #Execute test script and delay script on background
 ################################################################################
-#Logic to select all microservice instances
-#NumSipptest=$(kubectl get pods | grep sipptest | wc -l)
-#SipptestPods=$(kubectl get pods | grep sipptest | cut -d ' ' -f1)
-#SipptestIPs=$(kubectl get pods -o wide | grep sipptest | cut -d ' ' -f34)
 CPSperSippPod=$(echo "scale=0; $cps/$NumSipp" | bc -l)
-#echo $CPSperSippPod
+
 for i in $(seq 1 $NumSipp); do
 echo Prueba de carga No.$i;
-#LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
-#LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
 . ~/clearwater-docker/ScriptsDat2/TrafficGenerator/tester_kubernetes1.sh $CPSperSippPod $duration $i &
-. ~/clearwater-docker/ScriptsDat2/Latency/Tester_Latency1.sh $i &
+#. ~/clearwater-docker/ScriptsDat2/Latency/Tester_Latency1.sh $i &
 done
-
-
-
 
 ################################################################################
 #Start Loop to control VMs
@@ -247,10 +238,25 @@ then
 fi
 
 #exit 0
- let NumTest=NumTest+1
- #echo $NumTest
- echo cooling system for new test
- #sleep 30
- done
+#LOGIC TO DETERMINE IF CLUSTER IS IN OPTIMAL STATE
+MaxExpectedReset=10
+ClusterState=$(kubectl get pods | grep Evicted)
+Restarts=$(kubectl get pods -o wide | awk '{print $4}')
+NumRestarts=0
+for i in ${Restarts[*]}
+do
+  NumRestarts=$[$NumRestarts + $i]
+done
+echo Numero de reinicios es $NumRestarts
+if [ -z "$ClusterState" ] && [ "$NumRestarts" -lt "$MaxExpectedReset" ]
+then
+      echo "Cluster en buen estado"
+      let NumTest=NumTest+1
+else
+      echo "Cluster con falla, se reiniciara"
+      . ~/clearwater-docker/ScriptsDat2/DatRefreshDeployment.sh $password
+fi
+
+done
 #when the script finish, kill tshark process to stop packet capture
  #pkill tshark
