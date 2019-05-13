@@ -7,46 +7,46 @@ Graphfolder=~/ClearwaterTestResults10Mayo/Graphs
 mkdir -p $Graphfolder
 cd $Graphfolder
 ScaleFiles=1
-NumFilesCombination1=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles1=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFilesCombination1
-NumFilesCombination1=$(echo "$ScaleFiles/$NumFilesCombination1" | bc -l)
-NumFilesCombination2=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination1=$(echo "$ScaleFiles/$NumFiles1" | bc -l)
+NumFiles2=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFilesCombination2
-NumFilesCombination2=$(echo "$ScaleFiles/$NumFilesCombination2" | bc -l)
-NumFilesCombination3=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination2=$(echo "$ScaleFiles/$NumFiles2" | bc -l)
+NumFiles3=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFilesCombination3
-NumFilesCombination3=$(echo "$ScaleFiles/$NumFilesCombination3" | bc -l)
-NumFilesCombination4=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination3=$(echo "$ScaleFiles/$NumFiles3" | bc -l)
+NumFiles4=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFilesCombination4
-NumFilesCombination4=$(echo "$ScaleFiles/$NumFilesCombination4" | bc -l)
-NumFilesCombination5=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination4=$(echo "$ScaleFiles/$NumFiles4" | bc -l)
+NumFiles5=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFilesCombination5
-NumFilesCombination5=$(echo "$ScaleFiles/$NumFilesCombination5" | bc -l)
-NumFilesCombination6=$(cat ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination5=$(echo "$ScaleFiles/$NumFiles5" | bc -l)
+NumFiles6=$(cat ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
 echo $NumFilesCombination6
-NumFilesCombination6=$(echo "$ScaleFiles/$NumFilesCombination6" | bc -l)
-MinimumFiles=$NumFilesCombination1
-echo $NumFilesCombination2
-NumFilesCombination2=$(echo 0$NumFilesCombination2)
-if [ "$NumFilesCombination2" -lt "$MinimumFiles" ]
+NumFilesCombination6=$(echo "$ScaleFiles/$NumFiles6" | bc -l)
+MinimumFiles=$NumFiles1
+#echo $NumFilesCombination2
+#NumFilesCombination2=$(echo 0$NumFilesCombination2)
+if [ "$NumFiles2" -lt "$MinimumFiles" ]
 then
-      MinimumFiles=$NumFilesCombination2
+      MinimumFiles=$NumFiles2
 fi
-if [ "$NumFilesCombination3" -lt "$MinimumFiles" ]
+if [ "$NumFiles3" -lt "$MinimumFiles" ]
 then
-      MinimumFiles=$NumFilesCombination3
+      MinimumFiles=$NumFiles3
 fi
-if [ "$NumFilesCombination4" -lt "$MinimumFiles" ]
+if [ "$NumFiles4" -lt "$MinimumFiles" ]
 then
-      MinimumFiles=$NumFilesCombination4
+      MinimumFiles=$NumFiles4
 fi
-if [ "$NumFilesCombination5" -lt "$MinimumFiles" ]
+if [ "$NumFiles5" -lt "$MinimumFiles" ]
 then
-      MinimumFiles=$NumFilesCombination5
+      MinimumFiles=$NumFiles5
 fi
-if [ "$NumFilesCombination6" -lt "$MinimumFiles" ]
+if [ "$NumFiles6" -lt "$MinimumFiles" ]
 then
-      MinimumFiles=$NumFilesCombination6
+      MinimumFiles=$NumFiles6
 fi
 
 echo Numero menor de filas es$MinimumFiles
