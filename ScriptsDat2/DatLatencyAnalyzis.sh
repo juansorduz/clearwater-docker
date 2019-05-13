@@ -3,9 +3,10 @@ option=${1:-1}
 
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testfolderdeployment=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
+testMainfolder=~/ClearwaterTestResults/Summaries/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
 
 #Deleting old files
-[ -e $testfolder/SUMMARYLATENCYCDF ] && rm $testfolder/SUMMARYLATENCYCDF
+[ -e $testMainfolder/SUMMARYLATENCYCDF ] && rm $testMainfolder/SUMMARYLATENCYCDF
 
 
 #exit 0
