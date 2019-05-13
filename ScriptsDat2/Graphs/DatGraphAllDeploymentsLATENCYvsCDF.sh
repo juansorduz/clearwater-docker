@@ -59,18 +59,28 @@ set style line 1 lt 1 lw 1 pt 1 linecolor rgb "0x767676"
 set xtics format ""
 set grid ytics
 set grid xtics
+set yrange [0:1]
+set xrange [0:150]
 set key outside below
 set terminal pdf
 set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
-plot "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
-     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
-     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
-     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
-     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
-     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
+plot "~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
+     "~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
 EOF
+
+# "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
+
 
 # "~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 1, \
 #      "~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc2' w l lc 2, \
