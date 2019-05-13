@@ -26,6 +26,7 @@ NumFilesCombination6=$(cat ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLAT
 echo $NumFilesCombination6
 NumFilesCombination6=$(echo "$ScaleFiles/$NumFilesCombination6" | bc -l)
 MinimumFiles=$NumFilesCombination1
+NumFilesCombination2=$(echo 0$NumFilesCombination2)
 if [ "$NumFilesCombination2" -lt "$MinimumFiles" ]
 then
       MinimumFiles=$NumFilesCombination2
