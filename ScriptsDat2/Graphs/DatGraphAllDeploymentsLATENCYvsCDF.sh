@@ -61,7 +61,7 @@ set grid ytics
 set grid xtics
 set yrange [0:1]
 set xrange [0:150]
-set xtics 1,10,20,50,100,150
+set xtics 1, 10, 20, 50, 100, 150
 set key outside below
 set terminal pdf
 set output "LATENCYCDF.pdf"
