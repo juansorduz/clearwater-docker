@@ -61,6 +61,7 @@ set grid ytics
 set grid xtics
 set yrange [0:1]
 set xrange [0:150]
+set xtics ("0.1" 0.1,"0.2" 0.2,"0.3" 0.3,"0.4" 0.4,"0.5" 0.5,"0.6" 0.6,"0.7" 0.7,"0.8" 0.8,"0.9" 0.9,"1" 1)
 set xtics ("10" 10,"20" 20,"50" 50,"100" 100,"150" 150)
 set key outside below
 set terminal pdf
