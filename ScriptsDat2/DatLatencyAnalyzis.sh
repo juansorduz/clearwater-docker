@@ -37,4 +37,4 @@ sed -i 's/;/ /g' FullRecollectionLatency.csv
 
 awk '{$1=$3=""; print $0}' FullRecollectionLatency.csv > FullRecollectionLatency2.csv
 
-sort -k1,1n FullRecollectionLatency2.csv > SUMMARYLATENCYCDF
+sort -k1,1n FullRecollectionLatency2.csv > $testMainfolder/SUMMARYLATENCYCDF
