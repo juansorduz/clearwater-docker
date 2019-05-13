@@ -5,7 +5,7 @@ option=${1:-1}
 #echo 60 60
 #exit 0
 
-echo A CONTINUACION SE ANALIZA LA LATENCIA GENERAL PARA DISTINTOS DESPLIEGUES
+echo A CONTINUACION SE ANALIZA LA LATENCIA GENERAL PARA DISTINTOS DESPLIEGUES DE KUBERNETES
 echo PRUEBAS DE NIVEL 0
 echo PRUEBA DE DESPLIEGUE CON b1u1s1
 echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
