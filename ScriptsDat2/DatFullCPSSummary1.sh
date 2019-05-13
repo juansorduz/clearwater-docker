@@ -76,7 +76,7 @@ source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 #
 # . ~/clearwater-docker/ScriptsDat2/DatGeneralDataSummary1.sh  250 $duration $NumberTest
 # #. ~/clearwater-docker/ScriptsDat2/DatDockerDataSummary1.sh  250 $duration $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatVMDataSummary1.sh  250 $duration $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatVMDataSummary1.sh  250 $duration $NumberTest
 #
 # . ~/clearwater-docker/ScriptsDat2/DatGeneralDataSummary1.sh  275 $duration $NumberTest
 # #. ~/clearwater-docker/ScriptsDat2/DatDockerDataSummary1.sh  275 $duration $NumberTest
@@ -154,7 +154,7 @@ source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 #
 # . ~/clearwater-docker/ScriptsDat2/DatGeneralDataSummary1.sh  250 $duration $NumberTest
 # #. ~/clearwater-docker/ScriptsDat2/DatDockerDataSummary1.sh  250 $duration $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatVMDataSummary1.sh  250 $duration $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatVMDataSummary1.sh  250 $duration $NumberTest
 #
 # . ~/clearwater-docker/ScriptsDat2/DatGeneralDataSummary1.sh  275 $duration $NumberTest
 # #. ~/clearwater-docker/ScriptsDat2/DatDockerDataSummary1.sh  275 $duration $NumberTest
