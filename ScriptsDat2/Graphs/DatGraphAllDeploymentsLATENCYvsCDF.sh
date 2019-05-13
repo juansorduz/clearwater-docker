@@ -8,22 +8,22 @@ mkdir -p $Graphfolder
 cd $Graphfolder
 ScaleFiles=1
 NumFiles1=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
-echo $NumFilesCombination1
+echo $NumFiles1
 NumFilesCombination1=$(echo "$ScaleFiles/$NumFiles1" | bc -l)
 NumFiles2=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
-echo $NumFilesCombination2
+echo $NumFiles2
 NumFilesCombination2=$(echo "$ScaleFiles/$NumFiles2" | bc -l)
 NumFiles3=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
-echo $NumFilesCombination3
+echo $NumFiles3
 NumFilesCombination3=$(echo "$ScaleFiles/$NumFiles3" | bc -l)
 NumFiles4=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
-echo $NumFilesCombination4
+echo $NumFiles4
 NumFilesCombination4=$(echo "$ScaleFiles/$NumFiles4" | bc -l)
 NumFiles5=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
-echo $NumFilesCombination5
+echo $NumFiles5
 NumFilesCombination5=$(echo "$ScaleFiles/$NumFiles5" | bc -l)
 NumFiles6=$(cat ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
-echo $NumFilesCombination6
+echo $NumFiles6
 NumFilesCombination6=$(echo "$ScaleFiles/$NumFiles6" | bc -l)
 MinimumFiles=$NumFiles1
 #echo $NumFilesCombination2
@@ -49,7 +49,7 @@ then
       MinimumFiles=$NumFiles6
 fi
 
-echo Numero menor de filas es$MinimumFiles
+echo Numero menor de filas es $MinimumFiles
 
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
