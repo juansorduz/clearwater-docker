@@ -9,6 +9,16 @@ cd $Graphfolder
 ScaleFiles=1
 NumFilesCombination1=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 NumFilesCombination1=$(echo "$ScaleFiles/$NumFilesCombination1" | bc -l)
+NumFilesCombination2=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination2=$(echo "$ScaleFiles/$NumFilesCombination2" | bc -l)
+NumFilesCombination3=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination3=$(echo "$ScaleFiles/$NumFilesCombination3" | bc -l)
+NumFilesCombination4=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination4=$(echo "$ScaleFiles/$NumFilesCombination4" | bc -l)
+NumFilesCombination5=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination5=$(echo "$ScaleFiles/$NumFilesCombination5" | bc -l)
+NumFilesCombination6=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFilesCombination6=$(echo "$ScaleFiles/$NumFilesCombination6" | bc -l)
 echo $NumFilesCombination1
 
 gnuplot <<- EOF
@@ -24,7 +34,12 @@ set terminal pdf
 set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
-plot '~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination1}) smooth cumul title "Combination1"
+plot '~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
+     "~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination6}) smooth cumul title "Combination6" lc 8
 EOF
 
 # "~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 1, \
