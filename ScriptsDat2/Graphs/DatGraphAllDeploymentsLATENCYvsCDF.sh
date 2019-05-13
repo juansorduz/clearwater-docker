@@ -12,11 +12,19 @@ NumFilesCombination1=$(echo "$ScaleFiles/$NumFilesCombination1" | bc -l)
 echo $NumFilesCombination1
 
 gnuplot <<- EOF
+set terminal png size 800,500 enhanced font "Helvetica,20"
+red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
+set yrange [0:110]
+set boxwidth 0.9
+set style line 1 lt 1 lw 1 pt 1 linecolor rgb "0x767676"
+set xtics format ""
+set grid ytics
+set grid xtics
+set key outside below
+set terminal pdf
+set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
-set terminal pdf
-set output “LATENCYCDF.pdf”
-set key top left
 plot '~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination1}) smooth cumul title "Combination1"
 EOF
 
