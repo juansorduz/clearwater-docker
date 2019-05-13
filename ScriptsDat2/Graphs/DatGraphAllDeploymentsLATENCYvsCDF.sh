@@ -25,7 +25,29 @@ NumFilesCombination5=$(echo "$ScaleFiles/$NumFilesCombination5" | bc -l)
 NumFilesCombination6=$(cat ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
 echo $NumFilesCombination6
 NumFilesCombination6=$(echo "$ScaleFiles/$NumFilesCombination6" | bc -l)
-echo $NumFilesCombination1
+MinimumFiles=$NumFilesCombination1
+if [ "$NumFilesCombination2" -lt "$MinimumFiles" ]
+then
+      MinimumFiles=$NumFilesCombination2
+fi
+if [ "$NumFilesCombination3" -lt "$MinimumFiles" ]
+then
+      MinimumFiles=$NumFilesCombination3
+fi
+if [ "$NumFilesCombination4" -lt "$MinimumFiles" ]
+then
+      MinimumFiles=$NumFilesCombination4
+fi
+if [ "$NumFilesCombination5" -lt "$MinimumFiles" ]
+then
+      MinimumFiles=$NumFilesCombination5
+fi
+if [ "$NumFilesCombination6" -lt "$MinimumFiles" ]
+then
+      MinimumFiles=$NumFilesCombination6
+fi
+
+echo Numero menor de filas es $MinimumFiles
 
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
