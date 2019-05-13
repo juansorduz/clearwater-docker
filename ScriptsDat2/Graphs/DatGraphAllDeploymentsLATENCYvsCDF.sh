@@ -12,13 +12,11 @@ NumFilesCombination1=$(echo "$ScaleFiles/$NumFilesCombination1" | bc -l)
 echo $NumFilesCombination1
 
 gnuplot <<- EOF
-set grid ytics
-set grid xtics
-set key outside below
-set terminal pdf
-set output “LATENCYCDF.pdf”
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
+set terminal pdf
+set output “LATENCYCDF.pdf”
+set key top left
 plot '~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF' using 1:(${NumFilesCombination1}) smooth cumul title "Combination1"
 EOF
 
