@@ -1,10 +1,8 @@
 #!/bin/bash
-#CONTADOR=0
-
 cps=${1:-10}
 duration=${2:-120}
 password=${3:-secret}
-option=${4:-3}
+optionMonitor=${4:-2}
 NumberTest=${5:-2}
 
 
@@ -23,7 +21,7 @@ NumTest=1
 while [ $NumTest -lt $NumberTest ]; do
 export NumTest
 
-echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, option=$option, b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
+echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, optionMonitor=$optionMonitor, b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 #Create tests folder if not exits
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
 mkdir -p $testfolder
@@ -38,21 +36,21 @@ touch $testfolder/Variables.txt
 echo -e "stateTest=1"  > $testfolder/Variables.txt
 #echo -e "stateMonitor=3\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > $testfolder/DataTest.txt
 
-if [ "$option" -eq '1' ]
+if [ "$optionMonitor" -eq '1' ]
 then
   echo -e "stateMonitor=1\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > $testfolder/DataTest.txt
   echo Monitoring dockers
 fi
 
 #Execute VM monitor script
-if [ "$option" -eq '2' ]
+if [ "$optionMonitor" -eq '2' ]
 then
   echo -e "stateMonitor=2\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > $testfolder/DataTest.txt
   echo Monitoring VMs
 fi
 
 #Execute docker and VM monitor script
-if [ "$option" -eq '3' ]
+if [ "$optionMonitor" -eq '3' ]
 then
   echo -e "stateMonitor=3\ncps=$cps\nduration=$duration\nNumTest=$NumTest\nNumBono=$NumBono\nNumURS=$NumURS\nNumMSCS=$NumMSCS\nNumURH=$NumURH\nNumMSCH=$NumMSCH"  > $testfolder/DataTest.txt
   echo Monitoring dockers and VMs
@@ -154,7 +152,7 @@ sleep 2
 #Recover stats files of each VM
 ################################################################################
 
-if [ "$option" -eq '1' ]
+if [ "$optionMonitor" -eq '1' ]
 then
   echo Recovering docker data
   sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalDockerdata.csv
@@ -174,7 +172,7 @@ then
 fi
 
 #Execute VM monitor script
-if [ "$option" -eq '2' ]
+if [ "$optionMonitor" -eq '2' ]
 then
   echo Recovering VM data
   sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM1LocalVMCPUdata.csv
@@ -200,7 +198,7 @@ then
 fi
 
 #Execute docker and VM monitor script
-if [ "$option" -eq '3' ]
+if [ "$optionMonitor" -eq '3' ]
 then
   echo Recovering dockers and VM data
   sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalDockerdata.csv

@@ -2,7 +2,7 @@
 #CONTADOR=0
 duration=${1:-120}
 password=${2:-secret}
-option=${3:-3}
+optionMonitor=${3:-2}
 NumberTest=${4:-2}
 
 
@@ -73,43 +73,43 @@ kubectl get pods -o wide -n kube-system >> $Maintestfolder/b${NumBono}urs${NumUR
 
 
 echo Starting tests
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  25 $duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  30 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  75 $duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  70 $duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  80 $duration $password $option $NumberTest
-#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  90 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  100 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  125 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  150 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  175 $duration $password $option $NumberTest
-. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  200 $duration $password $option $NumberTest
+#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  25 $duration $password $optionMonitor $NumberTest
+#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  30 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $duration $password $optionMonitor $NumberTest
+#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  75 $duration $password $optionMonitor $NumberTest
+#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  70 $duration $password $optionMonitor $NumberTest
+#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  80 $duration $password $optionMonitor $NumberTest
+#. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  90 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  100 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  125 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  150 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  175 $duration $password $optionMonitor $NumberTest
+. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  200 $duration $password $optionMonitor $NumberTest
 # exit 0
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  225 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  250 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  275 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  300 $duration $password $option $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  225 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  250 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  275 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  300 $duration $password $optionMonitor $NumberTest
 #
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $duration $password $option $NumberTest
-# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  20 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  30 $duration $password $option $NumberTest
-# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  40 $duration $password $option $NumberTest
-# ·. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  60 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  70 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  80 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  90 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  100 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  120 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  150 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  180 $duration $password $option $NumberTest
-# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  210 $duration $password $option $NumberTest
-# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  240 $duration $password $option $NumberTest
-# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  270 $duration $password $option $NumberTest
-# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  200 $duration $password $option $NumberTest
-# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  250 $duration $password $option $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  10 $duration $password $optionMonitor $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  20 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  30 $duration $password $optionMonitor $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  40 $duration $password $optionMonitor $NumberTest
+# ·. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  50 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  60 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  70 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  80 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  90 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  100 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  120 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  150 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  180 $duration $password $optionMonitor $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  210 $duration $password $optionMonitor $NumberTest
+# . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  240 $duration $password $optionMonitor $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  270 $duration $password $optionMonitor $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  200 $duration $password $optionMonitor $NumberTest
+# #. ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  250 $duration $password $optionMonitor $NumberTest
 # . ~/clearwater-docker/ScriptsDat2/DatMonitor1.sh  300 $duration $password $option $NumberTest
 #exit 0
