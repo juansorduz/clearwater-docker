@@ -3,7 +3,7 @@ option=${1:-2}
 
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testfolderdeployment=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
-testMainfolder=~/2ClearwaterTestResults/Summaries/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
+testMainfolder=~/ClearwaterTestResults/Summaries/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/
 
 #Deleting old files
 [ -e $testMainfolder/SUMMARYLATENCYCDF ] && rm $testMainfolder/SUMMARYLATENCYCDF
@@ -37,4 +37,4 @@ sed -i 's/;/ /g' FullRecollectionLatency.csv
 
 awk '{$1=$3=""; print $0}' FullRecollectionLatency.csv > FullRecollectionLatency2.csv
 
-sort -k1,1n FullRecollectionLatency2.csv > SUMMARYLATENCYCDF
+sort -k1,1n FullRecollectionLatency2.csv > $testMainfolder/SUMMARYLATENCYCDF
