@@ -47,7 +47,7 @@ then
       MinimumFiles=$NumFilesCombination6
 fi
 
-echo Numero menor de filas es $MinimumFiles
+echo Numero menor de filas es$MinimumFiles
 
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
