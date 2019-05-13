@@ -8,16 +8,22 @@ mkdir -p $Graphfolder
 cd $Graphfolder
 ScaleFiles=1
 NumFilesCombination1=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+echo $NumFilesCombination1
 NumFilesCombination1=$(echo "$ScaleFiles/$NumFilesCombination1" | bc -l)
 NumFilesCombination2=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+echo $NumFilesCombination2
 NumFilesCombination2=$(echo "$ScaleFiles/$NumFilesCombination2" | bc -l)
 NumFilesCombination3=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+echo $NumFilesCombination3
 NumFilesCombination3=$(echo "$ScaleFiles/$NumFilesCombination3" | bc -l)
 NumFilesCombination4=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+echo $NumFilesCombination4
 NumFilesCombination4=$(echo "$ScaleFiles/$NumFilesCombination4" | bc -l)
 NumFilesCombination5=$(cat ~/ClearwaterTestResults10Mayo/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+echo $NumFilesCombination5
 NumFilesCombination5=$(echo "$ScaleFiles/$NumFilesCombination5" | bc -l)
 NumFilesCombination6=$(cat ~/ClearwaterTestResults10Mayo/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
+echo $NumFilesCombination6
 NumFilesCombination6=$(echo "$ScaleFiles/$NumFilesCombination6" | bc -l)
 echo $NumFilesCombination1
 
