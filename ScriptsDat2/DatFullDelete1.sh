@@ -6,6 +6,7 @@ echo Deleting all information
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 rm -r ~/ClearwaterTestResults/Kubernetes4
 rm -r ~/ClearwaterTestResults/Kubernetes5
+rm -r ~/ClearwaterTestResults/Summaries
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "rm -r ~/ClearwaterTestResults/Kubernetes5"
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "rm -r ~/ClearwaterTestResults/Kubernetes5"
 sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "rm -r ~/ClearwaterTestResults/Kubernetes5"
