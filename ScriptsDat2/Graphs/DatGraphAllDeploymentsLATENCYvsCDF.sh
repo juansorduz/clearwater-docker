@@ -69,7 +69,7 @@ set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
 plot "~/ClearwaterTestResults2/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1
-     EOF
+EOF
 
 # "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
 #     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
