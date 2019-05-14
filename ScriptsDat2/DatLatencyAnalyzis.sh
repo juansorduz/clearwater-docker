@@ -31,7 +31,7 @@ then
 fi
 
 #CHANGE FORMAT FILE
-tail -n +33 FullRecollectionLatency.csv > FullRecollectionLatency.csv
+#tail -n +33 FullRecollectionLatency.csv > FullRecollectionLatency.csv
 sed -i 's/\./,/g' FullRecollectionLatency.csv
 
 sed -i 's/;/ /g' FullRecollectionLatency.csv
