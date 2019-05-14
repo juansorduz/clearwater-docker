@@ -23,7 +23,7 @@ then
 fi
 if [ "$option" -eq '3' ]
 then
-  cat */*/RecollectionLatency.csv > FullRecollectionLatency.csv
+  tail -n +2 */*/RecollectionLatency.csv > FullRecollectionLatency.csv
 fi
 if [ "$option" -eq '4' ]
 then
