@@ -65,10 +65,15 @@ set ytics ("0.1" 0.1,"0.2" 0.2,"0.3" 0.3,"0.4" 0.4,"0.5" 0.5,"0.6" 0.6,"0.7" 0.7
 set xtics ("10" 10,"20" 20,"50" 50,"100" 100,"150" 150)
 set key outside below
 set terminal pdf
-set output "LATENCYCDFComb6.pdf"
+set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
-plot "~/ClearwaterTestResults2/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "vIMS" lc 8
+plot "~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
+     "~/ClearwaterTestResults2/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
+     "~/ClearwaterTestResults2/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
+     "~/ClearwaterTestResults2/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
+     "~/ClearwaterTestResults2/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
+     "~/ClearwaterTestResults2/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
 EOF
 
 # plot "~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
