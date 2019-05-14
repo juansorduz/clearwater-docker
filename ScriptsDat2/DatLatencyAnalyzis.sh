@@ -23,7 +23,7 @@ then
 fi
 if [ "$option" -eq '3' ]
 then
-  tail -n +2 */*/RecollectionLatency.csv > FullRecollectionLatency.csv
+  cat */*/RecollectionLatency.csv > FullRecollectionLatency.csv
 fi
 if [ "$option" -eq '4' ]
 then
@@ -31,6 +31,7 @@ then
 fi
 
 #CHANGE FORMAT FILE
+tail -n +33 FullRecollectionLatency.csv > FullRecollectionLatency.csv
 sed -i 's/\./,/g' FullRecollectionLatency.csv
 
 sed -i 's/;/ /g' FullRecollectionLatency.csv
