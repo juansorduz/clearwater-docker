@@ -2,27 +2,27 @@
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
-Graphfolder=~/ClearwaterTestResults/Graphs
+Graphfolder=~/ClearwaterTestResults2/Graphs
 
 mkdir -p $Graphfolder
 cd $Graphfolder
 ScaleFiles=1
-NumFiles1=$(cat ~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles1=$(cat ~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles1
 NumFilesCombination1=$(echo "$ScaleFiles/$NumFiles1" | bc -l)
-NumFiles2=$(cat ~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles2=$(cat ~/ClearwaterTestResults2/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles2
 NumFilesCombination2=$(echo "$ScaleFiles/$NumFiles2" | bc -l)
-NumFiles3=$(cat ~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles3=$(cat ~/ClearwaterTestResults2/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles3
 NumFilesCombination3=$(echo "$ScaleFiles/$NumFiles3" | bc -l)
-NumFiles4=$(cat ~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles4=$(cat ~/ClearwaterTestResults2/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles4
 NumFilesCombination4=$(echo "$ScaleFiles/$NumFiles4" | bc -l)
-NumFiles5=$(cat ~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles5=$(cat ~/ClearwaterTestResults2/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles5
 NumFilesCombination5=$(echo "$ScaleFiles/$NumFiles5" | bc -l)
-NumFiles6=$(cat ~/ClearwaterTestResults/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
+NumFiles6=$(cat ~/ClearwaterTestResults2/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles6
 NumFilesCombination6=$(echo "$ScaleFiles/$NumFiles6" | bc -l)
 MinimumFiles=$NumFiles1
@@ -68,33 +68,33 @@ set terminal pdf
 set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
-plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
-     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
-     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
-     "~/ClearwaterTestResults/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
+plot "~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
+     "~/ClearwaterTestResults2/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
+     "~/ClearwaterTestResults2/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
+     "~/ClearwaterTestResults2/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
+     "~/ClearwaterTestResults2/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
+     "~/ClearwaterTestResults2/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
 EOF
 
-# "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
-#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
-#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
-#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
-#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
-#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/VM/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
+# "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
+#     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults2/Summaries/VM/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
 
 
-# "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 1, \
-#      "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc2' w l lc 2, \
-#      "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur2msc1' w l lc 3, \
-#      "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc1' w l lc 4, \
-#      "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc2' w l lc 5, \
-#      "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur2msc1' w l lc 6, \
-#      "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 7, \
-#      "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur2msc1' w l lc 9, \
-#      "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc2' w l lc 10, \
-#      "~/ClearwaterTestResults/Summaries/b4urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b4ur1msc1' w l lc 11, \
-#      "~/ClearwaterTestResults/Summaries/b4urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b4ur2msc1' w l lc 12, \
-#      "~/ClearwaterTestResults/Summaries/b4urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b4ur1msc2' w l lc 13, \
-#      "~/ClearwaterTestResults/Summaries/b5urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b5ur1msc1' w l lc 14, \
-#      "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR" using 2:xtic(1) title 'VM' w l lc 8
+# "~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc1' w l lc 1, \
+#      "~/ClearwaterTestResults2/Summaries/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur1msc2' w l lc 2, \
+#      "~/ClearwaterTestResults2/Summaries/b1urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b1ur2msc1' w l lc 3, \
+#      "~/ClearwaterTestResults2/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc1' w l lc 4, \
+#      "~/ClearwaterTestResults2/Summaries/b2urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur1msc2' w l lc 5, \
+#      "~/ClearwaterTestResults2/Summaries/b2urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b2ur2msc1' w l lc 6, \
+#      "~/ClearwaterTestResults2/Summaries/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc1' w l lc 7, \
+#      "~/ClearwaterTestResults2/Summaries/b3urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur2msc1' w l lc 9, \
+#      "~/ClearwaterTestResults2/Summaries/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b3ur1msc2' w l lc 10, \
+#      "~/ClearwaterTestResults2/Summaries/b4urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b4ur1msc1' w l lc 11, \
+#      "~/ClearwaterTestResults2/Summaries/b4urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b4ur2msc1' w l lc 12, \
+#      "~/ClearwaterTestResults2/Summaries/b4urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b4ur1msc2' w l lc 13, \
+#      "~/ClearwaterTestResults2/Summaries/b5urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title 'b5ur1msc1' w l lc 14, \
+#      "~/ClearwaterTestResults2/Summaries/VM/SUMMARYSCR" using 2:xtic(1) title 'VM' w l lc 8
