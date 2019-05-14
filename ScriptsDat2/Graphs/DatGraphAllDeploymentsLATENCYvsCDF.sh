@@ -59,13 +59,13 @@ set style line 1 lt 1 lw 1 pt 1 linecolor rgb "0x767676"
 set xtics format ""
 set grid ytics
 set grid xtics
-set yrange [0:1]
-set xrange [0:150]
+set yrange [0:1.5]
+set xrange [0:200]
 set ytics ("0.1" 0.1,"0.2" 0.2,"0.3" 0.3,"0.4" 0.4,"0.5" 0.5,"0.6" 0.6,"0.7" 0.7,"0.8" 0.8,"0.9" 0.9,"1" 1)
 set xtics ("10" 10,"20" 20,"50" 50,"100" 100,"150" 150)
 set key outside below
 set terminal pdf
-set output "LATENCYCDF.pdf"
+set output "LATENCYCDF2.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
 plot "~/ClearwaterTestResults2/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
