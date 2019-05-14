@@ -68,13 +68,8 @@ set terminal pdf
 set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "SCR (%)"
-plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
-     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
-     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
-     "~/ClearwaterTestResults/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
-EOF
+plot "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1
+     EOF
 
 # "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
 #     "<(sed -n '1,${MinimumFiles}p' ~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF)" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
