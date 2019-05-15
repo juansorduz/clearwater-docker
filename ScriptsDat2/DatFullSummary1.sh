@@ -17,12 +17,8 @@ echo -e "NumSipp=2\nNumBono=2\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintes
 . ~/clearwater-docker/ScriptsDat2/DatFullCPSSummary1.sh $duration $NumberTest
 
 echo PRUEBA DE DESPLIEGUE CON b1u2s1
-START=$(date +%s.%N)
 echo -e "NumSipp=1\nNumBono=1\nNumURS=2\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 . ~/clearwater-docker/ScriptsDat2/DatFullCPSSummary1.sh $duration $NumberTest
-END=$(date +%s.%N)
-LATENCY=$(echo "$END - $START" | bc)
-echo Latency $LATENCY > ~/LatencyCompleteSummary.txt
 
 echo PRUEBA DE DESPLIEGUE CON b1u1s2
 echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=2\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
