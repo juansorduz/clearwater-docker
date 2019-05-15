@@ -67,7 +67,7 @@ set key outside below
 set terminal pdf
 set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
-set ylabel "SCR (%)"
+set ylabel "CDF"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
      "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
      "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
