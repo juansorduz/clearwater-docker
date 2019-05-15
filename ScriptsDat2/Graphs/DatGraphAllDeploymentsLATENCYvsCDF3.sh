@@ -85,7 +85,7 @@ set output "LATENCYCDF2.pdf"
 set xlabel "Latency (ms)"
 set ylabel "CDF"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title '111' lc 1, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title '211' lc 4, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title '211' lc 4, \
      "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination7}) smooth cumul title '221' lc 2, \
      "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination8}) smooth cumul title '212' lc 3, \
      "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination9}) smooth cumul title '321' lc 5, \
