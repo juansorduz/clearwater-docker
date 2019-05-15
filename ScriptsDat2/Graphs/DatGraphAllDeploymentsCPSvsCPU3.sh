@@ -20,7 +20,7 @@ set grid ytics
 set grid xtics
 set key outside below
 set terminal pdf
-set output "DespliegueCPSvsCPU.pdf"
+set output "DespliegueCPSvsCPU2.pdf"
 set xlabel "CPS"
 set ylabel "CPU (%) (100% = 1 Core)"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title '111' lc 1, \

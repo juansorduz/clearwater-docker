@@ -18,16 +18,19 @@ set grid ytics
 set grid xtics
 set key outside below
 set terminal pdf
-set output "DespliegueCPSvsSCR2.pdf"
+set output "DespliegueCPSvsSCR.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '111' w l lc 1, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '211' w l lc 4, \
-     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '221' w l lc 2, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title '212' w l lc 3, \
-     "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '321' w l lc 5, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title '312' w l lc 6, \
-     "~/ClearwaterTestResults/Summaries/b3urs2mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title '322' w l lc 7, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '211' w l lc 2, \
+     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '121' w l lc 3, \
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title '112' w l lc 4, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '311' w l lc 5, \
+     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '221' w l lc 6, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title '212' w l lc 7, \
+     "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '321' w l lc 9, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title '312' w l lc 10, \
+     "~/ClearwaterTestResults/Summaries/b3urs2mscs2urh1msch1/SUMMARYSCR" using 2:xtic(1) title '322' w l lc 11, \
      "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR" using 2:xtic(1) title 'vIMS' w l lc 8
 EOF
 
