@@ -20,7 +20,7 @@ for i in call-setup; do
  [ -e $testfolder/PromediosLatencycall-setup$cps ] && rm $testfolder/PromediosLatencycall-setup$cps
 done
 # [ -e $testfolder/PromediosSingleLatency$cps ] && rm $testfolder/PromediosSingleLatency$cps
-# [ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
+[ -e $testfolder/PromediosSCPS$cps ] && rm $testfolder/PromediosSCPS$cps
 # rm -rfv $testfolder/RangesLatency/* > /dev/null
 
 #exit 0
@@ -38,27 +38,27 @@ while [ $NumTest -lt $NumberTest ]; do
   #for i in call-setup register-setup call-teardown; do
   for i in call-setup; do
      cat $testfolder/$NumTest/RecollectionLatency.csv | grep $i > $testfolder/$NumTest/RecollectionLatency$i.csv;
-     SumLatency=0
-     PromLatency=0
-     NumDataLatency=0
-     while IFS=";" read -r date latency timername remainder
-     do
-       #echo $responsetime
-       SumLatency=`echo $SumLatency + $latency | bc`
-       let NumDataLatency=NumDataLatency+1
-     done < "$testfolder/$NumTest/RecollectionLatency$i.csv"
-
-     if [ $NumDataLatency = '0' ];
-     then
-       echo CPS $cps Prueba Latency$i $NumTest con falla, no se considerara en los promedios generales de latencia.
-     else
-         PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
-         #PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
-         #PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
-         echo $PromLatency >> $testfolder/PromediosLatency$i$cps
-         echo Latency $i = $PromLatency
-         #echo NumTest $NumTest PromLatency $PromLatency
-     fi
+     # SumLatency=0
+     # PromLatency=0
+     # NumDataLatency=0
+     # while IFS=";" read -r date latency timername remainder
+     # do
+     #   #echo $responsetime
+     #   SumLatency=`echo $SumLatency + $latency | bc`
+     #   let NumDataLatency=NumDataLatency+1
+     # done < "$testfolder/$NumTest/RecollectionLatency$i.csv"
+     #
+     # if [ $NumDataLatency = '0' ];
+     # then
+     #   echo CPS $cps Prueba Latency$i $NumTest con falla, no se considerara en los promedios generales de latencia.
+     # else
+     #     PromLatency=$(echo "scale=3; $SumLatency/$NumDataLatency" | bc -l)
+     #     #PromLatency=`echo $PromLatency - $DelayCallAnswer | bc`
+     #     #PromLatency=`echo $PromLatency - $DelayBeforeACK | bc`
+     #     echo $PromLatency >> $testfolder/PromediosLatency$i$cps
+     #     echo Latency $i = $PromLatency
+     #     #echo NumTest $NumTest PromLatency $PromLatency
+     # fi
   done
   # # #############################################################################
   # # #SINGLE LATENCY
