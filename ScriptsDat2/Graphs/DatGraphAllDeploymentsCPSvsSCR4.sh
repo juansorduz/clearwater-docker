@@ -18,7 +18,7 @@ set grid ytics
 set grid xtics
 set key outside below
 set terminal pdf
-set output "DespliegueCPSvsSCR.pdf"
+set output "DespliegueCPSvsSCR2.pdf"
 set xlabel "CPS"
 set ylabel "SCR (%)"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR" using 2:xtic(1) title '111' w l lc 1, \
