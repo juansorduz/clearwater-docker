@@ -11,7 +11,7 @@ echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintes
 source ~/clearwater-docker/ScriptsDat2/LocalFiles/AddressVM
 #. ~/clearwater-docker/ScriptsDat2/DatRefreshDeployment.sh $password
 
-echo A CONTINUACION SE EJECUTAN DIFERENTES PRUEBAS CON DESPLIEGUES DIFERENTES
+echo A CONTINUACION SE EJECUTAN DIFERENTES PRUEBAS CON DISTINTAS COMBINACIONES
 echo PRUEBAS DE NIVEL 0
 echo PRUEBA DE DESPLIEGUE CON b1u1s1
 START=$(date +%s.%N)
