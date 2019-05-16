@@ -23,27 +23,27 @@ set terminal pdf
 set output "DespliegueCPSvsRAM.pdf"
 set xlabel "CPS"
 set ylabel "RAM (%) (100% = 14 Gb RAM)"
-plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 1' lc 1, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 2' lc 2, \
-     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 3' lc 3, \
-     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 4' lc 4, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 5' lc 5, \
-     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 6' lc 6, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 7' lc 7, \
-     "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMRAM" using 18:19:xtic(1) title 'vIMS' lc 8
+plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'Combination 1' lc 1, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'Combination 2' lc 2, \
+     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'Combination 3' lc 3, \
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'Combination 4' lc 4, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'Combination 5' lc 5, \
+     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'Combination 6' lc 6, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'Combination 7' lc 7, \
+     "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'vIMS' lc 8
 EOF
 
-# "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b1ur1msc1' lc 1, \
-#      "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b1ur1msc2' lc 2, \
-#      "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b1ur2msc1' lc 3, \
-#      "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b2ur1msc1' lc 4, \
-#      "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b2ur1msc2' lc 5, \
-#      "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b2ur2msc1' lc 6, \
-#      "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b3ur1msc1' lc 7, \
-#      "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b3ur2msc1' lc 9, \
-#      "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b3ur1msc2' lc 10, \
-#      "~/ClearwaterTestResults/Summaries/b4urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b4ur1msc1' lc 11, \
-#      "~/ClearwaterTestResults/Summaries/b4urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b4ur2msc1' lc 12, \
-#      "~/ClearwaterTestResults/Summaries/b4urs1mscs2urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b4ur1msc2' lc 13, \
-#      "~/ClearwaterTestResults/Summaries/b5urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b5ur1msc1' lc 14, \
-#      "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMRAM" using 18:19:xtic(1) title 'VM' lc 8
+# "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b1ur1msc1' lc 1, \
+#      "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b1ur1msc2' lc 2, \
+#      "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b1ur2msc1' lc 3, \
+#      "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b2ur1msc1' lc 4, \
+#      "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b2ur1msc2' lc 5, \
+#      "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b2ur2msc1' lc 6, \
+#      "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b3ur1msc1' lc 7, \
+#      "~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b3ur2msc1' lc 9, \
+#      "~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b3ur1msc2' lc 10, \
+#      "~/ClearwaterTestResults/Summaries/b4urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b4ur1msc1' lc 11, \
+#      "~/ClearwaterTestResults/Summaries/b4urs2mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b4ur2msc1' lc 12, \
+#      "~/ClearwaterTestResults/Summaries/b4urs1mscs2urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b4ur1msc2' lc 13, \
+#      "~/ClearwaterTestResults/Summaries/b5urs1mscs1urh1msch1/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'b5ur1msc1' lc 14, \
+#      "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMRAM" every 3 using 18:19:xtic(1) title 'VM' lc 8
