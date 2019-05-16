@@ -11,7 +11,7 @@ testMainfolder=~/ClearwaterTestResults/Summaries/VM
 
 #exit 0
 cd $testfolderdeployment
-
+echo $testfolderdeployment
 #SE GENERA UN ARCHIVO GENERAL CON TODA LA INFORMACION DEL DESPLIEGUE
 if [ "$option" -eq '1' ]
 then
