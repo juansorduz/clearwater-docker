@@ -10,13 +10,13 @@ ScaleFiles=1
 NumFiles1=$(cat ~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles1
 NumFilesCombination1=$(echo "$ScaleFiles/$NumFiles1" | bc -l)
-NumFiles2=$(cat ~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles2=$(cat ~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles2
 NumFilesCombination2=$(echo "$ScaleFiles/$NumFiles2" | bc -l)
-NumFiles3=$(cat ~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles3=$(cat ~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles3
 NumFilesCombination3=$(echo "$ScaleFiles/$NumFiles3" | bc -l)
-NumFiles4=$(cat ~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles4=$(cat ~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles4
 NumFilesCombination4=$(echo "$ScaleFiles/$NumFiles4" | bc -l)
 NumFiles5=$(cat ~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
@@ -25,6 +25,22 @@ NumFilesCombination5=$(echo "$ScaleFiles/$NumFiles5" | bc -l)
 NumFiles6=$(cat ~/ClearwaterTestResults/Summaries/VM/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles6
 NumFilesCombination6=$(echo "$ScaleFiles/$NumFiles6" | bc -l)
+NumFiles7=$(cat ~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+echo $NumFiles7
+NumFilesCombination7=$(echo "$ScaleFiles/$NumFiles7" | bc -l)
+# NumFiles8=$(cat ~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+# echo $NumFiles8
+# NumFilesCombination8=$(echo "$ScaleFiles/$NumFiles8" | bc -l)
+# NumFiles9=$(cat ~/ClearwaterTestResults/Summaries/b3urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+# echo $NumFiles9
+# NumFilesCombination9=$(echo "$ScaleFiles/$NumFiles9" | bc -l)
+# NumFiles10=$(cat ~/ClearwaterTestResults/Summaries/b3urs1mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+# echo $NumFiles10
+# NumFilesCombination10=$(echo "$ScaleFiles/$NumFiles10" | bc -l)
+# NumFiles11=$(cat ~/ClearwaterTestResults/Summaries/b3urs2mscs2urh1msch1/SUMMARYLATENCYCDF | wc -l)
+# echo $NumFiles11
+# NumFilesCombination11=$(echo "$ScaleFiles/$NumFiles11" | bc -l)
+
 MinimumFiles=$NumFiles1
 #echo $NumFilesCombination2
 #NumFilesCombination2=$(echo 0$NumFilesCombination2)
@@ -69,10 +85,12 @@ set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "CDF"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
-     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
-     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 7, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
+     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 5, \
+     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "Combination6" lc 6, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination7}) smooth cumul title "Combination7" lc 7, \
      "~/ClearwaterTestResults/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
 EOF
 
