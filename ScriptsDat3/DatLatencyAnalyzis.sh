@@ -1,7 +1,7 @@
 #!/bin/bash
 option=${1:-2}
 
-source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+source ~/clearwater-docker/ScriptsDat3/TrafficGenerator/TestCharacteristics
 testfolderdeployment=$Maintestfolder
 testMainfolder=~/ClearwaterTestResults/Summaries/VM
 
