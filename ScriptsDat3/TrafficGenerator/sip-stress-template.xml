@@ -50,7 +50,7 @@
        this to twice the reg_pause value -->
   <pause distribution="uniform" min="0" max="6000" />
 
-  <send start_rtd="register-setup">
+  <send>
     <![CDATA[
 
       REGISTER sip:[service];transport=[transport] SIP/2.0
@@ -75,7 +75,7 @@
     </action>
   </recv>
 
-  <send start_rtd="register-setup">
+  <send>
     <![CDATA[
 
       REGISTER sip:[service];transport=[transport] SIP/2.0
@@ -96,7 +96,7 @@
     ]]>
   </send>
 
-  <recv response="200" rtd="register-setup">
+  <recv response="200">
     <action>
       <ereg regexp="rport=([^;]*);.*received=([^;]*);" search_in="hdr" header="Via:" assign_to="dummy,nat_port,nat_ip_addr" />
       <add assign_to="reg_repeat" value="1" />
@@ -452,7 +452,7 @@
   </recv>
   <pause variable="call_length" />
 
-  <send start_rtd="call-teardown">
+  <send>
     <![CDATA[
 
       BYE sip:[$peer_dn]@[$nat_ip_addr]:[$nat_port];transport=[transport];ob SIP/2.0
@@ -489,7 +489,7 @@
     ]]>
   </send>
 
-  <recv response="200" rtd="call-teardown">
+  <recv response="200">
   </recv>
 
   <pause variable="post_call_delay" />

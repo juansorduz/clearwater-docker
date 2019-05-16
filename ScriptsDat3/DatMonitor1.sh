@@ -123,7 +123,7 @@ echo Prueba de carga No.$i;
 #LocalSipptestPod=$(echo $SipptestPods | cut -d ' ' -f$i);
 #LocalSipptestIP=$(echo $SipptestIPs | cut -d ' ' -f$i);
 . ~/clearwater-docker/ScriptsDat3/TrafficGenerator/tester_kubernetes1.sh $CPSperSippPod $duration $i &
-. ~/clearwater-docker/ScriptsDat3/Latency/Tester_Latency1.sh $i &
+#. ~/clearwater-docker/ScriptsDat3/Latency/Tester_Latency1.sh $i &
 done
 
 
