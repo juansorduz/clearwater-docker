@@ -3,7 +3,7 @@ option=${1:-2}
 
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
 testfolderdeployment=$Maintestfolder/
-testMainfolder=~/ClearwaterTestResults/Summaries/
+testMainfolder=~/ClearwaterTestResults/Summaries/VM
 
 #Deleting old files
 [ -e $testMainfolder/SUMMARYLATENCYCDF ] && rm $testMainfolder/SUMMARYLATENCYCDF
