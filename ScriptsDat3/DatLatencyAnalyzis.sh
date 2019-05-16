@@ -2,7 +2,7 @@
 option=${1:-2}
 
 source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-testfolderdeployment=$Maintestfolder/
+testfolderdeployment=$Maintestfolder
 testMainfolder=~/ClearwaterTestResults/Summaries/VM
 
 #Deleting old files
@@ -12,6 +12,7 @@ testMainfolder=~/ClearwaterTestResults/Summaries/VM
 #exit 0
 cd $testfolderdeployment
 echo $testfolderdeployment
+echo $Maintestfolder
 #SE GENERA UN ARCHIVO GENERAL CON TODA LA INFORMACION DEL DESPLIEGUE
 if [ "$option" -eq '1' ]
 then
