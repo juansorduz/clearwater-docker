@@ -34,7 +34,7 @@ while [ $NumTest -lt $NumberTest ]; do
   #LATENCY1
   #############################################################################
   cd $testfolder/$NumTest
-  cat $testfolder/$NumTest/*rtt.csv > $testfolder/$NumTest/RecollectionLatency.csv
+  cat $testfolder/$NumTest/clearwater-sipp/*rtt.csv > $testfolder/$NumTest/RecollectionLatency.csv
   #for i in call-setup register-setup call-teardown; do
   for i in call-setup; do
      cat $testfolder/$NumTest/RecollectionLatency.csv | grep $i > $testfolder/$NumTest/RecollectionLatency$i.csv;
