@@ -15,19 +15,19 @@ cd $testfolderdeployment
 #SE GENERA UN ARCHIVO GENERAL CON TODA LA INFORMACION DEL DESPLIEGUE
 if [ "$option" -eq '1' ]
 then
-  cat */1/clearwater-sipp/RecollectionLatency.csv > FullRecollectionLatency.csv
+  cat 1/clearwater-sipp/RecollectionLatency.csv > FullRecollectionLatency.csv
 fi
 if [ "$option" -eq '2' ]
 then
-  cat */1/clearwater-sipp/RecollectionLatencycall-setup.csv  > FullRecollectionLatency.csv
+  cat 1/clearwater-sipp/RecollectionLatencycall-setup.csv  > FullRecollectionLatency.csv
 fi
 if [ "$option" -eq '3' ]
 then
-  cat */*/clearwater-sipp/RecollectionLatency.csv > FullRecollectionLatency.csv
+  cat */clearwater-sipp/RecollectionLatency.csv > FullRecollectionLatency.csv
 fi
 if [ "$option" -eq '4' ]
 then
-  cat */*/clearwater-sipp/RecollectionLatencycall-setup.csv > FullRecollectionLatency.csv
+  cat */clearwater-sipp/RecollectionLatencycall-setup.csv > FullRecollectionLatency.csv
 fi
 
 #CHANGE FORMAT FILE
