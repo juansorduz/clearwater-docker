@@ -1,7 +1,7 @@
-NumSipp=1
-NumBono=1
-NumURS=1
-NumMSCS=1
+NumSipp=3
+NumBono=3
+NumURS=2
+NumMSCS=2
 NumURH=1
 NumMSCH=1
 Maintestfolder=~/ClearwaterTestResults/Kubernetes5
