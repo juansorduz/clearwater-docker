@@ -15,3 +15,5 @@ if [ "$option" -eq '1' ]
 then
   kubectl delete services --all && kubectl delete deployment --all && kubectl delete pods --all --grace-period=0 --force
 fi
+
+sleep 60
