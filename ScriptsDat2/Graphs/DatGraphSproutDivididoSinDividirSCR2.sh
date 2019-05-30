@@ -18,7 +18,7 @@ set yrange [25:150]
 set ytics ("25" 25, "50" 50, "75" 75, "100" 100, "125" 125, "150" 150, "175" 175, "200" 200)
 set key outside below
 set terminal pdf
-set output "DespliegueCPSvsSCR2.pdf"
+set output "DespliegueCPSvsSCR2SproutDivididoSinDividir.pdf"
 set xlabel "CPS"
 set ylabel "SCR"
 plot "~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) title 'Sprout Dividido' w l lc 1, \
