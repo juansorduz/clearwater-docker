@@ -14,7 +14,7 @@ set boxwidth 0.9
 set xtics format ""
 set grid ytics
 set grid xtics
-set yrange [25:150]
+set yrange [25:100]
 set ytics ("25" 25, "50" 50, "75" 75, "100" 100, "125" 125, "150" 150, "175" 175, "200" 200)
 set key outside below
 set terminal pdf
