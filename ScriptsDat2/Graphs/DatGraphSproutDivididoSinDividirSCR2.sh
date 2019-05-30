@@ -25,7 +25,7 @@ plot "~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMA
      "~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 1, \
      "~/ClearwaterTestResultsSproutSinDividir/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) title 'Sprout no Dividido' w l lc 2, \
      "~/ClearwaterTestResultsSproutSinDividir/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 2, \
-     "~/ClearwaterTestResults4/Summaries/SUMMARYSCR2" using 2:xtic(1) title 'Target' w l dt 2 lc rgb "#757575"
+     "~/ClearwaterTestResultsSproutDividido/Summaries/SUMMARYSCR2" using 2:xtic(1) title 'Target' w l dt 2 lc rgb "#757575"
 EOF
 
 
