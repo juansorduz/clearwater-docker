@@ -20,7 +20,7 @@ set terminal pdf
 set output "DespliegueKU4MainDOCKERCPSvsRAM.pdf"
 set xlabel "CPS"
 set ylabel "RAM (%)"
-plot "~/ClearwaterTestResults/Summaries/SUMMARYDOCKERRAM" \
+plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYDOCKERRAM" \
               using 10:11:xtic(1) title "Bono" fill pattern 1 lc 8, \
               '' using 24:25:xtic(1) title "Ursprout" fill pattern 2 lc 8, \
               '' using 18:19:xtic(1) title "Urhomestead" fill pattern 3 lc 8, \
