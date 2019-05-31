@@ -24,7 +24,7 @@ set output "DespliegueCPSvsCPUSproutDivididoSinDividir.pdf"
 set xlabel "CPS"
 set ylabel "CPU (%) (100% = 1 Core)"
 plot "~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Sprout Dividido' lc 1, \
-     "~/ClearwaterTestResultsSproutSinDividir1/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Sprout sin dividir' lc 2
+     "~/ClearwaterTestResultsSproutSinDividir1/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Sprout sin dividir' lc 2
 EOF
 
 # "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'b1ur1msc1' lc 1, \
