@@ -21,11 +21,11 @@ set output "DespliegueKU4MainDOCKERCPSvsRAM.pdf"
 set xlabel "CPS"
 set ylabel "RAM (%)"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYDOCKERRAM" \
-              using 10:11:xtic(1) title "Bono" fill pattern 1 lc 8, \
-              '' using 24:25:xtic(1) title "Ursprout" fill pattern 2 lc 8, \
-              '' using 18:19:xtic(1) title "Urhomestead" fill pattern 3 lc 8, \
-              '' using 4:5:xtic(1) title "Urcassandra" fill pattern 4 lc 8, \
-              '' using 26:27:xtic(1) title "Mscsprout" fill pattern 5 lc 8, \
-              '' using 20:21:xtic(1) title "Mschomestead" fill pattern 6 lc 8, \
-              '' using 6:7:xtic(1) title "Msccassandra" fill pattern 7 lc 8
+                using 10:11:xtic(1) title "Bono" lc 1, \
+                '' using 24:25:xtic(1) title "Ursprout" lc 2, \
+                '' using 18:19:xtic(1) title "Urhomestead" lc 3, \
+                '' using 4:5:xtic(1) title "Urcassandra" lc 4, \
+                '' using 26:27:xtic(1) title "Mscsprout" lc 5, \
+                '' using 20:21:xtic(1) title "Mschomestead" lc 6, \
+                '' using 6:7:xtic(1) title "Msccassandra" lc 7
 EOF
