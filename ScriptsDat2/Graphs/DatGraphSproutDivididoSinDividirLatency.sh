@@ -10,7 +10,7 @@ ScaleFiles=1
 NumFiles1=$(cat ~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles1
 NumFilesCombination1=$(echo "$ScaleFiles/$NumFiles1" | bc -l)
-NumFiles2=$(cat ~/ClearwaterTestResultsSproutSinDividir1/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
+NumFiles2=$(cat ~/ClearwaterTestResultsSproutSinDividir1/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
 echo $NumFiles2
 NumFilesCombination2=$(echo "$ScaleFiles/$NumFiles2" | bc -l)
 # NumFiles3=$(cat ~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF | wc -l)
