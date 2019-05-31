@@ -16,7 +16,7 @@ echo PRUEBAS DE NIVEL 0
 echo PRUEBA DE DESPLIEGUE CON b1u1s1
 START=$(date +%s.%N)
 echo -e "NumSipp=1\nNumBono=1\nNumURS=1\nNumMSCS=1\nNumURH=1\nNumMSCH=1\nMaintestfolder=~/ClearwaterTestResults/Kubernetes5" > ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
-. ~/clearwater-docker/ScriptsDat2/DatFullCPSMonitor1.sh 60 $password 2 33
+. ~/clearwater-docker/ScriptsDat2/DatFullCPSMonitor1.sh 60 $password 3 33
 . ~/clearwater-docker/ScriptsDat2/DatFullCPSSummary1.sh 60 33
 . ~/clearwater-docker/ScriptsDat2/DatFullCPSPromedy1.sh 60 33
 . ~/clearwater-docker/ScriptsDat2/DatLatencyAnalyzis.sh 4
