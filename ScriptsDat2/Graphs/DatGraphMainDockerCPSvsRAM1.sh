@@ -1,6 +1,10 @@
 #!/bin/bash
-mkdir -p ~/ClearwaterTestResults/Kubernetes4/Graphs
-cd ~/ClearwaterTestResults/Kubernetes4/Graphs
+source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
+testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
+Graphfolder=~/ClearwaterTestResults/Graphs
+mkdir -p $Graphfolder
+cd $Graphfolder
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
 red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
@@ -16,8 +20,7 @@ set terminal pdf
 set output "DespliegueKU4MainDOCKERCPSvsRAM.pdf"
 set xlabel "CPS"
 set ylabel "RAM (%)"
-set title "CPS vs RAM Deployment Kubernetes 4"
-plot "~/ClearwaterTestResults/Kubernetes4/SUMMARYDOCKERRAM" \
+plot "~/ClearwaterTestResults/Summaries/SUMMARYDOCKERRAM" \
               using 10:11:xtic(1) title "Bono" fill pattern 1 lc 8, \
               '' using 24:25:xtic(1) title "Ursprout" fill pattern 2 lc 8, \
               '' using 18:19:xtic(1) title "Urhomestead" fill pattern 3 lc 8, \

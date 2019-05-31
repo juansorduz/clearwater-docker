@@ -1,6 +1,10 @@
 #!/bin/bash
-mkdir -p ~/ClearwaterTestResults/Kubernetes4/Graphs
-cd ~/ClearwaterTestResults/Kubernetes4/Graphs
+source ~/clearwater-docker/ScriptsDat2/TrafficGenerator/TestCharacteristics
+testMainfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
+testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration
+Graphfolder=~/ClearwaterTestResults/Graphs
+mkdir -p $Graphfolder
+cd $Graphfolder
 gnuplot <<- EOF
 set terminal png size 800,500 enhanced font "Helvetica,20"
 red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB";
@@ -13,11 +17,10 @@ set xtics format ""
 set grid ytics
 set key outside below
 set terminal pdf
-set output "DespliegueKU4MainDOCKERCPSvsCPU.pdf"
+set output "DespliegueMainDOCKERCPSvsCPU.pdf"
 set xlabel "CPS"
 set ylabel "CPU (%)"
-set title "CPS vs CPU Deployment Kubernetes 4"
-plot "~/ClearwaterTestResults/Kubernetes4/SUMMARYDOCKERCPU" \
+plot "~/ClearwaterTestResults/Summaries/SUMMARYDOCKERCPU" \
             using 10:11:xtic(1) title "Bono" fill pattern 1 lc 8, \
             '' using 24:25:xtic(1) title "Ursprout" fill pattern 2 lc 8, \
             '' using 18:19:xtic(1) title "Urhomestead" fill pattern 3 lc 8, \
