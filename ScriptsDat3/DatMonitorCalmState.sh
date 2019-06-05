@@ -23,10 +23,10 @@ export NumTest
 
 echo time $(date +"%T") NumTest:$NumTest, cps: $cps, duration: $duration, optionMonitor=$optionMonitor, b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}
 #Create tests folder if not exits
-testfolder=$Maintestfolder/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest
+testfolder=$Maintestfolder/$cps$duration/$NumTest
 mkdir -p $testfolder
 rm -rfv $testfolder/* > /dev/null
-#testfolder=~/ClearwaterTestResults/Kubernetes5/b$NumBono/$cps$duration/$NumTest
+#testfolder=~/ClearwaterTestResults/VM1/b$NumBono/$cps$duration/$NumTest
 export testfolder
 
 #Creating control file if does not exist
@@ -64,23 +64,23 @@ fi
 #Read VM ips
 echo Creating repository in local VMs
 #echo AdressVM1: $AddressVM1
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest"
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest"
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest"
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest"
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest"
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest"
-sshpass -p $password ssh -t -o StrictHostKeyChecking=no master@$AddressVM0 "mkdir -p ~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker1@$AddressVM1 "mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker2@$AddressVM2 "mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker3@$AddressVM3 "mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker4@$AddressVM4 "mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker5@$AddressVM5 "mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no worker6@$AddressVM6 "mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest"
+sshpass -p $password ssh -t -o StrictHostKeyChecking=no master@$AddressVM0 "mkdir -p ~/ClearwaterTestResults/VM1/$cps$duration/$NumTest"
 sleep 2
 
 echo Copying control file in local VMs
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
 
 echo Copying file with test information in all workers
 cp $testfolder/DataTest.txt ~/
@@ -136,13 +136,13 @@ source $testfolder/Variables.txt
 #      then
 sleep 60
 echo -e "stateTest=2\nstateTest1=2\nstateTest2=2\nstateTest3=2"  > $testfolder/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
-sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
+sshpass -p $password scp -r -o StrictHostKeyChecking=no $testfolder/Variables.txt master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/Variables.txt
 echo Finalizo prueba scriptPrincipal
  #     fi
  # done
@@ -156,13 +156,13 @@ sleep 2
 if [ "$optionMonitor" -eq '1' ]
 then
   echo Recovering docker data
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM3LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM4LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM5LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM6LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM0LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM3LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM4LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM5LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM6LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM0LocalDockerdata.csv
   cp $testfolder/contenedores.csv $testfolder/VM7LocalDockerdata.csv
   cat $testfolder/*LocalDockerdata.csv > $testfolder/AllDockerData.csv
   sleep 2
@@ -176,22 +176,22 @@ fi
 if [ "$optionMonitor" -eq '2' ]
 then
   echo Recovering VM data
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM1LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM2LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM3LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM4LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM5LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM6LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM0LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM1LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM2LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM3LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM4LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM5LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM6LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM0LocalVMCPUdata.csv
   cp $testfolder/VMCPU.csv $testfolder/VM7LocalVMCPUdata.csv
   cat $testfolder/*LocalVMCPUdata.csv > $testfolder/AllVMCPUData.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM1LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM2LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM3LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM4LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM5LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM6LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM0LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM1LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM2LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM3LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM4LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM5LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM6LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM0LocalVMRAMdata.csv
   cp $testfolder/VMRAM.csv $testfolder/VM7LocalVMRAMdata.csv
   cat $testfolder/*LocalVMRAMdata.csv > $testfolder/AllVMRAMData.csv
   sleep 2
@@ -202,31 +202,31 @@ fi
 if [ "$optionMonitor" -eq '3' ]
 then
   echo Recovering dockers and VM data
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM3LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM4LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM5LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM6LocalDockerdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/contenedores.csv $testfolder/VM0LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM1LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM2LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM3LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM4LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM5LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM6LocalDockerdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/contenedores.csv $testfolder/VM0LocalDockerdata.csv
   cp $testfolder/contenedores.csv $testfolder/VM7LocalDockerdata.csv
   cat $testfolder/*LocalDockerdata.csv > $testfolder/AllDockerData.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM1LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM2LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM3LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM4LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM5LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM6LocalVMCPUdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM0LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM1LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM2LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM3LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM4LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM5LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM6LocalVMCPUdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMCPU.csv $testfolder/VM0LocalVMCPUdata.csv
   cp $testfolder/VMCPU.csv $testfolder/VM7LocalVMCPUdata.csv
   cat $testfolder/*LocalVMCPUdata.csv > $testfolder/AllVMCPUData.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM1LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM2LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM3LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM4LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM5LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM6LocalVMRAMdata.csv
-  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/Kubernetes5/b${NumBono}urs${NumURS}mscs${NumMSCS}urh${NumURH}msch${NumMSCH}/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM0LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker1@$AddressVM1:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM1LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker2@$AddressVM2:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM2LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker3@$AddressVM3:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM3LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker4@$AddressVM4:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM4LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker5@$AddressVM5:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM5LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no worker6@$AddressVM6:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM6LocalVMRAMdata.csv
+  sshpass -p $password scp -r -o StrictHostKeyChecking=no master@$AddressVM0:~/ClearwaterTestResults/VM1/$cps$duration/$NumTest/VMRAM.csv $testfolder/VM0LocalVMRAMdata.csv
   cp $testfolder/VMRAM.csv $testfolder/VM7LocalVMRAMdata.csv
   cat $testfolder/*LocalVMRAMdata.csv > $testfolder/AllVMRAMData.csv
   sleep 2
