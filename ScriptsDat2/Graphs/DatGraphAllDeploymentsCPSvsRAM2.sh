@@ -22,7 +22,7 @@ set key outside below
 set terminal pdf
 set output "DespliegueCPSvsRAM.pdf"
 set xlabel "CPS"
-set ylabel "Memoria (%) (100% = 14 Gb memoria RAM)"
+set ylabel "Memoria (%) (100% = 14 Gb Memoria)"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 1' lc 1, \
      "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 2' lc 2, \
      "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Combination 3' lc 3, \
