@@ -23,13 +23,13 @@ set terminal pdf
 set output "DespliegueCPSvsCPU.pdf"
 set xlabel "CPS"
 set ylabel "CPU (%) (100% = 1 Core)"
-plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combination 1' lc 1, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combination 2' lc 2, \
-     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combination 3' lc 3, \
-     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combination 4' lc 4, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combination 5' lc 5, \
-     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combination 6' lc 6, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combination 7' lc 7, \
+plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combinación 1' lc 1, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combinación 2' lc 2, \
+     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combinación 3' lc 3, \
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combinación 4' lc 4, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combinación 5' lc 5, \
+     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combinación 6' lc 6, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYVMCPU" using 18:19:xtic(1) title 'Combinación 7' lc 7, \
      "~/ClearwaterTestResults/Summaries/VM/SUMMARYVMCPU" using 18:19:xtic(1) title 'vIMS' lc 8
 EOF
 
