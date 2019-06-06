@@ -84,13 +84,13 @@ set terminal pdf
 set output "LATENCYCDF.pdf"
 set xlabel "Latency (ms)"
 set ylabel "CDF"
-plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combination1" lc 1, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combination2" lc 2, \
-     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combination3" lc 3, \
-     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combination4" lc 4, \
-     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combination5" lc 5, \
-     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "Combination6" lc 6, \
-     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination7}) smooth cumul title "Combination7" lc 7, \
+plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination1}) smooth cumul title "Combinación1" lc 1, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination2}) smooth cumul title "Combinación2" lc 2, \
+     "~/ClearwaterTestResults/Summaries/b1urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination3}) smooth cumul title "Combinación3" lc 3, \
+     "~/ClearwaterTestResults/Summaries/b1urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination4}) smooth cumul title "Combinación4" lc 4, \
+     "~/ClearwaterTestResults/Summaries/b3urs1mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination5}) smooth cumul title "Combinación5" lc 5, \
+     "~/ClearwaterTestResults/Summaries/b2urs2mscs1urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "Combinación6" lc 6, \
+     "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination7}) smooth cumul title "Combinación7" lc 7, \
      "~/ClearwaterTestResults/Summaries/VM/SUMMARYLATENCYCDF" using 1:(${NumFilesCombination6}) smooth cumul title "vIMS" lc 8
 EOF
 
