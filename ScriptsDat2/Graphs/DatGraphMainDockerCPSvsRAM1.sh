@@ -19,7 +19,7 @@ set key outside below
 set terminal pdf
 set output "DespliegueKU4MainDOCKERCPSvsRAM.pdf"
 set xlabel "CPS"
-set ylabel "RAM (%)"
+set ylabel "Memoria (%)"
 plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYDOCKERRAM" \
                 using 10:11:xtic(1) title "Bono" lc 1, \
                 '' using 24:25:xtic(1) title "Ursprout" lc 2, \
