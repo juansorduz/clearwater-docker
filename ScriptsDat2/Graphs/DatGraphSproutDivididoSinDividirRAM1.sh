@@ -24,7 +24,7 @@ set output "DespliegueCPSvsRAMSproutDivididoSinDividir.pdf"
 set xlabel "CPS"
 set ylabel "Memoria (%) (100% = 14 Gb RAM)"
 plot "~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Sprout Dividido' lc 1, \
-     "~/ClearwaterTestResultsSproutSinDividir1/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Sprout Sin Dividir' lc 2
+     "~/ClearwaterTestResultsSproutSinDividir2/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'Sprout Sin Dividir' lc 2
 EOF
 
 # "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYVMRAM" using 18:19:xtic(1) title 'b1ur1msc1' lc 1, \
