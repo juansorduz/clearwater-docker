@@ -23,8 +23,8 @@ set xlabel "CPS"
 set ylabel "SCR"
 plot "~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) title 'Sprout Dividido' w l lc 1, \
      "~/ClearwaterTestResultsSproutDividido/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 1, \
-     "~/ClearwaterTestResultsSproutSinDividir1/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) title 'Sprout no Dividido' w l lc 2, \
-     "~/ClearwaterTestResultsSproutSinDividir1/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 2, \
+     "~/ClearwaterTestResultsSproutSinDividir2/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) title 'Sprout no Dividido' w l lc 2, \
+     "~/ClearwaterTestResultsSproutSinDividir2/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 2, \
      "~/ClearwaterTestResultsSproutDividido/Summaries/SUMMARYSCR2" using 2:xtic(1) title 'Objetivo' w l dt 2 lc rgb "#757575"
 EOF
 
