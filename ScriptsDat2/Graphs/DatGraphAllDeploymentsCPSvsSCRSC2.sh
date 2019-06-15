@@ -37,7 +37,7 @@ plot "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 
      "~/ClearwaterTestResults/Summaries/b2urs1mscs2urh1msch1/SUMMARYSCR2" using 2:xtic(1) with points notitle pt 2 ps 0.5 lc 7, \
      "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR2" using 2:xtic(1) title 'vIMS' w l lc 8, \
      "~/ClearwaterTestResults/Summaries/VM/SUMMARYSCR2" using 2:xtic(1) with points notitle pt 21 ps 0.5 lc 8, \
-     "~/ClearwaterTestResults/Summaries/SUMMARYSCR2" using 2:xtic(1) title 'Target' w l dt 2 lc rgb "#757575"
+     "~/ClearwaterTestResults/Summaries/SUMMARYSCR2" using 2:xtic(1) title 'Objetivo' w l dt 2 lc rgb "#757575"
 EOF
 
 # "~/ClearwaterTestResults/Summaries/b1urs1mscs1urh1msch1/SUMMARYSCR2" using 2:xtic(1) title 'b1ur1msc1' w l lc 1, \
