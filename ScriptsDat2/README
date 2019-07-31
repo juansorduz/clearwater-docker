@@ -1,0 +1,67 @@
+This folder has the files to start uvIMS deployment, start tests, monitor performance, and start automatically tests.
+This folder has the files to deploy a Kubernetes cluster with one master and six workers.
+  -Before start the deployment, it is necessary to configurate ip addresses of kubernetes cluster VM in a file allocated in:
+    cd clearwater-docker/ScriptsDat2
+    nano LocalFiles/AddressVM
+  The AddressVM7 is the Kubernetes master and AddressVM0-AddressVM6 are workers
+Start deployment:
+  -Start Kubernetes master
+    cd clearwater-docker/ScriptsDat2
+    DatMasterStart1.sh $SudoKubernetesMasterPassword
+  -After Kubernetes master starts, the command line shows a token used to configurate Kubernetes Wokers or Kubernetes Slaves, you specify IP, port, and token, for example:
+    kubeadm join 192.168.0.15:6443 --token 102952.1a7dd4cc8d1f4cc5 --discovery-token-ca-cert-hash sha256:d68eda99caa1b5a05b5a763247d32e187f6935ad14dfc01cfbe881731c2dc392
+  -Finally, uvIMS deployment starts with the following commands:
+    cd clearwater-docker/ScriptsDat2
+    DatStart1.sh $NumberUsers $SudoPassword $DeploymentOption
+  uvIMS starts metric-server if $DeploymentOption is equal to 10, if you do not want to start metric-server leave $DeploymentOption empty
+Simple test:
+  -Simple test with a CPS and fixed time:
+    cd clearwater-docker/ScriptsDat2
+    DatMonitor1.sh $CPS $Duration $SudoPassword $OptionMonitor $NumberOfTests
+  The $OptionMonitor indicates what it is going to be monitored:
+    -1=dockers
+    -2=VMs
+    -3=dockers and VMs
+Complete test:
+  -Complete test from 25 cps to 200 cps with steps of 25 cps
+    cd clearwater-docker/ScriptsDat2
+    DatFullCPSMonitor1.sh $Duration $SudoPassword $OptionMonitor $NumberOfTests
+
+Full test:
+  Full test for different combinations of uvIMS
+    cd clearwater-docker/ScriptsDat2
+    DatFullMonitor1.sh $Duration $SudoPassword $OptionMonitor $NumberOfTests
+
+
+After recollecting All data it is necessary to generate an information summary.
+  -Simple information summary
+    cd clearwater-docker/ScriptsDat2
+    DatGeneralDataSummary1.sh $CPS $duration $NumberOfTests
+    DatDockerDataSummary1.sh $CPS $duration $NumberOfTests
+    DatVMDataSummary1.sh $CPS $duration $NumberOfTests
+  -Complete summary information
+    cd clearwater-docker/ScriptsDat2
+    DatFullCPSSummary1.sh $Duration $NumberOfTests
+  -Full summary information
+    DatFullSummary1.sh $Duration $NumberOfTests
+
+
+After recollecting All data it is necessary to average information.
+  -Simple average information
+    cd clearwater-docker/ScriptsDat2
+    DatGeneralDataPromedy1.sh $CPS $duration $NumberOfTests
+    DatDockerDataPromedy1.sh $CPS $duration $NumberOfTests
+    DatVMDataPromedy1.sh $CPS $duration $NumberOfTests
+  -Complete average information
+    cd clearwater-docker/ScriptsDat2
+    DatFullCPSPromedy1.sh $Duration $NumberOfTests
+  -Full average information
+  cd clearwater-docker/ScriptsDat2
+    DatFullPromedy1.sh $Duration $NumberOfTests
+
+
+Finally, with the averaged information, the charts are next
+  -The charts are generated with the following commands:
+    cd clearwater-docker/ScriptsDat2/Graphs
+    DatGraphFull1.sh
+  The graphs are stored in the directory "~/ClearwaterTestResults/Graphs"

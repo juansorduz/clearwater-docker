@@ -1,0 +1,3 @@
+This folder has the files to create homestead-prov2 image through the following commands:
+  cd clearwater-docker
+  docker build -t clearwater/homestead-prov2 homestead-prov2

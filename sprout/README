@@ -1,0 +1,3 @@
+This folder has the files to create sprout image through the following commands:
+  cd clearwater-docker
+  docker build -t clearwater/sprout sprout

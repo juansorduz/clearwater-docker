@@ -1,0 +1,3 @@
+This folder has the files to configurate uvIMS deployment (split sprouts) that starts with the following commands:
+  cd clearwater-docker
+  kubectl apply -f kubernetes3

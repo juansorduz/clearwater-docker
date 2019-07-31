@@ -1,0 +1,64 @@
+In this folder are allocated KUAdminstaller.sh, shared.config and VMInstaller.sh
+
+KUAdminstaller.sh has the function of installing Docker and Kubernetes in each Kubernetes-Cluster VM
+It is necessary to run this script in each one of the available machines.
+To run this script write this in the command line:
+  KUAdminstaller.sh $YourRootPassword
+
+KUAdminstaller.sh has the function of installing all Clearwater-over VM components (Ellis, Bono, Sprout, Homer, Dime, Vellum) in six VM automatically
+To run this code is necessary to have a Cluster of seven machines with successive IP addresses and with the same root password.
+This script works as below:
+  KUAdminstaller.sh $ip_base $ip_dns $password $j
+    ip_base The prefix of your network followed by a dot. For example 192.168.0.
+    ip_dns= The IP address of the DNS server. Please, refer to the Clearwater DNS usage documentation in order to deploy DNS server.
+    password= Your root password. It needs to be the same in every machine
+    j= The sufix of your first VM IP address (Example 37, 1, etc)
+
+It is important to highlight that we used an DNS zone called rtn.edu.co in Bind9 server. In order to use this scrpit you need to have the same zone name with the same configurations in they
+
+In  /etc/bind/named.conf.local we added the following line:
+zone "rtn.edu.co" IN { type master; file "/etc/bind/db.rtn.edu.co"; };
+
+In db.rtn.edu.co  we had:
+
+
+;BIND data file for local loopback interface
+
+$TTL    604800
+@       IN      SOA     rtn.edu.co. root.rtn.edu.co. (
+                             2         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        604800 )       ; Negative Cache TTL
+;
+@       IN      NS      rtn.edu.co.
+@       IN      A       10.55.3.87 ; This is the IP address of the machine running DNS server
+ellis    IN      A       10.55.3.88
+sprout    IN      A       10.55.3.90
+homer    IN      A       10.55.3.91
+dime    IN      A       10.55.3.92
+vellum    IN      A       10.55.3.93
+bono    IN      A       10.55.3.89
+scscf.sprout           IN A     10.55.3.90
+icscf.sprout           IN A     10.55.3.90
+hs                     IN A     10.55.3.92
+ralf                   IN A     10.55.3.92
+
+
+; NAPTR and SRV records - these indicate TCP support only and then resolve
+; to port 5054 on the per-node records defined above.
+sprout                 IN NAPTR 1 1 "S" "SIP+D2T" "" _sip._tcp.sprout
+_sip._tcp.sprout       IN SRV   0 0 5054 sprout
+
+; NAPTR and SRV records for S-CSCF - these indicate TCP support only and
+; then resolve to port 5054 on the per-node records defined above.
+scscf.sprout           IN NAPTR 1 1 "S" "SIP+D2T" "" _sip._tcp.scscf.sprout
+_sip._tcp.scscf.sprout IN SRV   0 0 5054 sprout
+
+; NAPTR and SRV records for I-CSCF - these indicate TCP support only and
+; then resolve to port 5052 on the per-node records defined above.
+icscf.sprout           IN NAPTR 1 1 "S" "SIP+D2T" "" _sip._tcp.icscf.sprout
+_sip._tcp.icscf.sprout IN SRV   0 0 5052 sprout
+
+Please, adapt this configuration to your IP addresses

@@ -1,0 +1,3 @@
+This folder has the files to create base image through the following commands:
+  cd clearwater-docker
+  docker build -t clearwater/base base

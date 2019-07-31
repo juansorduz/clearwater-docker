@@ -1,0 +1,3 @@
+This folder has the files to configurate kubernetes deployment (clearwater over Docker or Sprout without splitting) that starts with the following commands:
+  cd clearwater-docker
+  kubectl apply -f kubernetes

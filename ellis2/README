@@ -1,0 +1,3 @@
+This folder has the files to create ellis2 image through the following commands:
+  cd clearwater-docker
+  docker build -t clearwater/ellis2 ellis2

@@ -1,0 +1,51 @@
+This folder has the files to start tests, monitor performance, and start automatically tests.
+Simple test:
+  -Simple test with a CPS and fixed time:
+    cd clearwater-docker/ScriptsDat3
+    DatMonitor1.sh $CPS $Duration $SudoPassword $OptionMonitor $NumberOfTests
+  The $OptionMonitor indicates what it is going to be monitored:
+    -2=VMs
+    -3=dockers and VMs
+Complete test:
+  -Complete test from 25 cps to 200 cps with steps of 25 cps
+    cd clearwater-docker/ScriptsDat3
+    DatFullCPSMonitor1.sh $Duration $SudoPassword $OptionMonitor $NumberOfTests
+
+Full test:
+  Full test for different combinations of uvIMS
+    cd clearwater-docker/ScriptsDat3
+    DatFullMonitor1.sh $Duration $SudoPassword $OptionMonitor $NumberOfTests
+
+
+After recollecting All data it is necessary to generate an information summary.
+  -Simple information summary
+    cd clearwater-docker/ScriptsDat3
+    DatGeneralDataSummary1.sh $CPS $duration $NumberOfTests
+    DatDockerDataSummary1.sh $CPS $duration $NumberOfTests
+    DatVMDataSummary1.sh $CPS $duration $NumberOfTests
+  -Complete summary information
+    cd clearwater-docker/ScriptsDat3
+    DatFullCPSSummary1.sh $Duration $NumberOfTests
+  -Full summary information
+    DatFullSummary1.sh $Duration $NumberOfTests
+
+
+After recollecting All data it is necessary to average information.
+  -Simple average information
+    cd clearwater-docker/ScriptsDat3
+    DatGeneralDataPromedy1.sh $CPS $duration $NumberOfTests
+    DatDockerDataPromedy1.sh $CPS $duration $NumberOfTests
+    DatVMDataPromedy1.sh $CPS $duration $NumberOfTests
+  -Complete average information
+    cd clearwater-docker/ScriptsDat3
+    DatFullCPSPromedy1.sh $Duration $NumberOfTests
+  -Full average information
+  cd clearwater-docker/ScriptsDat3
+    DatFullPromedy1.sh $Duration $NumberOfTests
+
+
+Finally, with the averaged information, the charts are next
+  -The charts are generated with the following commands:
+    cd clearwater-docker/ScriptsDat3/Graphs
+    DatGraphFull1.sh
+  The graphs are stored in the directory "~/ClearwaterTestResults/Graphs"

@@ -4,7 +4,7 @@ ip_base=${1:-192.168.0.}
 ip_dns=${1:-192.168.0.8}
 password=${2:-'123'}
 j=32
-k=32
+k=$j
 for i in ellis bono sprout homer dime vellum ; do
   l=$ip_base$k
   echo $i

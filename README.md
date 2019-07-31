@@ -1,3 +1,18 @@
+# Disclaimer
+
+This branch adapts the original Clearwater to deploy Clearwater-over-Docker and Clearwater-over-VM in order to obtain A vIMS reference deployment and our uvIMS propotype. It contains the following additional folders:
+
+The original Clearwater-over-docker folders are:
+astaire, base, bono, cassandra, chronos, ellis, homer, homestead, homestead-prov, ralf and sprout
+In sipptest folder we added the necessary configuration files to deploy SIPp over docker containers
+The folders related to create uvIMS pods creation over Kubernetes are:
+astaire2, base2, bono2, chronos2, ellis2, homer2 homestead-prov2 msccassandra, mschomestead, mscsprout, ralf2, sipptest2, urcassandra, urhomestead and ursprout.
+
+The other folders are used specifically to deploy uVIMS, vIMS or the regular Clearwater-over docker and Clearwater-over-VM deployments. Please refer to the readme in each folder according to the deployment that you are searching for.
+
+The most important folders are ScriptsDat2 and ScriptsDat3. In which are the necessary scripts to run the deployments and to launch the monitoring labors.
+ScriptsDat2 starts uvIMS deployment, starts tests, monitors performance, and starts automatically tests. In turn, ScriptsDat3 starts vIMS tests, monitors performance, and starts automatically the performance metrics tests.
+
 
 # Clearwater Docker
 
@@ -167,7 +182,7 @@ rake test[default.svc.cluster.local] PROXY={{Bono service DNS/IP}} ELLIS={{Ellis
 
 ### Scaling the deployment
 
-Most Clearwater services can be dynamically scaled up and down by running e.g. 
+Most Clearwater services can be dynamically scaled up and down by running e.g.
 `kubectl scale deployment sprout --replicas=3`
 Exceptions are:
 - You can only have a single Bono if Bono pods do not have externally routable IP addresses.
